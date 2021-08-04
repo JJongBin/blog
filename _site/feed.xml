@@ -1,4 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-08-04T18:11:58+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">Jekyll 블로그 시작 🚀</title><link href="http://localhost:4502/blog/startBlog/" rel="alternate" type="text/html" title="Jekyll 블로그 시작 🚀" /><published>2021-08-04T00:00:00+09:00</published><updated>2021-08-04T00:00:00+09:00</updated><id>http://localhost:4502/blog/startBlog</id><content type="html" xml:base="http://localhost:4502/blog/startBlog/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-08-05T00:57:47+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">[Deep Dive] 01장 프로그래밍</title><link href="http://localhost:4502/javascript/deepDive01/" rel="alternate" type="text/html" title="[Deep Dive] 01장 프로그래밍" /><published>2021-08-05T00:00:00+09:00</published><updated>2021-08-05T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive01</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive01/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;1-프로그래밍이란&quot;&gt;1. 프로그래밍이란?&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;프로그래밍이란 컴퓨터에게 실행을 요구하는 일종의 &lt;u&gt;커뮤니케이션&lt;/u&gt;&lt;br /&gt;
+  &lt;strong&gt;프로그래밍&lt;/strong&gt; -&amp;gt; 기계가 실행할 수 있도록 정확하고 상세하게 요구사항을 설명하는 작업&lt;/p&gt;
+
+&lt;p&gt;프로그래밍은 기계에게 설명하는 과정이므로 컴퓨터적 사고를 가지고 바라보아야한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-프로그래밍-언어&quot;&gt;2. 프로그래밍 언어&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;p&gt;컴퓨터에게 전달한 명령은 사람이 이해하는 언어가 아닌 컴퓨터가 이해할 수 있는 기계어로 전달해줘야한다.&lt;/p&gt;
+
+&lt;p&gt;기계어는 사람이 이해하기 어렵기 때문에 사람이 이해하기 쉬운 프로그래밍 언어로 작성된 명령을 컴파일러를 통해 기계어로 바꿔준다.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;사람의 프로그래밍 언어  →  &lt;strong&gt;&lt;u&gt;컴파일러(변환)&lt;/u&gt;&lt;/strong&gt;  →  컴퓨터의 기계어&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;3-구문과-의미&quot;&gt;3. 구문과 의미&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;p&gt;사람이 이해하도록 만들어진 프로그래밍 언어는 c, c++, 파이썬, 자바, 자바스크립트 등이 있다.&lt;br /&gt;
+이러한 프로그래밍 언어들은 &lt;strong&gt;흐름제어(변수, 값, 연산자, 표현식, 문, 조건문, 반복문), 함수, 객체, 배열&lt;/strong&gt;등의 문법을 제공한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;프로그래밍은 요구사항의 집합을 분석해서 적절한 자료구조와 함수의 집합으로 변환한 후, 그 흐름을 제어하는 것이다.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Javascript" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">프로그래밍이란?</summary></entry><entry><title type="html">Jekyll 블로그 시작 🚀</title><link href="http://localhost:4502/blog/startBlog/" rel="alternate" type="text/html" title="Jekyll 블로그 시작 🚀" /><published>2021-08-04T00:00:00+09:00</published><updated>2021-08-04T00:00:00+09:00</updated><id>http://localhost:4502/blog/startBlog</id><content type="html" xml:base="http://localhost:4502/blog/startBlog/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;블로그를 시작해볼까 고민한지만 벌써 몇 개월째…드디어 블로그를 시작하게 되었다.&lt;br /&gt;
 꾸준히 포스팅하려는 의지를 불태우고자 이것저것 첫번째 글을 써보려고 한다.&lt;/p&gt;
