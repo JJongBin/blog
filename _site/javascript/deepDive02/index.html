@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Deep Dive] 01장 프로그래밍 | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="프로그래밍이란?">
+<!-- begin _includes/seo.html --><title>[Deep Dive] 02장 자바스크립트란? | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="자바스크립트는 무엇일까!?">
 
 
   <meta name="author" content="원종빈">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="[Deep Dive] 01장 프로그래밍">
-<meta property="og:url" content="http://localhost:4502/javascript/deepDive01/">
+<meta property="og:title" content="[Deep Dive] 02장 자바스크립트란?">
+<meta property="og:url" content="http://localhost:4502/javascript/deepDive02/">
 
 
-  <meta property="og:description" content="프로그래밍이란?">
-
-
-
+  <meta property="og:description" content="자바스크립트는 무엇일까!?">
 
 
 
 
-  <meta property="article:published_time" content="2021-08-05T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-08-05T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-08-06T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2021-08-06T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4502/javascript/deepDive01/">
+
+<link rel="canonical" href="http://localhost:4502/javascript/deepDive02/">
 
 
 
@@ -275,16 +275,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Deep Dive] 01장 프로그래밍">
-    <meta itemprop="description" content="프로그래밍이란?">
-    <meta itemprop="datePublished" content="2021-08-05T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-08-05T00:00:00+09:00">
+    <meta itemprop="headline" content="[Deep Dive] 02장 자바스크립트란?">
+    <meta itemprop="description" content="자바스크립트는 무엇일까!?">
+    <meta itemprop="datePublished" content="2021-08-06T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-08-06T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4502/javascript/deepDive01/" class="u-url" itemprop="url">[Deep Dive] 01장 프로그래밍
+            <a href="http://localhost:4502/javascript/deepDive02/" class="u-url" itemprop="url">[Deep Dive] 02장 자바스크립트란?
 </a>
           </h1>
           
@@ -301,7 +301,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          2 분 소요
         
       </span>
     
@@ -316,41 +316,144 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-프로그래밍이란">1. 프로그래밍이란?</a></li><li><a href="#2-프로그래밍-언어">2. 프로그래밍 언어</a></li><li><a href="#3-구문과-의미">3. 구문과 의미</a></li></ul>
+              <ul class="toc__menu"><li><a href="#1-자바스크립트의-탄생">1. 자바스크립트의 탄생</a></li><li><a href="#2-자바스크립트의-표준화">2. 자바스크립트의 표준화</a></li><li><a href="#3-자바스크립트-성장과-역사">3. 자바스크립트 성장과 역사</a></li><li><a href="#4-자바스크립트와-ecmascript">4. 자바스크립트와 ECMAScript</a></li><li><a href="#5-자바스크립트의-특징">5. 자바스크립트의 특징</a></li><li><a href="#6-es6-브라우저-지원-현황">6. ES6 브라우저 지원 현황</a></li></ul>
 
             </nav>
           </aside>
         
         <p><br /></p>
 
-<h1 id="1-프로그래밍이란">1. 프로그래밍이란?</h1>
+<h1 id="1-자바스크립트의-탄생">1. 자바스크립트의 탄생</h1>
+<hr />
+<p>1995년 넷스케이프 커뮤니케이션즈는 웹페이지의 보조적인 기능을 수행하기 위해 브라우저에서 동작하는 프로그래밍언어를 도입</p>
+
+<p><strong>→ 브렌던 아이크가 개발한 <u>자바스크립트</u></strong></p>
+
+<p><br />
+<br /></p>
+
+<h1 id="2-자바스크립트의-표준화">2. 자바스크립트의 표준화</h1>
+<hr />
+<p><code class="language-plaintext highlighter-rouge">자바스크립트의 파생버전이 출시 (Jscript)</code> → <code class="language-plaintext highlighter-rouge">이로인해 브라우저들 사이에서 *크로스 브라우징 이슈 발생</code> → <code class="language-plaintext highlighter-rouge">표준화된 자바스크립트의 필요성이 생김</code></p>
+
+<p class="notice--info"><strong>* 크로스 브라우징</strong><br />
+브라우저에 따라 호환성이 다르기 때문에 웹페이지의 기능들이 정상적으로 동작하지 않음!</p>
+<ul>
+  <li>1997년 7월 표준화된 자바스크립트 사양인 ECMAScript 1(ES1)이 완성</li>  
+  <li>이후 ES2, ES3 ... 2020년 ES11로 크고 작은 기능들이 추가되어 발표됨</li>
+  <li>범용 프로그래밍 언어로써 필요한 여러 기능들이 도입된 2015년 <u>ECMAScript(ES6)</u> </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">버전</th>
+      <th style="text-align: center">년도</th>
+      <th style="text-align: center">특징</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">ES6</td>
+      <td style="text-align: center">2015</td>
+      <td style="text-align: center">let/const, 클래스, 화살표 함수, 템플릿 리터럴, 디스트럭처링 할당, 스프레드 문법, rest 파라미터, 심벌, 프로미스, Map/Set, 이터러블, for…of, 제너레이터, Proxy, 모듈 import.export</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+<br /></p>
+
+<h1 id="3-자바스크립트-성장과-역사">3. 자바스크립트 성장과 역사</h1>
 <hr />
 
-<p>프로그래밍이란 컴퓨터에게 실행을 요구하는 일종의 <u>커뮤니케이션</u><br />
-  <strong>프로그래밍</strong> → 기계가 실행할 수 있도록 정확하고 상세하게 요구사항을 설명하는 작업</p>
+<ol>
+  <li>Ajax
+    <ul>
+      <li>1999년 자바스크립트를 이용해 서버와 브라우저가 비동기 방식으로 데이터를 주고 받을 수 있는 통신 기능</li>
+      <li>기존의 웹페이지는 화면이 전환되면 전체 HTML을 받아 다시 랜더링</li>
+      <li>Ajax등장 이후 변경할 필요가 없는 부분은 두고 필요한 데이터만 받아 해당 부분 랜더링 → 리소스 절약, 빠른 성능과 부드러운 화면전환이 가능
+<br />
+<br /></li>
+    </ul>
+  </li>
+  <li>jQuery
+    <ul>
+      <li>DOM을 더욱 쉽게 제어할 수 있음</li>
+      <li>크로스 브라우징 이슈도 어느 정도 해결
+<br />
+<br /></li>
+    </ul>
+  </li>
+  <li>V8 자바스크립트 엔진
+    <blockquote>
+      <p>V8은 웹 브라우저 내부에서 자바스크립트 수행 속도의 개선을 목표로 처음 고안되었습니다. 속도 향상을 위해 V8은 인터프리터를 사용하는 대신 자바스크립트 코드를 더 효율적인 머신 코드로 번역합니다. 저스트인타임 컴파일러를 구현함으로써 코드를 실행 시에 자바스크립트 코드를 머신 코드로 컴파일하는데, 이는 스파이더몽키나 리노와 같은 현대적인 다른 자바스크립트 엔진에서도 마찬가지입니다. 주된 차이는 V8은 바이트코드와 같은 중간 코드를 생산하지 않는다는 점입니다.
+<br />
+<br /></p>
+    </blockquote>
+  </li>
+  <li>Node.js
+    <ul>
+      <li>브라우저 이외에도 자바스크립트를 작동시킬 수 있도록함</li>
+      <li>비동기I/O 지원, 단일스레드 이벤트 루프 기반(요청 처리 성능이 좋음)</li>
+      <li>백엔드까지도 다룰 수 있음
+<br />
+<br /></li>
+    </ul>
+  </li>
+  <li>SPA 프레임워크
+    <ul>
+      <li>Single Page Application(SAP)</li>
+      <li>Angular, React, Vue.js, Svelte …
+        <blockquote>
+          <p>SPA 구현을 쉽게 말하면 jsp파일 없이 index.html파일 하나에서 js, css등 리소스 파일들과 모듈들을 로드해서 페이지 이동 없이 특정영역만 새로 모듈을 호출하고 데이터를 바인딩하는 개념.</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ol>
 
-<p>프로그래밍은 기계에게 설명하는 과정이므로 컴퓨터적 사고를 가지고 바라보아야한다.</p>
+<p><br />
+<br /></p>
 
-<p><br /></p>
-
-<h1 id="2-프로그래밍-언어">2. 프로그래밍 언어</h1>
+<h1 id="4-자바스크립트와-ecmascript">4. 자바스크립트와 ECMAScript</h1>
 <hr />
-<p>컴퓨터에게 전달한 명령은 사람이 이해하는 언어가 아닌 컴퓨터가 이해할 수 있는 기계어로 전달해줘야한다.</p>
 
-<p>기계어는 사람이 이해하기 어렵기 때문에 사람이 이해하기 쉬운 프로그래밍 언어로 작성된 명령을 컴파일러를 통해 기계어로 바꿔준다.</p>
+<p>자바스크립트는 ECMAScript와 브라우저가 별도 지원하는 클라이언트 사이드 <strong>Web API</strong>(DOM, BOM, Canvas, XNLHttpRequest, fetch 등)을 아우르는 개념 (자바스크립트 &gt; ECMAScript)</p>
 
-<p class="notice--info">사람의 프로그래밍 언어  →  <strong><u>컴파일러(변환)</u></strong>  →  컴퓨터의 기계어</p>
+<p><br />
+<br /></p>
 
-<p><br /></p>
-
-<h1 id="3-구문과-의미">3. 구문과 의미</h1>
+<h1 id="5-자바스크립트의-특징">5. 자바스크립트의 특징</h1>
 <hr />
-<p>사람이 이해하도록 만들어진 프로그래밍 언어는 c, c++, 파이썬, 자바, 자바스크립트 등이 있다.<br />
-이러한 프로그래밍 언어들은 <strong>흐름제어(변수, 값, 연산자, 표현식, 문, 조건문, 반복문), 함수, 객체, 배열</strong>등의 문법을 제공한다.</p>
 
-<blockquote>
-  <p><strong>프로그래밍은 요구사항의 집합을 분석해서 적절한 자료구조와 함수의 집합으로 변환한 후, 그 흐름을 제어하는 것이다.</strong></p>
-</blockquote>
+<ul>
+  <li>웹 브라우저에서 동작하는 유일한 프로그래밍 언어</li>
+  <li>별도의 컴파일을 하지 않는 *<u>인터프리터 언어</u></li>
+</ul>
+
+<p class="notice--info"><strong>*인터프리터 언어</strong><br />
+코드가 실행되는 단계인 런타임에 문 단위로 <u>한줄씩</u> 중간 코드인 바이트 코드로 변환한 후 실행</p>
+
+<ul>
+  <li>멀티 패러다임 프로그래밍 언어(명령형, 함수형, 프로토타입 기반, 객체지향 프로그래밍)</li>
+  <li>자바스크립트는 <strong><u>프로토타입 기반의 객체지행 언어</u></strong></li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<h1 id="6-es6-브라우저-지원-현황">6. ES6 브라우저 지원 현황</h1>
+<hr />
+<p><img src="https://perfectacle.github.io/images/Babel-ES6-with-IE8/es6-compatibility.png" alt="image" /></p>
+
+<p class="notice--info">해당 링크에서 자세히 볼 수 있다.<br />
+<a href="https://kangax.github.io/compat-table/es6/">https://kangax.github.io/compat-table/es6/</a></p>
+
+<p>몇몇 브라우저에서 자바스크립트의 최신기능을 지원하지 않을 수도 있기 때문에 *<strong>바벨(Babel)</strong>을 이용할 필요가 있다</p>
+
+<p class="notice--info">*<strong>바벨(Babel)</strong><br />
+ES6+ 버전의 자바스크립트나 타입스크립트, JSX 등 다른 언어로 분류되는 언어들에 대해서도 모든 브라우저에서 동작할 수 있도록 호환성을 지켜준다. 바벨은 이렇게 추상화 수준을 유지한 채로 코드를 변화시키는 트랜스파일러의 역할을 한다.</p>
 
 <p><br />
 <br /></p>
@@ -400,7 +503,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-08-05">August 5, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-08-06">August 6, 2021</time></p>
 
       </footer>
 
@@ -409,23 +512,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+01%EC%9E%A5+%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20http%3A%2F%2Flocalhost%3A4502%2Fjavascript%2FdeepDive01%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+02%EC%9E%A5+%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%9E%80%3F%20http%3A%2F%2Flocalhost%3A4502%2Fjavascript%2FdeepDive02%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fjavascript%2FdeepDive01%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fjavascript%2FdeepDive02%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fjavascript%2FdeepDive01%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fjavascript%2FdeepDive02%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/startBlog/" class="pagination--pager" title="Jekyll 블로그 시작 🚀
+      <a href="/javascript/deepDive01/" class="pagination--pager" title="[Deep Dive] 01장 프로그래밍
 ">이전</a>
     
     
-      <a href="/javascript/deepDive02/" class="pagination--pager" title="[Deep Dive] 02장 자바스크립트란?
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -449,7 +551,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/javascript/deepDive02/" rel="permalink">[Deep Dive] 02장 자바스크립트란?
+        <a href="/javascript/deepDive01/" rel="permalink">[Deep Dive] 01장 프로그래밍
 </a>
       
     </h2>
@@ -467,14 +569,14 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          최대 1 분 소요
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">자바스크립트는 무엇일까!?
+    <p class="archive__item-excerpt" itemprop="description">프로그래밍이란?
 </p>
   </article>
 </div>
