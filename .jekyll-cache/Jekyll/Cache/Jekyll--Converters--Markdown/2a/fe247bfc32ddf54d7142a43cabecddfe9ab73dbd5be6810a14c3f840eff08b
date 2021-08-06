@@ -1,0 +1,152 @@
+I"�<p><br /></p>
+
+<h1 id="1-자바스크립트-실행-환경">1. 자바스크립트 실행 환경</h1>
+<hr />
+<p>모든 브라우저는 자바스크립트를 내장하고 있고, Node.js도 자바스크립트 엔진을 내장하고 있다.<br />
+하지만 브라우저와 Node.js의 자바스크립트에는 조금 차이가 있다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">브라우저</th>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">Node.js</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">렌더링이 주된 목적</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">브라우저 이외의 환경에서 자바스크립트 사용 가능</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">DOM API 제공</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">DOM API 제공하지 않음</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">파일시스템 제공하지 않음</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">파일시스템 제공</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Client-side API</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Node.js Host API</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">ECMAScript</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">ECMAScript</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="notice--info"><strong>Client-side API</strong><br />
+<u>API</u>는 사이트가 실행되고 있는 브라우저와 운영 체제의 다양한 부분 그리고 웹 사이트 혹은 서비스의 데이터를 다룰 수 있는 인터페이스이다.<br />
+Client-side API는 기능들을 미리 구현한 <u>DOM, BOM, Canvas, XMLHttpRequest, fetchm requestAnimation Frame, SVG, Web Storage, Web Component, Web Worker</u></p>
+
+<p><br />
+<br /></p>
+
+<h1 id="2-웹-브라우저">2. 웹 브라우저</h1>
+<hr />
+<ol>
+  <li>개발자 도구</li>
+</ol>
+
+<ul>
+  <li>단축키</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">운영체제</th>
+      <th style="text-align: center">단축키</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">윈도우</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">F12</code> / <code class="language-plaintext highlighter-rouge">Ctrl + Shift + I</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">macOS</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">command + option + I</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+<ul>
+  <li>기능</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">패널</th>
+      <th style="text-align: center">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Elements</td>
+      <td style="text-align: center">웹페이지의 DOM, CSS를 볼 수 있고 수정도 가능하다.(저장은 되지 않음)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Console</td>
+      <td style="text-align: center">에러를 확인, 자바스크립트의 console.log()를 확인</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Source</td>
+      <td style="text-align: center">웹페이지의 자바스크립트 코드 디버깅</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Network</td>
+      <td style="text-align: center">네트워크 request 정보와 성능 확인</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Application</td>
+      <td style="text-align: center">웹스토리지, 세션, 쿠키 확인 및 관리</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+<ul>
+  <li>콘솔</li>
+</ul>
+
+<p>콘솔창에 에러가 출력된다. 또한 디버깅하는 것보다 쉽게 결과를 확인할 수 있다.</p>
+
+<p><br /></p>
+<ul>
+  <li>디버깅</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">Source 패널로 이동</code> → <code class="language-plaintext highlighter-rouge">에러가 발생한 위치에 빨간 밑줄이 표시됨(에러내용이 간략하게 표시됨)</code> → <code class="language-plaintext highlighter-rouge">에러가 발생한 부분 수정</code></p>
+
+<p><br /></p>
+
+<h1 id="3-nodejs">3. Node.js</h1>
+<hr />
+
+<p>프로젝트 규모가 커짐에 따라 <strong>React, Angular, Vue.js, Lodash</strong> 프레임워크, 라이브러리 도입 필요 → <strong><u>Node.js, npm 필요</u></strong></p>
+
+<p>2009년 아이언 달이 발표한 Node.js는 <u>크롬 V8 자바스크립트 엔진</u>으로 빌드된 <strong><u>자바스크립트 런타임 환경</u></strong></p>
+
+<p class="notice--info"><strong>Node.js</strong><br />
+브라우저 이외의 환경에서의 자바스크립트 실행환경 제공<br />
+<br />
+<strong>npm</strong><br />
+자바스크립트 패키지 매니저<br />
+Node.js에서 사용할 수 있는 모듈들을 패키지화, 패키지 설치 및 관리</p>
+
+<p><br />
+<br /></p>
+
+<p class="notice--info">혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+
+:ET

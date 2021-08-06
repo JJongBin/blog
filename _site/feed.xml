@@ -1,4 +1,159 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-08-06T12:19:27+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">[Deep Dive] 02장 자바스크립트란?</title><link href="http://localhost:4502/javascript/deepDive02/" rel="alternate" type="text/html" title="[Deep Dive] 02장 자바스크립트란?" /><published>2021-08-06T00:00:00+09:00</published><updated>2021-08-06T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive02</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive02/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-08-07T01:09:55+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">[Deep Dive] 03장 자바스크립트의 개발 환경과 실행 방법</title><link href="http://localhost:4502/javascript/deepDive03/" rel="alternate" type="text/html" title="[Deep Dive] 03장 자바스크립트의 개발 환경과 실행 방법" /><published>2021-08-07T00:00:00+09:00</published><updated>2021-08-07T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive03</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive03/">&lt;p&gt;&lt;br /&gt;
+&lt;del&gt;이론적인 부분만 정리하고 설치부분은 건너뛰었다! 이미 설치 다 했으니깐!&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;1-자바스크립트-실행-환경&quot;&gt;1. 자바스크립트 실행 환경&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;p&gt;모든 브라우저는 자바스크립트를 내장하고 있고, Node.js도 자바스크립트 엔진을 내장하고 있다.&lt;br /&gt;
+하지만 브라우저와 Node.js의 자바스크립트에는 조금 차이가 있다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;브라우저&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Node.js&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;렌더링이 주된 목적&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;브라우저 이외의 환경에서 자바스크립트 사용 가능&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;DOM API 제공&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;DOM API 제공하지 않음&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;파일시스템 제공하지 않음&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;파일시스템 제공&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Client-side API&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Node.js Host API&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ECMAScript&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ECMAScript&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;Client-side API&lt;/strong&gt;&lt;br /&gt;
+&lt;u&gt;API&lt;/u&gt;는 사이트가 실행되고 있는 브라우저와 운영 체제의 다양한 부분 그리고 웹 사이트 혹은 서비스의 데이터를 다룰 수 있는 인터페이스이다.&lt;br /&gt;
+Client-side API는 기능들을 미리 구현한 &lt;u&gt;DOM, BOM, Canvas, XMLHttpRequest, fetchm requestAnimation Frame, SVG, Web Storage, Web Component, Web Worker&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-웹-브라우저&quot;&gt;2. 웹 브라우저&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+  &lt;li&gt;개발자 도구&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;단축키&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;운영체제&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;단축키&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;윈도우&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;F12&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + Shift + I&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;macOS&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;command + option + I&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;기능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;패널&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Elements&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;웹페이지의 DOM, CSS를 볼 수 있고 수정도 가능하다.(저장은 되지 않음)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Console&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;에러를 확인, 자바스크립트의 console.log()를 확인&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Source&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;웹페이지의 자바스크립트 코드 디버깅&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Network&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;네트워크 request 정보와 성능 확인&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Application&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;웹스토리지, 세션, 쿠키 확인 및 관리&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;콘솔&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;콘솔창에 에러가 출력된다. 또한 디버깅하는 것보다 쉽게 결과를 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;디버깅&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Source 패널로 이동&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;에러가 발생한 위치에 빨간 밑줄이 표시됨(에러내용이 간략하게 표시됨)&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;에러가 발생한 부분 수정&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;3-nodejs&quot;&gt;3. Node.js&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;프로젝트 규모가 커짐에 따라 &lt;strong&gt;React, Angular, Vue.js, Lodash&lt;/strong&gt; 프레임워크, 라이브러리 도입 필요 → &lt;strong&gt;&lt;u&gt;Node.js, npm 필요&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;2009년 아이언 달이 발표한 Node.js는 &lt;u&gt;크롬 V8 자바스크립트 엔진&lt;/u&gt;으로 빌드된 &lt;strong&gt;&lt;u&gt;자바스크립트 런타임 환경&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;Node.js&lt;/strong&gt;&lt;br /&gt;
+브라우저 이외의 환경에서의 자바스크립트 실행환경 제공&lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;npm&lt;/strong&gt;&lt;br /&gt;
+자바스크립트 패키지 매니저&lt;br /&gt;
+Node.js에서 사용할 수 있는 모듈들을 패키지화, 패키지 설치 및 관리&lt;/p&gt;
+
+&lt;h1 id=&quot;4-자바스크립트-동작원리추가&quot;&gt;4. 자바스크립트 동작원리(추가)&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Javascript" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">자바스크립트는 무엇일까!?</summary></entry><entry><title type="html">[Deep Dive] 02장 자바스크립트란?</title><link href="http://localhost:4502/javascript/deepDive02/" rel="alternate" type="text/html" title="[Deep Dive] 02장 자바스크립트란?" /><published>2021-08-06T00:00:00+09:00</published><updated>2021-08-06T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive02</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive02/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;1-자바스크립트의-탄생&quot;&gt;1. 자바스크립트의 탄생&lt;/h1&gt;
 &lt;hr /&gt;
