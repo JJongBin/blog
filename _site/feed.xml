@@ -1,4 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-08-08T19:57:23+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">[Deep Dive] 04장 변수</title><link href="http://localhost:4502/javascript/deepDive04/" rel="alternate" type="text/html" title="[Deep Dive] 04장 변수" /><published>2021-08-08T00:00:00+09:00</published><updated>2021-08-08T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive04</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive04/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-08-09T01:51:40+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">[Deep Dive] 05장 표현식과 문</title><link href="http://localhost:4502/javascript/deepDive05/" rel="alternate" type="text/html" title="[Deep Dive] 05장 표현식과 문" /><published>2021-08-09T00:00:00+09:00</published><updated>2021-08-09T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive05</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive05/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;1-값&quot;&gt;1. 값&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;u&gt;값&lt;/u&gt;&lt;/strong&gt;은 &lt;u&gt;식(표현식)이 평가되어 생성된 결과&lt;/u&gt;를 말한다.&lt;/li&gt;
+  &lt;li&gt;값은 데이터 타입을 가지고, 메모리에 저장된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 10 + 20이 평가되어 값 30을 생성&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 30&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-리터럴&quot;&gt;2. 리터럴&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;u&gt;리터럴&lt;/u&gt;&lt;/strong&gt;은 &lt;u&gt;사람이 이해할 수 있는 문자 또는 약속된 기호를 사용해 값을 생성하는 표기법.&lt;/u&gt;&lt;/li&gt;
+  &lt;li&gt;자바스크립트 엔진은 코드를 실행하는 런타임에 리터럴을 평가해 값을 생성함.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;* 리터럴&lt;/strong&gt;&lt;br /&gt;
+정수리터럴, 부동소수점리터럴, 2진수리터럴, 문자열리터럴, 불리언리터럴, null리터럴, undefined리터럴, 객체리터럴, 배열리터럴, 함수리터럴, 정규표현식리터럴&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;3-표현식&quot;&gt;3. 표현식&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;u&gt;표현식&lt;/u&gt;&lt;/strong&gt;은 값으로 평가될 수 있는 문.&lt;/li&gt;
+  &lt;li&gt;표현식이 평가되면 &lt;u&gt;새로운 값을 생성하거나 기존 값을 참조&lt;/u&gt;한다.&lt;/li&gt;
+  &lt;li&gt;표현식은 값처럼 사용될 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;4-문&quot;&gt;4. 문&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;u&gt;문&lt;/u&gt;&lt;/strong&gt;은 &lt;u&gt;프로그램을 구성하는 기본 단위이자 최소 실행 단위.&lt;/u&gt;&lt;/li&gt;
+  &lt;li&gt;문의 집합 → 프로그램  /  문을 작성하고 나열 → 프로그래밍&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;선언문, 할당문, 조건문, 반복문 등
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;u&gt;토큰&lt;/u&gt;&lt;/strong&gt;은 &lt;u&gt;문법적인 의미를 가지고, 문법적으로 더 이상 나눌 수 없는 코드의 기본요소를 의미&lt;/u&gt;&lt;/li&gt;
+  &lt;li&gt;문은 여러 토큰으로 구성&lt;/li&gt;
+  &lt;li&gt;키워드, 식별자, 연산자, 리터럴, 세미콜론, 마침표 등은 문법적인 의미를 가지고 더 이상 나눌 수 없음  →  토큰&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;5-세미콜론과-세미콜론-자동-삽입-기능&quot;&gt;5. 세미콜론과 세미콜론 자동 삽입 기능&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;자바스크립트 엔진은 세미콜론으로 문의 종료 위치를 파악하고 순차적으로 실행한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;코드블록({…})&lt;/strong&gt;은 자체종결성을 가지기 때문에 세미콜론을 붙이지 않는다.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;* 세미콜론 자동 삽입 기능(ASI)&lt;/strong&gt;&lt;br /&gt;
+자바스크립트 엔진은 소스코드를 해석할때 문의 끝이라고 예측되는 지점에 세미콜론을 자동으로 붙여준다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;6-표현식인-문과-표현식이-아닌-문&quot;&gt;6. 표현식인 문과 표현식이 아닌 문&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;구별하는 방법 → 변수에 할당하는 것&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;표현식인 문&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;값으로 평가(변수에 할당 가능)&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var temp = 1 + 2&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;표현식이 아닌 문&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;값으로 평가되지 않음(할당x)&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var temp = var x&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Javascript" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">값, 리터럴, 표현식, 문...</summary></entry><entry><title type="html">[Deep Dive] 04장 변수</title><link href="http://localhost:4502/javascript/deepDive04/" rel="alternate" type="text/html" title="[Deep Dive] 04장 변수" /><published>2021-08-08T00:00:00+09:00</published><updated>2021-08-08T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive04</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive04/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;1-변수&quot;&gt;1. 변수&lt;/h1&gt;
 &lt;hr /&gt;
