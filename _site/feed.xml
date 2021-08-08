@@ -1,4 +1,197 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-08-07T02:05:01+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">[Deep Dive] 03장 자바스크립트의 개발 환경과 실행 방법</title><link href="http://localhost:4502/javascript/deepDive03/" rel="alternate" type="text/html" title="[Deep Dive] 03장 자바스크립트의 개발 환경과 실행 방법" /><published>2021-08-07T00:00:00+09:00</published><updated>2021-08-07T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive03</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive03/">&lt;p&gt;&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-08-08T19:57:23+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">[Deep Dive] 04장 변수</title><link href="http://localhost:4502/javascript/deepDive04/" rel="alternate" type="text/html" title="[Deep Dive] 04장 변수" /><published>2021-08-08T00:00:00+09:00</published><updated>2021-08-08T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive04</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive04/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;1-변수&quot;&gt;1. 변수&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;컴퓨터는 CPU를 통해 연산하고 메모리를 사용해 데이터를 기억한다.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;* 메모리&lt;/strong&gt;&lt;br /&gt;
+- 데이터를 저장할 수 있는 데이터 셀의 집합.&lt;br /&gt;
+- 메모리 셀 하나의 크기는 1바이트(8비트).&lt;br /&gt;
+- 1바이트 단위로 저장하고 읽음.&lt;br /&gt;
+- 각 셀은 고유한 메모리 주소를 가진다.
+- 저장되는 모든 값은 이진수로 저장된다.&lt;/p&gt;
+
+&lt;p&gt;메모리 주소를 통해 값에 접근하는 것은 치명적일 수 있다. 따라서 자바스크립트는 &lt;u&gt;직접적인 메모리 제어를 허용하지 않음&lt;/u&gt;.&lt;/p&gt;
+
+&lt;p&gt;프로그래밍 언어는 기억할 값을 메모리에 저장하고, 저장된 값을 읽고 재사용하기 위해 &lt;strong&gt;&lt;u&gt;변수&lt;/u&gt;&lt;/strong&gt;라는 것을 사용함.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;* 변수의 정의&lt;/strong&gt;&lt;br /&gt;
+하나의 값을 저장하기 위해 확보한 메모리 공간 자체 또는 그 메모리 공간을 식별하기 위해 붙인 이름을 말한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;→ 변수란 값의 위치를 가르킴&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://junwoo45.github.io/static/c095036b225ed4f6ebc1ca31f1be2c91/87200/memory1.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;변수이름&lt;/td&gt;
+      &lt;td&gt;메모리 공간에 저장된 값을 식별할 수 있는 고유한 이름&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;변수 값&lt;/td&gt;
+      &lt;td&gt;변수에 저장된 값&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;변수 할당&lt;/td&gt;
+      &lt;td&gt;변수에 값을 저장하는 것&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;변수 참조&lt;/td&gt;
+      &lt;td&gt;변수에 저장된 값을 읽어들이는 것&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-식별자&quot;&gt;2. 식별자&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;p&gt;변수의 이름은 식별자라고 부르기도 함.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;* 식별자&lt;/strong&gt;&lt;br /&gt;
+어떤 값을 구별해서 식별할 수 있는 고유한 이름.&lt;br /&gt;
+식별자는 값을 저장하는 것이 아니라 메모리 주소를 기억하고 있다.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;3-변수-선언&quot;&gt;3. 변수 선언&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;값을 저장하기 위한 메모리 공간을 확보 → 변수 이름과 확보된 메모리 공간의 주소를 연결해서 값을 저장할 수 있도록 함.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;자바스크립트에서는 변수를 선언할 때 `var`, `let`, `const` 를 사용한다.&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;변수를 선언하면 가장 먼저 메모리가 확보되는데 &lt;strong&gt;&lt;u&gt;자바스크립트 엔진에 의해 `undefined` 라는 값이 암묵적으로 할당되어 초기화된다.&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;자바스크립트 엔진의 변수 선언 2단계&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;선언단계&lt;/td&gt;
+      &lt;td&gt;변수 이름을 등록해서 자바스크립트 엔진에 변수의 존재를 알림&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;초기화 단계&lt;/td&gt;
+      &lt;td&gt;값을 저장하기 위한 메모리 공간을 확보하고 암묵적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;undefined&lt;/code&gt;를 할당해 초기화&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;* 실행 컨텍스트&lt;/strong&gt;&lt;br /&gt;
+- 모든 변수 이름(식별자)는 실행 컨텍스트에 등록된다.&lt;br /&gt;
+- 실행 컨텍스트는 엔진이 소스코드를 평가하고 실행하기 위한 환경을 제공 및 실행 결과를 관리하는 영역.&lt;br /&gt;
+- 자바스크립트는 실행 컨텍스트를 통해 &lt;u&gt;식별자&lt;/u&gt;와 &lt;u&gt;스코프&lt;/u&gt;를 관리한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;4-호이스팅&quot;&gt;4. 호이스팅&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;!-- **변수의 선언시점**   --&gt;
+&lt;p&gt;변수의 선언은 위에서 아래로 순차적으로 진행되는 순서를 따르지 않고 그 &lt;u&gt;이전 단계에서 실행&lt;/u&gt;이 된다.&lt;br /&gt;
+자바스크립트 엔진은 코드를 실행하기 앞서 소스코드 평과 과정을 진행한다. 이때 &lt;strong&gt;&lt;u&gt;변수 선언 및 모든 선언문(변수, 함수 등)을 먼저 실행한다.&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;consoloe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 에러가 발생하지 않음&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var&lt;/code&gt;의 경우 에러가 발생하지 않지만, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;const&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;let&lt;/code&gt;은 에러가 발생&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var&lt;/code&gt;는 되는데 왜 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;const&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;let&lt;/code&gt;는 안되는지 찾아보니 TDZ(Temporal Dead Zone)라는 개념이 있었다.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;TDZ(Temporal Dead Zone)&lt;/strong&gt;&lt;br /&gt;
+변수선언 전에 변수에 접근하면 &lt;strong&gt;TDZ&lt;/strong&gt;에 의해 ReferenceError가 발생하게 된다.&lt;/p&gt;
+
+&lt;p&gt;블로그를 찾다보니 TDZ 구간에 있는 변수는&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;선언은 되어있지만 아직 초기화가 되지않아 변수에 담길 값을 위한 공간이 메모리에 할당되지 않은 상태&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;라고 말하시기도 한다. &lt;u&gt;`const`, `let`도 호이스팅은 되지만 TDZ에 들어있어 참조에러가 난다.&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;스코프 내용을 같이 하면 좋겠지만 책 뒤쪽에 나온다.&lt;/del&gt;&lt;br /&gt;
+&lt;del&gt;스코프는 간단히 &lt;strong&gt;변수에 접근할 수 있는 범위&lt;/strong&gt;라고도 한다.&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;5-값의-할당&quot;&gt;5. 값의 할당&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//값의 할당은 선언과 함께 하나의 문으로 할 수 있다.&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//선언과 할당을 따로 할 수 있다.&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;변수 할당은 소스코드가 순차적으로 실행되는 런타임에 실행된다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;* 이해하기 어려웠던 부분!&lt;br /&gt;
+&lt;strong&gt;변수를 선언하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;undefined&lt;/code&gt;라는 값이 할당이 되는데 이후 변수에 할당을 하게되면 해당 변수가 가르키는 메로리주소값에 있는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;undefined&lt;/code&gt;값이 수정값으로 수정되는것이 아니고 새로운 메모리에 수정값을 넣고 주소를 바꿔준다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;이렇게 하면 괜히 번거로운게 아닌가 생각을 하는데 왜 값을 직접 변경하지 않는지 모르겠다…(&lt;strong&gt;찾고 추가해서 수정하자!&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;6-값의-재할당&quot;&gt;6. 값의 재할당&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;p&gt;값의 재할당도 할당과 마찬가지로 직접 값을 수정하지 않고 새로운 메모리를 확보하고 값을 넣고 변수에 주소를 다시 맵핑해준다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 되면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;undefined&lt;/code&gt;값이나 전에 값들이 메모리에 남아있을텐데 이게 메모리 누수로 이어지지는 않을까 생각했지만!&lt;br /&gt;
+이렇게 &lt;u&gt;불필요한 값들은 **가비지 콜렉터**에 의해 메모리에서 자동 해제된다!&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;7-식별자-네이밍-규칙&quot;&gt;7. 식별자 네이밍 규칙&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;식별자는 특수문자를 제외한 문자, 숫자, 언더스코어(_), 달러 기호($)를 포함할 수 있다.&lt;/li&gt;
+  &lt;li&gt;식별자는 특수문자를 제외한 문자, 언더스코어(_), 달러 기호($)로 시작해야 한다. (숫자로 시작 X)&lt;/li&gt;
+  &lt;li&gt;예약어는 식별자로 사용할 수 없다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;변수 이름은 목적을 위해 의미를 명확히 표현하는게 좋다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;-네이밍-컨벤션&quot;&gt;#. 네이밍 컨벤션&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;카멜 케이스 (jongbinHome)&lt;/li&gt;
+  &lt;li&gt;스네이크 케이스 (jongbin_home)&lt;/li&gt;
+  &lt;li&gt;파스칼 케이스 (JongbinHome)&lt;/li&gt;
+  &lt;li&gt;헝가리언 케이스 (strJongbinHome) → (type + 식별자이름)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;자바스크립트에서는 일반적으로&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;변수, 함수&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;카멜케이스&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;생성자 함수, 클래스&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;파스칼케이스&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Javascript" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">변수에 대해서!</summary></entry><entry><title type="html">[Deep Dive] 03장 자바스크립트의 개발 환경과 실행 방법</title><link href="http://localhost:4502/javascript/deepDive03/" rel="alternate" type="text/html" title="[Deep Dive] 03장 자바스크립트의 개발 환경과 실행 방법" /><published>2021-08-07T00:00:00+09:00</published><updated>2021-08-07T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive03</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive03/">&lt;p&gt;&lt;br /&gt;
 &lt;del&gt;이론적인 부분만 정리하고 설치부분은 건너뛰었다! 이미 설치 다 했으니깐!&lt;/del&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
