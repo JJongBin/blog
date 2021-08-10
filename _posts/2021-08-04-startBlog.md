@@ -97,6 +97,7 @@ cannot load such file -- webrick (LoadError)
 <br>
 <br>
 
+이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.  
 혹시나 보시고 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!
 {: .notice--info}
 
