@@ -1,0 +1,164 @@
+I"Y*<p><br /></p>
+<h1 id="1-타입-변환">1. 타입 변환</h1>
+<hr />
+
+<h3># 명시적 타입 변환 / 타입 캐스팅</h3>
+
+<ul>
+  <li>개발자가 <u>의도적으로</u> 값의 타입을 변환하는 것</li>
+  <li><code class="language-plaintext highlighter-rouge">parseInt()</code>, <code class="language-plaintext highlighter-rouge">toString()</code> …</li>
+</ul>
+
+<h3># 암묵적 타입 변환 / 타입 강제 변환</h3>
+
+<ul>
+  <li>개발자의 의도와 상관없이 <u>자바스크립트 엔진에 의해 암묵적</u>으로 타입이 변환</li>
+  <li>표현식을 평가하기 위해 새로운 값을 생성하고 <u>한번 사용하고 버림</u></li>
+</ul>
+
+<p><br />
+<br />
+명시적 타입 변환, 암묵적 타입 변환이 원시값(변수의 값)을 직접 변경하지 못함(원시값은 변경불가)</p>
+
+<p>→ 기존 원시값을 이용해서 <u>다른 타입의 새로운 원시값을 생성 </u></p>
+
+<p><br /></p>
+
+<h1 id="2-암묵적-타입-변환">2. 암묵적 타입 변환</h1>
+<hr />
+
+<h2># 문자열 타입</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">2</span><span class="dl">'</span>
+<span class="c1">// '12'</span>
+</code></pre></div></div>
+<p><strong>”+ 연산자”</strong>는 피연산자 중 <strong>하나 이상이 문자열</strong>이기 때문에 <code class="language-plaintext highlighter-rouge">1</code>이 문자열로 암묵적으로 변환됨</p>
+
+<h2># 숫자 타입</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">-</span> <span class="dl">'</span><span class="s1">1</span><span class="dl">'</span>   <span class="c1">// 0</span>
+<span class="mi">1</span> <span class="o">*</span> <span class="dl">'</span><span class="s1">10</span><span class="dl">'</span>  <span class="c1">// 10</span>
+<span class="mi">1</span> <span class="o">/</span> <span class="dl">'</span><span class="s1">one</span><span class="dl">'</span> <span class="c1">// NaN </span>
+</code></pre></div></div>
+<p><strong>“산술 연산자”</strong>는 숫자 값을 만드는 연산자로 문자열이 숫자값으로 암묵적 타입 변환됨</p>
+
+<p>숫자로 변환되지 않는 문자열로 연산했을때는 <code class="language-plaintext highlighter-rouge">NaN</code> 반환</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span> <span class="o">&gt;</span> <span class="mi">0</span>   <span class="c1">// true</span>
+</code></pre></div></div>
+<p><strong>“비교 연산자”</strong>의 경우 크기를 비교하므로 숫자로 암묵적 타입 변환</p>
+
+<p>자바스크립트 엔진은 숫자로 암묵적 변환을 할때 다음과 같다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 문자열 타입</span>
+<span class="o">+</span><span class="dl">''</span>       <span class="c1">// 0</span>
+<span class="o">+</span><span class="dl">'</span><span class="s1">0</span><span class="dl">'</span>      <span class="c1">// 0</span>
+<span class="o">+</span><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span>      <span class="c1">// 1</span>
+<span class="o">+</span><span class="dl">'</span><span class="s1">aaa</span><span class="dl">'</span>    <span class="c1">// NaN</span>
+
+<span class="c1">// 불리언 타입</span>
+<span class="o">+</span><span class="kc">true</span>     <span class="c1">// 1</span>
+<span class="o">+</span><span class="kc">false</span>    <span class="c1">// 0</span>
+
+<span class="c1">// null 타입</span>
+<span class="o">+</span><span class="kc">null</span>     <span class="c1">// 0</span>
+
+<span class="c1">// undefined 타입</span>
+<span class="o">+</span><span class="kc">undefined</span>  <span class="c1">// NaN</span>
+
+<span class="c1">// 심벌 타입</span>
+<span class="o">+</span><span class="nb">Symbol</span><span class="p">()</span>   <span class="c1">// error</span>
+
+<span class="c1">// 객체 타입</span>
+<span class="o">+</span><span class="p">{}</span>             <span class="c1">// NaN</span>
+<span class="o">+</span><span class="p">[]</span>             <span class="c1">// 0</span>
+<span class="o">+</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>        <span class="c1">// NaN</span>
+<span class="o">+</span><span class="p">(</span><span class="kd">function</span> <span class="p">())</span>  <span class="c1">// NaN</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2># 불리언 타입</h2>
+
+<p>자바스크립트 엔진은 불리언 타입이 아닌 값을 <strong>Truthy값(참)</strong>, <strong>Falsy값(거짓)</strong>으로 구분</p>
+<ul>
+  <li>Truthy값(참) =&gt; true</li>
+  <li>Falsy값(거짓) =&gt; false</li>
+</ul>
+
+<p class="notice--info">Falsy값(거짓) : <code class="language-plaintext highlighter-rouge">false</code>, <code class="language-plaintext highlighter-rouge">undefined</code>, <code class="language-plaintext highlighter-rouge">null</code>, <code class="language-plaintext highlighter-rouge">0</code>, <code class="language-plaintext highlighter-rouge">-0</code>, <code class="language-plaintext highlighter-rouge">NaN</code>, <code class="language-plaintext highlighter-rouge">''</code></p>
+
+<p><br /></p>
+
+<h1 id="3-명시적-타입-변환">3. 명시적 타입 변환</h1>
+<hr />
+
+<h2>문자열 타입</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">String</code>생성자 함수를 <code class="language-plaintext highlighter-rouge">new</code>연산자 없이 호출</li>
+  <li><code class="language-plaintext highlighter-rouge">Object.prototype.toString</code>메서드 사용</li>
+  <li>문자열 연결 연산자(<code class="language-plaintext highlighter-rouge">+</code>)를 사용</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// String 생성자 함수</span>
+<span class="nb">String</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">// "1"</span>
+
+<span class="c1">// Object.prototype.toString 메서드</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">toString</span><span class="p">()</span>    <span class="c1">// "1"</span>
+
+<span class="c1">// 문자열 연결 연산자</span>
+<span class="mi">1</span> <span class="o">+</span> <span class="dl">""</span>      <span class="c1">// "1"</span>
+</code></pre></div></div>
+
+<h2>숫자 타입</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Number</code>생성자 함수를 <code class="language-plaintext highlighter-rouge">new</code>연산자 없이 호출</li>
+  <li><code class="language-plaintext highlighter-rouge">parseInt</code>, <code class="language-plaintext highlighter-rouge">parseFloat</code>
+<br /></li>
+</ol>
+
+<h1 id="5-break-문">5. <code class="language-plaintext highlighter-rouge">break</code> 문</h1>
+<hr />
+<p><code class="language-plaintext highlighter-rouge">break</code>문은 코드 블록을 탈출하는데 <strong>레이블문, 반복문, <code class="language-plaintext highlighter-rouge">switch</code>문</strong>을 탈출한다<br />
+ →   <u>이외 코드블록에서는 **SyntaxError(문법에러) 발생**</u></p>
+
+<p class="notice--info">레이블문 : 식별자가 붙은 문을 말함</p>
+
+<p>내부 코드블록이 아닌 외부 코드 블록을 탈출하려고 할때 식별자를 붙이고 <code class="language-plaintext highlighter-rouge">braek</code>에 식별자를 명시.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">outer</span><span class="p">:</span> <span class="k">for</span> <span class="p">(;;){</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">===</span> <span class="mi">50</span><span class="p">){</span>
+      <span class="k">break</span> <span class="nx">outer</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>i가 50 일때 외부코드블록을 탈출시킨다.</p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<h1 id="6-continue-문">6. <code class="language-plaintext highlighter-rouge">continue</code> 문</h1>
+<hr />
+<p><code class="language-plaintext highlighter-rouge">continue</code>문은 반복문의 코드 블록 실행을 건너뛰고 진행한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">===</span> <span class="mi">5</span><span class="p">){</span>
+    <span class="k">continue</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>i가 5일때 <code class="language-plaintext highlighter-rouge">continue</code>가 있는 해당 지점부터 코드블록을 건너뛰고 i가 6일때로 진행된다.</p>
+
+<p><br />
+<br /></p>
+
+<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+
+:ET
