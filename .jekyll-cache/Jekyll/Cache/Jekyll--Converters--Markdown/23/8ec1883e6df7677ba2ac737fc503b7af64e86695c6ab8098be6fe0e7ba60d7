@@ -1,0 +1,252 @@
+I"�;<p><br /></p>
+
+<h1 id="1-객체">1. 객체</h1>
+<hr />
+
+<ul>
+  <li>객체 타입은 다양한 타입의 값(원시값, 다른객체)들을 하나의 단위로 묶은 자료구조</li>
+  <li>0개 이상의 프로퍼티(key, value)로 구성된 집합</li>
+  <li>프로퍼티 값이 함수일 경우 일반함수와 구분되게 메서드(method)라고 함</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>프로퍼티</strong></td>
+      <td>객체의 상태를 나타내는 값</td>
+    </tr>
+    <tr>
+      <td><strong>메서드</strong></td>
+      <td>프로퍼티(상태 데이터)를 참조하고 조작할 수 있는 동작</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="2-객체-리터럴에-의한-객체-생성">2. 객체 리터럴에 의한 객체 생성</h1>
+<hr />
+
+<p>자바스크립트는 프로토타입 기반 객체 지향 언어</p>
+<ol>
+  <li><strong>객체 리터럴</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">Object</code> 생성자 함수</li>
+  <li>생성자 함수</li>
+  <li><code class="language-plaintext highlighter-rouge">Object.create</code> 메서드</li>
+  <li>클래스</li>
+</ol>
+
+<h2>객체 리터럴</h2>
+<p>중괄호(<code class="language-plaintext highlighter-rouge">{...}</code>) 내에 0개 이상의 프로퍼티를 정의 (코드블럭을 의미하는 것이 아님)</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">age</span> <span class="o">=</span> <span class="mi">26</span><span class="p">,</span>
+  <span class="nx">location</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">suwon</span><span class="dl">"</span><span class="p">,</span>
+  <span class="c1">// 여러개의 프로퍼티 정의</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="3-명시적-타입-변환">3. 명시적 타입 변환</h1>
+<hr />
+
+<h2># 문자열 타입</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">String</code>생성자 함수를 <code class="language-plaintext highlighter-rouge">new</code>연산자 없이 호출</li>
+  <li><code class="language-plaintext highlighter-rouge">Object.prototype.toString</code>메서드 사용</li>
+  <li>문자열 연결 연산자(<code class="language-plaintext highlighter-rouge">+</code>)를 사용</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// String 생성자 함수</span>
+<span class="nb">String</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">// "1"</span>
+
+<span class="c1">// Object.prototype.toString 메서드</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">toString</span><span class="p">()</span>    <span class="c1">// "1"</span>
+
+<span class="c1">// 문자열 연결 연산자</span>
+<span class="mi">1</span> <span class="o">+</span> <span class="dl">""</span>      <span class="c1">// "1"</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2># 숫자 타입</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Number</code>생성자 함수를 <code class="language-plaintext highlighter-rouge">new</code>연산자 없이 호출</li>
+  <li><code class="language-plaintext highlighter-rouge">parseInt</code>, <code class="language-plaintext highlighter-rouge">parseFloat</code>함수를 사용(문자열 → 숫자)</li>
+  <li><code class="language-plaintext highlighter-rouge">+</code> 단항 산술 연산자 이용</li>
+  <li><code class="language-plaintext highlighter-rouge">*</code> 산술 연산자 이용</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Number 생성자 함수</span>
+<span class="nb">Number</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">// 1</span>
+
+<span class="c1">// parseInt 함수</span>
+<span class="nb">parseInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">)</span>   <span class="c1">// 1</span>
+
+<span class="c1">// 단항 산술 연산자</span>
+<span class="o">+</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span>      <span class="c1">// 1</span>
+
+<span class="c1">// 산술 연산자</span>
+<span class="dl">"</span><span class="s2">1</span><span class="dl">"</span> <span class="o">*</span> <span class="mi">1</span>      <span class="c1">// 1</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2># 불리언 타입</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Boolean</code>생성자 함수를 <code class="language-plaintext highlighter-rouge">new</code>연산자 없이 호출</li>
+  <li><code class="language-plaintext highlighter-rouge">!</code> 부정 논리 연산자를 두번 사용</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Boolean 생성자 함수</span>
+<span class="nb">Boolean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>    <span class="c1">// true</span>
+<span class="nb">Boolean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1">// false</span>
+<span class="nb">Boolean</span><span class="p">(</span><span class="dl">""</span><span class="p">)</span>   <span class="c1">// false</span>
+<span class="nb">Boolean</span><span class="p">({})</span>   <span class="c1">// true</span>
+<span class="nb">Boolean</span><span class="p">([])</span>   <span class="c1">// true</span>
+
+<span class="c1">// 부정 논리 연산자</span>
+<span class="o">!!</span><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span>         <span class="c1">// true</span>
+<span class="o">!!</span><span class="dl">''</span>         <span class="c1">// false</span>
+<span class="o">!!</span><span class="mi">1</span>         <span class="c1">// true</span>
+<span class="o">!!</span><span class="mi">0</span>         <span class="c1">// false</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="4-단축-평가">4. 단축 평가</h1>
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">&amp;&amp;</code>, <code class="language-plaintext highlighter-rouge">||</code> 단축 평가 규칙</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">단축 평가 표현식</th>
+      <th style="text-align: center">평가 결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">true || anything</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">true</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">false || anythig</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">anything</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">true &amp;&amp; anything</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">anything</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">false &amp;&amp; anythig</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">&amp;&amp;</code>의 경우 첫번째 피연산자가 <code class="language-plaintext highlighter-rouge">true</code>, 두번째 피연산자가 <code class="language-plaintext highlighter-rouge">true</code>이면 두번째 피연산자를 반환</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">||</code>의 경우 첫번째 피연산자가 <code class="language-plaintext highlighter-rouge">true</code>이면 첫번째 피연산자를 반환</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2># if문 대체</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">jongbin</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">jongbin</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hi</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jongbin</span><span class="p">);</span>    <span class="c1">// hi</span>
+
+<span class="c1">// 단축 평가로 대체</span>
+<span class="c1">// bool이 false이면</span>
+<span class="kd">let</span> <span class="nx">bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nx">jongbin</span> <span class="o">=</span>  <span class="nx">bool</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">hi</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jongbin</span><span class="p">)</span>      <span class="c1">// hi</span>
+</code></pre></div></div>
+<p>변수 <code class="language-plaintext highlighter-rouge">bool</code>이 true이면 true를 반환했을 것이다.</p>
+
+<p><br /></p>
+
+<h2># 객체를 가르키는 변수 확인</h2>
+
+<p>변수가 객체가 아닌 <code class="language-plaintext highlighter-rouge">null</code>, <code class="language-plaintext highlighter-rouge">undefined</code>가 할당되어 있을 수 있는 경우에</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">variable</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">variable</span> <span class="o">&amp;&amp;</span> <span class="nx">variable</span><span class="p">.</span><span class="nx">value</span>  <span class="c1">// null</span>
+</code></pre></div></div>
+<p>변수 <code class="language-plaintext highlighter-rouge">variable</code>이 <code class="language-plaintext highlighter-rouge">null</code>이 아니었다면 정상적인 값을 출력</p>
+
+<p>단축 평가를 사용하지 않고 그냥 참조하면 <strong>에러발생</strong></p>
+
+<p><br /></p>
+
+<h2># 함수 매개변수에 기본값 설정</h2>
+
+<p>함수를 호출할때 매개변수를 전달하지 않으면 매개변수는 <code class="language-plaintext highlighter-rouge">undefined</code> 자동 할당<br />
+→ 이로인해 일어날 에러를 방지하기 위해서</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">num</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">||</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">x</span><span class="o">*</span><span class="nx">x</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">x</code>를 전달하지 않으면 <code class="language-plaintext highlighter-rouge">x</code>는 <code class="language-plaintext highlighter-rouge">undefined</code>로 <code class="language-plaintext highlighter-rouge">false</code>값이기 때문에 0이 할당됨</p>
+
+<p><br /></p>
+
+<h2># 옵셔널 체이닝 연산자(?.)</h2>
+
+<ul>
+  <li>ES11에서 도입</li>
+  <li>좌항의 피연산자가 <code class="language-plaintext highlighter-rouge">null</code>, <code class="language-plaintext highlighter-rouge">undefined</code>이면, <code class="language-plaintext highlighter-rouge">undefined</code>반환</li>
+  <li>좌항의 피연산자가 <code class="language-plaintext highlighter-rouge">null</code>, <code class="language-plaintext highlighter-rouge">undefined</code>이 아니면, 참조</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">variable</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">variable</span><span class="p">?.</span><span class="nx">value</span><span class="p">;</span>    <span class="c1">// undefined</span>
+</code></pre></div></div>
+<p>만약 변수<code class="language-plaintext highlighter-rouge">variable</code>이 정상적인 값이라면 변수<code class="language-plaintext highlighter-rouge">value</code>는 <code class="language-plaintext highlighter-rouge">variable.value</code></p>
+
+<p><br /></p>
+
+<h2># null 병합 연산자(??)</h2>
+
+<ul>
+  <li>ES11에서 도입</li>
+  <li>좌항의 피연산자가 <code class="language-plaintext highlighter-rouge">null</code>, <code class="language-plaintext highlighter-rouge">undefined</code>이면, 우항의 피연산자 반환</li>
+  <li>좌항의 피연산자가 <code class="language-plaintext highlighter-rouge">null</code>, <code class="language-plaintext highlighter-rouge">undefined</code>이 아니면, 좌항의 피연산자 반환</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 좌항이 null</span>
+<span class="kd">let</span> <span class="nx">variable</span> <span class="o">=</span> <span class="kc">null</span> <span class="p">??</span> <span class="dl">"</span><span class="s2">jongbin</span><span class="dl">"</span><span class="p">;</span>   <span class="c1">// "jongbin"</span>
+
+<span class="c1">// 좌항이 null이 아니면</span>
+<span class="kd">let</span> <span class="nx">variable</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">won</span><span class="dl">"</span> <span class="p">??</span> <span class="dl">"</span><span class="s2">jongbin</span><span class="dl">"</span><span class="p">;</span>   <span class="c1">// "won"</span>
+</code></pre></div></div>
+
+<p><br />
+<br /></p>
+
+<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+
+:ET
