@@ -1,4 +1,370 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-08-13T18:31:08+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">[Deep Dive] 09장 타입 변환과 단축 평가</title><link href="http://localhost:4502/javascript/deepDive09/" rel="alternate" type="text/html" title="[Deep Dive] 09장 타입 변환과 단축 평가" /><published>2021-08-13T00:00:00+09:00</published><updated>2021-08-13T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive09</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive09/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-08-15T01:38:40+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">[Deep Dive] 11장 원시값과 객체</title><link href="http://localhost:4502/javascript/deepDive11/" rel="alternate" type="text/html" title="[Deep Dive] 11장 원시값과 객체" /><published>2021-08-15T00:00:00+09:00</published><updated>2021-08-15T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive11</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive11/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;자바스크립트의 7가지 데이터 타입은 &lt;strong&gt;원시 타입&lt;/strong&gt;과 &lt;strong&gt;객체 타입&lt;/strong&gt;으로 구분됨&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;strong&gt;원시 타입&lt;/strong&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;strong&gt;객체 타입&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;변경 불가능한 값&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;변경 가능한 값&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;변수에 실제 값이 저장&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;변수에 참조 값이 저장&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;값에 의한 전달&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;참조에 의한 전달&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;* 값에 의한 전달&lt;/strong&gt;&lt;br /&gt;
+변수를 다른 변수에 할당할 때 원본의 원시값이 복사되어 전달&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;* 참조에 의한 전달&lt;/strong&gt;&lt;br /&gt;
+변수를 다른 변수에 할당할 때 원본의 참조값이 복사되어 전달&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;1-원시값&quot;&gt;1. 원시값&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;원시 타입의 값은 &lt;strong&gt;변경 불가능한 값&lt;/strong&gt; → 재할당을 할때 새로운 값을 생성&lt;br /&gt;
+&lt;del&gt;교체한다고 하는게 맞는 느낌이다!&lt;/del&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;변수 age -&amp;gt; 0x000000f2(주소)  |  26(값)
+___________________________________________                          
+새로 생성    0x00001222(주소)  |  27(값)
+___________________________________________                        
+
+           0x000000f2(주소)  |  undefined(값)
+변수 age -&amp;gt; 0x00001222(주소)  |  27(값)
+___________________________________________                      
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;원시 값을 재할당하면,&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;새로운 메모르 공간 확보&lt;/li&gt;
+  &lt;li&gt;확보된 메모리에 값 저장&lt;/li&gt;
+  &lt;li&gt;변수가 참조하는 메모리 변경&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;값이 변하지 않아 이를 &lt;strong&gt;불변성&lt;/strong&gt;이라고 함&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;값에 의한 전달&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 참조된 주소가 아닌 값이 전달&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;변수 age   -&amp;gt;   0x000000f2(주소)  |  26(값)
+              
+              ⬇︎ age copy
+
+변수 age   -&amp;gt;   0x000000f2(주소)  |  26(값)
+변수 jbAge  -&amp;gt;  0x00001222(주소)  |  26(값)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;메모리주소(저장된 값)을 복사한다(참조된 주소값은 다름!)&lt;br /&gt;
+&lt;strong&gt;메모리 주소를 복사하지만 주소값이 같은 것이 아님&lt;/strong&gt; → 전달된 메모리 주소로 값을 참조할 수 있다&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;→ 복사한 변수를 수정해도 원본에 영향을 미치지 않음&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-객체&quot;&gt;2. 객체&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;객체는 메모리 크기가 정해져 있지도 않고, 프로퍼티를 추가, 삭제, 갱신 할 수 있기 때문에 원시값과는 다른 동작방식을 지닌다.&lt;/p&gt;
+
+&lt;h2&gt;변경 가능한 값&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;객체 jongbin -&amp;gt; 0x000000f2(주소)  |  0x00001222(값)   
+                                ⬋ 참조(값에 주소를 저장)
+               0x00001222(주소)  |  { age: 26 }(값)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;원시값과는 다르게 객체는 메모리에 참조값을 저장한다. 객체는 변경이 가능한 값이므로 내부 프로퍼티를 수정할 수 있지만 내부 프로퍼티를 수정해도 참조값은 바뀌지않는다.&lt;/p&gt;
+
+&lt;p&gt;이런 방식은 계속해서 변하는 객체의 특성 때문에 고려된 메모리 사용의 효율성과 성능을 위한 방식이다. 하지만 단점으로 &lt;strong&gt;여러개의 식별자가 동일한 객체를 공유&lt;/strong&gt;할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;참조에 의한 전달&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;객체 jongbin -&amp;gt; 0x000000f2(주소)  |  0x00001222(값)   
+               0x00001222(주소)  |  { age: 26 }(값)   // 동일한 객체
+
+                               ⬇︎ copy
+
+객체 jb   -&amp;gt;    0x00002323(주소)  |  0x00001222(값)                   
+               0x00001222(주소)  |  { age: 26 }(값)   // 동일한 객체
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;복사를 하게 되면 메모리의 값(참조값)을 복사하기 때문에 동일한 객체를 참조하게 된다. 이는 &lt;u&gt;여러개의 변수가 서로 영향을 미칠 수 있다.&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;원본의 참조값이 복사되어 전달되는 것을 &lt;strong&gt;참조에 의한 전달&lt;/strong&gt;이라고 한다&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;참조 값만 복사하는 것을 &lt;strong&gt;얇은 복사&lt;/strong&gt;라고 함&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;깊은 복사&lt;/strong&gt;는 객체에 중첩되어 있는 객체까지도 전부 복사함&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;자바스크립트는 결국 메모리에 저장되어 있는 값을 전달한다 근데 그 값이 그냥 값인지 참조값인지에 따라 나뉘는 것 같다!&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Javascript" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">자바스크립트는 대부분 객체로 구성되어 있다.</summary></entry><entry><title type="html">[Deep Dive] 10장 객체리터럴</title><link href="http://localhost:4502/javascript/deepDive10/" rel="alternate" type="text/html" title="[Deep Dive] 10장 객체리터럴" /><published>2021-08-14T00:00:00+09:00</published><updated>2021-08-14T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive10</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive10/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;1-객체&quot;&gt;1. 객체&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;객체 타입은 다양한 타입의 값(원시값, 다른객체)들을 하나의 단위로 묶은 자료구조&lt;/li&gt;
+  &lt;li&gt;0개 이상의 프로퍼티(key, value)로 구성된 집합&lt;/li&gt;
+  &lt;li&gt;프로퍼티 값이 함수일 경우 일반함수와 구분되게 메서드(method)라고 함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;프로퍼티&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;객체의 상태를 나타내는 값&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;메서드&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;프로퍼티(상태 데이터)를 참조하고 조작할 수 있는 동작&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-객체-리터럴에-의한-객체-생성&quot;&gt;2. 객체 리터럴에 의한 객체 생성&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;자바스크립트는 프로토타입 기반 객체 지향 언어&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;객체 리터럴&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object&lt;/code&gt; 생성자 함수&lt;/li&gt;
+  &lt;li&gt;생성자 함수&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.create&lt;/code&gt; 메서드&lt;/li&gt;
+  &lt;li&gt;클래스&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2&gt;객체 리터럴&lt;/h2&gt;
+&lt;p&gt;중괄호(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{...}&lt;/code&gt;) 내에 0개 이상의 프로퍼티를 정의 (코드블럭 x → 세미콜론 필요)&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;suwon&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 여러개의 프로퍼티 정의&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;3-프로퍼티&quot;&gt;3. 프로퍼티&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;키(key)와 값(value)로 구성됨&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// age는 키, 26은 값&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&amp;lt; 프로퍼티 키, 값으로 사용할 수 있는 값 &amp;gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;키(key)&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;빈 문자열을 포함하는 모든 문자열 또는 심벌 값&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;값(value)&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;자바스크립트에서 사용할 수 있는 모든 값&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;프로퍼티 키는 식별자 네이밍 규칙(카멜케이스)을 따르지 않는 이름에는 반드시 따옴표 사용&lt;/li&gt;
+  &lt;li&gt;프로퍼티 키로 예약어를 사용하는 것도 가능(권장 x)&lt;/li&gt;
+  &lt;li&gt;중복 선언하면 에러 대신 덮어씀&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;객체의 프로퍼티를 동적으로 생성&lt;/h2&gt;
+&lt;p&gt;프로퍼티 키를 대괄호(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[...]&lt;/code&gt;)로 묶음&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;shoes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;nike&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;4-프로퍼티-접근&quot;&gt;4. 프로퍼티 접근&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;u&gt;객체에 존재하지 않는 프로퍼티에 접근하면 `undefined`를 반환&lt;/u&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt; 프로퍼티에 접근하는 방법 &amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;마침표 프로퍼티 접근 연산자(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt;)를 사용하는 &lt;strong&gt;마침표 표기법&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;대괄호 프로퍼티 접근 연산자(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[...]&lt;/code&gt;)를 사용하는 &lt;strong&gt;대괄호 표기법&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 마침표 표기법&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 대괄호 표기법&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;대괄호 표기법을 사용할 때 키 값을 따옴표로 감싸야 함&lt;/li&gt;
+  &lt;li&gt;키값이 네이밍 규칙을 준수하지 않았다면 &lt;strong&gt;대괄호 표기법&lt;/strong&gt;을 이용해야 함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;5-프로퍼티-갱신-접근-삭제&quot;&gt;5. 프로퍼티 갱신, 접근, 삭제&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;h2&gt;갱신&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;존재하는 프로퍼티에 값을 할당하면 갱신됨.&lt;/p&gt;
+
+&lt;h2&gt;생성&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;shoes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;nike&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;존재하지 않는 프로퍼티에 값을 할당하면 동적으로 프로퍼티가 생성됨.&lt;/p&gt;
+
+&lt;h2&gt;삭제&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delete&lt;/code&gt; 연산자를 사용하여 프로퍼티값을 삭제함(존재하지 않는 프로퍼티의 경우 무시)&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;6-es6의-객체-리터럴&quot;&gt;6. ES6의 객체 리터럴&lt;/h1&gt;
+
+&lt;h2&gt;축약 표현&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 기존&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// ES6&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ES6에서는 변수 이름과 프로퍼티 키가 동일한 경우 &lt;strong&gt;프로퍼티 키를 생략&lt;/strong&gt;할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;여러개 프로퍼티 동적 생성&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;something&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;shoes&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 기존&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;something&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;nike&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;something&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hoka&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// {shoes-1: &quot;nike, shoes-2: &quot;hoka&quot;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// ES6&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;nike2&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;something&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;hoka2&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// {shoes-1: &quot;nike2, shoes-2: &quot;hoka2&quot;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ES6는 객체리터럴 내부에서도 사용 가능&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;메서드 축약 표현&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 기존&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;myOld&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;I&apos;m &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// ES6&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;myOld&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;I&apos;m &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;function&lt;/code&gt; 키워드를 생략할 수 있음.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Javascript" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">자바스크립트는 대부분 객체로 구성되어 있다.</summary></entry><entry><title type="html">[Deep Dive] 09장 타입 변환과 단축 평가</title><link href="http://localhost:4502/javascript/deepDive09/" rel="alternate" type="text/html" title="[Deep Dive] 09장 타입 변환과 단축 평가" /><published>2021-08-13T00:00:00+09:00</published><updated>2021-08-13T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive09</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive09/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;1-타입-변환&quot;&gt;1. 타입 변환&lt;/h1&gt;
 &lt;hr /&gt;
@@ -1423,7 +1789,7 @@ I&apos;m jongbin`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
   &lt;p&gt;선언은 되어있지만 아직 초기화가 되지않아 변수에 담길 값을 위한 공간이 메모리에 할당되지 않은 상태&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;라고 말하시기도 한다. &lt;u&gt;`const`, `let`도 호이스팅은 되지만 TDZ에 들어있어 참조에러가 난다.&lt;/u&gt;&lt;/p&gt;
+&lt;p&gt;라고 말하시기도 한다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;const&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;let&lt;/code&gt;도 호이스팅은 되지만 &lt;u&gt;TDZ에 들어있어 참조에러&lt;/u&gt;가 난다.&lt;/p&gt;
 
 &lt;p&gt;&lt;del&gt;스코프 내용을 같이 하면 좋겠지만 책 뒤쪽에 나온다.&lt;/del&gt;&lt;br /&gt;
 &lt;del&gt;스코프는 간단히 &lt;strong&gt;변수에 접근할 수 있는 범위&lt;/strong&gt;라고도 한다.&lt;/del&gt;&lt;/p&gt;
@@ -1805,114 +2171,4 @@ ES6+ 버전의 자바스크립트나 타입스크립트, JSX 등 다른 언어�
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Javascript" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">자바스크립트는 무엇일까!?</summary></entry><entry><title type="html">[Deep Dive] 01장 프로그래밍</title><link href="http://localhost:4502/javascript/deepDive01/" rel="alternate" type="text/html" title="[Deep Dive] 01장 프로그래밍" /><published>2021-08-05T00:00:00+09:00</published><updated>2021-08-05T00:00:00+09:00</updated><id>http://localhost:4502/javascript/deepDive01</id><content type="html" xml:base="http://localhost:4502/javascript/deepDive01/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;1-프로그래밍이란&quot;&gt;1. 프로그래밍이란?&lt;/h1&gt;
-&lt;hr /&gt;
-
-&lt;p&gt;프로그래밍이란 컴퓨터에게 실행을 요구하는 일종의 &lt;u&gt;커뮤니케이션&lt;/u&gt;&lt;br /&gt;
-  &lt;strong&gt;프로그래밍&lt;/strong&gt; → 기계가 실행할 수 있도록 정확하고 상세하게 요구사항을 설명하는 작업&lt;/p&gt;
-
-&lt;p&gt;프로그래밍은 기계에게 설명하는 과정이므로 컴퓨터적 사고를 가지고 바라보아야한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;2-프로그래밍-언어&quot;&gt;2. 프로그래밍 언어&lt;/h1&gt;
-&lt;hr /&gt;
-&lt;p&gt;컴퓨터에게 전달한 명령은 사람이 이해하는 언어가 아닌 컴퓨터가 이해할 수 있는 기계어로 전달해줘야한다.&lt;/p&gt;
-
-&lt;p&gt;기계어는 사람이 이해하기 어렵기 때문에 사람이 이해하기 쉬운 프로그래밍 언어로 작성된 명령을 컴파일러를 통해 기계어로 바꿔준다.&lt;/p&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;사람의 프로그래밍 언어  →  &lt;strong&gt;&lt;u&gt;컴파일러(변환)&lt;/u&gt;&lt;/strong&gt;  →  컴퓨터의 기계어&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;3-구문과-의미&quot;&gt;3. 구문과 의미&lt;/h1&gt;
-&lt;hr /&gt;
-&lt;p&gt;사람이 이해하도록 만들어진 프로그래밍 언어는 c, c++, 파이썬, 자바, 자바스크립트 등이 있다.&lt;br /&gt;
-이러한 프로그래밍 언어들은 &lt;strong&gt;흐름제어(변수, 값, 연산자, 표현식, 문, 조건문, 반복문), 함수, 객체, 배열&lt;/strong&gt;등의 문법을 제공한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;프로그래밍은 요구사항의 집합을 분석해서 적절한 자료구조와 함수의 집합으로 변환한 후, 그 흐름을 제어하는 것이다.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Javascript" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">프로그래밍이란?</summary></entry><entry><title type="html">Jekyll 블로그 시작 🚀</title><link href="http://localhost:4502/blog/startBlog/" rel="alternate" type="text/html" title="Jekyll 블로그 시작 🚀" /><published>2021-08-04T00:00:00+09:00</published><updated>2021-08-04T00:00:00+09:00</updated><id>http://localhost:4502/blog/startBlog</id><content type="html" xml:base="http://localhost:4502/blog/startBlog/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;블로그를 시작해볼까 고민한지만 벌써 몇 개월째…드디어 블로그를 시작하게 되었다.&lt;br /&gt;
-꾸준히 포스팅하려는 의지를 불태우고자 이것저것 첫번째 글을 써보려고 한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;1-jekyll-blog-개발-환경-셋팅&quot;&gt;1. Jekyll blog 개발 환경 셋팅&lt;/h1&gt;
-&lt;hr /&gt;
-
-&lt;p&gt;구글링을 통해서 jekyll 블로그를 알게 되었고, 프론트엔드 개발자를 지향하고 있는 나에게 네이버나 다음 블로그보다 도움이 될거라고 생각했다. 
-템플릿을 정해야한다고 하길래 이것 저것 찾아보다가 몇 몇분들이 추천해주시는 minimal-mistakes에 꽂혀 이 템플릿을 사용하게 되었다.&lt;/p&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;minimal-mistakes github 주소!&lt;/strong&gt;&lt;br /&gt;
-&lt;a href=&quot;https://github.com/mmistakes/minimal-mistakes&quot;&gt;https://github.com/mmistakes/minimal-mistakes&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;이제 내 로컬 환경에서 Github에 올릴 수 있도록 셋팅을 해줘야 했는데 환경변수 때문에 너무 애를 먹었다. ruby나 gem 자체를 처음 이용해 보기도 해서 더욱 생소했던 것 같다. 하다하다 안되서 전부 삭제하고 다시 깔았다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install ruby
-gem install --user-install bundler jekyll
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;위 명령어를 터미널에 입력해서 이 순서대로 진행했는데 환경변수를 잘못 적어서 시간이 오래걸렸다. 
-homebrew를 이용해서 ruby를 설치하고 패키지시스템과 같은 gem을 이용해서 bundler, jekyll을 설치하고, .zshrc 파일에 환경변수를 추가했다&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 환경변수
-export PATH=&quot;$HOME/.gem/ruby/3.0.0/bin:$PATH&quot;
-export PATH=&quot;/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH&quot; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;이 사이트를 참고했다. 아니 거의 따라했다.&lt;/strong&gt;&lt;br /&gt;
-&lt;a href=&quot;https://jekyllrb.com/docs/installation/macos/&quot;&gt;https://jekyllrb.com/docs/installation/macos/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle -v
-jekyll -v
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이렇게 입력했을때 bundle과 jekyll의 버전이 제대로 출력되면 다왔다!&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bundler version 2.2.25&lt;/code&gt;&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll 4.2.0&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle
-jekyll serve --port [port]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;서버를 시작하려고 위 명령어를 입력했더니&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cannot load such file -- webrick (LoadError)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;…..??&lt;/p&gt;
-
-&lt;p&gt;이런 오류가 나와서 당황했는데 얼른 구글링 하니 어떤분께서 이 문제에 대해서 설명을 잘해주셨다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle add webrick&lt;/code&gt; 이라는 명령어로 webrick을 추가해 주고 다시 실행하면 된다고 한다.&lt;/p&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;안됬던 이유는 ruby 3.0.0부터 webrick이 기본으로 포함된 gem에서 빠졌기 때문이라고 한다.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;위 과정까지 다하고나니 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:[port]/&lt;/code&gt;로 내가 만들 블로그에 로컬환경에서 접속할 수 있었다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;2-블로그를-시작한-이유&quot;&gt;2. 블로그를 시작한 이유&lt;/h1&gt;
-&lt;hr /&gt;
-&lt;p&gt;자바스크립트에 대한 이해가 부족하다고 생각했기 때문에 유투버분의 추천을 보고 &lt;u&gt;모던 자바스크립트 Deep Dive&lt;/u&gt; 라는 책을 구매해서 읽기 시작했다. 책이 900페이지나 되길래 먼저 속독으로 한번 읽어보고 다시 읽어야겠다고 생각했다. 하지만 속독으로 읽더라도 어느정도 감이 와야하는데 대충 보고 넘기다보니 까먹고 다시 찾아보고 하는 과정이 반복이 됬다. 너무 쉽게 생각한 내 잘못이었다. 어떻게 하면 꾸준하게 꼼꼼히 내 지식으로 만들 수 있을까 고민을 하다가 “블로그에 내가 이해한 내용을 정리하면 좋지않을까?” 라는 생각을 하게 되었고, 한 포스팅 당 한 한 단락으로 구성해보자! 라고 다짐했다. 나중에 내가 까먹은 지식을 내가 이해했던 방법으로 좀 더 빠르게 다시 생각해 낼 수 있고, 아무래도 포스팅을 하려면 좀 더 깊게 알고 이해할 수 있을 것 같다.&lt;/p&gt;
-
-&lt;p&gt;&lt;u&gt;모던 자바스크립트 Deep Dive&lt;/u&gt;는 총 49장 ( 변수 표현식 … 에러처리 모듈 등 )으로 구성이 되어있다. 굉장히 오래 걸릴 것 같지만 그 때의 뿌듯함이 벌써부터 기대가 된다. 이 외에 내가 습득했던 지식을 사용하지 않다보니 잊어버리는 경우가 꽤 많아서 다른 것들도 정리하려고 한다. 화이팅 나!&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시고 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Blog" /><category term="Blog" /><category term="jekyll" /><summary type="html">내가 블로그를 시작한 이유와 다짐!</summary></entry></feed>
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Javascript" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">자바스크립트는 무엇일까!?</summary></entry></feed>

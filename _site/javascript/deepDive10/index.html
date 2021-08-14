@@ -1,0 +1,877 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Deep Dive] 10장 객체리터럴 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="자바스크립트는 대부분 객체로 구성되어 있다.">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="[Deep Dive] 10장 객체리터럴">
+<meta property="og:url" content="http://localhost:4502/javascript/deepDive10/">
+
+
+  <meta property="og:description" content="자바스크립트는 대부분 객체로 구성되어 있다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-08-14T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-08-14T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4502/javascript/deepDive10/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "http://localhost:4502/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/">Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4502/">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4502/" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Deep Dive] 10장 객체리터럴">
+    <meta itemprop="description" content="자바스크립트는 대부분 객체로 구성되어 있다.">
+    <meta itemprop="datePublished" content="2021-08-14T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-08-14T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4502/javascript/deepDive10/" class="u-url" itemprop="url">[Deep Dive] 10장 객체리터럴
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#1-객체">1. 객체</a></li><li><a href="#2-객체-리터럴에-의한-객체-생성">2. 객체 리터럴에 의한 객체 생성</a></li><li><a href="#3-프로퍼티">3. 프로퍼티</a></li><li><a href="#4-프로퍼티-접근">4. 프로퍼티 접근</a></li><li><a href="#5-프로퍼티-갱신-접근-삭제">5. 프로퍼티 갱신, 접근, 삭제</a></li><li><a href="#6-es6의-객체-리터럴">6. ES6의 객체 리터럴</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h1 id="1-객체">1. 객체</h1>
+<hr />
+
+<ul>
+  <li>객체 타입은 다양한 타입의 값(원시값, 다른객체)들을 하나의 단위로 묶은 자료구조</li>
+  <li>0개 이상의 프로퍼티(key, value)로 구성된 집합</li>
+  <li>프로퍼티 값이 함수일 경우 일반함수와 구분되게 메서드(method)라고 함</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>프로퍼티</strong></td>
+      <td>객체의 상태를 나타내는 값</td>
+    </tr>
+    <tr>
+      <td><strong>메서드</strong></td>
+      <td>프로퍼티(상태 데이터)를 참조하고 조작할 수 있는 동작</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="2-객체-리터럴에-의한-객체-생성">2. 객체 리터럴에 의한 객체 생성</h1>
+<hr />
+
+<p>자바스크립트는 프로토타입 기반 객체 지향 언어</p>
+<ol>
+  <li><strong>객체 리터럴</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">Object</code> 생성자 함수</li>
+  <li>생성자 함수</li>
+  <li><code class="language-plaintext highlighter-rouge">Object.create</code> 메서드</li>
+  <li>클래스</li>
+</ol>
+
+<h2>객체 리터럴</h2>
+<p>중괄호(<code class="language-plaintext highlighter-rouge">{...}</code>) 내에 0개 이상의 프로퍼티를 정의 (코드블럭 x → 세미콜론 필요)</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">age</span> <span class="o">=</span> <span class="mi">26</span><span class="p">,</span>
+  <span class="nx">location</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">suwon</span><span class="dl">"</span><span class="p">,</span>
+  <span class="c1">// 여러개의 프로퍼티 정의</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="3-프로퍼티">3. 프로퍼티</h1>
+<hr />
+
+<p>키(key)와 값(value)로 구성됨</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">age</span> <span class="o">=</span> <span class="mi">26</span><span class="p">,</span>
+  <span class="c1">// age는 키, 26은 값</span>
+<span class="p">};</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>&lt; 프로퍼티 키, 값으로 사용할 수 있는 값 &gt;</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>키(key)</strong></td>
+      <td>빈 문자열을 포함하는 모든 문자열 또는 심벌 값</td>
+    </tr>
+    <tr>
+      <td><strong>값(value)</strong></td>
+      <td>자바스크립트에서 사용할 수 있는 모든 값</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>프로퍼티 키는 식별자 네이밍 규칙(카멜케이스)을 따르지 않는 이름에는 반드시 따옴표 사용</li>
+  <li>프로퍼티 키로 예약어를 사용하는 것도 가능(권장 x)</li>
+  <li>중복 선언하면 에러 대신 덮어씀</li>
+</ul>
+
+<h2>객체의 프로퍼티를 동적으로 생성</h2>
+<p>프로퍼티 키를 대괄호(<code class="language-plaintext highlighter-rouge">[...]</code>)로 묶음</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">jongbin</span><span class="p">[</span><span class="nx">shoes</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">nike</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="4-프로퍼티-접근">4. 프로퍼티 접근</h1>
+<hr />
+
+<p><u>객체에 존재하지 않는 프로퍼티에 접근하면 `undefined`를 반환</u>
+<br />
+<br /></p>
+
+<p>&lt; 프로퍼티에 접근하는 방법 &gt;</p>
+<ul>
+  <li>마침표 프로퍼티 접근 연산자(<code class="language-plaintext highlighter-rouge">.</code>)를 사용하는 <strong>마침표 표기법</strong></li>
+  <li>대괄호 프로퍼티 접근 연산자(<code class="language-plaintext highlighter-rouge">[...]</code>)를 사용하는 <strong>대괄호 표기법</strong></li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">age</span> <span class="o">=</span> <span class="mi">26</span>
+<span class="p">};</span>
+
+<span class="c1">// 마침표 표기법</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jongbin</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+
+<span class="c1">// 대괄호 표기법</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jongbin</span><span class="p">[</span><span class="dl">"</span><span class="s2">age</span><span class="dl">"</span><span class="p">])</span>
+</code></pre></div></div>
+<p><br /></p>
+<ul>
+  <li>대괄호 표기법을 사용할 때 키 값을 따옴표로 감싸야 함</li>
+  <li>키값이 네이밍 규칙을 준수하지 않았다면 <strong>대괄호 표기법</strong>을 이용해야 함</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="5-프로퍼티-갱신-접근-삭제">5. 프로퍼티 갱신, 접근, 삭제</h1>
+<hr />
+
+<h2>갱신</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">age</span> <span class="o">=</span> <span class="mi">26</span>
+<span class="p">};</span>
+
+<span class="nx">jongbin</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</code></pre></div></div>
+<p>존재하는 프로퍼티에 값을 할당하면 갱신됨.</p>
+
+<h2>생성</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">age</span> <span class="o">=</span> <span class="mi">26</span>
+<span class="p">};</span>
+
+<span class="nx">jongbin</span><span class="p">.</span><span class="nx">shoes</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">nike</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+<p>존재하지 않는 프로퍼티에 값을 할당하면 동적으로 프로퍼티가 생성됨.</p>
+
+<h2>삭제</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">age</span> <span class="o">=</span> <span class="mi">26</span>
+<span class="p">};</span>
+
+<span class="k">delete</span> <span class="nx">jongbin</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">delete</code> 연산자를 사용하여 프로퍼티값을 삭제함(존재하지 않는 프로퍼티의 경우 무시)</p>
+
+<p><br /></p>
+
+<h1 id="6-es6의-객체-리터럴">6. ES6의 객체 리터럴</h1>
+
+<h2>축약 표현</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="c1">// 기존</span>
+<span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">x</span><span class="p">:</span> <span class="nx">x</span><span class="p">,</span>
+  <span class="na">y</span><span class="p">:</span> <span class="nx">y</span>
+<span class="p">}</span>
+
+<span class="c1">// ES6</span>
+<span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">x</span><span class="p">,</span>
+  <span class="nx">y</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>ES6에서는 변수 이름과 프로퍼티 키가 동일한 경우 <strong>프로퍼티 키를 생략</strong>할 수 있다.</p>
+
+<p><br /></p>
+
+<h2>여러개 프로퍼티 동적 생성</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">something</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">shoes</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="c1">// 기존</span>
+<span class="nx">jongbin</span><span class="p">[</span><span class="nx">something</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span> <span class="o">+</span> <span class="o">++</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">nike</span><span class="dl">"</span>
+<span class="nx">jongbin</span><span class="p">[</span><span class="nx">something</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span> <span class="o">+</span> <span class="o">++</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hoka</span><span class="dl">"</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jongbin</span><span class="p">)</span>  <span class="c1">// {shoes-1: "nike, shoes-2: "hoka"}</span>
+
+<span class="c1">// ES6</span>
+<span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="s2">`</span><span class="p">${</span><span class="nx">something</span><span class="p">}</span><span class="s2">-</span><span class="p">${</span><span class="o">++</span><span class="nx">i</span><span class="p">}</span><span class="s2">`</span><span class="p">]</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">nike2</span><span class="dl">"</span>
+  <span class="p">[</span><span class="s2">`</span><span class="p">${</span><span class="nx">something</span><span class="p">}</span><span class="s2">-</span><span class="p">${</span><span class="o">++</span><span class="nx">i</span><span class="p">}</span><span class="s2">`</span><span class="p">]</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">hoka2</span><span class="dl">"</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jongbin</span><span class="p">)</span>  <span class="c1">// {shoes-1: "nike2, shoes-2: "hoka2"}</span>
+</code></pre></div></div>
+<p>ES6는 객체리터럴 내부에서도 사용 가능</p>
+
+<p><br /></p>
+
+<h2>메서드 축약 표현</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 기존</span>
+<span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
+  <span class="na">myOld</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">I'm </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ES6</span>
+<span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
+  <span class="nx">myOld</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">I'm </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">function</code> 키워드를 생략할 수 있음.</p>
+
+<p><br />
+<br /></p>
+
+<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a><span class="sep">, </span>
+    
+      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#javascript" class="page__taxonomy-item p-category" rel="tag">Javascript</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-08-14">August 14, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+10%EC%9E%A5+%EA%B0%9D%EC%B2%B4%EB%A6%AC%ED%84%B0%EB%9F%B4%20http%3A%2F%2Flocalhost%3A4502%2Fjavascript%2FdeepDive10%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fjavascript%2FdeepDive10%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fjavascript%2FdeepDive10%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/javascript/deepDive09/" class="pagination--pager" title="[Deep Dive] 09장 타입 변환과 단축 평가
+">이전</a>
+    
+    
+      <a href="/javascript/deepDive11/" class="pagination--pager" title="[Deep Dive] 11장 원시값과 객체
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/javascript/deepDive11/" rel="permalink">[Deep Dive] 11장 원시값과 객체
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트는 대부분 객체로 구성되어 있다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/javascript/deepDive09/" rel="permalink">[Deep Dive] 09장 타입 변환과 단축 평가
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트의 모든 값에는 타입(type)이 있다!
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/javascript/deepDive08/" rel="permalink">[Deep Dive] 08장 제어문
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">제어문은 조건에 따라 코드 블록을 실행(조건문)하거나 반복 실행(반복문)할 때 사용
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/javascript/deepDive07/" rel="permalink">[Deep Dive] 07장 연산자
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">연산자는 하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산 등을 수행해 하나의 값을 만듬.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
