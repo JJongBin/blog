@@ -1,4 +1,4 @@
-I"æ
+I"è
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -12,7 +12,7 @@
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/">Home</a>
             </li><li class="masthead__menu-item">
-              <a href="/category/">Category</a>
+              <a href="/categories/">Category</a>
             </li></ul>
         
         <button class="search__toggle" type="button">

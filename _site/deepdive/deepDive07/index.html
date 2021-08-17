@@ -1,0 +1,1165 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Deep Dive] 07장 연산자 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="연산자는 하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산 등을 수행해 하나의 값을 만듬.">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="[Deep Dive] 07장 연산자">
+<meta property="og:url" content="http://localhost:4502/deepdive/deepDive07/">
+
+
+  <meta property="og:description" content="연산자는 하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산 등을 수행해 하나의 값을 만듬.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-08-11T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-08-11T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4502/deepdive/deepDive07/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "http://localhost:4502/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4502/">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4502/" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Deep Dive] 07장 연산자">
+    <meta itemprop="description" content="연산자는 하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산 등을 수행해 하나의 값을 만듬.">
+    <meta itemprop="datePublished" content="2021-08-11T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-08-11T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4502/deepdive/deepDive07/" class="u-url" itemprop="url">[Deep Dive] 07장 연산자
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#1-산술-연산자">1. 산술 연산자</a></li><li><a href="#2-할당-연산자">2. 할당 연산자</a></li><li><a href="#3-비교-연산자">3. 비교 연산자</a></li><li><a href="#4-삼항-조건-연산자">4. 삼항 조건 연산자</a></li><li><a href="#5-논리-연산자">5. 논리 연산자</a></li><li><a href="#6-쉼표-연산자">6. 쉼표 연산자</a></li><li><a href="#7-그룹-연산자">7. 그룹 연산자</a></li><li><a href="#8-typeof-연산자">8. typeof 연산자</a></li><li><a href="#9-지수-연산자">9. 지수 연산자</a></li><li><a href="#11-그-외-연산자">11. 그 외 연산자</a></li><li><a href="#12-연산자의-우선순위">12. 연산자의 우선순위</a></li><li><a href="#13-연산자-결합-순서">13. 연산자 결합 순서</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<p><strong><u>피연산자</u></strong></p>
+<ul>
+  <li>연산자의 대상</li>
+  <li>값으로 평가될 수 있는 표현식</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="1-산술-연산자">1. 산술 연산자</h1>
+<hr />
+
+<ul>
+  <li>피연산자를 대상으로 수학적 계산을 수행해 새로운 숫자 값을 만듬.</li>
+  <li>산술 연산이 불가능한 경우 <code class="language-plaintext highlighter-rouge">NaN</code>을 반환</li>
+</ul>
+
+<p><br /></p>
+
+<p><strong>* 이항 산술 연산자</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">이항 산술 연산자</th>
+      <th style="text-align: center">의미</th>
+      <th style="text-align: center">부수효과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">+</code></td>
+      <td style="text-align: center">덧셈</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">-</code></td>
+      <td style="text-align: center">뺄셈</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">*</code></td>
+      <td style="text-align: center">곱셈</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">/</code></td>
+      <td style="text-align: center">나눗셈</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%</code></td>
+      <td style="text-align: center">나머지</td>
+      <td style="text-align: center">X</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<p><strong>* 단항 산술 연산자</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">단항 산술 연산자</th>
+      <th>의미</th>
+      <th style="text-align: center">부수효과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">++</code></td>
+      <td>증가</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">--</code></td>
+      <td>감소</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">+</code></td>
+      <td>효과 X</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">-</code></td>
+      <td>양수를 음수로, 음수를 양수로 반전한 값 반환</td>
+      <td style="text-align: center">X</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+증가/감소 연산을 하면 피연산자의 값을 변경하는 암묵적 할당이 일어남.</p>
+
+<p class="notice--info"><strong>증가/감소 연산자는 위치에 의미가 있다.</strong><br />
+- 피연산자 앞에 위피한 전위 증가/감소 연산자는 먼저 피연산자의 값을 증가/감소시킨후 다른 연산을 수행.<br />
+- 피연산자 뒤에 위피한 후위 증가/감소 연산자는 먼저 다른 연산을 수행한 후 피연산자의 값을 증가/감소.</p>
+
+<p><br /></p>
+
+<p><strong>* 문자열 연결 연산자</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">+ 연산자</code>는 피연산자 중 하나 이상이 문자열인 경우 문자열 연결 연산자로 동작한다.</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="2-할당-연산자">2. 할당 연산자</h1>
+<hr />
+
+<p>할당 연산자는 우항에 있는 피연산자의 평가 결과를 좌항에 있는 변수에 할당한다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">할당 연산자</th>
+      <th style="text-align: center">예</th>
+      <th style="text-align: center">동일 표현</th>
+      <th style="text-align: center">부수효과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">=</code></td>
+      <td style="text-align: center">x=5</td>
+      <td style="text-align: center">x=5</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">+=</code></td>
+      <td style="text-align: center">x+=5</td>
+      <td style="text-align: center">x=x+5</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">-=</code></td>
+      <td style="text-align: center">x-=5</td>
+      <td style="text-align: center">x=x-5</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">*=</code></td>
+      <td style="text-align: center">x*=5</td>
+      <td style="text-align: center">x=x*5</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">/=</code></td>
+      <td style="text-align: center">x/=5</td>
+      <td style="text-align: center">x=x/5</td>
+      <td style="text-align: center">O</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%=</code></td>
+      <td style="text-align: center">x%=5</td>
+      <td style="text-align: center">x=x%5</td>
+      <td style="text-align: center">O</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>부수효과 =&gt; 변수값이 변함.</p>
+
+<p><br /></p>
+
+<h1 id="3-비교-연산자">3. 비교 연산자</h1>
+<hr />
+
+<p>비교 연산자는 좌항과 우항의 피연산자를 비교한 다음 그 결과를 불리언 값으로 반환.</p>
+
+<p><br /></p>
+
+<p><strong>* 동등/일치 비교 연산자</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">비교 연산자</th>
+      <th style="text-align: center">의미</th>
+      <th style="text-align: center">사례</th>
+      <th style="text-align: center">설명</th>
+      <th style="text-align: center">부수효과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">==</code></td>
+      <td style="text-align: center">동등 비교</td>
+      <td style="text-align: center">x==y</td>
+      <td style="text-align: center">x와 y의 값이 같음</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">===</code></td>
+      <td style="text-align: center">일치 비교</td>
+      <td style="text-align: center">x===y</td>
+      <td style="text-align: center">x와 y의 값과 타입이 같음</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">!=</code></td>
+      <td style="text-align: center">부동등 비교</td>
+      <td style="text-align: center">x!=y</td>
+      <td style="text-align: center">x와 y의 값이 다름</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">!==</code></td>
+      <td style="text-align: center">불일치 비교</td>
+      <td style="text-align: center">x!==y</td>
+      <td style="text-align: center">x와 y의 값과 타입이 다름</td>
+      <td style="text-align: center">X</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">==</code>와<code class="language-plaintext highlighter-rouge">===</code>는 같아 보이지만 정확한 비교를 위해서는 <code class="language-plaintext highlighter-rouge">===</code>를 사용하는게 좋다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">==</code>는 비교할때 암묵적인 타입변환을 통해 타입을 일치시킨다.</p>
+
+<p><br /></p>
+
+<p><strong>* 동등/일치 비교 연산자</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">대소 관계 비교 연산자</th>
+      <th style="text-align: center">예제</th>
+      <th style="text-align: center">설명</th>
+      <th style="text-align: center">부수효과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&gt;</code></td>
+      <td style="text-align: center">x&gt;y</td>
+      <td style="text-align: center">x가 y보디 큼</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&lt;</code></td>
+      <td style="text-align: center">x&lt;y</td>
+      <td style="text-align: center">x가 y보디 작음</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&gt;=</code></td>
+      <td style="text-align: center">x&gt;=y</td>
+      <td style="text-align: center">x가 y보디 크거나 같음</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&lt;=</code></td>
+      <td style="text-align: center">x&lt;=y</td>
+      <td style="text-align: center">x가 y보디 작거나 같음</td>
+      <td style="text-align: center">X</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="4-삼항-조건-연산자">4. 삼항 조건 연산자</h1>
+<hr />
+
+<p>삼항 조건 연산자는 조건식의 평가 결과에 따라 반환할 값을 결정.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>조건식 ? 조건식이 true일때 반환할 값 : 조건식이 false일때 반환할 값
+</code></pre></div></div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// x와 y 중에 더 큰 값을 반환</span>
+<span class="kd">var</span> <span class="nx">jongbin</span>  <span class="o">=</span> <span class="nx">x</span><span class="o">&gt;</span><span class="nx">y</span> <span class="p">?</span> <span class="nx">x</span> <span class="p">:</span> <span class="nx">y</span> 
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jongbin</span><span class="p">)</span> <span class="c1">// 값처럼 사용 가능</span>
+</code></pre></div></div>
+
+<p><br />
+삼항 조건 연산자를 중복해서 사용할 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">jongbin</span>  <span class="o">=</span> <span class="nx">num</span> <span class="p">?</span> <span class="p">(</span><span class="nx">num</span><span class="o">&gt;</span><span class="mi">0</span> <span class="dl">"</span><span class="s2">양수</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">음수</span><span class="dl">"</span><span class="p">)</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="5-논리-연산자">5. 논리 연산자</h1>
+<hr />
+
+<p>논리 연산자는 우항과 좌항의 피연산자를 논리 연산.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">논리 연산자</th>
+      <th style="text-align: center">의미</th>
+      <th style="text-align: center">부수 효과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">||</code></td>
+      <td style="text-align: center">논리합(AND)</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&amp;&amp;</code></td>
+      <td style="text-align: center">논리곱(OR)</td>
+      <td style="text-align: center">X</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">!</code></td>
+      <td style="text-align: center">부정(NOT)</td>
+      <td style="text-align: center">X</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>불리언 값을 반환한다.(<code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>)</p>
+
+<p><br /></p>
+
+<h1 id="6-쉼표-연산자">6. 쉼표 연산자</h1>
+<hr />
+
+<p>쉼표 연산자는 파례대로 피연산자를 평가하고 마지막 피연산자의 결과를 반환.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span><span class="p">;</span>
+<span class="nx">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nx">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nx">x</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+<span class="c1">// 결과</span>
+<span class="c1">// 3</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="7-그룹-연산자">7. 그룹 연산자</h1>
+<hr />
+
+<p>소괄호(<code class="language-plaintext highlighter-rouge">()</code>)로 묶어 내부 피연산자의 연산을 먼저한다.</p>
+
+<p><br /></p>
+
+<h1 id="8-typeof-연산자">8. typeof 연산자</h1>
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">typeof</code>연산자는 피연산자의 데이터 타입을 문자열로 반환.</p>
+
+<p><code class="language-plaintext highlighter-rouge">string</code>, <code class="language-plaintext highlighter-rouge">number</code>, <code class="language-plaintext highlighter-rouge">boolean</code>, <code class="language-plaintext highlighter-rouge">undefined</code>, <code class="language-plaintext highlighter-rouge">symbol</code>, <code class="language-plaintext highlighter-rouge">object</code>, <code class="language-plaintext highlighter-rouge">function</code> 중 한가지를 반환.</p>
+
+<p><br /></p>
+
+<h1 id="9-지수-연산자">9. 지수 연산자</h1>
+<hr />
+
+<ul>
+  <li>ES7에서 도입</li>
+  <li>좌항의 피연산자를 밑으로, 우항의 피연산자를 지수로 거듭 제곱한 값을 반환.</li>
+  <li><code class="language-plaintext highlighter-rouge">Math.pow</code> 메서드와 같다.</li>
+  <li>우선순위가 가장 높다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span> <span class="o">**</span> <span class="mi">2</span><span class="p">;</span>   <span class="c1">// 4</span>
+<span class="mi">2</span> <span class="o">**</span> <span class="mi">10</span><span class="p">;</span>   <span class="c1">// 1024</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="11-그-외-연산자">11. 그 외 연산자</h1>
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>연산자</th>
+      <th>개요</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">?.</code></td>
+      <td>옵셔널 체이닝 연산자</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">??</code></td>
+      <td>null 병합 연산자</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">delete</code></td>
+      <td>프로퍼티 삭제</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">new</code></td>
+      <td>생성자 함수를 호출할 때 사용하여 인스턴스를 생성</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">instanceof</code></td>
+      <td>좌변의 객체가 우변의 생성자 함수와 연결된 인스턴스인지 판별</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">in</code></td>
+      <td>프로퍼티 존재 확인</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="12-연산자의-우선순위">12. 연산자의 우선순위</h1>
+<hr />
+
+<p>연산자가 여러개 있을 때 수행되는 순서.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">우선순위</th>
+      <th>연산자</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td>()</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td><code class="language-plaintext highlighter-rouge">new</code>(매개변수 존재), <code class="language-plaintext highlighter-rouge">.</code>, <code class="language-plaintext highlighter-rouge">[]</code>(포로퍼티 접근), <code class="language-plaintext highlighter-rouge">()</code>(함수호출), <code class="language-plaintext highlighter-rouge">?.</code>(옵셔널 체이닝 연산자)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td><code class="language-plaintext highlighter-rouge">new</code>(매개변수 미존재)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td><code class="language-plaintext highlighter-rouge">x++</code>, <code class="language-plaintext highlighter-rouge">x--</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td><code class="language-plaintext highlighter-rouge">!x</code>, <code class="language-plaintext highlighter-rouge">+x</code>, <code class="language-plaintext highlighter-rouge">-x</code>, <code class="language-plaintext highlighter-rouge">++x</code>, <code class="language-plaintext highlighter-rouge">--x</code>, <code class="language-plaintext highlighter-rouge">typeof</code>, <code class="language-plaintext highlighter-rouge">delete</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td><code class="language-plaintext highlighter-rouge">**</code>(이항연산자 중에서 우선순위가 가장 높다)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td><code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">%</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">8</td>
+      <td><code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">9</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;</code>, <code class="language-plaintext highlighter-rouge">&lt;=</code>, <code class="language-plaintext highlighter-rouge">&gt;</code>, <code class="language-plaintext highlighter-rouge">&gt;=</code>, <code class="language-plaintext highlighter-rouge">in</code>, <code class="language-plaintext highlighter-rouge">instanceof</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">10</td>
+      <td><code class="language-plaintext highlighter-rouge">==</code>, <code class="language-plaintext highlighter-rouge">!=</code>, <code class="language-plaintext highlighter-rouge">===</code>, <code class="language-plaintext highlighter-rouge">!==</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">11</td>
+      <td><code class="language-plaintext highlighter-rouge">??</code>(null 병합연산자)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">12</td>
+      <td><code class="language-plaintext highlighter-rouge">&amp;&amp;</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">13</td>
+      <td><code class="language-plaintext highlighter-rouge">||</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">14</td>
+      <td><code class="language-plaintext highlighter-rouge">? ... : ...</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">15</td>
+      <td>할당연산자(<code class="language-plaintext highlighter-rouge">=</code>, <code class="language-plaintext highlighter-rouge">+=</code>, <code class="language-plaintext highlighter-rouge">-=</code>,…)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">16</td>
+      <td><code class="language-plaintext highlighter-rouge">,</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="13-연산자-결합-순서">13. 연산자 결합 순서</h1>
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">결합 순서</th>
+      <th>연산자</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">좌항→우항</td>
+      <td><code class="language-plaintext highlighter-rouge">+</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">/</code>, <code class="language-plaintext highlighter-rouge">%</code>, <code class="language-plaintext highlighter-rouge">&lt;</code>, <code class="language-plaintext highlighter-rouge">&lt;=</code>, <code class="language-plaintext highlighter-rouge">&gt;</code>, <code class="language-plaintext highlighter-rouge">&gt;=</code>, <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>, <code class="language-plaintext highlighter-rouge">||</code>, <code class="language-plaintext highlighter-rouge">.</code>, <code class="language-plaintext highlighter-rouge">[]</code>, <code class="language-plaintext highlighter-rouge">()</code>, <code class="language-plaintext highlighter-rouge">??</code>, <code class="language-plaintext highlighter-rouge">?.</code>, <code class="language-plaintext highlighter-rouge">in</code>, <code class="language-plaintext highlighter-rouge">instanceof</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">우항→좌항</td>
+      <td><code class="language-plaintext highlighter-rouge">++</code>, <code class="language-plaintext highlighter-rouge">--</code>, 할당연산자(<code class="language-plaintext highlighter-rouge">=</code>, <code class="language-plaintext highlighter-rouge">+=</code>, <code class="language-plaintext highlighter-rouge">-=</code>,…), <code class="language-plaintext highlighter-rouge">!x</code>, <code class="language-plaintext highlighter-rouge">+x</code>, <code class="language-plaintext highlighter-rouge">-x</code>, <code class="language-plaintext highlighter-rouge">++x</code>, <code class="language-plaintext highlighter-rouge">--x</code>, <code class="language-plaintext highlighter-rouge">typeof</code>, <code class="language-plaintext highlighter-rouge">delete</code>, <code class="language-plaintext highlighter-rouge">? ... : ...</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+<br /></p>
+
+<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a><span class="sep">, </span>
+    
+      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-08-11">August 11, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+07%EC%9E%A5+%EC%97%B0%EC%82%B0%EC%9E%90%20http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive07%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive07%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive07%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/deepdive/deepDive06/" class="pagination--pager" title="[Deep Dive] 06장 데이터타입
+">이전</a>
+    
+    
+      <a href="/deepdive/deepDive08/" class="pagination--pager" title="[Deep Dive] 08장 제어문
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive12-1/" rel="permalink">[Deep Dive] 12장 함수(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">어떤 과정을 문으로 구현하고 코드 블록으로 감싸서 하나의 실행단위로 정의
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive11-copy/" rel="permalink">[Deep Dive] 11장 원시값과 객체
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트는 대부분 객체로 구성되어 있다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive10/" rel="permalink">[Deep Dive] 10장 객체리터럴
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트는 대부분 객체로 구성되어 있다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive09/" rel="permalink">[Deep Dive] 09장 타입 변환과 단축 평가
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트의 모든 값에는 타입(type)이 있다!
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

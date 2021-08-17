@@ -1,0 +1,337 @@
+I"\0
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive12-1/">[Deep Dive] 12장 함수(1)</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.17
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive11-copy/">[Deep Dive] 11장 원시값과 객체</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.15
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive10/">[Deep Dive] 10장 객체리터럴</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.14
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive09/">[Deep Dive] 09장 타입 변환과 단축 평가</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.13
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive08/">[Deep Dive] 08장 제어문</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.12
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive07/">[Deep Dive] 07장 연산자</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.11
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive06/">[Deep Dive] 06장 데이터타입</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.10
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive05/">[Deep Dive] 05장 표현식과 문</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.09
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive04/">[Deep Dive] 04장 변수</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.08
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive03/">[Deep Dive] 03장 자바스크립트의 개발 환경과 실행 방법</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.07
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive02/">[Deep Dive] 02장 자바스크립트란?</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.06
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+
+<div class="list__item">
+    <article class="archive-item">
+        <div>
+            <span>
+              <a href="/deepdive/deepDive01/">[Deep Dive] 01장 프로그래밍</a>
+            </span>
+            <small> 
+              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.08.05
+              <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#deepdive" class="page__taxonomy-item-category" rel="tag">DeepDive</a>
+                    
+                    
+                    <a href="/tags/#deepdive" class="page__taxonomy-item-tag" rel="tag">DeepDive</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#javascript" class="page__taxonomy-item-tag" rel="tag">JavaScript</a>
+                
+            </span>
+        </span>
+            </small>
+        </div>
+      </article>
+</div>
+:ET

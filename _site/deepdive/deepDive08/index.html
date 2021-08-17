@@ -1,0 +1,850 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Deep Dive] 08장 제어문 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="제어문은 조건에 따라 코드 블록을 실행(조건문)하거나 반복 실행(반복문)할 때 사용">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="[Deep Dive] 08장 제어문">
+<meta property="og:url" content="http://localhost:4502/deepdive/deepDive08/">
+
+
+  <meta property="og:description" content="제어문은 조건에 따라 코드 블록을 실행(조건문)하거나 반복 실행(반복문)할 때 사용">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-08-12T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-08-12T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4502/deepdive/deepDive08/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "http://localhost:4502/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4502/">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4502/" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Deep Dive] 08장 제어문">
+    <meta itemprop="description" content="제어문은 조건에 따라 코드 블록을 실행(조건문)하거나 반복 실행(반복문)할 때 사용">
+    <meta itemprop="datePublished" content="2021-08-12T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-08-12T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4502/deepdive/deepDive08/" class="u-url" itemprop="url">[Deep Dive] 08장 제어문
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#1-블록문">1. 블록문</a></li><li><a href="#2-조건문">2. 조건문</a><ul><li><a href="#if--else-문">if ... else 문</a></li><li><a href="#switch-문">switch 문</a></li></ul></li><li><a href="#3-반복문">3. 반복문</a><ul><li><a href="#for-문">for 문</a></li><li><a href="#while--문">while  문</a></li><li><a href="#dowhile-문">do...while 문</a></li></ul></li><li><a href="#4-break-문">4. break 문</a></li><li><a href="#5-continue-문">5. continue 문</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<p>제어문은 조건에 따라 코드 블록을 <u>실행(조건문)하거나 반복 실행(반복문)</u>할 때 사용.</p>
+
+<p><br /></p>
+
+<h1 id="1-블록문">1. 블록문</h1>
+<hr />
+
+<ul>
+  <li>블록문은 0개 이상의 문을 중괄호(<code class="language-plaintext highlighter-rouge">{}</code>)로 묶은 것</li>
+  <li>자바스크립트는 블록문을 하나의 실행 단위로 취급</li>
+  <li>일반적으로 제어문이나 함수를 정의할 때 사용</li>
+  <li>블록문은 <strong>자체종결성</strong>을 가지므로 <strong>세미콜론(<code class="language-plaintext highlighter-rouge">;</code>)</strong>을 붙이지 않음</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="2-조건문">2. 조건문</h1>
+<hr />
+
+<p>조건문은 주어진 조건식의 평가 결과에 따라 코드 블록(블록문)의 실행을 결정.</p>
+
+<h2 id="if--else-문"><code class="language-plaintext highlighter-rouge">if ... else</code> 문</h2>
+
+<p><code class="language-plaintext highlighter-rouge">if ... else</code>문은 주어진 조건식의 논리적 참, 거짓에 따라 실행 블록 결정.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">조건식</span><span class="p">){</span>
+  <span class="c1">// 조건식이 참(true)일때 이 코드 블록 실행</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// 조건식이 거짓(false)일때 이 코드 블록 실행</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br />
+조건문을 여러개 만들 수 있는데 <code class="language-plaintext highlighter-rouge">else if</code>를 사용하면 된다</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">조건식1</span><span class="p">){</span>
+  <span class="c1">// 조건식1 참(true)일때 이 코드 블록 실행</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">조건식2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 조건식2 참(true)일때 이 코드 블록 실행</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">조건식3</span><span class="p">){</span>
+  <span class="c1">// 조건식3 참(true)일때 이 코드 블록 실행</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// 모든 조건식이 거짓(false)일때 이 코드 블록 실행</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">if ... else</code>문은 위에서 순서대로 진행된다 (범위를 조건으로 했을때 주의)</p>
+
+<p>대부분의 <code class="language-plaintext highlighter-rouge">if ... else</code>문은 <strong><u>삼항 조건 연산자</u></strong>로 표현할 수 있다</p>
+
+<h2 id="switch-문"><code class="language-plaintext highlighter-rouge">switch</code> 문</h2>
+
+<p><code class="language-plaintext highlighter-rouge">switch</code>문은 주어진 표현식을 평가하여 그 값과 일치하는 표현식을 같는 <code class="language-plaintext highlighter-rouge">case</code>문으로 실행 흐름을 옮김.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span> <span class="p">(</span><span class="nx">표현식</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="nx">표현식1</span><span class="p">:</span> <span class="nx">표현식과</span> <span class="nx">표현식1이</span> <span class="nx">일치하면</span> <span class="nx">실행</span><span class="p">;</span>
+    <span class="nx">braek</span><span class="p">;</span>
+  <span class="k">case</span> <span class="nx">표현식2</span><span class="p">:</span> <span class="nx">표현식과</span> <span class="nx">표현식2가</span> <span class="nx">일치하면</span> <span class="nx">실행</span><span class="p">;</span>
+    <span class="nx">braek</span><span class="p">;</span>
+  <span class="k">case</span> <span class="nx">표현식3</span><span class="p">:</span> <span class="nx">표현식과</span> <span class="nx">표현식3이</span> <span class="nx">일치하면</span> <span class="nx">실행</span><span class="p">;</span>
+    <span class="nx">braek</span><span class="p">;</span>
+  <span class="nl">default</span><span class="p">:</span> <span class="nx">아무것도</span> <span class="nx">일치하지</span> <span class="nx">않을때</span> <span class="nx">실행</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">switch</code>문의 <code class="language-plaintext highlighter-rouge">case</code>를 보면 <code class="language-plaintext highlighter-rouge">break</code>가 포함되어 있는데 코드 블록을 출하는 역할을 함.</p>
+
+<p><u>`braek`를 사용하지 않으면 `default`가 실행된다.</u></p>
+
+<p class="notice--info"><strong>* 폴스루(fall through)</strong><br />
+<code class="language-plaintext highlighter-rouge">switch</code>문에서 의도적으로 <code class="language-plaintext highlighter-rouge">break</code>를 생략하여 여러 조건을 동일하게 사용한다.</p>
+
+<p><br /></p>
+
+<h1 id="3-반복문">3. 반복문</h1>
+<hr />
+
+<p>반복문은 조건식의 평가 결과가 참인 경우 코드 블록을 반복해서 실행(거짓일 때까지 반복).</p>
+
+<p><br /></p>
+
+<p><strong>&lt; 자바스크립트의 반복문 대체 &gt;</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">forEach</code> : 배열을 순회</li>
+  <li><code class="language-plaintext highlighter-rouge">for...in</code> : 객체의 프로퍼티를 열거</li>
+  <li><code class="language-plaintext highlighter-rouge">for...of</code> : 반복문 대체 [ES6]</li>
+</ul>
+
+<h2 id="for-문"><code class="language-plaintext highlighter-rouge">for</code> 문</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="nx">변수선언</span> <span class="nx">및</span> <span class="nx">할당</span><span class="p">;</span> <span class="nx">조건식</span><span class="p">;</span> <span class="nx">증감식</span><span class="p">){</span>
+  <span class="c1">// 조건식이 참인 경우 반복해서 실행 (조건식이 거짓일 때까지)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1부터 10까지 출력</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>위 코드를 순서대로 살펴보면,</p>
+<ol>
+  <li>  i는 <code class="language-plaintext highlighter-rouge">let</code>키워드를 사용해서 선언 및 1을 할당했고,</li>
+  <li>  <code class="language-plaintext highlighter-rouge">i&lt;=10</code>이 조건식으로 있고 현재 i는 1이므로 <code class="language-plaintext highlighter-rouge">true</code> → <u>코드블록 실행</u></li>
+  <li>  i를 출력 → 1 출력</li>
+  <li>  증감식으로 <code class="language-plaintext highlighter-rouge">i++</code>, 코드블록 실행 이후 i가 1증가하고,</li>
+  <li>  이후 조건식의 <code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code> 여부판단 → 코드블록 실행(조건식이 <code class="language-plaintext highlighter-rouge">false</code>일 때까지)</li>
+</ol>
+
+<p><br /></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 무한루프</span>
+<span class="k">for</span> <span class="p">(;;){</span>
+  <span class="c1">// 코드실행</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">for</code>문의 무한루프는 이렇게 사용이 가능.</li>
+  <li><code class="language-plaintext highlighter-rouge">for</code>문은 중첩할 수 있다.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="while--문"><code class="language-plaintext highlighter-rouge">while </code> 문</h2>
+
+<p><code class="language-plaintext highlighter-rouge">while</code>문은 주어진 조건식의 평가 결과가 참(<code class="language-plaintext highlighter-rouge">false</code>)이면 코드블록을 계속해서 반복 실행.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span><span class="p">(</span><span class="nx">조건식</span><span class="p">){</span>
+  <span class="c1">// 조건식이 참(true)이면 코드 반복 실행</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1부터 9까지 출력</span>
+<span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">while</span><span class="p">(</span><span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+  <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>예시) 1 ~ 9 출력</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 무한루프</span>
+<span class="k">while</span><span class="p">(</span><span class="kc">true</span><span class="p">){</span>
+  <span class="c1">// 코드 실행</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="dowhile-문"><code class="language-plaintext highlighter-rouge">do...while</code> 문</h2>
+
+<p><code class="language-plaintext highlighter-rouge">do...while</code>문은 코드블록을 먼저 실행하고 조건식을 평가 → 무조건 한번은 실행</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span><span class="p">{</span>
+  <span class="c1">// 코드 실행</span>
+<span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="nx">조건문</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="4-break-문">4. <code class="language-plaintext highlighter-rouge">break</code> 문</h1>
+<hr />
+<p><code class="language-plaintext highlighter-rouge">break</code>문은 코드 블록을 탈출하는데 <strong>레이블문, 반복문, <code class="language-plaintext highlighter-rouge">switch</code>문</strong>을 탈출한다<br />
+ →   <u>이외 코드블록에서는 **SyntaxError(문법에러) 발생**</u></p>
+
+<p class="notice--info">레이블문 : 식별자가 붙은 문을 말함</p>
+
+<p>내부 코드블록이 아닌 외부 코드 블록을 탈출하려고 할때 식별자를 붙이고 <code class="language-plaintext highlighter-rouge">braek</code>에 식별자를 명시.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">outer</span><span class="p">:</span> <span class="k">for</span> <span class="p">(;;){</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">===</span> <span class="mi">50</span><span class="p">){</span>
+      <span class="k">break</span> <span class="nx">outer</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>i가 50 일때 외부코드블록을 탈출시킨다.</p>
+
+<p><br /></p>
+
+<h1 id="5-continue-문">5. <code class="language-plaintext highlighter-rouge">continue</code> 문</h1>
+<hr />
+<p><code class="language-plaintext highlighter-rouge">continue</code>문은 반복문의 코드 블록 실행을 건너뛰고 진행한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">===</span> <span class="mi">5</span><span class="p">){</span>
+    <span class="k">continue</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>i가 5일때 <code class="language-plaintext highlighter-rouge">continue</code>가 있는 해당 지점부터 코드블록을 건너뛰고 i가 6일때로 진행된다.</p>
+
+<p><br />
+<br /></p>
+
+<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a><span class="sep">, </span>
+    
+      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-08-12">August 12, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+08%EC%9E%A5+%EC%A0%9C%EC%96%B4%EB%AC%B8%20http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive08%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive08%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive08%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/deepdive/deepDive07/" class="pagination--pager" title="[Deep Dive] 07장 연산자
+">이전</a>
+    
+    
+      <a href="/deepdive/deepDive09/" class="pagination--pager" title="[Deep Dive] 09장 타입 변환과 단축 평가
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive12-1/" rel="permalink">[Deep Dive] 12장 함수(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">어떤 과정을 문으로 구현하고 코드 블록으로 감싸서 하나의 실행단위로 정의
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive11-copy/" rel="permalink">[Deep Dive] 11장 원시값과 객체
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트는 대부분 객체로 구성되어 있다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive10/" rel="permalink">[Deep Dive] 10장 객체리터럴
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트는 대부분 객체로 구성되어 있다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive09/" rel="permalink">[Deep Dive] 09장 타입 변환과 단축 평가
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트의 모든 값에는 타입(type)이 있다!
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -121,7 +121,7 @@
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/">Home</a>
             </li><li class="masthead__menu-item">
-              <a href="/category/">Category</a>
+              <a href="/categories/">Category</a>
             </li></ul>
         
         <button class="search__toggle" type="button">
@@ -268,6 +268,59 @@
   </div>
 </div>
   
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">13</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li><a href="/categories/cpp" class="">DeepDive (12)</a></li>
+                    
+                
+            </ul>
+            
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/algorithm" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
   </div>
 
 
@@ -294,7 +347,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/javascript/deepDive02/" rel="permalink">[Deep Dive] 02장 자바스크립트란?
+        <a href="/deepdive/deepDive02/" rel="permalink">[Deep Dive] 02장 자바스크립트란?
 </a>
       
     </h2>
@@ -334,7 +387,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/javascript/deepDive01/" rel="permalink">[Deep Dive] 01장 프로그래밍
+        <a href="/deepdive/deepDive01/" rel="permalink">[Deep Dive] 01장 프로그래밍
 </a>
       
     </h2>

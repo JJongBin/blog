@@ -3,7 +3,7 @@ title:  "[Deep Dive] 11장 원시값과 객체"
 excerpt: "자바스크립트는 대부분 객체로 구성되어 있다."
 
 categories:
-  - Javascript
+  - DeepDive
 tags:
   - [JavaScript, DeepDive]
 
