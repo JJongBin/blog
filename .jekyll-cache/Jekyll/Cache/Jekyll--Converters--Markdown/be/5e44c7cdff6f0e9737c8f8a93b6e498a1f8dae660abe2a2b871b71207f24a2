@@ -1,0 +1,194 @@
+I"�0<p><br /></p>
+
+<p><strong>함수는 일련의 과정을 문으로 구현하고 코드 블록으로 감싸서 하나의 실행 단위로 정의한 것</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>매개변수</strong></td>
+      <td>함수 내부로 입력을 전달받는 것</td>
+    </tr>
+    <tr>
+      <td><strong>인수</strong></td>
+      <td>입력</td>
+    </tr>
+    <tr>
+      <td><strong>반환값</strong></td>
+      <td>출력</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 함수 정의 </span>
+<span class="kd">function</span> <span class="nx">jongbin</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">I'm jongbin </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 함수 호출</span>
+<span class="kd">const</span> <span class="nx">jb</span> <span class="o">=</span> <span class="nx">jongbin</span><span class="p">(</span><span class="dl">"</span><span class="s2">hi</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jb</span><span class="p">)</span>   <span class="c1">// I'm jongbin hi</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="1-함수를-사용하는-이유">1. 함수를 사용하는 이유</h1>
+<hr />
+
+<ul>
+  <li>함수는 원할 때, 원하는 만큼 호출이 가능 → <strong>재사용</strong></li>
+  <li>코드의 중복을 억제하고 재사용성을 높이는 함수는 <strong>유지보수의 편의성</strong>을 높이고 실수를 줄여 <strong>코드의 신뢰성</strong>을 높임</li>
+  <li>함수는 <strong>객체 타입</strong>의 값</li>
+  <li>적절한 식별자는 내용을 파악하는데 용이 → <strong>가독성</strong></li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="2-함수-리터럴">2. 함수 리터럴</h1>
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">구성요소</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>function 키워드</strong></td>
+      <td style="text-align: left">함수를 선언</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>함수 이름</strong></td>
+      <td style="text-align: left">* 함수이름은 식별자이므로 네이밍 규칙을 준수해야함 <br />* 함수 리음은 함수 몸체 내에서만 참조할 수 있는 식별자 <br />* 함수 이름은 생략가능(기명함수, 무명/익명함수)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>매개변수 목록</strong></td>
+      <td style="text-align: left">* 0개 이상의 매개변수를 소괄호로 감싸고 쉼표로 구분 <br />* 각 매개변수에는 함수를 호출할 때 지정한 인수가 순서대로 할당 <br />* 매개변수는 함수 몸체 내에서 변수와 동일하게 취급(매개변수도 변수와 마찬가지로 네이밍 규칙 준수)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>함수 몸체</strong></td>
+      <td style="text-align: left">* 함수가 호출되었을 때 일괄적으로 실행될 문들을 하나의 실행 단위로 정의한 코드블록 <br />* 함수 몸체는 함수 호출에 의해 실행</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="3-함수-정의">3. 함수 정의</h1>
+<hr />
+
+<p><strong>함수정의</strong>: 함수를 호출하기 이전에 인수를 전달받을 매개변수와 실행할 문들, 반환할 값을 지정하는 것</p>
+
+<h2>함수 정의 방식</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 함수 선언문</span>
+<span class="kd">function</span> <span class="nx">jongbin</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">I'm jongbin</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">s</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 함수 표현식</span>
+<span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">I'm jongbin</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">s</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Function 생성자 함수</span>
+<span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="dl">'</span><span class="s1">s</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">return "I</span><span class="se">\'</span><span class="s1">m jongbin" + s</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 화살표 함수(ES6)</span>
+<span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="dl">"</span><span class="s2">I'm jongbin</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">s</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="함수-선언문">함수 선언문</h2>
+<ol>
+  <li>
+    <p>함수 선언문이 평가되면 <strong>식별자가 암묵적으로 생성</strong>되고 <strong>함수 객체가 할당</strong><br />
+  → 함수는 함수 이름으로 호출하는 것이 아니라 <strong>함수 객체를 가르키는 식별자로 호출</strong></p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">const</span> <span class="nx">jb</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">jongbin</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="dl">"</span><span class="s2">I'm jongbin </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">s</span><span class="p">;</span>
+ <span class="p">}</span>
+
+ <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jb</span><span class="p">(</span><span class="dl">'</span><span class="s1">hi</span><span class="dl">'</span><span class="p">));</span>    <span class="c1">// I'm jongbin hi</span>
+
+ <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jongbin</span><span class="p">(</span><span class="dl">'</span><span class="s1">hi</span><span class="dl">'</span><span class="p">))</span>    <span class="c1">// error</span>
+ <span class="c1">// 함수 이름은 함부 몸체 내부에서만 유효</span>
+</code></pre></div>    </div>
+    <p><br /></p>
+  </li>
+  <li>
+    <p>함수 선언문은 이름을 생략할 수 없음
+  <br /></p>
+  </li>
+  <li>
+    <p>함수 선언문은 표현식이 아닌 문</p>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// 표현식이 아닌 문은 변수에 할당할 수 없다</span>
+  <span class="kd">const</span> <span class="nx">jb</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">jongbin</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="dl">"</span><span class="s2">I'm jongbin</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">s</span><span class="p">;</span>
+  <span class="p">}</span>   <span class="c1">// 이건 왜 할당되?</span>
+  <span class="c1">// 기명함수 리터럴은 함수 선언문, 함수 리터럴 표현식으로 해석이 되니까!</span>
+</code></pre></div>    </div>
+    <p><code class="language-plaintext highlighter-rouge">{}</code>는 <strong>블록문</strong>, <strong>객체 리터럴</strong> 둘 다 된다</p>
+  </li>
+</ol>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">{}</code>가 피연산자(우변)로 사용되면 <strong>객체 리터럴</strong>로 해석</li>
+  <li><code class="language-plaintext highlighter-rouge">{}</code>가 단독으로 사용되면 <strong>블록문</strong>으로 해석</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="함수-표현식">함수 표현식</h2>
+
+<ul>
+  <li>자바스크립트의 함수는 <strong>일급객체</strong> → <u>변수에 할당할 수 있음</u></li>
+  <li>함수 표현식은 <strong>표현식인 문</strong> (함수 선언문은 표현식이 아닌 문)</li>
+</ul>
+
+<p class="notice--info"><strong>일급객체 :</strong> 값의 성질을 갖는 객체</p>
+
+<p><br /></p>
+
+<h2 id="함수-생성-시점과-함수-호이스팅">함수 생성 시점과 함수 호이스팅</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">func1</span><span class="p">);</span>  <span class="c1">// f func1(s)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">func2</span><span class="p">);</span>  <span class="c1">// undrfined</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">func1</span><span class="p">(</span><span class="dl">"</span><span class="s2">hi</span><span class="dl">"</span><span class="p">));</span>   <span class="c1">// 함수선언문 hi</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">func2</span><span class="p">(</span><span class="dl">"</span><span class="s2">hi</span><span class="dl">"</span><span class="p">));</span>   <span class="c1">// TypeError: func2 is not a function</span>
+
+<span class="kd">function</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">함수선언문 </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">s</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">func2</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">함수표현식 </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>함수 선언문</strong>으로 정의한 함수는 <strong>호이스팅</strong>으로 인해 정의되기 전에 호출할 수 있다.(<strong>함수 호이스팅</strong>)</li>
+  <li><strong>함수 표현식</strong>은 변수에 할당되기 때문에 할당되기 전에 <code class="language-plaintext highlighter-rouge">undefined</code>로 초기화된다(호이스팅x)(<strong>변수 호이스팅</strong>)</li>
+</ul>
+
+<p class="notice--info"><strong>호이스팅:</strong> 코드의 선두로 끌어 올려진 것처럼 작동하는 자바스크립트 고유의 특징</p>
+
+<p><br /></p>
+
+<h2 id="function-생성자-함수">Function 생성자 함수</h2>
+
+<p><br /></p>
+
+<h1 id="4-함수-정의">4. 함수 정의</h1>
+<hr />
+
+<p><br />
+<br /></p>
+
+<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+
+:ET
