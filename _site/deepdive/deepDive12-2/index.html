@@ -1,0 +1,905 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Deep Dive] 12장 함수(2) | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="함수호출">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="[Deep Dive] 12장 함수(2)">
+<meta property="og:url" content="http://localhost:4502/deepdive/deepDive12-2/">
+
+
+  <meta property="og:description" content="함수호출">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-08-26T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-08-26T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4502/deepdive/deepDive12-2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "http://localhost:4502/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4502/">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4502/" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li class="nav__all-posts">
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">14</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/categories/DeepDive" class="">DeepDive (13)</a></li>
+                    
+                
+            </ul>
+            
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/Blog" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Deep Dive] 12장 함수(2)">
+    <meta itemprop="description" content="함수호출">
+    <meta itemprop="datePublished" content="2021-08-26T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-08-26T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4502/deepdive/deepDive12-2/" class="u-url" itemprop="url">[Deep Dive] 12장 함수(2)
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#1-함수-호출">1. 함수 호출</a><ul><li><a href="#매개변수와-인수">매개변수와 인수</a></li><li><a href="#반환문">반환문</a></li></ul></li><li><a href="#2-참조에-의한-전달과-외부-상태의-변경">2. 참조에 의한 전달과 외부 상태의 변경</a></li><li><a href="#3-다양한-함수의-형태">3. 다양한 함수의 형태</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<h1 id="1-함수-호출">1. 함수 호출</h1>
+<hr />
+
+<p>함수는 함수를 가르키는 식별자와 소괄호(<code class="language-plaintext highlighter-rouge">()</code>)인 함수 호출 연산자로 호출</p>
+
+<p>함수 호출 연산자(<code class="language-plaintext highlighter-rouge">()</code>) 내에는 0개 이상의 인수를 쉼표로 구분해서 나열</p>
+
+<p><br /></p>
+
+<h2 id="매개변수와-인수">매개변수와 인수</h2>
+<p>함수를 실행하기 위해 필요한 값이 있는 경우, <strong>매개변수(인자)</strong>를 통해 인수를 전달<br />
+<strong>인수</strong>는 개수와 타입에 제한이 없음</p>
+
+<p><img src="https://blog.kakaocdn.net/dn/S59BG/btq2MPwMpIf/jjD1ZwwsMo6a1dMPkBML31/img.jpg" alt="image" /></p>
+
+<h2>인수 확인</h2>
+
+<p>자바스크립트는 인수와 매개변수의 갯수를 체크하지 않음</p>
+<ul>
+  <li>순서대로 전달</li>
+  <li>인수가 부족하면 매개변수로 <code class="language-plaintext highlighter-rouge">undefined</code>값을 전달</li>
+  <li>인수가 매개변수의 갯수 초과시 무시(<code class="language-plaintext highlighter-rouge">arguments</code>객체의 프로퍼티로 보관)</li>
+  <li>자바스크립트 언어는 동적 타입 언어로 사전에 타입을 지정할 수 없음</li>
+</ul>
+
+<p><br /></p>
+
+<p>1) 만약 인수가 전달되지 않는 경우를 대비해 <strong>단축평가</strong> 사용가능!</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">add</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">||</span> <span class="mi">0</span><span class="p">;</span>   <span class="c1">// 단축평가</span>
+  <span class="nx">b</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">||</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>2) 또는 <strong>기본값</strong>을 사용 가능(<strong>ES6</strong>)</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">add</span> <span class="p">(</span><span class="nx">a</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">b</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2>매개변수의 최대 개수</h2>
+
+<p>ECMAScript 사양에서는 매개변수의 최대 개수를 명시적으로 제한하지 않음.<br />
+하지만 물리적 한계는 존재!</p>
+
+<p><strong>* 권장사항</strong></p>
+<ul>
+  <li>이상적인 매개변수는 0개</li>
+  <li>함수는 한 가지 일만 해야하며 가급적 작게</li>
+  <li>매개변수는 최대 3개 이상을 넘지 않는 것이 좋음</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="반환문">반환문</h2>
+<p>함수는 <code class="language-plaintext highlighter-rouge">return</code> 키워드와 표현식(반환문)으로 실행 결과를 함수 외부로 반환할 수 있디.</p>
+
+<p><strong>* 반환문의 역할</strong></p>
+<ul>
+  <li>함수의 실행을 중단하고 함수 몸체를 빠져나감</li>
+  <li><code class="language-plaintext highlighter-rouge">return</code> 키워드 뒤에 오는 표현식을 형가해 반환(명시하지 않으면 <code class="language-plaintext highlighter-rouge">undefined</code> 반환)</li>
+</ul>
+
+<p>반환문은 생략이 가능 → 함수 마지막 문까지 실행후 암묵적으로 <code class="language-plaintext highlighter-rouge">undefined</code> 반환</p>
+
+<p><br /></p>
+
+<h1 id="2-참조에-의한-전달과-외부-상태의-변경">2. 참조에 의한 전달과 외부 상태의 변경</h1>
+<hr />
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">jongbin</span><span class="dl">"</span><span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">jongbin</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">num</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="nx">obj</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">won</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>  <span class="c1">// 0</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span>  <span class="c1">// {name: "won"}</span>
+</code></pre></div></div>
+<ul>
+  <li>원시값은 <strong>값에 의한 전달 방식</strong>으로 값이 변하지 않음</li>
+  <li>객체는 <strong>참조에 의한 전달 방식</strong>으로 변경 가능하므로 <strong>값이 변함</strong></li>
+</ul>
+
+<p><strong>→ 방어적 복사, 깊은 복사를 통해 새로운 객체를 생성하고 재할당을 통해 교체</strong></p>
+
+<p class="notice--info"><strong>* 순수함수</strong> : 외부 상태를 변경하지 않고 외부 상태에 의존하지도 않는 함수</p>
+
+<p><br /></p>
+
+<h1 id="3-다양한-함수의-형태">3. 다양한 함수의 형태</h1>
+<hr />
+
+<h2>즉시 실행 함수</h2>
+
+<p>함수의 정의와 공시에 즉시 호출되는 함수이며, 단 한 번만 호출되며 다시 호출할 수 없다</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">y</span><span class="p">;</span>
+<span class="p">}());</span>
+</code></pre></div></div>
+
+<ul>
+  <li>즉시 실행 함수는 반드시 <code class="language-plaintext highlighter-rouge">()</code>로 감싸야 한다</li>
+  <li>값을 반환할 수 있다</li>
+  <li>인수를 전달할 수 있다.</li>
+</ul>
+
+<p><br /></p>
+
+<h2>재귀 함수</h2>
+
+<p>자기 자신은 호출하는 것을 재귀 호출이라고 하는데, 재귀함수는 자기 자신을 호출(재귀 후출)하는 함수</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 자기 자신을 호출하는 피보나치 함수</span>
+<span class="kd">function</span> <span class="nx">pibonaci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// 탈출 조건</span>
+        <span class="k">return</span> <span class="nx">pibonaci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nx">pibonaci</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">n</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>재귀함수는 무한하게 자기 자신을 호출하므로 탈출 조건이 있어야 함.</p>
+
+<p><br /></p>
+
+<h2>중첩 함수</h2>
+
+<p>함수 내부에 정의된 함수를 중첩함수라고 한다</p>
+<ul>
+  <li>중첩함수를 내부함수</li>
+  <li>중첩함수를 포함하는 함수를 외부함수</li>
+  <li>외부 함수의 변수를 참조할 수 있다</li>
+</ul>
+
+<p><br /></p>
+
+<h2>콜백 함수</h2>
+
+<ol>
+  <li>함수의 매개변수를 통해 다른 함수의 내부로 전달되는 함수를 <strong>콜백함수</strong>라고 한다.</li>
+  <li>매개변수를 통해 함수의 외부에서 콜백 함수를 전달받은 함수를 <strong>고차함수</strong>라고 한다.</li>
+</ol>
+
+<p><br /></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">jongbin</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">f</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">f</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">output</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">jongbin</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nx">output</span><span class="p">);</span>   <span class="c1">// 0 1 2 3 4</span>
+</code></pre></div></div>
+
+<ul>
+  <li>콜백함수는 고차 함수 내부로 주입하기 때문에 자유롭게 교체할 수 있다는 장점이 있다(<strong>고차함수는 콜백함수를 자신의 일부분으로 합성</strong>)</li>
+  <li>고차함수는 매개변수를 통해 전달받은 콜백함수의 호출 시점을 결정해서 호출</li>
+  <li>비동기 처리(이벤트, Ajax통신, 타이머 함수등), 배열 고차 함수 등 중요하게 사용된다</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">jongbin</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">f</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">f</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 익명 함수 리터럴로 곧바로 전달</span>
+<span class="nx">jongbin</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">})</span>    <span class="c1">// 0 1 2 </span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2>순수 함수, 비순수 함수</h2>
+<p>순수 함수는 외부 상태를 변경시키지 않는 함수</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// 순수 함수</span>
+<span class="kd">function</span> <span class="nx">increase</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">++</span><span class="nx">n</span><span class="p">;</span>   <span class="c1">// count를 인자로 전달해도 count가 변하지 않음</span>
+<span class="p">}</span>
+
+<span class="c1">// 비순수 함수</span>
+<span class="kd">function</span> <span class="nx">increase2</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">++</span><span class="nx">count</span><span class="p">;</span>
+<span class="p">}</span>   <span class="c1">// count를 1 증가시킨다.</span>
+</code></pre></div></div>
+
+<p><del>순수함수를 지향해 불변성을 지키고, 복잡성이나 상태변경 문제를 억제하자!</del></p>
+
+<p><br />
+<br /></p>
+
+<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a><span class="sep">, </span>
+    
+      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-08-26">August 26, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+12%EC%9E%A5+%ED%95%A8%EC%88%98%282%29%20http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive12-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive12-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive12-2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/deepdive/deepDive12-1/" class="pagination--pager" title="[Deep Dive] 12장 함수(1)
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive12-1/" rel="permalink">[Deep Dive] 12장 함수(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">어떤 과정을 문으로 구현하고 코드 블록으로 감싸서 하나의 실행단위로 정의
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive11-copy/" rel="permalink">[Deep Dive] 11장 원시값과 객체
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트는 대부분 객체로 구성되어 있다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive10/" rel="permalink">[Deep Dive] 10장 객체리터럴
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트는 대부분 객체로 구성되어 있다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive09/" rel="permalink">[Deep Dive] 09장 타입 변환과 단축 평가
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트의 모든 값에는 타입(type)이 있다!
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
