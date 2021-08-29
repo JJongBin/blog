@@ -1,0 +1,66 @@
+I"�<p>개인 프로젝트(car_management)를 진행하면서 웹페이지에서 check박스를 클릭해 db의 값을 수정하는 것이 목표였다. 프론트에서 데이터를 넘겨줬을때 백에서 request.body에 checkbox에서 지정한 name으로 값이 넘어오는 것을 알게 되었다. <br />
+<br />
+<u>문제는 여러개를 선택했을때는 배열값으로 넘어오고 한개를 선택했을때는 문자열값으로 데이터가 전달된다는 것이었다.</u> <br />
+<br />
+update를 진행하려면 mongose를 이용해 id값을 입력하고 update하려는 값을 인자로 전달해주어야했기 때문에 어떻게 해야 수정하려는 값이 한개일 때 혹은 여러개일 때 어떻게 처리할지 고민하였다.</p>
+
+<p>처음 생각한 방법은 다음과 같다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전달된 값의 타입이 object일때</span>
+<span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">target</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">object</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// target의 길이만큼 반복</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">target</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>   
+        <span class="c1">// DB update</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// DB update</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>하지만 <code class="language-plaintext highlighter-rouge">if(typeof target === "object")</code> 이 부분이 작동하지 않았었다. <strong>하지만 해당 글을 기록하면서 테스트를 해보다가 되는걸 알게되고 다시 <code class="language-plaintext highlighter-rouge">typeof</code>를 적용해보니 아주 잘 정상 작동한다…!</strong></p>
+
+<p>어쨌든…! <code class="language-plaintext highlighter-rouge">instanceof</code>의 결과를 보자면 제대로 작동했고 다음과 같다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">target</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// DB update</span>
+    <span class="p">};</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// DB update</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="instanceof">instanceof</h2>
+<p>instanceof는 <code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>값을 반환 받을 수 있다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1">// typeof</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">obj</span><span class="p">)</span>     <span class="c1">// object</span>
+
+<span class="c1">// instanceof</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">)</span>      <span class="c1">// true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">)</span>      <span class="c1">// false</span>
+</code></pre></div></div>
+
+<h2 id="mdn문서를-확인해보았을때-정확하게-말하자면-다음과-같다">MDN문서를 확인해보았을때 정확하게 말하자면 다음과 같다.</h2>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">instanceof</code> 연산자는 생성자의 <code class="language-plaintext highlighter-rouge">prototype</code> 속성이 객체의 프로토타입 체인 어딘가 존재하는지 판별합니다.</p>
+</blockquote>
+
+<p><u>또한 `instanof`는 생성자의 프로퍼티를 확인하는 것이기 때문에 내가 정의한 생성자함수로도 확인이 가능하다!</u></p>
+
+<p><br /></p>
+
+<p>typeof의 문제점은 이런점이 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="p">{})</span>     <span class="c1">// object</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="p">[])</span>     <span class="c1">// object</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">null</span><span class="p">)</span>     <span class="c1">// object</span>
+</code></pre></div></div>
+
+<p>객체와 배열, <code class="language-plaintext highlighter-rouge">null</code>값이 모두 <code class="language-plaintext highlighter-rouge">object</code>로 반환된다는 점이다. 이럴때 instanceof를 사용하면 좋을 것 같다!</p>
+
+<p><del>조금 허무하지만 instanceof라는 메소드를 알게되서 다행이라고 생각해야겠다..</del></p>
+:ET

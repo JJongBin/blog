@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Deep Dive] 06장 데이터타입 | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="데이터 값은 값의 종류">
+<!-- begin _includes/seo.html --><title>instanceof | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="typeof와 instanceof">
 
 
   <meta name="author" content="원종빈">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="[Deep Dive] 06장 데이터타입">
-<meta property="og:url" content="http://localhost:4502/deepdive/deepDive06/">
+<meta property="og:title" content="instanceof">
+<meta property="og:url" content="http://localhost:4502/method/instanceof/">
 
 
-  <meta property="og:description" content="데이터 값은 값의 종류">
-
-
-
+  <meta property="og:description" content="typeof와 instanceof">
 
 
 
 
-  <meta property="article:published_time" content="2021-08-10T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-08-10T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-08-30T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2021-08-30T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4502/deepdive/deepDive06/">
+
+<link rel="canonical" href="http://localhost:4502/method/instanceof/">
 
 
 
@@ -341,16 +341,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Deep Dive] 06장 데이터타입">
-    <meta itemprop="description" content="데이터 값은 값의 종류">
-    <meta itemprop="datePublished" content="2021-08-10T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-08-10T00:00:00+09:00">
+    <meta itemprop="headline" content="instanceof">
+    <meta itemprop="description" content="typeof와 instanceof">
+    <meta itemprop="datePublished" content="2021-08-30T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-08-30T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4502/deepdive/deepDive06/" class="u-url" itemprop="url">[Deep Dive] 06장 데이터타입
+            <a href="http://localhost:4502/method/instanceof/" class="u-url" itemprop="url">instanceof
 </a>
           </h1>
           
@@ -367,7 +367,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          1 분 소요
         
       </span>
     
@@ -382,226 +382,76 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-숫자-타입">1. 숫자 타입</a></li><li><a href="#2-문자열-타입">2. 문자열 타입</a><ul><li><a href="#템플릿-리터럴">템플릿 리터럴</a></li></ul></li><li><a href="#3-불리언-타입">3. 불리언 타입</a></li><li><a href="#4-undefined-타입">4. undefined 타입</a></li><li><a href="#5-null-타입">5. null 타입</a></li><li><a href="#6-심벌-타입">6. 심벌 타입</a></li><li><a href="#7-객체-타입">7. 객체 타입</a></li><li><a href="#데이터-타입의-필요성">데이터 타입의 필요성</a></li><li><a href="#동적-타이핑">동적 타이핑</a></li></ul>
+              <ul class="toc__menu"><li><a href="#instanceof">instanceof</a></li><li><a href="#mdn문서를-확인해보았을때-정확하게-말하자면-다음과-같다">MDN문서를 확인해보았을때 정확하게 말하자면 다음과 같다.</a></li></ul>
 
             </nav>
           </aside>
         
-        <p><br /></p>
-
-<p>자바스크립트는 7개의 데이터 타입을 제공한다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">구분</th>
-      <th style="text-align: center">데이터 타입</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">숫자 타입</td>
-      <td>숫자, 정수와 실수 구분 없이 하나의 숫자 타입만 존재</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">문자열 타입</td>
-      <td>문자열</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">불리언 타입</td>
-      <td>논리적 참(true), 거짓(false)</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">undefined 타입</td>
-      <td>var 키워드로 선언된 변수에 암묵적으로 할당되는 값</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">null 타입</td>
-      <td>값이 없다는 것을 의도적으로 명시할 때 사용하는 값</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">심벌 타입</td>
-      <td>ES6에서 추가된 7번째 타입</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">객체타입</td>
-      <td style="text-align: center">객체 타입</td>
-      <td>객체, 함수, 배열 등</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br /></p>
-
-<h1 id="1-숫자-타입">1. 숫자 타입</h1>
-<hr />
-
-<ul>
-  <li>자바스크립트의 숫자 타입은 모두 <strong>실수</strong>로 처리함.</li>
-  <li>메모리에 저장될때 2진수로 저장됨.</li>
-  <li>값을 참조할때 모두 <strong>10진수</strong>로 해석됨.</li>
-</ul>
-
-<p class="notice--info"><strong>* 숫자타입의 특별한 세가지</strong><br />
-- Infinity: 양의 무한대<br />
-- -Infinity: 음의 무한대<br />
-- NaN: 산술 연산 불가</p>
-
-<p><br /></p>
-
-<h1 id="2-문자열-타입">2. 문자열 타입</h1>
-<hr />
-
-<ul>
-  <li>문자열은 0개 이상의 16비트 유니코드 문자(UTF-16)의 집합.</li>
-  <li><code class="language-plaintext highlighter-rouge">작은따옴표(' ')</code>, <code class="language-plaintext highlighter-rouge">큰따옴표(" ")</code>, <code class="language-plaintext highlighter-rouge">백틱(` `)</code>으로 표현.</li>
-  <li>문자열은 불변값임(연산시 새로운 값을 할당한 후 참조주소를 변경)</li>
-</ul>
-
-<p><br /></p>
-
-<h2 id="템플릿-리터럴">템플릿 리터럴</h2>
-<p>ES6부터 템플릿 리터럴이라는 새로운 문자열 표기법 도입.</p>
-<ul>
-  <li>백틱(``)을 사용해 멀티라인 문자열 가능</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="s2">`hello
-I'm jongbin`</span><span class="p">;</span>
-
-<span class="c1">// 출력결과</span>
-<span class="c1">// hello</span>
-<span class="c1">// I'm jongbin</span>
-</code></pre></div></div>
-
-<p><br /></p>
-<ul>
-  <li>표현식 삽입 (<code class="language-plaintext highlighter-rouge">${}</code>를 사용해서 표현식을 삽입한다.)</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="s2">`I',m </span><span class="p">${</span><span class="mi">20</span><span class="o">+</span><span class="mi">6</span><span class="p">}</span><span class="s2"> years old`</span><span class="p">;</span> 
-
-<span class="c1">// 출력결과</span>
-<span class="c1">// I'm 26 years old</span>
-</code></pre></div></div>
-
-<p><br /></p>
-
-<h1 id="3-불리언-타입">3. 불리언 타입</h1>
-<hr />
-
-<p>불리언 타입은 <code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>값 두가지가 있다.</p>
-
-<p><br /></p>
-
-<h1 id="4-undefined-타입">4. undefined 타입</h1>
-<hr />
-
-<p><code class="language-plaintext highlighter-rouge">undefined</code>은 값을 할당하지 않은 변수를 참조했을때 반환된다.</p>
-
-<p>선언만 하고 값을 할당하지 않은 변수를을 <code class="language-plaintext highlighter-rouge">undefined</code>로 초기화한다.</p>
-
-<p><br /></p>
-
-<h1 id="5-null-타입">5. null 타입</h1>
-<hr />
-
-<p><code class="language-plaintext highlighter-rouge">null</code>은 변수에 값이 없음을 의도적으로 명시할 때 사용한다.</p>
-
-<p>이전의 값의 참조를 명시적으로 제거할 때 사용</p>
-
-<p><br /></p>
-
-<h1 id="6-심벌-타입">6. 심벌 타입</h1>
-<hr />
-
-<ul>
-  <li><strong>변경불가능</strong>한 원시타입의 값</li>
-  <li>다른 값과 <strong>중복되지 않는</strong> 유일한 값</li>
-</ul>
-
-<p><br /></p>
-
-<h1 id="7-객체-타입">7. 객체 타입</h1>
-<hr />
-
-<ul>
-  <li>자바스크립트의 기본 타입은 객체(object).</li>
-  <li>객체란 실생활에서 우리가 인식할 수 있는 사물로 볼 수 있다.</li>
-  <li>객체는 여러 프로퍼티(property)나 메소드(method)를 같은 이름으로 묶어놓은 일종의 집합체.</li>
-  <li>자바스크립트를 이루고 있는 거의 모든 것이 객체.</li>
-</ul>
-
-<p><br /></p>
-
-<h1 id="데이터-타입의-필요성">데이터 타입의 필요성</h1>
-<hr />
-
-<ol>
-  <li>메모리
-    <ul>
-      <li>메모리에 값을 저장하려면 공간을 확보해야함.</li>
-      <li><strong>변수에 할당되는 값의 <u>데이터 타입</u>에 따라 확보해야 할 메모리 공간의 크기가 결정됨</strong>
+        <p>개인 프로젝트(car_management)를 진행하면서 웹페이지에서 check박스를 클릭해 db의 값을 수정하는 것이 목표였다. 프론트에서 데이터를 넘겨줬을때 백에서 request.body에 checkbox에서 지정한 name으로 값이 넘어오는 것을 알게 되었다. <br />
 <br />
-<br /></li>
-    </ul>
-  </li>
-  <li>값의 해석
-    <ul>
-      <li>데이터 타입에 따라 다르게 해석한다.(메모리에 저장된 이진수(값)을 문자열? 숫자?)</li>
-    </ul>
-  </li>
-</ol>
+<u>문제는 여러개를 선택했을때는 배열값으로 넘어오고 한개를 선택했을때는 문자열값으로 데이터가 전달된다는 것이었다.</u> <br />
+<br />
+update를 진행하려면 mongose를 이용해 id값을 입력하고 update하려는 값을 인자로 전달해주어야했기 때문에 어떻게 해야 수정하려는 값이 한개일 때 혹은 여러개일 때 어떻게 처리할지 고민하였다.</p>
 
-<p class="notice--info"><strong>심벌 테이블</strong><br />
-컴파일러 또는 인터프리터는 <u>심벌테이블</u>라고 부르는 자료 구조를 통해 식별자를 키로 바인딩된 값의 메모리 주소, 데이터 타입, 스코프 등을 관리한다.</p>
+<p>처음 생각한 방법은 다음과 같다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전달된 값의 타입이 object일때</span>
+<span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">target</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">object</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// target의 길이만큼 반복</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">target</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>   
+        <span class="c1">// DB update</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// DB update</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<ul>
-  <li><strong>값을 저장할 깨 확보해야 하는 메모리 공간의 크기를 결정.</strong></li>
-  <li><strong>값을 참조할 때 한번에 읽어야 할 메모리 공간의 크기를 결정.</strong></li>
-  <li><strong>메모리에서 읽어들인 2진수를 어떻게 해석할지 결정.</strong></li>
-</ul>
+<p>하지만 <code class="language-plaintext highlighter-rouge">if(typeof target === "object")</code> 이 부분이 작동하지 않았었다. <strong>하지만 해당 글을 기록하면서 테스트를 해보다가 되는걸 알게되고 다시 <code class="language-plaintext highlighter-rouge">typeof</code>를 적용해보니 아주 잘 정상 작동한다…!</strong></p>
+
+<p>어쨌든…! <code class="language-plaintext highlighter-rouge">instanceof</code>의 결과를 보자면 제대로 작동했고 다음과 같다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">target</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// DB update</span>
+    <span class="p">};</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// DB update</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <p><br /></p>
 
-<h1 id="동적-타이핑">동적 타이핑</h1>
-<hr />
+<h2 id="instanceof">instanceof</h2>
+<p>instanceof는 <code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>값을 반환 받을 수 있다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{}</span>
 
-<p>자바스크립트는 정적 타입 언어와 다르게 변수 선언시 타입을 지정하지 않는다. 대신 <code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">const</code>, <code class="language-plaintext highlighter-rouge">let</code> 키워드를 사용해 변수 선언을 한다.</p>
+<span class="c1">// typeof</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">obj</span><span class="p">)</span>     <span class="c1">// object</span>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// c 언어</span>
-<span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+<span class="c1">// instanceof</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">)</span>      <span class="c1">// true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">)</span>      <span class="c1">// false</span>
 </code></pre></div></div>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// javascript</span>
-<span class="kd">var</span> <span class="nx">t1</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">t2</span><span class="p">;</span>
-<span class="kd">let</span> <span class="nx">t3</span><span class="p">;</span>
-</code></pre></div></div>
+<h2 id="mdn문서를-확인해보았을때-정확하게-말하자면-다음과-같다">MDN문서를 확인해보았을때 정확하게 말하자면 다음과 같다.</h2>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">instanceof</code> 연산자는 생성자의 <code class="language-plaintext highlighter-rouge">prototype</code> 속성이 객체의 프로토타입 체인 어딘가 존재하는지 판별합니다.</p>
+</blockquote>
+
+<p><u>또한 `instanof`는 생성자의 프로퍼티를 확인하는 것이기 때문에 내가 정의한 생성자함수로도 확인이 가능하다!</u></p>
+
 <p><br /></p>
 
-<ul>
-  <li><strong>자바스크립트는 할당된 값에 의해 타입이 결정된다.</strong></li>
-  <li><strong>재할당에 의해 타입이 동적으로 변할 수 있다.</strong></li>
-  <li>이런 언어를 <strong><u>동적 타입 언어</u></strong>라고 한다.</li>
-</ul>
+<p>typeof의 문제점은 이런점이 있다.</p>
 
-<p>동적타입언어는 개발자의 의도와는 다른 변수타입을 제공할 수 있다. → 동적타입언어는 유연성은 높지만 <u>신뢰성은 떨어진다</u>.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="p">{})</span>     <span class="c1">// object</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="p">[])</span>     <span class="c1">// object</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">null</span><span class="p">)</span>     <span class="c1">// object</span>
+</code></pre></div></div>
 
-<p><br />
-<br /></p>
+<p>객체와 배열, <code class="language-plaintext highlighter-rouge">null</code>값이 모두 <code class="language-plaintext highlighter-rouge">object</code>로 반환된다는 점이다. 이럴때 instanceof를 사용하면 좋을 것 같다!</p>
 
-<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
-
+<p><del>조금 허무하지만 instanceof라는 메소드를 알게되서 다행이라고 생각해야겠다..</del></p>
 
         
       </section>
@@ -618,9 +468,9 @@ I'm jongbin`</span><span class="p">;</span>
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a><span class="sep">, </span>
+      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a><span class="sep">, </span>
     
-      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a>
+      <a href="/tags/#method" class="page__taxonomy-item p-category" rel="tag">Method</a>
     
     </span>
   </p>
@@ -637,7 +487,7 @@ I'm jongbin`</span><span class="p">;</span>
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a>
+      <a href="/categories/#method" class="page__taxonomy-item p-category" rel="tag">Method</a>
     
     </span>
   </p>
@@ -645,7 +495,7 @@ I'm jongbin`</span><span class="p">;</span>
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-08-10">August 10, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-08-30">August 30, 2021</time></p>
 
       </footer>
 
@@ -654,23 +504,22 @@ I'm jongbin`</span><span class="p">;</span>
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+06%EC%9E%A5+%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85%20http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive06%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=instanceof%20http%3A%2F%2Flocalhost%3A4502%2Fmethod%2Finstanceof%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive06%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fmethod%2Finstanceof%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive06%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fmethod%2Finstanceof%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/deepdive/deepDive05/" class="pagination--pager" title="[Deep Dive] 05장 표현식과 문
+      <a href="/deepdive/deepDive12-2/" class="pagination--pager" title="[Deep Dive] 12장 함수(2)
 ">이전</a>
     
     
-      <a href="/deepdive/deepDive07/" class="pagination--pager" title="[Deep Dive] 07장 연산자
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -684,46 +533,6 @@ I'm jongbin`</span><span class="p">;</span>
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/method/instanceof/" rel="permalink">instanceof
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">typeof와 instanceof
-</p>
-  </article>
-</div>
-
         
           
 
@@ -792,7 +601,7 @@ I'm jongbin`</span><span class="p">;</span>
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          3 분 소요
+          2 분 소요
         
       </span>
     
@@ -815,6 +624,46 @@ I'm jongbin`</span><span class="p">;</span>
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/deepdive/deepDive11-copy/" rel="permalink">[Deep Dive] 11장 원시값과 객체
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트는 대부분 객체로 구성되어 있다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive10/" rel="permalink">[Deep Dive] 10장 객체리터럴
 </a>
       
     </h2>
