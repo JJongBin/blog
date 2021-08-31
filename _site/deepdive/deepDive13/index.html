@@ -1,0 +1,866 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Deep Dive] 13장 스코프 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="변수에 접근할 수 있는 유효범위">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="[Deep Dive] 13장 스코프">
+<meta property="og:url" content="http://localhost:4502/deepdive/deepDive13/">
+
+
+  <meta property="og:description" content="변수에 접근할 수 있는 유효범위">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-09-01T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-09-01T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4502/deepdive/deepDive13/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "http://localhost:4502/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4502/">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4502/" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li class="nav__all-posts">
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">16</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/categories/DeepDive" class="">DeepDive (14)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/categories/Method" class="">Method (1)</a></li>
+                    
+                
+            </ul>
+            
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li><a href="/categories/Blog" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Deep Dive] 13장 스코프">
+    <meta itemprop="description" content="변수에 접근할 수 있는 유효범위">
+    <meta itemprop="datePublished" content="2021-09-01T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-09-01T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4502/deepdive/deepDive13/" class="u-url" itemprop="url">[Deep Dive] 13장 스코프
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#1-스코프">1. 스코프</a></li><li><a href="#2-스코프의-종류">2. 스코프의 종류</a></li><li><a href="#3-스코프-체인">3. 스코프 체인</a></li><li><a href="#4-함수-레벨-스코프">4. 함수 레벨 스코프</a></li><li><a href="#5-렉시컬-스코프">5. 렉시컬 스코프</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><br /></p>
+
+<p class="notice">함수의 매개변수는 함수 몸체 내부에서만 참조할 수 있고, 함수 내부에서 선언한 변수는 함수 외부에서는 참조할 수 없고 함수 몸체 내에서만 참조할 수 있다.</p>
+<p>왜냐하면 <strong>스코프</strong>가 정해져있기 때문이다</p>
+
+<p><br /></p>
+
+<h1 id="1-스코프">1. 스코프</h1>
+<hr />
+
+<p>모든 식별자(변수 이름, 함수 이름, 클래스 이름 등)는 자신이 선언된 위치에 의해 다른 코드가 식별자 자신을 참조할 수 있는 유효 범위가 결정된다</p>
+
+<p>➞ 이를 <strong>스코프</strong> 라고 한다 (<u>식별자가 유효한 범위</u>)</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// let, const는 중복 선언이 안되기 때문에 var를 사용</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="nx">fuinction</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// 10</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// 1</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="2-스코프의-종류">2. 스코프의 종류</h1>
+<hr />
+<p>스코프는 “<strong>전역스코프</strong>”, “<strong>지역스코프</strong>” 이렇게 두개로 나뉜다</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">구분</th>
+      <th style="text-align: center">설명</th>
+      <th style="text-align: center">스코프</th>
+      <th style="text-align: center">변수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">전역</td>
+      <td style="text-align: center">코드의 가장 바깥 영역</td>
+      <td style="text-align: center">전역 스코프</td>
+      <td style="text-align: center">전역 변수</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">지역</td>
+      <td style="text-align: center">함수 몸체 내부</td>
+      <td style="text-align: center">지역 스코프</td>
+      <td style="text-align: center">지역 변수</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="https://blog.kakaocdn.net/dn/okSvC/btq9AjLxXcg/yLqKkFWqxJkUEBLePywxW0/img.png" alt="scope" /></p>
+<blockquote>
+  <p>출처 <a>https://frontj.com/entry/5-Javascript%EC%9D%98-%EC%8A%A4%EC%BD%94%ED%94%84</a></p>
+</blockquote>
+
+<p>위 그림을 보면 <strong>전역 스코프</strong>는 함수를 포함한 그 밖의 영역 제일 바깥쪽이다</p>
+
+<p>그리고 지역 스코프는 <code class="language-plaintext highlighter-rouge">foo()</code>함수의 내부에 1개, <code class="language-plaintext highlighter-rouge">bar()</code>함수의 내부에 1개, 총 2개가 있다</p>
+
+<ul>
+  <li>지역은 <u>함수 몸체 내부</u>를 뜻하고 지역변수는 자신의 지역 스코프와 하위의 지역 스코프에서도 유효하다</li>
+  <li>전역 스코프는 어디에서나 유효하다(최상단에 있기 때문)</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="3-스코프-체인">3. 스코프 체인</h1>
+
+<p>함수는 중첩될 수 있으므로(각각 함수 내부의 함수는 중첩함수, 외부는 외부함수) <u>스코프도 중첩된다</u></p>
+
+<p>➞ <strong>스코프가 함수의 중첩에 의해 계층적 구조를 가짐</strong></p>
+
+<p>지역 스코프의 상위 스코프는 함수기준 외부 함수의 스코프이다. 계층적으로 연결된 것을 <strong>스코프 체인</strong>이라고 한다</p>
+
+<p><br /></p>
+
+<p><strong><em><u>변수를 참조할때 자바스크립트 엔진은 스코프 체인을 통해 변수를 참조하는 코드의 스코프에서 시작하여 상위 스코프 방향으로 이동하며 선언된 변수를 검색한다</u></em></strong></p>
+
+<p>하위 스코프에서 유효한 변수를 상위스코프에서 참조할 수 없다</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// let, const는 중복 선언이 안되기 때문에 var를 사용</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">global</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">fuinction</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">inner</span><span class="dl">"</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// 내부</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// 외부</span>
+</code></pre></div></div>
+<p>즉 내부에서 <code class="language-plaintext highlighter-rouge">x</code>를 호출했을 때 내부의 변수 <code class="language-plaintext highlighter-rouge">x</code>가 참조되지 외부의 <code class="language-plaintext highlighter-rouge">x</code>(global)이 참조될 수 없다는 뜻이다</p>
+
+<p class="notice"><strong>렉시컬 환경</strong><br />
+스코프 체인은 실행 컨텍스트의 렉시컬 환경을 단방향으로 연결한 것이다<br />
+변수 선언 -&gt; 렉시컬환경에 키 등록<br />
+변수 할당 -&gt; 해당하는 값 변경</p>
+
+<p><br /></p>
+
+<h1 id="4-함수-레벨-스코프">4. 함수 레벨 스코프</h1>
+<p><code class="language-plaintext highlighter-rouge">var</code> 키워드로 선언된 변수는 <strong>코드블럭이 아닌 <u>함수에 의해서만</u> 지역 스코프가 생성됨</strong></p>
+
+<p class="notice"><code class="language-plaintext highlighter-rouge">const</code>, <code class="language-plaintext highlighter-rouge">let</code> 키워드로 선언된 변수는 블록 레벨 스코프를 지원한다</p>
+
+<p><br /></p>
+
+<h1 id="5-렉시컬-스코프">5. 렉시컬 스코프</h1>
+
+<p>상위 스코프를 결정하는 패턴은 두가지가 있다</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">스코프</th>
+      <th style="text-align: left">방법</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">동적 스코프</td>
+      <td style="text-align: left">함수를 어디서 호출했는지에 따라 함수의 상위 스코프를 결정</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">렉시컬 스코프</td>
+      <td style="text-align: left">함수를 어디서 정의했는지에 따라 함수의 상위 스코프를 결정</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>자바스크립트는 <strong>렉시컬 스코프</strong>를 따른다.</p>
+
+<p><u>따라서 어디서 정의했는지에 따라 상위스코프를 결정</u></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">global</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">func1</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">inner</span><span class="dl">"</span><span class="p">;</span>
+  <span class="nx">funt2</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">func2</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">func1</span><span class="p">();</span>   <span class="c1">// global</span>
+<span class="nx">func2</span><span class="p">();</span>   <span class="c1">// global</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">func2</code> 함수가 외부에서 선언되었기 때문에 <code class="language-plaintext highlighter-rouge">func1</code>함수 내부에서 <code class="language-plaintext highlighter-rouge">func2</code>를 호출하더라도 “global”을 출력한다 (스코프가 <strong>전역</strong>이므로)</p>
+
+<p><br />
+<br /></p>
+
+<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a><span class="sep">, </span>
+    
+      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-01">September 1, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+13%EC%9E%A5+%EC%8A%A4%EC%BD%94%ED%94%84%20http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive13%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive13%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive13%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/method/instanceof/" class="pagination--pager" title="instanceof
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/method/instanceof/" rel="permalink">instanceof
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">typeof와 instanceof
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive12-2/" rel="permalink">[Deep Dive] 12장 함수(2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">함수호출
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive12-1/" rel="permalink">[Deep Dive] 12장 함수(1)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">어떤 과정을 문으로 구현하고 코드 블록으로 감싸서 하나의 실행단위로 정의
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive11-copy/" rel="permalink">[Deep Dive] 11장 원시값과 객체
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트는 대부분 객체로 구성되어 있다.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
