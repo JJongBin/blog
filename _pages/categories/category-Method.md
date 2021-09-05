@@ -1,7 +1,7 @@
 ---
 title: "method"
 layout: archive
-permalink: categories/Method
+permalink: /categories/Method
 author_profile: true
 sidebar_main: true
 ---

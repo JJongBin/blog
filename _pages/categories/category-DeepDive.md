@@ -1,7 +1,7 @@
 ---
 title: "DeepDive"
 layout: archive
-permalink: categories/DeepDive
+permalink: /categories/DeepDive
 author_profile: true
 sidebar_main: true
 ---

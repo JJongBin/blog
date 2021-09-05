@@ -1,7 +1,7 @@
 ---
 title: "Blog"
 layout: archive
-permalink: categories/Blog
+permalink: /categories/Blog
 author_profile: true
 sidebar_main: true
 ---
