@@ -100,4 +100,10 @@ var store = [{
         "tags": ["JavaScript","DeepDive"],
         "url": "/deepdive/deepDive14/",
         "teaser": null
+      },{
+        "title": "[Deep Dive] 15장 var, let, const",
+        "excerpt":"var 키워드  ES6 이전의 변수 선언 키워드로서 중복선언이 가능한 키워드이다  var x = 1; var y = 1;  var x = 10; var y;    // 초기화문(초기값할당)이 없으면 무시  console.log(x) // 10 console.log(y) // 1   함수 레벨 스코프  블록 레벨 스코프가 아니고, 함수의 코드 블록만 지역 스코프로 인정     for문, if문, while문 등 모두 인정하지 않음   호이스팅  var 키워드로 선언한 변수들은 모두 호이스팅된다       let 키워드  중복 선언이 금지된다  let x = 10; let x = 20;   // error  console.log(x)   블록 레벨 스코프  let키워드는 모든 코드블록(for, if, while try/catch 등)을 지역변수 스코프로 인정한다  {   let x = 10; } console.log(x)    // error   호이스팅이 되지 않는 것처럼 동작  사실 내부적으로 호이스팅이 되지만 그렇지 않은것처럼 동작한다  console.log(x);   // error let x = 10;      var: 선언단계 + 초기화 단계(undefined) -&gt; 할당(x=1)   let: 선언단계 -&gt; 일시적 사각지대 -&gt; 초기화단계 -&gt; 할당   코드를 읽기전에 초기화단계까지 진행(var)하기 때문에 호이스팅발생  하지만 let키워드는 코드상에서 선언문을 만나야 초기화단계가 실행된다      let 키워드는 일시적 사각지대(TDZ)가 존재한다  스코프 시작 지점부터 초기화 시작 지점까지 변수를 참조할 수 없는 구간    let x = 10;  console.log(x) let x = 20; // SyntaxError: Identifier 'x' has already been declared  호이스팅이 발생하는 것을 알수 있다(console.log(x)가 출력되고 에러가 발생했어야 함)   전역객체의 프로퍼티가 되지 않음  브라우저 상에서 let키워드는 전역객체 window의 프로퍼티가 되지 않는다     var 키워드 var x = 1;   암묵적 전역 y = 1;   전역 함수 function xx() {}   위는 모두 window.x 또는 window.y window.xx로 출력할 수 있다 하지만 let의 경우에는 프로퍼티에 해당하지 않아 window.(let으로 선언한 변수)는 undefined가 출력된다       const 키워드  재할당 금지  const로 선언한 변수는 재할당이 금지되고, 재선언되지 않는다  const x = 10; x = 20; //error   선언과 동시에 초기화  const로 변수를 선언할 때에는 재할당이 되지 않기 때문에 선언과 동시에 값을 할당해 초기화해야 한다   재할당이 금지, 객체의 값 변경은 가능  const 변수에 객체를 할당했을 경우 변수에는 해당 객체의 주소값이 들어가기 때문에 객체 내부의 값은 변경이 가능하다 (변수를 조작하는 것이 아니다)            var키워드를 사용하면 사용자도 모르게 전역변수가 되어버리는 경우가 있다(함수 이외 코드블럭에서의 사용) 따라서 메모리를 할당받는 것이고, const를 사용하면 재할당을 방지할 수 있다. let의 경우에도 재선언을 방지하기 때문에 변수관리가 쉽다.   따라서 보통의 경우에는 const를 사용하다가 재할당이 필요한 변수에 let키워드를 사용하는 것이 좋다고 한다         이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.  혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!   ","categories": ["DeepDive"],
+        "tags": ["JavaScript","DeepDive"],
+        "url": "/deepdive/deepDive15/",
+        "teaser": null
       }]

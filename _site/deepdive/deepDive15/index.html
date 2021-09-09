@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Deep Dive] 14장 전역 변수의 문제점 | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="전연 변수의 무분별한 사용은 위험!">
+<!-- begin _includes/seo.html --><title>[Deep Dive] 15장 var, let, const | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="var, let, const의 차이">
 
 
   <meta name="author" content="원종빈">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="[Deep Dive] 14장 전역 변수의 문제점">
-<meta property="og:url" content="http://localhost:4502/deepdive/deepDive14/">
+<meta property="og:title" content="[Deep Dive] 15장 var, let, const">
+<meta property="og:url" content="http://localhost:4502/deepdive/deepDive15/">
 
 
-  <meta property="og:description" content="전연 변수의 무분별한 사용은 위험!">
-
-
-
+  <meta property="og:description" content="var, let, const의 차이">
 
 
 
 
-  <meta property="article:published_time" content="2021-09-06T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-09-06T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-09-10T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2021-09-10T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4502/deepdive/deepDive14/">
+
+<link rel="canonical" href="http://localhost:4502/deepdive/deepDive15/">
 
 
 
@@ -341,16 +341,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Deep Dive] 14장 전역 변수의 문제점">
-    <meta itemprop="description" content="전연 변수의 무분별한 사용은 위험!">
-    <meta itemprop="datePublished" content="2021-09-06T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-09-06T00:00:00+09:00">
+    <meta itemprop="headline" content="[Deep Dive] 15장 var, let, const">
+    <meta itemprop="description" content="var, let, const의 차이">
+    <meta itemprop="datePublished" content="2021-09-10T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-09-10T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4502/deepdive/deepDive14/" class="u-url" itemprop="url">[Deep Dive] 14장 전역 변수의 문제점
+            <a href="http://localhost:4502/deepdive/deepDive15/" class="u-url" itemprop="url">[Deep Dive] 15장 var, let, const
 </a>
           </h1>
           
@@ -367,7 +367,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          1 분 소요
         
       </span>
     
@@ -382,115 +382,113 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#변수의-생명주기">변수의 생명주기</a><ul><li><a href="#-즉-변수의-생명주기는-함수의-생명주기와-일치한다">➞ 즉 변수의 생명주기는 함수의 생명주기와 일치한다.</a></li></ul></li></ul></li><li><a href="#전역-변수의-문제점">전역 변수의 문제점</a><ul><li><a href="#암묵적-결합">암묵적 결합</a></li><li><a href="#긴-생명주기">긴 생명주기</a></li><li><a href="#스코프-체인상-종점에-존재">스코프 체인상 종점에 존재</a></li><li><a href="#네임스페이스-오염">네임스페이스 오염</a></li></ul></li><li><a href="#전역-변수-사용의-억제방법">전역 변수 사용의 억제(방법)</a><ul><li><a href="#즉시-실행-함수">즉시 실행 함수</a></li><li><a href="#네임스페이스-객체">네임스페이스 객체</a></li><li><a href="#모듈-패턴">모듈 패턴</a></li><li><a href="#es6-모듈">ES6 모듈</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#var-키워드">var 키워드</a><ul><li><a href="#es6-이전의-변수-선언-키워드로서-중복선언이-가능한-키워드이다">ES6 이전의 변수 선언 키워드로서 중복선언이 가능한 키워드이다</a></li><li><a href="#함수-레벨-스코프">함수 레벨 스코프</a></li><li><a href="#호이스팅">호이스팅</a></li></ul></li><li><a href="#let-키워드">let 키워드</a><ul><li><a href="#중복-선언이-금지된다">중복 선언이 금지된다</a></li><li><a href="#블록-레벨-스코프">블록 레벨 스코프</a></li><li><a href="#호이스팅이-되지-않는-것처럼-동작">호이스팅이 되지 않는 것처럼 동작</a></li><li><a href="#전역객체의-프로퍼티가-되지-않음">전역객체의 프로퍼티가 되지 않음</a></li></ul></li><li><a href="#const-키워드">const 키워드</a><ul><li><a href="#재할당-금지">재할당 금지</a></li><li><a href="#선언과-동시에-초기화">선언과 동시에 초기화</a></li><li><a href="#재할당이-금지-객체의-값-변경은-가능">재할당이 금지, 객체의 값 변경은 가능</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <p>전역변수를 많이 사용하다보면 의도하지 않은 재할당이 일어날 수 있고, 메모리를 잡아먹는 등 문제점들이 있다.
-<br /></p>
+        <h1 id="var-키워드"><code class="language-plaintext highlighter-rouge">var</code> 키워드</h1>
+<h2 id="es6-이전의-변수-선언-키워드로서-중복선언이-가능한-키워드이다">ES6 이전의 변수 선언 키워드로서 <strong>중복선언이 가능한 키워드</strong>이다</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
-<h1 id="변수의-생명주기">변수의 생명주기</h1>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">y</span><span class="p">;</span>    <span class="c1">// 초기화문(초기값할당)이 없으면 무시</span>
 
-<p>함수 내부에서 변수가 선언될 경우 초기에 전역변수처럼 호이스팅이 일어나지 않는다.</p>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="c1">// 10</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="c1">// 1</span>
+</code></pre></div></div>
 
-<p>함수가 실했되었을 때 자바스크립트 엔진에 의해서 가장 먼저 실행(선언)된다</p>
+<h2 id="함수-레벨-스코프">함수 레벨 스코프</h2>
+<p>블록 레벨 스코프가 아니고, <strong>함수의 코드 블록만 지역 스코프로 인정</strong></p>
+<ul>
+  <li>for문, if문, while문 등 모두 인정하지 않음</li>
+</ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">func</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>    <span class="c1">// 10</span>
+<h2 id="호이스팅">호이스팅</h2>
+<p><code class="language-plaintext highlighter-rouge">var</code> 키워드로 선언한 변수들은 모두 <strong>호이스팅</strong>된다</p>
+
+<p><br /></p>
+
+<h1 id="let-키워드"><code class="language-plaintext highlighter-rouge">let</code> 키워드</h1>
+<h2 id="중복-선언이-금지된다">중복 선언이 금지된다</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>   <span class="c1">// error</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="블록-레벨-스코프">블록 레벨 스코프</h2>
+<p><code class="language-plaintext highlighter-rouge">let</code>키워드는 <strong>모든 코드블록</strong>(for, if, while try/catch 등)을 지역변수 스코프로 인정한다</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">func</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>    <span class="c1">// error</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// error</span>
 </code></pre></div></div>
 
-<p>위 코드를 보게되면 이해하기 쉽다. 우리가 알던대로라면 호이스팅이 일어나서 변수들의 선언이 가장 먼저 실행되어 가장 아랫줄의 <code class="language-plaintext highlighter-rouge">console.log(x);</code>은 <code class="language-plaintext highlighter-rouge">undefined</code>가 되어야 한다. 하지만 <strong>함수 내에서 변수를 선언한 경우에는 변수를 실행했을때 함수 내부 코드를 실행하는 측면에서만 가장 먼저 변수 선언이 일어난다</strong></p>
+<h2 id="호이스팅이-되지-않는-것처럼-동작">호이스팅이 되지 않는 것처럼 동작</h2>
+<p>사실 내부적으로 호이스팅이 되지만 그렇지 않은것처럼 동작한다</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>   <span class="c1">// error</span>
+<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
 
-<p>이후 <strong>함수를 실행하고 변수가 선언이 되었더라도 함수가 종료되면 변수도 사라지게 된다</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">var</code>: 선언단계 + 초기화 단계(<code class="language-plaintext highlighter-rouge">undefined</code>) -&gt; 할당(<code class="language-plaintext highlighter-rouge">x=1</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">let</code>: 선언단계 -&gt; <strong>일시적 사각지대</strong> -&gt; 초기화단계 -&gt; 할당</li>
+</ul>
 
-<h3 id="-즉-변수의-생명주기는-함수의-생명주기와-일치한다"><u>➞ 즉 변수의 생명주기는 함수의 생명주기와 일치한다.</u></h3>
+<p>코드를 읽기전에 초기화단계까지 진행(var)하기 때문에 호이스팅발생<br />
+하지만 let키워드는 코드상에서 선언문을 만나야 초기화단계가 실행된다</p>
 
-<p>전역변수도 마찬가지로 자바스크립트에 의해 어떤 객체보다도 먼저 생성되는 전역 객체의 생명주기와 동일하다</p>
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">let</code> 키워드는 <strong>일시적 사각지대(TDZ)</strong>가 존재한다<br />
+스코프 시작 지점부터 초기화 시작 지점까지 변수를 참조할 수 없는 구간</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="c1">// SyntaxError: Identifier 'x' has already been declared</span>
+</code></pre></div></div>
+<p>호이스팅이 발생하는 것을 알수 있다(<u>console.log(x)가 출력되고 에러가 발생했어야 함</u>)</p>
+
+<h2 id="전역객체의-프로퍼티가-되지-않음">전역객체의 프로퍼티가 되지 않음</h2>
+<p>브라우저 상에서 let키워드는 전역객체 window의 프로퍼티가 되지 않는다</p>
+<ul>
+  <li>var 키워드
+<code class="language-plaintext highlighter-rouge">var x = 1;</code></li>
+  <li>암묵적 전역
+<code class="language-plaintext highlighter-rouge">y = 1;</code></li>
+  <li>전역 함수
+<code class="language-plaintext highlighter-rouge">function xx() {}</code></li>
+</ul>
+
+<p>위는 모두 <code class="language-plaintext highlighter-rouge">window.x</code> 또는 <code class="language-plaintext highlighter-rouge">window.y</code> <code class="language-plaintext highlighter-rouge">window.xx</code>로 출력할 수 있다 하지만 let의 경우에는 프로퍼티에 해당하지 않아 <code class="language-plaintext highlighter-rouge">window.(let으로 선언한 변수)</code>는 <code class="language-plaintext highlighter-rouge">undefined</code>가 출력된다</p>
 
 <p><br /></p>
 
-<h1 id="전역-변수의-문제점">전역 변수의 문제점</h1>
+<h1 id="const-키워드"><code class="language-plaintext highlighter-rouge">const</code> 키워드</h1>
+<h2 id="재할당-금지">재할당 금지</h2>
+<p><code class="language-plaintext highlighter-rouge">const</code>로 선언한 변수는 재할당이 금지되고, 재선언되지 않는다</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">//error</span>
+</code></pre></div></div>
 
-<h2 id="암묵적-결합">암묵적 결합</h2>
-<p>전역변수는 어디서든 참조하고 할당할 수 있다. 따라서 어디서든지 전역변수를 참조하고 변경할 수 있다. 이처럼 유효 범위가 크면 가독성이 나빠지고 변수관리가 어렵다</p>
+<h2 id="선언과-동시에-초기화">선언과 동시에 초기화</h2>
+<p><code class="language-plaintext highlighter-rouge">const</code>로 변수를 선언할 때에는 재할당이 되지 않기 때문에 선언과 동시에 값을 할당해 초기화해야 한다</p>
 
-<h2 id="긴-생명주기">긴 생명주기</h2>
-<p>전역변수의 생명 주기는 전역 객체의 생명주기와 동일하므로 코드 전체의 생명주기와 같다. 따라서 그만큼 시스템 자원(메모리 리소스)을 오래 차지하고 있다는 뜻이 된다.</p>
+<h2 id="재할당이-금지-객체의-값-변경은-가능">재할당이 금지, 객체의 값 변경은 가능</h2>
+<p><code class="language-plaintext highlighter-rouge">const</code> 변수에 객체를 할당했을 경우 변수에는 해당 객체의 주소값이 들어가기 때문에 객체 내부의 값은 변경이 가능하다 (변수를 조작하는 것이 아니다)</p>
 
-<h2 id="스코프-체인상-종점에-존재">스코프 체인상 종점에 존재</h2>
-<p>스코프 체인상에서 보면 거슬러 올라가야 하기 때문에 전역변수를 참조해야 할때 가장 종점까지 거슬러 올라가야 한다. 따라서 그만큼 시간이 오래 걸린다.(큰 차이는 없으나 시간 차이는 존재)</p>
-
-<h2 id="네임스페이스-오염">네임스페이스 오염</h2>
-<p>파일이 분리되어 있더라도 하나의 전역 스코프를 공유한다. 따라서 동일한 이름의 전역변수가 존재할 수 있다.</p>
+<p><br /></p>
+<hr />
 
 <p><br /></p>
 
-<h1 id="전역-변수-사용의-억제방법">전역 변수 사용의 억제(방법)</h1>
+<p><code class="language-plaintext highlighter-rouge">var</code>키워드를 사용하면 사용자도 모르게 전역변수가 되어버리는 경우가 있다(함수 이외 코드블럭에서의 사용) 따라서 메모리를 할당받는 것이고, <code class="language-plaintext highlighter-rouge">const</code>를 사용하면 재할당을 방지할 수 있다. <code class="language-plaintext highlighter-rouge">let</code>의 경우에도 재선언을 방지하기 때문에 변수관리가 쉽다.</p>
 
-<p>이러한 문제점들을 방지하기 위한 방법들이 있다</p>
-
-<h2 id="즉시-실행-함수">즉시 실행 함수</h2>
-<p>즉시 실행 함수는 한번만 실행되므로 이를 이용해서 변수의 유효 범위를 제한한다(지역변수로)</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">(){</span>
-  <span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">jongbin</span><span class="dl">"</span><span class="p">;</span>
-<span class="p">}());</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>   <span class="c1">// error</span>
-</code></pre></div></div>
-
-<h2 id="네임스페이스-객체">네임스페이스 객체</h2>
-<p>전역에 객체를 생성하고 객체 내에 객체를 생성해 계층적으로 관리할 수 있다. <br />
-( 중복을 방지할 수 있으나 전역 변수로 선언되는 것은 동일하다 )</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
-
-<span class="nx">obj</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">jongbin</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-</code></pre></div></div>
-
-<h2 id="모듈-패턴">모듈 패턴</h2>
-<p>클래스를 모방해서 변수와 함수를 모아 즉시 실행 함수로 감싸 하나의 모듈로써 만든다.</p>
-
-<p>네임스페이스의 오염을 막고, 정보은닉에도 활용된다.</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Mo</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(){</span>
-  <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">jongbin</span><span class="dl">"</span><span class="p">;</span>
-
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">hi</span><span class="p">(){</span>
-      <span class="k">return</span> <span class="nx">name</span><span class="o">+</span><span class="dl">"</span><span class="s2"> Hi!</span><span class="dl">"</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="nx">bye</span><span class="p">(){</span>
-      <span class="k">return</span> <span class="nx">name</span><span class="o">+</span><span class="dl">"</span><span class="s2"> Bye!</span><span class="dl">"</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}())</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Mo</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// undifined (정보은닉)</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Mo</span><span class="p">.</span><span class="nx">hi</span><span class="p">());</span>     <span class="c1">// jongbin Hi!</span>
-</code></pre></div></div>
-<p>외부에서 <code class="language-plaintext highlighter-rouge">Mo</code>내부의 <code class="language-plaintext highlighter-rouge">name</code>이라는 변수를 참조할 수 없다</p>
-
-<h2 id="es6-모듈">ES6 모듈</h2>
-<p>파일 자체의 독자적인 모듈 스코프를 제공한다.<br />
-(모듈 내에서 <code class="language-plaintext highlighter-rouge">var</code>키워드로 선언한 변수는 전역변수가 아니다)<br />
-<del>그렇다면 const, let 키워드는 해당이 안되는건가???</del></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"nodule"</span> <span class="na">src=</span><span class="s">"lib.mjs"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"nodule"</span> <span class="na">src=</span><span class="s">"app.mjs"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div></div>
-<p>ES6의 모듈은 구형 브라우저에서는 작동하지 않는다. 또한 트랜스파일링이나 번들링이 필요하므로 Webpack을 더 사용한다.</p>
-
-<p class="notice"><strong>* 트랜스파일링</strong>: 한 언어로 작성된 소스코드를 비슷한 수준의 추상화(Abstraction)를 가진 다른 언어로 변환하는 것<br />
-<strong>* 번들링</strong>: 여러개의 파일을 모아서 하나로 만드는 것<br />
-<strong>* Webpack</strong>: 오픈 소스 자바스크립트 모듈 번들러</p>
+<p>따라서 보통의 경우에는 <code class="language-plaintext highlighter-rouge">const</code>를 사용하다가 재할당이 필요한 변수에 <code class="language-plaintext highlighter-rouge">let</code>키워드를 사용하는 것이 좋다고 한다</p>
 
 <p><br />
 <br /></p>
@@ -541,7 +539,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-06">September 6, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-10">September 10, 2021</time></p>
 
       </footer>
 
@@ -550,23 +548,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+14%EC%9E%A5+%EC%A0%84%EC%97%AD+%EB%B3%80%EC%88%98%EC%9D%98+%EB%AC%B8%EC%A0%9C%EC%A0%90%20http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive14%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+15%EC%9E%A5+var%2C+let%2C+const%20http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive15%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive14%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive15%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive14%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive15%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/deepdive/deepDive13/" class="pagination--pager" title="[Deep Dive] 13장 스코프
+      <a href="/deepdive/deepDive14/" class="pagination--pager" title="[Deep Dive] 14장 전역 변수의 문제점
 ">이전</a>
     
     
-      <a href="/deepdive/deepDive15/" class="pagination--pager" title="[Deep Dive] 15장 var, let, const
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -590,7 +587,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/deepdive/deepDive15/" rel="permalink">[Deep Dive] 15장 var, let, const
+        <a href="/deepdive/deepDive14/" rel="permalink">[Deep Dive] 14장 전역 변수의 문제점
 </a>
       
     </h2>
@@ -608,14 +605,14 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 분 소요
+          2 분 소요
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">var, let, const의 차이
+    <p class="archive__item-excerpt" itemprop="description">전연 변수의 무분별한 사용은 위험!
 </p>
   </article>
 </div>
