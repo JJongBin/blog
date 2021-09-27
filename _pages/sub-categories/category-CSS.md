@@ -1,7 +1,7 @@
 ---
-title: "HTML"
+title: "CSS"
 layout: archive
-permalink: /categories/HTML
+permalink: /categories/CSS
 author_profile: true
 sidebar_main: true
 ---
