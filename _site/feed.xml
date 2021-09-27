@@ -1,4 +1,443 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-09-10T01:51:13+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">[Deep Dive] 15장 var, let, const</title><link href="http://localhost:4502/deepdive/deepDive15/" rel="alternate" type="text/html" title="[Deep Dive] 15장 var, let, const" /><published>2021-09-10T00:00:00+09:00</published><updated>2021-09-10T00:00:00+09:00</updated><id>http://localhost:4502/deepdive/deepDive15</id><content type="html" xml:base="http://localhost:4502/deepdive/deepDive15/">&lt;h1 id=&quot;var-키워드&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var&lt;/code&gt; 키워드&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://jjongbin.github.io/blog//feed.xml" rel="self" type="application/atom+xml" /><link href="https://jjongbin.github.io/blog//" rel="alternate" type="text/html" /><updated>2021-09-27T17:18:57+09:00</updated><id>https://jjongbin.github.io/blog//feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">HTML 개요</title><link href="https://jjongbin.github.io/blog//html/html/" rel="alternate" type="text/html" title="HTML 개요" /><published>2021-09-27T00:00:00+09:00</published><updated>2021-09-27T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//html/html</id><content type="html" xml:base="https://jjongbin.github.io/blog//html/html/">&lt;h1 id=&quot;1-html-css-js&quot;&gt;1. HTML, CSS, JS&lt;/h1&gt;
+&lt;h2 id=&quot;1-1-html-hyper-text-markup-language&quot;&gt;1-1. HTML (Hyper Text Markup Language)&lt;/h2&gt;
+
+&lt;p&gt;HTML은 &lt;u&gt;하이퍼텍스트 마크업 언어&lt;/u&gt; (브라우저로 보여준다)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;하이퍼 텍스트: 이동하기 위한 요소&lt;/li&gt;
+  &lt;li&gt;마크업 언어: 표현하는 것을 기술(정의)하는 기능의 언어 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&amp;gt;&lt;/code&gt; 꺽쇠기호로 표현)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;1-2-css-cascading-style-sheets&quot;&gt;1-2. CSS (Cascading Style Sheets)&lt;/h2&gt;
+&lt;p&gt;CSS는 HTML이나 XML로 작성된 문서의 표시 방법을 기술하기 위한 &lt;u&gt;스타일 시트 언어&lt;/u&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;html과 css를 구분해서 사용자 환경에 따라 사용자에게 웹페이지를 다르게 보여줄 수 있다&lt;/li&gt;
+  &lt;li&gt;어떤 요소의 색상이나 모양, 크기, 배치 등(스타일, 레이아웃)을 지정해줄 수 있다&lt;/li&gt;
+  &lt;li&gt;하나의 HTML에 여러개의 css가 적용, 여러 HTML에 같은 css를 적용할 수 있다&lt;/li&gt;
+  &lt;li&gt;UX를 위해서 사용하기도함 (편리성)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;1-3-jsjavascipt&quot;&gt;1-3. JS(JavaScipt)&lt;/h2&gt;
+&lt;p&gt;JavaScript는 &lt;u&gt;컴파일 프로그래밍 언어&lt;/u&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;동적인 요소를 표현해주고 사용자와의 통신(인터랙션)이 가능하도록 해준다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-웹브라우저&quot;&gt;2. 웹브라우저&lt;/h1&gt;
+&lt;p&gt;인터넷을 통해 데이터들을 통신할 수 있는 기능을 제공하는 응용 프로그램&lt;/p&gt;
+
+&lt;h2 id=&quot;2-1-웹-표준-web-standards&quot;&gt;2-1. 웹 표준 (Web Standards)&lt;/h2&gt;
+&lt;p&gt;브라우저마다 해석하는 방식에 차이가 있다  ➞  같은 기능으로 동작하도록 표준 지정(W3C)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;표준화 이전에 독자적인 플러그인을 사용하기도 했으므로 선택의 폭이 매우 좁았었다&lt;/li&gt;
+  &lt;li&gt;브라우저마다 스타일이 다를 수는 있다 (같은 기능을 함)&lt;/li&gt;
+  &lt;li&gt;HTML5 - 2014년에 공식 표준화됨&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-2-웹-접근성-web-accessibility&quot;&gt;2-2. 웹 접근성 (Web Accessibility)&lt;/h2&gt;
+&lt;p&gt;일시적으로나 어떤 상황에서든 웹사이트를 이용할 수 있도록 하는 것(마우스타자판, 음성인식 등)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;일반적인 브라우저를 이용하기 어려운 경우 브라우징을 할 수 있도록 도와주는 역할을 하게 됨&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-3-웹-호환성cross-browsing&quot;&gt;2-3. 웹 호환성(Cross Browsing)&lt;/h2&gt;
+&lt;p&gt;웹브라우저에 상관없이 의도한대로 기능 동작하는 것(크로스브라우징)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;브라우저에 따라 다른 기능을 할 수도 있음 -&amp;gt; 하지만 표준화되면서 대부분 같은 기능을 함&lt;/li&gt;
+  &lt;li&gt;어떤 브라우저를 이용하더라도 의도된 동작을 수행하도록 함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;3-html-문법&quot;&gt;3. HTML 문법&lt;/h1&gt;
+&lt;p&gt;HTML을 작성할 때에는 &lt;strong&gt;태그(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt; &amp;gt;&lt;/code&gt;)&lt;/strong&gt;라는 표기법으로 작성하고 태그의 이름은 HTML5 웹 표준에 맞게 작성한다&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;태그이름&amp;gt;&lt;/span&gt; 요소의 내용 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/태그이름&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;jongbin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;태그의 시작을 알리는 여는 태그 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;태그의 이름&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;태그의 끝을 알리는 닫는 태그 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;/태그의 이름&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;여는 태그와 닫는 태그 사이에 요소의 내용을 입력&lt;/li&gt;
+  &lt;li&gt;닫는 태그가 없는 태그들도 존재한다 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;input&amp;gt;&lt;/code&gt; 등)&lt;/li&gt;
+  &lt;li&gt;대소문자 구분 x ( But 소문자를 권장 ) - 협업을 위해, 유지보수를 위해(가독성)&lt;/li&gt;
+  &lt;li&gt;개행(줄바꿈)을 무시한다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;3-1-빈-요소-empty-element&quot;&gt;3-1. 빈 요소 (Empty Element)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;내용이 없는 태그 ➞ &lt;u&gt;닫는 태그가 존재하지 않는다&lt;/u&gt;&lt;/li&gt;
+  &lt;li&gt;꺽쇄&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt; &amp;gt;&lt;/code&gt;내부 마지막에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt;를 붙이는건 생략가능하지만 붙여서 명시해주는 것이 좋다&lt;/li&gt;
+  &lt;li&gt;일관성있게 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt;를 붙이면 전부 다 붙이고 그렇지 않으면 전부 다 붙이지 않는게 좋다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;빈 요소&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;기능&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;줄바꿈&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;hr&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;내용의 구분(수평선)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;img&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;이미지 삽입&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;메타데이터 정의&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;input&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;입력요소&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;3-2-요소의-중첩-nesting&quot;&gt;3-2. 요소의 중첩 (Nesting)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;요소 내부의 내용으로서 요소를 삽입할 수 있다 (상하관계)&lt;/li&gt;
+  &lt;li&gt;포함관계, 부모자식관계(외부태그가 부모, 내부태그가 자식, 인접한 태그 형제)&lt;/li&gt;
+  &lt;li&gt;요소는 겹쳐질 수 없다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;div&lt;/code&gt;내부에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt;태그를 삽입하려는 목적이었으나, 순서가 잘못됨(겹쳐짐) -&amp;gt; 문법 에러 발생!&lt;/p&gt;
+
+&lt;h2 id=&quot;3-3-주석&quot;&gt;3-3. 주석&lt;/h2&gt;
+
+&lt;p&gt;브라우저는 주석을 해석하지 않는다 (메모의 역할, 임시로 사용하지 않도록)&lt;/p&gt;
+
+&lt;p&gt;HTML의 주석 표현은 다음과 같다. 앞뒤를 각각 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;!--&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--&amp;gt;&lt;/code&gt;로 감싼다&lt;/p&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- &amp;lt;p&amp;gt;jongbin&amp;lt;/p&amp;gt; --&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;브라우저가 주석의 시작부분(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;!--&lt;/code&gt;)를 만나게 되면 주석이 끝나는 부분(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--&amp;gt;&lt;/code&gt;)를 만날때 까지 무시하게 된다 따라서 주석 내부의 주석은 잘못될 가능성이 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- &amp;lt;div class=&quot;box&quot;&amp;gt;
+  &amp;lt;!-- &amp;lt;div class=&quot;item&quot;&amp;gt;1&amp;lt;/div&amp;gt; --&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;3&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt; --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;원래 주석이었던 item 클래스의 1은 box 클래스 전부를 주석처리하면서 이상한 주석처리로 바뀌게 됨 (&lt;strong&gt;주의!&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;h2 id=&quot;3-4-html-문서의-구조&quot;&gt;3-4. HTML 문서의 구조&lt;/h2&gt;
+
+&lt;p&gt;HTML 문서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;html&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;doby&amp;gt;&lt;/code&gt;를 필수로 포함해야 한다&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;     // HTML 버전 명시 (html5)
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;              // root 요소
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;          // 웹페이지의 정보명시(사용자에게 보여지지 x)
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;          // 보여지는 컨텐츠
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt;는 버전을 명시한다 생략해도 되지만 관습적으로 명시한다&lt;/li&gt;
+  &lt;li&gt;모든 태그들은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;html&amp;gt;&amp;lt;/html&amp;gt;&lt;/code&gt;에 포함되어야 한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;▶️ DOCTYPE&lt;/h3&gt;
+
+&lt;p&gt;Document type의 약자로 버전을 명시한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;관습적으로 문서의 제일 위에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt;(HTML5)이라고 명시한다&lt;/li&gt;
+  &lt;li&gt;html 이외의 버번의 명시는 다음과 같다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- XHTML 1.0 문서 선언 --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Strict --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Transitional --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Frameset --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
+   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;&amp;gt;&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- XHTML 1.1 문서 선언 --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; 
+   &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&amp;gt;&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- HTML 4.01 문서 선언 --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Strict --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;
+   &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Transitional --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
+   &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Frameset --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Frameset//EN&quot;
+   &quot;http://www.w3.org/TR/html4/frameset.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;출처: &lt;a href=&quot;https://dasima.xyz/doctype-html/&quot;&gt;https://dasima.xyz/doctype-html/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3&gt;▶️ head 태그&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;head&lt;/code&gt;태그에는 문서의 정보(메타데이터)를 가진다&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;한개의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt;요소를 포함해야 한다&lt;/li&gt;
+  &lt;li&gt;생략도 가능하지만 &lt;u&gt;생략하지 않는 것을 권장&lt;/u&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3&gt;▶️ body 태그&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;body&lt;/code&gt; 태그 내부에는 모든 내용의 요소들이 담긴다&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;한개의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;body&lt;/code&gt; 태그만 존재할 수 있다&lt;/li&gt;
+  &lt;li&gt;일반 요소들처럼 style을 입힐 수 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-5-태그의-구분-특성-블록-인라인&quot;&gt;3-5. 태그의 구분 (특성, 블록-인라인)&lt;/h2&gt;
+
+&lt;h3&gt;▶️ 수많은 태그들을 두가지의 특징으로 나눌 수 있다&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;구획을 나누는 태그 (layout)
+    &lt;ul&gt;
+      &lt;li&gt;여러가지 요소를 묶어 그룹화한다&lt;/li&gt;
+      &lt;li&gt;내용없이 태그만 사용하면 눈에 보이지 않는다&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;header&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;section&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;footer&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt;&lt;/code&gt;…&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;그 자체로 요소인 태그
+    &lt;ul&gt;
+      &lt;li&gt;단독으로 사용해도 바로 보여진다&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;button&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;img&amp;gt;&lt;/code&gt;…&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3&gt;▶️ 블록(block)요소와 인라인(inline)요소&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;블록(block)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;블록요소는 좌우로 가능한 넓은 범위를 차지하려고 한다&lt;/li&gt;
+      &lt;li&gt;한줄을 모두 차지한다&lt;/li&gt;
+      &lt;li&gt;자동으로 개행이 된다&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;li&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;p&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;…&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;인라인(inline)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;어느 곳에서나 가능하다&lt;/li&gt;
+      &lt;li&gt;요소의 내용만큼만 공간을 차지한다&lt;/li&gt;
+      &lt;li&gt;블록 요소를 포함할 수 없다&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;span&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;a&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;button&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;i&amp;gt;&lt;/code&gt;…&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul class=&quot;notice&quot;&gt;
+  &lt;li&gt;인라인 요소는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;height&lt;/code&gt;가 적용되지 x&lt;/li&gt;
+  &lt;li&gt;인라인 요소는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;width&lt;/code&gt;가 적용되지 x&lt;/li&gt;
+  &lt;li&gt;블록 요소는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vertical-align&lt;/code&gt; 이 적용되지 x&lt;/li&gt;
+  &lt;li&gt;블록 요소는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-align&lt;/code&gt;이 적용되지 x&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-6-콘텐츠-카테고리&quot;&gt;3-6. 콘텐츠 카테고리&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;하나의 요소가 여러 카테고리로 분류될 수 있다(1:n 관계)&lt;/li&gt;
+  &lt;li&gt;MDN에 어느 카테고리에 해당하는지 명시되어 있다(기술 요약)&lt;/li&gt;
+  &lt;li&gt;HTML5에서 비슷한 특징으로 나누어 &lt;u&gt;7가지 카테고리&lt;/u&gt;로 세분화&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol class=&quot;notice&quot;&gt;
+  &lt;li&gt;메타데이터 콘텐츠 (Metadata Content)
+    &lt;ul&gt;
+      &lt;li&gt;문서의 메타데이터, 다른 문서를 가르키는 링크 등을 나타내는 요소&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;플로우 콘텐츠 (Flow Content)
+    &lt;ul&gt;
+      &lt;li&gt;웹 페이지 상에 일부 메타데이터를 제외하고 거의 모든 요소.&lt;/li&gt;
+      &lt;li&gt;보통 텍스트나 임베디드 콘텐츠를 포함&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;body&amp;gt;&lt;/code&gt;의 내용이 흐름에 따라 배치되기 때문에 플로우 콘텐츠라고 함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;섹션 콘텐츠 (Section Content)
+    &lt;ul&gt;
+      &lt;li&gt;웹 문서의 구획을 나눌 때 사용&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;헤딩 콘텐츠 (Heading Content)
+    &lt;ul&gt;
+      &lt;li&gt;섹션의 제목과 관련된 요소&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;프레이징 콘텐츠 (Phrasing Content)
+    &lt;ul&gt;
+      &lt;li&gt;문단에서 텍스트를 마크업 할 때 사용&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;임베디드 콘텐츠 (Embedded Content)
+    &lt;ul&gt;
+      &lt;li&gt;이미지나 비디오 등 외부 소스를 가져오거나 삽입할 때 사용되는 요소 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;img&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;video&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;audio&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iframe&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;canvas&lt;/code&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;인터랙티브 콘텐츠 (Interactive Content)
+    &lt;ul&gt;
+      &lt;li&gt;사용자와의 상호작용을 위한 컨텐츠 요소&lt;/li&gt;
+      &lt;li&gt;버튼을 클릭하거나, 텍스트를 입력 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;form&lt;/code&gt; - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;input&lt;/code&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;4-참고&quot;&gt;4. 참고&lt;/h1&gt;
+
+&lt;h2 id=&quot;4-1-웹-에디터편집기&quot;&gt;4-1. 웹 에디터(편집기)&lt;/h2&gt;
+&lt;p&gt;HTML 문법에 맞춰 편리하게 작성할 수 있도록 도와주는 편집기&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Atom, Notepad++, Sublime Text, Visual Studio Code …&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;온라인 웹 에디터&lt;br /&gt;
+&lt;a href=&quot;https://jsbin.com&quot;&gt;https://jsbin.com&lt;/a&gt;, &lt;a href=&quot;https://replit.com&quot;&gt;https://replit.com&lt;/a&gt;, &lt;a href=&quot;https://codepen.io&quot;&gt;https://codepen.io&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;4-2-통합개발환경-ide&quot;&gt;4-2. 통합개발환경 (IDE)&lt;/h2&gt;
+&lt;p&gt;개발을 할때 필요한 여러 툴들을 하나의 프로그램을 통해 사용할 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;편집기와 포함관계&lt;/li&gt;
+  &lt;li&gt;편집기, 빌더, 디버거, 플러그인 등&lt;/li&gt;
+  &lt;li&gt;Visual Studio Code, IntelliJ, Xcode, Eclipse …&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;4-3-단축키&quot;&gt;4-3. 단축키&lt;/h2&gt;
+
+&lt;h3&gt;▶️ VS 단축키&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;가능&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;키&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 창 닫기&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;w&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;닫은 창 다시 열기&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Shift&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;사이드바 토글&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;사이드바 - 탐색기&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Shift&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;e&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;사이드바 - 전체검색&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Shift&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;f&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;에디터 확대&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;에디터 축소&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;▶️ 소스코드 편집&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;키&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;들여쓰기&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tab&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;]&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;내어쓰기&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Shift&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tab&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;아래에 행 삽입&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Enter&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;위에 행 삽입&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Shift&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Enter&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 행 이동&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Opt&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;⬆️/⬇️&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 행 복사&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Shift&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;⬆️/⬇️&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;현재 행 삭제&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Shift&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;주석&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cmd&lt;/code&gt;+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="HTML" /><category term="HTML" /><summary type="html">브라우저와 HTML문법개요, 개발환경 및 단축키</summary></entry><entry><title type="html">[Deep Dive] 15장 var, let, const</title><link href="https://jjongbin.github.io/blog//deepdive/deepDive15/" rel="alternate" type="text/html" title="[Deep Dive] 15장 var, let, const" /><published>2021-09-10T00:00:00+09:00</published><updated>2021-09-10T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//deepdive/deepDive15</id><content type="html" xml:base="https://jjongbin.github.io/blog//deepdive/deepDive15/">&lt;h1 id=&quot;var-키워드&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var&lt;/code&gt; 키워드&lt;/h1&gt;
 &lt;h2 id=&quot;es6-이전의-변수-선언-키워드로서-중복선언이-가능한-키워드이다&quot;&gt;ES6 이전의 변수 선언 키워드로서 &lt;strong&gt;중복선언이 가능한 키워드&lt;/strong&gt;이다&lt;/h2&gt;
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -105,7 +544,7 @@
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">var, let, const의 차이</summary></entry><entry><title type="html">[Deep Dive] 14장 전역 변수의 문제점</title><link href="http://localhost:4502/deepdive/deepDive14/" rel="alternate" type="text/html" title="[Deep Dive] 14장 전역 변수의 문제점" /><published>2021-09-06T00:00:00+09:00</published><updated>2021-09-06T00:00:00+09:00</updated><id>http://localhost:4502/deepdive/deepDive14</id><content type="html" xml:base="http://localhost:4502/deepdive/deepDive14/">&lt;p&gt;전역변수를 많이 사용하다보면 의도하지 않은 재할당이 일어날 수 있고, 메모리를 잡아먹는 등 문제점들이 있다.
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">var, let, const의 차이</summary></entry><entry><title type="html">[Deep Dive] 14장 전역 변수의 문제점</title><link href="https://jjongbin.github.io/blog//deepdive/deepDive14/" rel="alternate" type="text/html" title="[Deep Dive] 14장 전역 변수의 문제점" /><published>2021-09-06T00:00:00+09:00</published><updated>2021-09-06T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//deepdive/deepDive14</id><content type="html" xml:base="https://jjongbin.github.io/blog//deepdive/deepDive14/">&lt;p&gt;전역변수를 많이 사용하다보면 의도하지 않은 재할당이 일어날 수 있고, 메모리를 잡아먹는 등 문제점들이 있다.
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;변수의-생명주기&quot;&gt;변수의 생명주기&lt;/h1&gt;
@@ -214,7 +653,7 @@
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">전연 변수의 무분별한 사용은 위험!</summary></entry><entry><title type="html">[Deep Dive] 13장 스코프</title><link href="http://localhost:4502/deepdive/deepDive13/" rel="alternate" type="text/html" title="[Deep Dive] 13장 스코프" /><published>2021-09-01T00:00:00+09:00</published><updated>2021-09-01T00:00:00+09:00</updated><id>http://localhost:4502/deepdive/deepDive13</id><content type="html" xml:base="http://localhost:4502/deepdive/deepDive13/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">전연 변수의 무분별한 사용은 위험!</summary></entry><entry><title type="html">[Deep Dive] 13장 스코프</title><link href="https://jjongbin.github.io/blog//deepdive/deepDive13/" rel="alternate" type="text/html" title="[Deep Dive] 13장 스코프" /><published>2021-09-01T00:00:00+09:00</published><updated>2021-09-01T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//deepdive/deepDive13</id><content type="html" xml:base="https://jjongbin.github.io/blog//deepdive/deepDive13/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice&quot;&gt;함수의 매개변수는 함수 몸체 내부에서만 참조할 수 있고, 함수 내부에서 선언한 변수는 함수 외부에서는 참조할 수 없고 함수 몸체 내에서만 참조할 수 있다.&lt;/p&gt;
 &lt;p&gt;왜냐하면 &lt;strong&gt;스코프&lt;/strong&gt;가 정해져있기 때문이다&lt;/p&gt;
@@ -371,7 +810,7 @@
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">변수에 접근할 수 있는 유효범위</summary></entry><entry><title type="html">instanceof</title><link href="http://localhost:4502/method/instanceof/" rel="alternate" type="text/html" title="instanceof" /><published>2021-08-30T00:00:00+09:00</published><updated>2021-08-30T00:00:00+09:00</updated><id>http://localhost:4502/method/instanceof</id><content type="html" xml:base="http://localhost:4502/method/instanceof/">&lt;p&gt;개인 프로젝트(car_management)를 진행하면서 웹페이지에서 check박스를 클릭해 db의 값을 수정하는 것이 목표였다. 프론트에서 데이터를 넘겨줬을때 백에서 request.body에 checkbox에서 지정한 name으로 값이 넘어오는 것을 알게 되었다. &lt;br /&gt;
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">변수에 접근할 수 있는 유효범위</summary></entry><entry><title type="html">instanceof</title><link href="https://jjongbin.github.io/blog//method/instanceof/" rel="alternate" type="text/html" title="instanceof" /><published>2021-08-30T00:00:00+09:00</published><updated>2021-08-30T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//method/instanceof</id><content type="html" xml:base="https://jjongbin.github.io/blog//method/instanceof/">&lt;p&gt;개인 프로젝트(car_management)를 진행하면서 웹페이지에서 check박스를 클릭해 db의 값을 수정하는 것이 목표였다. 프론트에서 데이터를 넘겨줬을때 백에서 request.body에 checkbox에서 지정한 name으로 값이 넘어오는 것을 알게 되었다. &lt;br /&gt;
 &lt;br /&gt;
 &lt;u&gt;문제는 여러개를 선택했을때는 배열값으로 넘어오고 한개를 선택했을때는 문자열값으로 데이터가 전달된다는 것이었다.&lt;/u&gt; &lt;br /&gt;
 &lt;br /&gt;
@@ -435,7 +874,7 @@ update를 진행하려면 mongose를 이용해 id값을 입력하고 update하�
 
 &lt;p&gt;객체와 배열, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;null&lt;/code&gt;값이 모두 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;object&lt;/code&gt;로 반환된다는 점이다. 이럴때 instanceof를 사용하면 좋을 것 같다!&lt;/p&gt;
 
-&lt;p&gt;&lt;del&gt;조금 허무하지만 instanceof라는 메소드를 알게되서 다행이라고 생각해야겠다..&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Method" /><category term="JavaScript" /><category term="Method" /><summary type="html">typeof와 instanceof</summary></entry><entry><title type="html">[Deep Dive] 12장 함수(2)</title><link href="http://localhost:4502/deepdive/deepDive12-2/" rel="alternate" type="text/html" title="[Deep Dive] 12장 함수(2)" /><published>2021-08-26T00:00:00+09:00</published><updated>2021-08-26T00:00:00+09:00</updated><id>http://localhost:4502/deepdive/deepDive12-2</id><content type="html" xml:base="http://localhost:4502/deepdive/deepDive12-2/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;조금 허무하지만 instanceof라는 메소드를 알게되서 다행이라고 생각해야겠다..&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Method" /><category term="JavaScript" /><category term="Method" /><summary type="html">typeof와 instanceof</summary></entry><entry><title type="html">[Deep Dive] 12장 함수(2)</title><link href="https://jjongbin.github.io/blog//deepdive/deepDive12-2/" rel="alternate" type="text/html" title="[Deep Dive] 12장 함수(2)" /><published>2021-08-26T00:00:00+09:00</published><updated>2021-08-26T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//deepdive/deepDive12-2</id><content type="html" xml:base="https://jjongbin.github.io/blog//deepdive/deepDive12-2/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;1-함수-호출&quot;&gt;1. 함수 호출&lt;/h1&gt;
 &lt;hr /&gt;
@@ -648,7 +1087,7 @@ update를 진행하려면 mongose를 이용해 id값을 입력하고 update하�
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">함수호출</summary></entry><entry><title type="html">[Deep Dive] 12장 함수(1)</title><link href="http://localhost:4502/deepdive/deepDive12-1/" rel="alternate" type="text/html" title="[Deep Dive] 12장 함수(1)" /><published>2021-08-17T00:00:00+09:00</published><updated>2021-08-17T00:00:00+09:00</updated><id>http://localhost:4502/deepdive/deepDive12-1</id><content type="html" xml:base="http://localhost:4502/deepdive/deepDive12-1/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">함수호출</summary></entry><entry><title type="html">[Deep Dive] 12장 함수(1)</title><link href="https://jjongbin.github.io/blog//deepdive/deepDive12-1/" rel="alternate" type="text/html" title="[Deep Dive] 12장 함수(1)" /><published>2021-08-17T00:00:00+09:00</published><updated>2021-08-17T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//deepdive/deepDive12-1</id><content type="html" xml:base="https://jjongbin.github.io/blog//deepdive/deepDive12-1/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;함수는 일련의 과정을 문으로 구현하고 코드 블록으로 감싸서 하나의 실행 단위로 정의한 것&lt;/strong&gt;&lt;/p&gt;
 
@@ -860,7 +1299,7 @@ update를 진행하려면 mongose를 이용해 id값을 입력하고 update하�
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">어떤 과정을 문으로 구현하고 코드 블록으로 감싸서 하나의 실행단위로 정의</summary></entry><entry><title type="html">[Deep Dive] 11장 원시값과 객체</title><link href="http://localhost:4502/deepdive/deepDive11-copy/" rel="alternate" type="text/html" title="[Deep Dive] 11장 원시값과 객체" /><published>2021-08-15T00:00:00+09:00</published><updated>2021-08-15T00:00:00+09:00</updated><id>http://localhost:4502/deepdive/deepDive11%20copy</id><content type="html" xml:base="http://localhost:4502/deepdive/deepDive11-copy/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">어떤 과정을 문으로 구현하고 코드 블록으로 감싸서 하나의 실행단위로 정의</summary></entry><entry><title type="html">[Deep Dive] 11장 원시값과 객체</title><link href="https://jjongbin.github.io/blog//deepdive/deepDive11/" rel="alternate" type="text/html" title="[Deep Dive] 11장 원시값과 객체" /><published>2021-08-15T00:00:00+09:00</published><updated>2021-08-15T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//deepdive/deepDive11</id><content type="html" xml:base="https://jjongbin.github.io/blog//deepdive/deepDive11/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;자바스크립트의 7가지 데이터 타입은 &lt;strong&gt;원시 타입&lt;/strong&gt;과 &lt;strong&gt;객체 타입&lt;/strong&gt;으로 구분됨&lt;/p&gt;
 
@@ -993,7 +1432,7 @@ ___________________________________________
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">자바스크립트는 대부분 객체로 구성되어 있다.</summary></entry><entry><title type="html">[Deep Dive] 10장 객체리터럴</title><link href="http://localhost:4502/deepdive/deepDive10/" rel="alternate" type="text/html" title="[Deep Dive] 10장 객체리터럴" /><published>2021-08-14T00:00:00+09:00</published><updated>2021-08-14T00:00:00+09:00</updated><id>http://localhost:4502/deepdive/deepDive10</id><content type="html" xml:base="http://localhost:4502/deepdive/deepDive10/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">자바스크립트는 대부분 객체로 구성되어 있다.</summary></entry><entry><title type="html">[Deep Dive] 10장 객체리터럴</title><link href="https://jjongbin.github.io/blog//deepdive/deepDive10/" rel="alternate" type="text/html" title="[Deep Dive] 10장 객체리터럴" /><published>2021-08-14T00:00:00+09:00</published><updated>2021-08-14T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//deepdive/deepDive10</id><content type="html" xml:base="https://jjongbin.github.io/blog//deepdive/deepDive10/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;1-객체&quot;&gt;1. 객체&lt;/h1&gt;
 &lt;hr /&gt;
@@ -1226,7 +1665,7 @@ ___________________________________________
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">자바스크립트는 대부분 객체로 구성되어 있다.</summary></entry><entry><title type="html">[Deep Dive] 09장 타입 변환과 단축 평가</title><link href="http://localhost:4502/deepdive/deepDive09/" rel="alternate" type="text/html" title="[Deep Dive] 09장 타입 변환과 단축 평가" /><published>2021-08-13T00:00:00+09:00</published><updated>2021-08-13T00:00:00+09:00</updated><id>http://localhost:4502/deepdive/deepDive09</id><content type="html" xml:base="http://localhost:4502/deepdive/deepDive09/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">자바스크립트는 대부분 객체로 구성되어 있다.</summary></entry><entry><title type="html">[Deep Dive] 09장 타입 변환과 단축 평가</title><link href="https://jjongbin.github.io/blog//deepdive/deepDive09/" rel="alternate" type="text/html" title="[Deep Dive] 09장 타입 변환과 단축 평가" /><published>2021-08-13T00:00:00+09:00</published><updated>2021-08-13T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//deepdive/deepDive09</id><content type="html" xml:base="https://jjongbin.github.io/blog//deepdive/deepDive09/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;1-타입-변환&quot;&gt;1. 타입 변환&lt;/h1&gt;
 &lt;hr /&gt;
@@ -1513,205 +1952,4 @@ ___________________________________________
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">자바스크립트의 모든 값에는 타입(type)이 있다!</summary></entry><entry><title type="html">[Deep Dive] 08장 제어문</title><link href="http://localhost:4502/deepdive/deepDive08/" rel="alternate" type="text/html" title="[Deep Dive] 08장 제어문" /><published>2021-08-12T00:00:00+09:00</published><updated>2021-08-12T00:00:00+09:00</updated><id>http://localhost:4502/deepdive/deepDive08</id><content type="html" xml:base="http://localhost:4502/deepdive/deepDive08/">&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;제어문은 조건에 따라 코드 블록을 &lt;u&gt;실행(조건문)하거나 반복 실행(반복문)&lt;/u&gt;할 때 사용.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;1-블록문&quot;&gt;1. 블록문&lt;/h1&gt;
-&lt;hr /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;블록문은 0개 이상의 문을 중괄호(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{}&lt;/code&gt;)로 묶은 것&lt;/li&gt;
-  &lt;li&gt;자바스크립트는 블록문을 하나의 실행 단위로 취급&lt;/li&gt;
-  &lt;li&gt;일반적으로 제어문이나 함수를 정의할 때 사용&lt;/li&gt;
-  &lt;li&gt;블록문은 &lt;strong&gt;자체종결성&lt;/strong&gt;을 가지므로 &lt;strong&gt;세미콜론(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;;&lt;/code&gt;)&lt;/strong&gt;을 붙이지 않음&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;2-조건문&quot;&gt;2. 조건문&lt;/h1&gt;
-&lt;hr /&gt;
-
-&lt;p&gt;조건문은 주어진 조건식의 평가 결과에 따라 코드 블록(블록문)의 실행을 결정.&lt;/p&gt;
-
-&lt;h2 id=&quot;if--else-문&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if ... else&lt;/code&gt; 문&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if ... else&lt;/code&gt;문은 주어진 조건식의 논리적 참, 거짓에 따라 실행 블록 결정.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;조건식&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 조건식이 참(true)일때 이 코드 블록 실행&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 조건식이 거짓(false)일때 이 코드 블록 실행&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;
-조건문을 여러개 만들 수 있는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;else if&lt;/code&gt;를 사용하면 된다&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;조건식1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 조건식1 참(true)일때 이 코드 블록 실행&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;조건식2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 조건식2 참(true)일때 이 코드 블록 실행&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;조건식3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 조건식3 참(true)일때 이 코드 블록 실행&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 모든 조건식이 거짓(false)일때 이 코드 블록 실행&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if ... else&lt;/code&gt;문은 위에서 순서대로 진행된다 (범위를 조건으로 했을때 주의)&lt;/p&gt;
-
-&lt;p&gt;대부분의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if ... else&lt;/code&gt;문은 &lt;strong&gt;&lt;u&gt;삼항 조건 연산자&lt;/u&gt;&lt;/strong&gt;로 표현할 수 있다&lt;/p&gt;
-
-&lt;h2 id=&quot;switch-문&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;switch&lt;/code&gt; 문&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;switch&lt;/code&gt;문은 주어진 표현식을 평가하여 그 값과 일치하는 표현식을 같는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;case&lt;/code&gt;문으로 실행 흐름을 옮김.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;표현식&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;표현식1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;표현식과&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;표현식1이&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;일치하면&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;실행&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;braek&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;표현식2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;표현식과&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;표현식2가&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;일치하면&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;실행&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;braek&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;표현식3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;표현식과&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;표현식3이&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;일치하면&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;실행&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;braek&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;아무것도&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;일치하지&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;않을때&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;실행&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;switch&lt;/code&gt;문의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;case&lt;/code&gt;를 보면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;break&lt;/code&gt;가 포함되어 있는데 코드 블록을 출하는 역할을 함.&lt;/p&gt;
-
-&lt;p&gt;&lt;u&gt;`braek`를 사용하지 않으면 `default`가 실행된다.&lt;/u&gt;&lt;/p&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;&lt;strong&gt;* 폴스루(fall through)&lt;/strong&gt;&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;switch&lt;/code&gt;문에서 의도적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;break&lt;/code&gt;를 생략하여 여러 조건을 동일하게 사용한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;3-반복문&quot;&gt;3. 반복문&lt;/h1&gt;
-&lt;hr /&gt;
-
-&lt;p&gt;반복문은 조건식의 평가 결과가 참인 경우 코드 블록을 반복해서 실행(거짓일 때까지 반복).&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&amp;lt; 자바스크립트의 반복문 대체 &amp;gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;forEach&lt;/code&gt; : 배열을 순회&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for...in&lt;/code&gt; : 객체의 프로퍼티를 열거&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for...of&lt;/code&gt; : 반복문 대체 [ES6]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;for-문&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt; 문&lt;/h2&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;변수선언&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;및&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;할당&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;조건식&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;증감식&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 조건식이 참인 경우 반복해서 실행 (조건식이 거짓일 때까지)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 1부터 10까지 출력&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;위 코드를 순서대로 살펴보면,&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;  i는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;let&lt;/code&gt;키워드를 사용해서 선언 및 1을 할당했고,&lt;/li&gt;
-  &lt;li&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i&amp;lt;=10&lt;/code&gt;이 조건식으로 있고 현재 i는 1이므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt; → &lt;u&gt;코드블록 실행&lt;/u&gt;&lt;/li&gt;
-  &lt;li&gt;  i를 출력 → 1 출력&lt;/li&gt;
-  &lt;li&gt;  증감식으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i++&lt;/code&gt;, 코드블록 실행 이후 i가 1증가하고,&lt;/li&gt;
-  &lt;li&gt;  이후 조건식의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt; 여부판단 → 코드블록 실행(조건식이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;일 때까지)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 무한루프&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(;;){&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 코드실행&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문의 무한루프는 이렇게 사용이 가능.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문은 중첩할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;while--문&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while &lt;/code&gt; 문&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while&lt;/code&gt;문은 주어진 조건식의 평가 결과가 참(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;)이면 코드블록을 계속해서 반복 실행.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;조건식&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 조건식이 참(true)이면 코드 반복 실행&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 1부터 9까지 출력&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;예시) 1 ~ 9 출력&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 무한루프&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 코드 실행&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;dowhile-문&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;do...while&lt;/code&gt; 문&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;do...while&lt;/code&gt;문은 코드블록을 먼저 실행하고 조건식을 평가 → 무조건 한번은 실행&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 코드 실행&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;조건문&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;4-break-문&quot;&gt;4. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;break&lt;/code&gt; 문&lt;/h1&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;break&lt;/code&gt;문은 코드 블록을 탈출하는데 &lt;strong&gt;레이블문, 반복문, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;switch&lt;/code&gt;문&lt;/strong&gt;을 탈출한다&lt;br /&gt;
- →   &lt;u&gt;이외 코드블록에서는 **SyntaxError(문법에러) 발생**&lt;/u&gt;&lt;/p&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;레이블문 : 식별자가 붙은 문을 말함&lt;/p&gt;
-
-&lt;p&gt;내부 코드블록이 아닌 외부 코드 블록을 탈출하려고 할때 식별자를 붙이고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;braek&lt;/code&gt;에 식별자를 명시.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(;;){&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;outer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;i가 50 일때 외부코드블록을 탈출시킨다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;5-continue-문&quot;&gt;5. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;continue&lt;/code&gt; 문&lt;/h1&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;continue&lt;/code&gt;문은 반복문의 코드 블록 실행을 건너뛰고 진행한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;i가 5일때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;continue&lt;/code&gt;가 있는 해당 지점부터 코드블록을 건너뛰고 i가 6일때로 진행된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">제어문은 조건에 따라 코드 블록을 실행(조건문)하거나 반복 실행(반복문)할 때 사용</summary></entry></feed>
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">자바스크립트의 모든 값에는 타입(type)이 있다!</summary></entry></feed>
