@@ -1,0 +1,1251 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>HTML 요소 2 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="구조, 목록과 표, 임베디드">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="HTML 요소 2">
+<meta property="og:url" content="https://jjongbin.github.io/blog//html/HTML%EC%9A%94%EC%86%8C2/">
+
+
+  <meta property="og:description" content="구조, 목록과 표, 임베디드">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-09-28T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-09-28T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://jjongbin.github.io/blog//html/HTML%EC%9A%94%EC%86%8C2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "https://jjongbin.github.io/blog//"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="icon" href="/assets/images/study.ico" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://jjongbin.github.io/blog//">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://jjongbin.github.io/blog//" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li class="nav__all-posts">
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">22</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/DeepDive" class="">DeepDive (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Method" class="">Method (1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+     
+        <span class="nav__sub-title">html</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/HTML" class="">HTML (4)</a></li>
+                    
+                
+            </ul>
+        <span class="nav__sub-title">css</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Blog" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="HTML 요소 2">
+    <meta itemprop="description" content="구조, 목록과 표, 임베디드">
+    <meta itemprop="datePublished" content="2021-09-28T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-09-28T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://jjongbin.github.io/blog//html/HTML%EC%9A%94%EC%86%8C2/" class="u-url" itemprop="url">HTML 요소 2
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#2-구조를-나타내는-요소">2. 구조를 나타내는 요소</a><ul><li><a href="#-div">▶ div</a></li><li><a href="#️-span">▶️ span</a></li><li><a href="#️-시멘틱-웹-semantic-web">▶️ 시멘틱 웹 (Semantic Web)</a><ul><li><a href="#--header">- header</a></li><li><a href="#--footer">- footer</a></li><li><a href="#--nav">- nav</a></li><li><a href="#--aside">- aside</a></li><li><a href="#--main">- main</a></li><li><a href="#--article">- article</a></li><li><a href="#--section">- section</a></li></ul></li></ul></li><li><a href="#3-목록과-표">3. 목록과 표</a><ul><li><a href="#️-ol">▶️ ol</a></li><li><a href="#️-ul">▶️ ul</a></li><li><a href="#️-li">▶️ li</a></li><li><a href="#️-dl-dt-dd">▶️ dl, dt, dd</a></li><li><a href="#️-table">▶️ table</a></li><li><a href="#️-테이블-구획">▶️ 테이블 구획</a></li><li><a href="#️-caption">▶️ caption</a></li></ul></li><li><a href="#4-임베디드-요소">4. 임베디드 요소</a><ul><li><a href="#️-이미지-유형">▶️ 이미지 유형</a></li><li><a href="#️-img">▶️ img</a></li><li><a href="#️-video">▶️ video</a></li><li><a href="#️-audio">▶️ audio</a></li><li><a href="#️-canvas">▶️ canvas</a></li><li><a href="#️-iframe">▶️ iframe</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="2-구조를-나타내는-요소">2. 구조를 나타내는 요소</h1>
+
+<h2 id="-div">▶ div</h2>
+<p>division 이라는 뜻을 가지고, 구간이나 구획을 분할하거나 묶을때 사용한다(사용빈도 최강!)</p>
+<ul>
+  <li><strong>block 요소</strong> → 가로로 차지할 수 있는 영역을 차지(부모의 영역)</li>
+  <li>내용이 없으면 보이지 않음(<code class="language-plaintext highlighter-rouge">height</code>가 0이므로)</li>
+  <li>의미를 가지고 있지 않은 것이 특징</li>
+</ul>
+
+<h2 id="️-span">▶️ span</h2>
+<p>구문 콘텐츠를 위한 요소</p>
+<ul>
+  <li><strong>inline 요소</strong> → 내용이 차지하는 부분만을 영역으로 차지</li>
+  <li>의미를 가지고 있지 않음</li>
+</ul>
+
+<h2 id="️-시멘틱-웹-semantic-web">▶️ 시멘틱 웹 (Semantic Web)</h2>
+
+<blockquote>
+  <p>Semantic: 의미론적인</p>
+</blockquote>
+
+<p>컴퓨터가 웹 상의 수많은 정보들을 보다 쉽게 해석할 수 있도록 나온 개념 (시멘틱 웹)</p>
+
+<p><img src="https://media.vlpt.us/images/cecy-coding/post/70193099-d78d-4d3d-8731-ad65009d8d80/semantic%20tag.svg" alt="semantic web" /><br />
+<small>(출처: <a href="https://eunsukim.me/posts/understanding-semantic-html">https://eunsukim.me/posts/understanding-semantic-html</a>)</small></p>
+
+<p>시멘틱 웹의 요소는 <code class="language-plaintext highlighter-rouge">div</code>와 동일하게 작동하지만 의미를 담고있다. (non-semantic: <code class="language-plaintext highlighter-rouge">div</code>, <code class="language-plaintext highlighter-rouge">span</code>)</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 기존의 웹 --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"header"</span><span class="nt">&gt;</span>title<span class="nt">&lt;/div&gt;</span>
+
+<span class="c">&lt;!-- 시멘틱 웹 --&gt;</span>
+<span class="nt">&lt;header&gt;</span>title<span class="nt">&lt;/header&gt;</span>
+</code></pre></div></div>
+<p>기존의 웹과의 차이를 살펴보면 한 눈에 알아보기 쉽고 보다 <strong>의미론적</strong>이기 때문에 내용을 유추할 수 있다.</p>
+
+<h4>시멘틱 웹의 장점</h4>
+<ul>
+  <li>검색엔진이 정보를 수집하는데 수월함 (검색엔진에 보다 노출)</li>
+  <li>웹접근성이 보다 좋다 (스크린리더)</li>
+  <li>알아보기 쉽기 때문에 생산성, 유지보수 측면에서 좋다</li>
+</ul>
+
+<h3 id="--header">- header</h3>
+<p>소개 및 탐색에 도움을 주는 콘텐츠를 나타낸다. (제목, 로고, 검색폼, 이름 등)</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;header&gt;</span> 
+    <span class="nt">&lt;h1&gt;</span> title <span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">header</code> 내에 <code class="language-plaintext highlighter-rouge">header</code>가 들어올 수는 없다 -&gt; 다른 플로우 컨텐츠에서는 사용이 가능</li>
+  <li>페이지 전체 제목, 글 하나하나의 제목 등으로 사용될 수 있다</li>
+</ul>
+
+<h3 id="--footer">- footer</h3>
+<p>일반적으로 구획 작성자, 저작권정보, 관련 문서, 연락처 등의 내용을 가진다 (보통 웹페이지 맨 아래에 위치)</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;footer&gt;</span>
+    <span class="nt">&lt;p&gt;</span>created by jongbin<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/footer&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">footer</code> 내에 <code class="language-plaintext highlighter-rouge">footer</code> 또는 <code class="language-plaintext highlighter-rouge">header</code>가 들어올 수 없다 -&gt; 다른 플로우 컨텐츠에서는 사용이 가능</li>
+</ul>
+
+<h3 id="--nav">- nav</h3>
+<p>현재페이지, 다른페이지로의 링크를 보여주는 구획</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;nav&gt;</span>
+  <span class="nt">&lt;span&gt;</span>Jongbin<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>address<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>age<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>phone<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li>현재 페이지가 어디에 위치하는지를 보여줄 수 있다</li>
+  <li>현재 페이지를 기준으로 상위페이지 혹은 하위페이지로 이동할 수 있는 링크를 가지고 있다</li>
+  <li>페이지의 이동기능을 제공하기 때문에 <code class="language-plaintext highlighter-rouge">a</code>태그를 가지고 있음</li>
+  <li>전체적인 메뉴를 다룰 수 있다</li>
+  <li>하나의 문서에서 여러개의 <code class="language-plaintext highlighter-rouge">nav</code>태그를 가질 수 있다</li>
+</ul>
+
+<h3 id="--aside">- aside</h3>
+<p>사이드바를 만들때 주로 사용, 본문과 큰 연관이 없고 간접적인 추가적인 정보를 제공하기 위한 구획</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;aside&gt;</span>
+    <span class="nt">&lt;p&gt;</span>부가적인 정보를 제공<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/aside&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li>다른 링크 또는 광고를 제공하기도 함</li>
+  <li>스타일링이 되지 않았을때는 글의 일부분처럼 보임 (css를 이용해서 보통 좌우로 옮김)</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="--main">- main</h3>
+<p><code class="language-plaintext highlighter-rouge">body</code>의 주요 콘텐프를 나타낸다(핵심내용)</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;header&gt;&lt;/header&gt;</span>
+<span class="nt">&lt;nav&gt;&lt;/nav&gt;</span>
+<span class="nt">&lt;main&gt;</span>
+    <span class="c">&lt;!-- 주요 내용 작성 --&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+<span class="nt">&lt;footer&gt;&lt;/footer&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">main</code>은 body내 <strong>무조건 하나</strong>만 사용됨</li>
+  <li>다른 요소의 <u>자식요소로 사용될 수 없다</u> (<code class="language-plaintext highlighter-rouge">body</code>만 부모요소로 올 수 있다)</li>
+  <li>IE에서는 지원하지 않는다 → <code class="language-plaintext highlighter-rouge">&lt;main role="main"&gt; 내용 &lt;/main&gt;</code>로 접근성 확보</li>
+</ul>
+
+<h3 id="--article">- article</h3>
+<p>독립적으로 구분해 <strong>배포하거나 재사용</strong>할 수 있는 구획</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;article&gt;</span>내용1<span class="nt">&lt;/article&gt;</span>
+    <span class="nt">&lt;article&gt;</span>내용2<span class="nt">&lt;/article&gt;</span>
+    <span class="nt">&lt;article&gt;</span>내용3<span class="nt">&lt;/article&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li>따로 사용되어도 단독적인 의미를 가질 수 있는 요소를 표현할 때 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">main</code>의 자식요소로 여러개 사용될 수 있다.</li>
+  <li>재사용이 가능</li>
+  <li><code class="language-plaintext highlighter-rouge">section</code>내에 여러개 <code class="language-plaintext highlighter-rouge">article</code>이 올 수 있고, 반대로 <code class="language-plaintext highlighter-rouge">article</code>내에 여러개의 <code class="language-plaintext highlighter-rouge">section</code>이 올 수 있다.</li>
+  <li>
+    <p>보통 각각의 article을 식별할 수 있도록 각각 제목을 넣어준다</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;article&gt;</span>
+  <span class="nt">&lt;header&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>article로 사용가능한 독단적인 영역<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+<span class="nt">&lt;/article&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="--section">- section</h3>
+<p>html문서의 독립적인 구획을 나타냄</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;section&gt;</span>내용1<span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;section&gt;</span>내용2<span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;section&gt;</span>내용3<span class="nt">&lt;/section&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li>제목태그를 사용해서 각각의 제목을 지정해 주기도 한다</li>
+</ul>
+
+<p><br /></p>
+
+<h4> article 태그와 section 태그의 차이</h4>
+
+<p><code class="language-plaintext highlighter-rouge">article</code>로 구분이 되면 <code class="language-plaintext highlighter-rouge">article</code>을 사용하고 별다른 의미를 부여할 수 없으면 <code class="language-plaintext highlighter-rouge">section</code>을 사용한다 → <u>특정한 의미가 있고 없고의 차이</u></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;main&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Jongbin<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;section&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>like something<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>food, play<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/section&gt;</span>
+  <span class="nt">&lt;section&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>intro<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>his age is 26! and his address is suwon<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/section&gt;</span>
+<span class="nt">&lt;main&gt;</span>
+</code></pre></div></div>
+<p>여기서 like something이나 intro는 단독으로 사용될 수 없다 따라서 <code class="language-plaintext highlighter-rouge">article</code>보다는 <code class="language-plaintext highlighter-rouge">section</code>이 알맞다</p>
+
+<p><br /></p>
+
+<h1 id="3-목록과-표">3. 목록과 표</h1>
+
+<p>목록태그는 크게 두가지로 구분할 수 있다.</p>
+<ol>
+  <li>순서가 있는 <strong>Ordered List</strong>(<code class="language-plaintext highlighter-rouge">ol</code>)</li>
+  <li>순서가 없는 <strong>Unordered List</strong>(<code class="language-plaintext highlighter-rouge">ul</code>)</li>
+</ol>
+
+<h2 id="️-ol">▶️ ol</h2>
+<p>순서가 있는 목록을 나타내는 태그</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;</span>첫번째<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>두번째<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>세번째<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">type</code>속성: 기본값은 1, 영어로 구분 (대소문자 A,a), 로마자(I)</li>
+  <li><code class="language-plaintext highlighter-rouge">start</code>속성: 시작점을 지정해줄 수 있다</li>
+  <li><code class="language-plaintext highlighter-rouge">value</code>속성: 특정위치의 순서값을 지정해줄 수 있다 (이후에 오는 요소의 순서는 해당 순서의 다음 순서부터 진행)</li>
+  <li><code class="language-plaintext highlighter-rouge">reverse</code>속성: 순서를 반대로 바꾼다</li>
+</ul>
+
+<h2 id="️-ul">▶️ ul</h2>
+<p>순서가 없는 목록을 나타내는 태그</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;</span>a<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>b<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>c
+        <span class="nt">&lt;ul&gt;</span>
+            <span class="nt">&lt;li&gt;</span>catch<span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;</span>carry<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li>중첩이 가능하다</li>
+  <li>ol과 중첩될 수 있다</li>
+  <li>
+    <p>ul과 ol은 관계없이 <code class="language-plaintext highlighter-rouge">list-style-type</code>으로 숫자또는 사각형, 원형으로 나타낼 수 있다</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center">값</th>
+          <th style="text-align: left">설명</th>
+          <th style="text-align: center">값</th>
+          <th style="text-align: left">설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center"><code class="language-plaintext highlighter-rouge">none</code></td>
+          <td style="text-align: left">장식 없음</td>
+          <td style="text-align: center"><code class="language-plaintext highlighter-rouge">lower-alpha</code></td>
+          <td style="text-align: left">소문자 영어(a, b, c)</td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><code class="language-plaintext highlighter-rouge">disc</code></td>
+          <td style="text-align: left">채워진 원형(기본값)</td>
+          <td style="text-align: center"><code class="language-plaintext highlighter-rouge">upper-alpha</code></td>
+          <td style="text-align: left">대문자 영어(A, B, C)</td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><code class="language-plaintext highlighter-rouge">circle</code></td>
+          <td style="text-align: left">속이 빈 원형</td>
+          <td style="text-align: center"><code class="language-plaintext highlighter-rouge">lower-roman</code></td>
+          <td style="text-align: left">로마자 숫자(소문자)</td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><code class="language-plaintext highlighter-rouge">square</code></td>
+          <td style="text-align: left">채워진 사각형</td>
+          <td style="text-align: center"><code class="language-plaintext highlighter-rouge">upper-roman</code></td>
+          <td style="text-align: left">로마자 숫자(대문자)</td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><code class="language-plaintext highlighter-rouge">demical</code></td>
+          <td style="text-align: left">숫자 형태</td>
+          <td style="text-align: center"> </td>
+          <td style="text-align: left"> </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">list-style-image</code>를 이용해서 기본형태가 아닌 이미지로 표현도 가능하다</p>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">ul</span> <span class="p">{</span> <span class="nl">list-style-image</span> <span class="p">:</span> <span class="sx">url('filepath')</span> <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">list-style-position</code>을 이용해서 위치를 지정할 수 있다
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">outside</code> : 블릿을 바깥에 위치(기본값)</li>
+      <li><code class="language-plaintext highlighter-rouge">inside</code> : 블릿을 내부에 위치</li>
+      <li><code class="language-plaintext highlighter-rouge">inherit</code> : 부모의 값을 상속받음</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="️-li">▶️ li</h2>
+<p>목록(리스트)에 포함되는 아이템을 정의할때 사용한다</p>
+<ul>
+  <li>ul태그 또는 ol태그 내부에 사용된다</li>
+</ul>
+
+<h2 id="️-dl-dt-dd">▶️ dl, dt, dd</h2>
+<p>설명 목록을 나타낸다</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dl&gt;</span>
+  <span class="nt">&lt;dt&gt;</span>1<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span>one<span class="nt">&lt;/dd&gt;</span>
+  
+  <span class="nt">&lt;dt&gt;</span>2<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span>two<span class="nt">&lt;/dd&gt;</span>
+  
+  <span class="nt">&lt;dt&gt;</span>3<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span>three<span class="nt">&lt;/dd&gt;</span>
+<span class="nt">&lt;/dl&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">dt</code>와 <code class="language-plaintext highlighter-rouge">dl</code>을 자식태그로 가진다</li>
+  <li>용어 사전이나 메타데이터를 표시할때 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">dt</code>: 용어</li>
+  <li><code class="language-plaintext highlighter-rouge">dd</code>: 설명</li>
+  <li>1:1, 1:n, n:1로 이루어질 수 있다(ex - 용어 하나에 여러 설명)</li>
+  <li><code class="language-plaintext highlighter-rouge">dt</code>, <code class="language-plaintext highlighter-rouge">dd</code>를 <code class="language-plaintext highlighter-rouge">div</code>로 감쌀 수 있지만(css목적), 형제요소로 사용되지 않아야한다</li>
+</ul>
+
+<h2 id="️-table">▶️ table</h2>
+<p>테이블을 나타내기 위한 요소</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>목록명1<span class="nt">&lt;th&gt;</span>
+    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>목록명2<span class="nt">&lt;th&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;td&gt;</span>내용1<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;td&gt;</span>내용2<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;th&gt;</code>: table head 제목을 나타냄(<code class="language-plaintext highlighter-rouge">scope</code>를 속성으로 사용할 수 있음 - 대표로 하는 범위)</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;td&gt;</code>: table date 값을 나타냄</li>
+  <li>빈칸을 나타내기 위해서는 <code class="language-plaintext highlighter-rouge">colspan</code>을 사용한다</li>
+</ul>
+
+<h2 id="️-테이블-구획">▶️ 테이블 구획</h2>
+<p>테이블을 보다 명시적으로 나눌 수 있다</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>목록명1<span class="nt">&lt;th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>목록명2<span class="nt">&lt;th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/thead&gt;</span>
+
+<span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>내용1<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>내용2<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/tbody&gt;</span>
+
+<span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>결과<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>종합결과<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">thead</code>: <code class="language-plaintext highlighter-rouge">th</code>가 들어가는 제목부분을 넣어준다</li>
+  <li><code class="language-plaintext highlighter-rouge">tbody</code>: 본문의 내용은 <code class="language-plaintext highlighter-rouge">tbody</code>로 감싼다</li>
+  <li><code class="language-plaintext highlighter-rouge">tfoot</code>: 마지막으로 <code class="language-plaintext highlighter-rouge">footer</code>의 부분은 <code class="language-plaintext highlighter-rouge">tfoot</code>으로 감싸준다</li>
+  <li><code class="language-plaintext highlighter-rouge">thead</code>, <code class="language-plaintext highlighter-rouge">tbody</code>, <code class="language-plaintext highlighter-rouge">tfoot</code>은 <code class="language-plaintext highlighter-rouge">tr</code>이 형제요소로 올 수 없다(웹표준)</li>
+</ul>
+
+<h2 id="️-caption">▶️ caption</h2>
+<p>설명 또는 제목을 나타낸다</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;caption&gt;</span>제목<span class="nt">&lt;/caption&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>...<span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>...<span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>...<span class="nt">&lt;/tfoot&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">caption</code>은 항상 <strong>최상단</strong>에 위치해야 한다</li>
+  <li><code class="language-plaintext highlighter-rouge">figure</code>가 함께 사용될 경우 <code class="language-plaintext highlighter-rouge">caption</code>을 사용하지 않고, <code class="language-plaintext highlighter-rouge">figurecaption</code>을 사용하는 것이 좋다</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="4-임베디드-요소">4. 임베디드 요소</h1>
+
+<h2 id="️-이미지-유형">▶️ 이미지 유형</h2>
+<p>특정 확장자를 웹브라우저가 지원할때 이미지가 정상적으로 출력된다</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">종류</th>
+      <th style="text-align: center">MIME</th>
+      <th style="text-align: left">확장자</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">JPEG</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">image/jpeg</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">.jpg</code>, <code class="language-plaintext highlighter-rouge">.jpeg</code>, <code class="language-plaintext highlighter-rouge">.jfif</code>, <code class="language-plaintext highlighter-rouge">.pjpeg</code>, <code class="language-plaintext highlighter-rouge">.pjp</code></td>
+      <td style="text-align: left">정지 이미지의 <strong>손실압축에 적합</strong>하다(저장될수록 손실되기 때문에 여러번 재저장하면 픽셀이 뭉개진다)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">PNG</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">image/png</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">.png</code></td>
+      <td style="text-align: left">원본이미지를 보다 정확하게 보여주거나 <strong>투명도 지원</strong>(무손실 압축, 파일크기가 비교적 크다)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">GIF</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">image/gif</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">.gif</code></td>
+      <td style="text-align: left">여러장으로 이루어져 <strong>애니메이션 표현</strong>이 가능(256개의 색을 표현가능)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">WEBP</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">image/webp</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">.webp</code></td>
+      <td style="text-align: left">구글이 만든 이미지 포멧으로 우수한 성능을 가지지만 <strong>사용할 수 있는 브라우저가 적다</strong>(파일크기가 작다)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SVG</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">image/svg+xml</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">.svg</code></td>
+      <td style="text-align: left"><strong>벡터이미지</strong>, 확대해도 깨지지 않음, XML언어로 구성되어 있다(이미지 임의 수정이 가능)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><small>SVG(벡터이미지)를 제외한 나머지는 레스터(laster)이미지이다 크게 확대했을경우 래스터이미지는 깨지지만 벡터이미지는 전혀 깨지지않음 (사용처가 다름)</small></p>
+
+<h2 id="️-img">▶️ img</h2>
+<p>이미지를 불러와서 삽입하는 태그(빈태그)</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"filePath"</span> <span class="na">alt=</span><span class="s">"대체텍스트"</span> <span class="na">width=</span><span class="s">"100"</span> <span class="na">height=</span><span class="s">"100"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">속성</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">src</code></td>
+      <td style="text-align: left">필수적이며, 이미지의 경로를 지정(상대경로/절대경로)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">alt</code></td>
+      <td style="text-align: left">정상적으로 이미지를 불러오지 못했을 경우 출력하는 텍스트(스크린리더가 읽음 - 웹접근성!)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">title</code></td>
+      <td style="text-align: left">마우스를 올렸을때 텍스트가 나오도록 할 수 있다</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">width</code></td>
+      <td style="text-align: left">이미지 픽셀기준으로 가로너비를 <strong>단위없이</strong> 숫자값을 입력(단독사용시 비율을 맞춤)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">height</code></td>
+      <td style="text-align: left">이미지 픽셀기준으로 세로높이를 <strong>단위없이</strong> 숫자값을 입력(단독사용시 비율을 맞춤)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">srcset</code></td>
+      <td style="text-align: left">* 하나의 경로만 지정하는 <code class="language-plaintext highlighter-rouge">src</code>속성과 다르게 <code class="language-plaintext highlighter-rouge">srcset</code>은 여러개의 경로를 지정해 반응형처럼 보여줄 수 있다 <br /> - 사용자의 환경에 맞춰 적절한 이미지를 로딩한다(작은 사이즈일수록 파일의 크기가 작음 → 효율적) <br /> - srcset은 IE는 지원하지 않는다 따라서 <code class="language-plaintext highlighter-rouge">srcset</code>과 함께 <code class="language-plaintext highlighter-rouge">src</code>를 지정해주는 것이 좋다 <br /> - 너비서술자(w): <code class="language-plaintext highlighter-rouge">srcset="filepath1 300w", filepath2 450w, filepath3 600w"</code> <br /> - 픽셀밀도서술자(x)도 존재하나 너비서술자가 사용하는데 편하다 <br /> - <code class="language-plaintext highlighter-rouge">@media</code>를 사용하는것을 권장 (개발자가 원하는 결과를 명시할 수 있다)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">sizes</code></td>
+      <td style="text-align: left">* 해당 범위에서의 크기를 지정할 수 있다 <br /> - min-width로 명시한다 <br /> - <code class="language-plaintext highlighter-rouge">sizes="(min-width: 600px) 600px, (min-width: 450px) 450px, 300px"</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="️-video">▶️ video</h2>
+<p>비디오파일을 삽입하는 태그</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;video</span> <span class="na">src=</span><span class="s">"filePath"</span><span class="nt">&gt;</span>failed loading video<span class="nt">&lt;/video&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>내부 텍스트는 비디오가 정상적으로 출력되지 않을때 출력된다</li>
+  <li><code class="language-plaintext highlighter-rouge">src</code>속성: 옵션이다 자식요소로 <code class="language-plaintext highlighter-rouge">&lt;source&gt;</code>로 지정해줄 수 있기 때문이다</li>
+  <li><code class="language-plaintext highlighter-rouge">controls</code>속성: boolean속성으로 기본적인 인터페이스가 제공됨(기본값 false)</li>
+  <li><code class="language-plaintext highlighter-rouge">autoplay</code>속성: boolean속성으로 자동재생되도록 한다 자동재생되지않는 경우가 있는데 비디오에 사운드가 포함된 경우 재동재생을 브라우저가 막는 경우가 있다(UX를 위해) → <code class="language-plaintext highlighter-rouge">muted</code>와 함께 사용</li>
+  <li><code class="language-plaintext highlighter-rouge">muted</code>속성: boolean속성으로 음소거된다</li>
+  <li><code class="language-plaintext highlighter-rouge">poster</code>속성: 기본적으로 첫 프레임이 섬네일로 출력 파일로 지정하는경우 해당 이미지가 출력된다</li>
+</ul>
+
+<h2 id="️-audio">▶️ audio</h2>
+<p>비디오가 동일하게 사용되며 오디오파일을 삽입하는 태그</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;audio&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"filePath1"</span> <span class="na">type=</span><span class="s">"audio/ogg; codecs=opus"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"filePath2"</span> <span class="na">type=</span><span class="s">"audio/ogg; codecs=corbis"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"filePath3"</span> <span class="na">type=</span><span class="s">"audio/ogg; codecs=mpeg"</span> <span class="nt">/&gt;</span>
+  정상적으로 출력되지 않을때 출력하는 텍스트
+<span class="nt">&lt;/audio&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li>여러개의 source를 지정해서 지원가능한 형식을 찾도록 할 수 있다</li>
+</ul>
+
+<h2 id="️-canvas">▶️ canvas</h2>
+<p>html로 마크업을 한 뒤 javascript를 이용해서 내부에 그림을 그린다</p>
+
+<h2 id="️-iframe">▶️ iframe</h2>
+<p>source를 프레임안에 띄워주는 태그</p>
+<ul>
+  <li>지도를 삽입할때 많이 사용한다</li>
+</ul>
+
+<p><br /></p>
+
+<p class="notice">다음 포스팅에서 이어서 진행하겠습니다!</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#html" class="page__taxonomy-item p-category" rel="tag">HTML</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#html" class="page__taxonomy-item p-category" rel="tag">HTML</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-28">September 28, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=HTML+%EC%9A%94%EC%86%8C+2%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fhtml%2FHTML%25EC%259A%2594%25EC%2586%258C2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fhtml%2FHTML%25EC%259A%2594%25EC%2586%258C2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fhtml%2FHTML%25EC%259A%2594%25EC%2586%258C2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/html/HTML%EC%9A%94%EC%86%8C1/" class="pagination--pager" title="HTML 요소 1
+">이전</a>
+    
+    
+      <a href="/html/HTML%EC%9A%94%EC%86%8C3/" class="pagination--pager" title="HTML 요소 3
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/html/HTML%EC%9A%94%EC%86%8C3/" rel="permalink">HTML 요소 3
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">폼 관련 요소
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/html/HTML%EC%9A%94%EC%86%8C1/" rel="permalink">HTML 요소 1
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">텍스트 요소
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/html/html/" rel="permalink">HTML 개요
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">브라우저와 HTML문법개요, 개발환경 및 단축키
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/deepdive/deepDive15/" rel="permalink">[Deep Dive] 15장 var, let, const
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">var, let, const의 차이
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
