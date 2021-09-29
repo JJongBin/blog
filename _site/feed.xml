@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://jjongbin.github.io/blog//feed.xml" rel="self" type="application/atom+xml" /><link href="https://jjongbin.github.io/blog//" rel="alternate" type="text/html" /><updated>2021-09-29T11:37:03+09:00</updated><id>https://jjongbin.github.io/blog//feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">전역속성</title><link href="https://jjongbin.github.io/blog//html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1/" rel="alternate" type="text/html" title="전역속성" /><published>2021-09-29T00:00:00+09:00</published><updated>2021-09-29T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1</id><content type="html" xml:base="https://jjongbin.github.io/blog//html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1/">&lt;h1 id=&quot;전역속성&quot;&gt;전역속성&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://jjongbin.github.io/blog//feed.xml" rel="self" type="application/atom+xml" /><link href="https://jjongbin.github.io/blog//" rel="alternate" type="text/html" /><updated>2021-09-29T12:28:19+09:00</updated><id>https://jjongbin.github.io/blog//feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">전역속성</title><link href="https://jjongbin.github.io/blog//html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1/" rel="alternate" type="text/html" title="전역속성" /><published>2021-09-29T00:00:00+09:00</published><updated>2021-09-29T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1</id><content type="html" xml:base="https://jjongbin.github.io/blog//html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1/">&lt;h1 id=&quot;전역속성&quot;&gt;전역속성&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;전역속성은 어떤태그에도 전부다 사용할 수 있다&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;️-id&quot;&gt;▶️ id&lt;/h2&gt;
@@ -131,7 +131,142 @@
   &lt;li&gt;boolean 값&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;display: none&lt;/code&gt;이 적용이 된다&lt;/li&gt;
   &lt;li&gt;css에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;display&lt;/code&gt;를 지정하면 보이게 된다&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="HTML" /><category term="HTML" /><summary type="html">html의 전역속성</summary></entry><entry><title type="html">메타데이터</title><link href="https://jjongbin.github.io/blog//html/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="alternate" type="text/html" title="메타데이터" /><published>2021-09-29T00:00:00+09:00</published><updated>2021-09-29T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//html/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0</id><content type="html" xml:base="https://jjongbin.github.io/blog//html/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0/">&lt;h1 id=&quot;메타데이터metadata&quot;&gt;메타데이터(Metadata)&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="HTML" /><category term="HTML" /><summary type="html">html의 전역속성</summary></entry><entry><title type="html">CSS개요</title><link href="https://jjongbin.github.io/blog//css/css%EA%B0%9C%EC%9A%94/" rel="alternate" type="text/html" title="CSS개요" /><published>2021-09-29T00:00:00+09:00</published><updated>2021-09-29T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//css/css%EA%B0%9C%EC%9A%94</id><content type="html" xml:base="https://jjongbin.github.io/blog//css/css%EA%B0%9C%EC%9A%94/">&lt;p&gt;&lt;img src=&quot;../../imgs/css3.png&quot; alt=&quot;css&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;css-cascading-style-sheets&quot;&gt;CSS (Cascading Style Sheets)&lt;/h1&gt;
+&lt;p&gt;HTML이나 XML로 작성된 문서의 표시 방법을 기술하기 위한 스타일 시트 언어이며 룰기반의 언어(Rule-based)이다&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Cascading: 흐르는 의미를 뜻하며, 어떤 스타일을 적용할지 우선순위를 정할 수 있다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;/* 중괄호(선언블럭)를 열고 닫는다 */&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;또는&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;selector&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;/* 속성: 값; */&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;현재 버전은 CSS3 모듈별로 버전이 업데이트된다(지원이 되는지 확인하는 것이 좋다)&lt;/li&gt;
+  &lt;li&gt;특정 요소, 선택자를 활용해서 요소에 스타일 규칙을 적용할 수 있다&lt;/li&gt;
+  &lt;li&gt;주석은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/* 내용 */&lt;/code&gt;으로 작성할 수 있다&lt;/li&gt;
+  &lt;li&gt;선언블럭내 각 값들 이후 세미콜론(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;;&lt;/code&gt;)를 붙힌다 (여러개 선언할 경우 무조건 &lt;strong&gt;필수&lt;/strong&gt;)&lt;/li&gt;
+  &lt;li&gt;선언 블럭내 코드들은 속성과 값이 쌍을 이룬다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-css를-적용하는-방법&quot;&gt;▶️ CSS를 적용하는 방법&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;내부 스타일(embedded)&lt;/li&gt;
+  &lt;li&gt;인라인 스타일(inline)&lt;/li&gt;
+  &lt;li&gt;외부 스타일(external)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;1-내부-스타일embedded&quot;&gt;1. 내부 스타일(embedded)&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&lt;/code&gt;내에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;style&amp;gt;&amp;lt;/style&amp;gt;&lt;/code&gt;을 생성해서 적용한다&lt;/p&gt;
+
+&lt;p&gt;브라우저가 html문서를 해석하다가 style을 만나면 css로 인식하고 해석한다&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1.0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Document&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 내부스타일 부분 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Hi Jongbin!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-인라인-스타일inline&quot;&gt;2. 인라인 스타일(inline)&lt;/h3&gt;
+&lt;p&gt;html 내부에서 하나의 요소에 적용하고 싶을때 사용한다&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;유지보수 측면에서 좋지 않기 때문에 권장하지 않는다&lt;/li&gt;
+  &lt;li&gt;요소의 태그 내 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;style&lt;/code&gt; 전역속성을 사용한다&lt;/li&gt;
+  &lt;li&gt;여러가지 스타일을 적용하기 위해서는 세미콜론(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;;&lt;/code&gt;)을 입력해서 구분한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1.0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Document&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 인라인 스타일 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;font-size:50px;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Hi Jongbin!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-외부-스타일external&quot;&gt;3. 외부 스타일(external)&lt;/h3&gt;
+&lt;p&gt;따로 css 파일을 생성해서 html에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;link&lt;/code&gt;태그를 이용해서 명시&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rel&lt;/code&gt;속성: 현재파일과 해당 파일이 어떤 관계인지를 명시&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;href&lt;/code&gt;속성: 파일의 경로&lt;/li&gt;
+  &lt;li&gt;빈태그이다&lt;/li&gt;
+  &lt;li&gt;&lt;u&gt;가장 권장하는 방법이다&lt;/u&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1.0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Document&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;파일의 경로&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Hi Jongbin!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;️-cascading-원칙&quot;&gt;▶️ Cascading 원칙&lt;/h2&gt;
+&lt;p&gt;css는 &lt;strong&gt;상속이 되므로&lt;/strong&gt; 지정한 스타일이 중복되어 무시되거나 덮어씌워진다. 따라서 &lt;strong&gt;우선순위&lt;/strong&gt;를 정해줘야 하는데 규칙은 다음과 같다&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;상속이 되므로 자식요소는 부모의 스타일을 덮어쓴다 (산속되지 않는 속성도 있음)&lt;/li&gt;
+  &lt;li&gt;동일한 스타일이라도 선언된 곳에 따라 우선순위가 정해진다&lt;/li&gt;
+  &lt;li&gt;적용범위가 작을 수록 우선된다&lt;/li&gt;
+  &lt;li&gt;코드상 뒤에 위치할수록 우선된다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;️-우선순위가-강한-정도&quot;&gt;▶️ 우선순위가 강한 정도&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;➡︎ 선언된 위치에 따라서&lt;/strong&gt;&lt;br /&gt;
+브라우저에 의해 정의된 스타일 &amp;lt; 개발자가 선언한 스타일 &amp;lt; 사용자가 구성한 스타일&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;➡︎ 적용범위에 따라서&lt;/strong&gt;&lt;br /&gt;
+tag(요소) 스타일 &amp;lt; class스타일(.클래스명) &amp;lt; id스타일(#아이디명) &amp;lt; 인라인스타일&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;우선순위가 낮을 경우 스타일이 무시된다&lt;/li&gt;
+  &lt;li&gt;css는 상속이 된다(상속되지 않는 속성도 존재)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;CSS의 프로퍼티나 기능 등 브라우저의 지원현황을 확인하고 싶은 경우 다음과 같은 사이트를 이용하면 좋다&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;브라우저 지원 : &lt;a href=&quot;https://caniuse.com/&quot;&gt;https://caniuse.com/&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;요소나 프로퍼티 기능 등의 설명: &lt;a href=&quot;https://developer.mozilla.org/ko/&quot;&gt;https://developer.mozilla.org/ko/&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CSS" /><category term="CSS" /><summary type="html">CSS 개요</summary></entry><entry><title type="html">메타데이터</title><link href="https://jjongbin.github.io/blog//html/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="alternate" type="text/html" title="메타데이터" /><published>2021-09-29T00:00:00+09:00</published><updated>2021-09-29T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//html/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0</id><content type="html" xml:base="https://jjongbin.github.io/blog//html/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0/">&lt;h1 id=&quot;메타데이터metadata&quot;&gt;메타데이터(Metadata)&lt;/h1&gt;
 
 &lt;p&gt;메타데이터는 &amp;lt;head&amp;gt;에 포함되는 내용으로 브라우저에 보여지지 않는 웹페이지의 정보를 가진다&lt;/p&gt;
 
@@ -2356,68 +2491,4 @@
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice--info&quot;&gt;이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.&lt;br /&gt;
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">변수에 접근할 수 있는 유효범위</summary></entry><entry><title type="html">instanceof</title><link href="https://jjongbin.github.io/blog//method/instanceof/" rel="alternate" type="text/html" title="instanceof" /><published>2021-08-30T00:00:00+09:00</published><updated>2021-08-30T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//method/instanceof</id><content type="html" xml:base="https://jjongbin.github.io/blog//method/instanceof/">&lt;p&gt;개인 프로젝트(car_management)를 진행하면서 웹페이지에서 check박스를 클릭해 db의 값을 수정하는 것이 목표였다. 프론트에서 데이터를 넘겨줬을때 백에서 request.body에 checkbox에서 지정한 name으로 값이 넘어오는 것을 알게 되었다. &lt;br /&gt;
-&lt;br /&gt;
-&lt;u&gt;문제는 여러개를 선택했을때는 배열값으로 넘어오고 한개를 선택했을때는 문자열값으로 데이터가 전달된다는 것이었다.&lt;/u&gt; &lt;br /&gt;
-&lt;br /&gt;
-update를 진행하려면 mongose를 이용해 id값을 입력하고 update하려는 값을 인자로 전달해주어야했기 때문에 어떻게 해야 수정하려는 값이 한개일 때 혹은 여러개일 때 어떻게 처리할지 고민하였다.&lt;/p&gt;
-
-&lt;p&gt;처음 생각한 방법은 다음과 같다.&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 전달된 값의 타입이 object일때&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// target의 길이만큼 반복&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;   
-        &lt;span class=&quot;c1&quot;&gt;// DB update&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// DB update&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;하지만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if(typeof target === &quot;object&quot;)&lt;/code&gt; 이 부분이 작동하지 않았었다. &lt;strong&gt;하지만 해당 글을 기록하면서 테스트를 해보다가 되는걸 알게되고 다시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typeof&lt;/code&gt;를 적용해보니 아주 잘 정상 작동한다…!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;어쨌든…! &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;instanceof&lt;/code&gt;의 결과를 보자면 제대로 작동했고 다음과 같다.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// DB update&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// DB update&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;instanceof&quot;&gt;instanceof&lt;/h2&gt;
-&lt;p&gt;instanceof는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;값을 반환 받을 수 있다.&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// typeof&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// object&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// instanceof&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;mdn문서를-확인해보았을때-정확하게-말하자면-다음과-같다&quot;&gt;MDN문서를 확인해보았을때 정확하게 말하자면 다음과 같다.&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;instanceof&lt;/code&gt; 연산자는 생성자의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prototype&lt;/code&gt; 속성이 객체의 프로토타입 체인 어딘가 존재하는지 판별합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;u&gt;또한 `instanof`는 생성자의 프로퍼티를 확인하는 것이기 때문에 내가 정의한 생성자함수로도 확인이 가능하다!&lt;/u&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;typeof의 문제점은 이런점이 있다.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// object&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// object&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// object&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;객체와 배열, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;null&lt;/code&gt;값이 모두 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;object&lt;/code&gt;로 반환된다는 점이다. 이럴때 instanceof를 사용하면 좋을 것 같다!&lt;/p&gt;
-
-&lt;p&gt;&lt;del&gt;조금 허무하지만 instanceof라는 메소드를 알게되서 다행이라고 생각해야겠다..&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Method" /><category term="JavaScript" /><category term="Method" /><summary type="html">typeof와 instanceof</summary></entry></feed>
+혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="DeepDive" /><category term="JavaScript" /><category term="DeepDive" /><summary type="html">변수에 접근할 수 있는 유효범위</summary></entry></feed>

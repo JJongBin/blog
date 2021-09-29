@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Deep Dive] 11장 원시값과 객체 | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="자바스크립트는 대부분 객체로 구성되어 있다.">
+<!-- begin _includes/seo.html --><title>CSS개요 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="CSS 개요">
 
 
   <meta name="author" content="원종빈">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="[Deep Dive] 11장 원시값과 객체">
-<meta property="og:url" content="https://jjongbin.github.io/blog//deepdive/deepDive11/">
+<meta property="og:title" content="CSS개요">
+<meta property="og:url" content="https://jjongbin.github.io/blog//css/css%EA%B0%9C%EC%9A%94/">
 
 
-  <meta property="og:description" content="자바스크립트는 대부분 객체로 구성되어 있다.">
-
-
-
+  <meta property="og:description" content="CSS 개요">
 
 
 
 
-  <meta property="article:published_time" content="2021-08-15T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-08-15T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-09-29T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2021-09-29T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://jjongbin.github.io/blog//deepdive/deepDive11/">
+
+<link rel="canonical" href="https://jjongbin.github.io/blog//css/css%EA%B0%9C%EC%9A%94/">
 
 
 
@@ -388,16 +388,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Deep Dive] 11장 원시값과 객체">
-    <meta itemprop="description" content="자바스크립트는 대부분 객체로 구성되어 있다.">
-    <meta itemprop="datePublished" content="2021-08-15T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-08-15T00:00:00+09:00">
+    <meta itemprop="headline" content="CSS개요">
+    <meta itemprop="description" content="CSS 개요">
+    <meta itemprop="datePublished" content="2021-09-29T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-09-29T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://jjongbin.github.io/blog//deepdive/deepDive11/" class="u-url" itemprop="url">[Deep Dive] 11장 원시값과 객체
+            <a href="https://jjongbin.github.io/blog//css/css%EA%B0%9C%EC%9A%94/" class="u-url" itemprop="url">CSS개요
 </a>
           </h1>
           
@@ -429,145 +429,147 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-원시값">1. 원시값</a></li><li><a href="#2-객체">2. 객체</a></li></ul>
+              <ul class="toc__menu"><li><a href="#css-cascading-style-sheets">CSS (Cascading Style Sheets)</a><ul><li><a href="#️-css를-적용하는-방법">▶️ CSS를 적용하는 방법</a><ul><li><a href="#1-내부-스타일embedded">1. 내부 스타일(embedded)</a></li><li><a href="#2-인라인-스타일inline">2. 인라인 스타일(inline)</a></li><li><a href="#3-외부-스타일external">3. 외부 스타일(external)</a></li></ul></li><li><a href="#️-cascading-원칙">▶️ Cascading 원칙</a></li><li><a href="#️-우선순위가-강한-정도">▶️ 우선순위가 강한 정도</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <p><br /></p>
+        <p><img src="../../imgs/css3.png" alt="css" /></p>
 
-<p>자바스크립트의 7가지 데이터 타입은 <strong>원시 타입</strong>과 <strong>객체 타입</strong>으로 구분됨</p>
+<h1 id="css-cascading-style-sheets">CSS (Cascading Style Sheets)</h1>
+<p>HTML이나 XML로 작성된 문서의 표시 방법을 기술하기 위한 스타일 시트 언어이며 룰기반의 언어(Rule-based)이다</p>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><strong>원시 타입</strong></th>
-      <th style="text-align: center"><strong>객체 타입</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">변경 불가능한 값</td>
-      <td style="text-align: center">변경 가능한 값</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">변수에 실제 값이 저장</td>
-      <td style="text-align: center">변수에 참조 값이 저장</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">값에 의한 전달</td>
-      <td style="text-align: center">참조에 의한 전달</td>
-    </tr>
-  </tbody>
-</table>
+<blockquote>
+  <p>Cascading: 흐르는 의미를 뜻하며, 어떤 스타일을 적용할지 우선순위를 정할 수 있다</p>
+</blockquote>
 
-<p class="notice--info"><strong>* 값에 의한 전달</strong><br />
-변수를 다른 변수에 할당할 때 원본의 원시값이 복사되어 전달</p>
-
-<p class="notice--info"><strong>* 참조에 의한 전달</strong><br />
-변수를 다른 변수에 할당할 때 원본의 참조값이 복사되어 전달</p>
-
-<p><br /></p>
-
-<h1 id="1-원시값">1. 원시값</h1>
-<hr />
-
-<p>원시 타입의 값은 <strong>변경 불가능한 값</strong> → 재할당을 할때 새로운 값을 생성<br />
-<del>교체한다고 하는게 맞는 느낌이다!</del></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>변수 age -&gt; 0x000000f2(주소)  |  26(값)
-___________________________________________                          
-새로 생성    0x00001222(주소)  |  27(값)
-___________________________________________                        
-
-           0x000000f2(주소)  |  undefined(값)
-변수 age -&gt; 0x00001222(주소)  |  27(값)
-___________________________________________                      
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* 중괄호(선언블럭)를 열고 닫는다 */</span>
+<span class="nt">element</span> <span class="nt">또는</span> <span class="nt">selector</span> <span class="p">{</span>
+    <span class="c">/* 속성: 값; */</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<p>원시 값을 재할당하면,</p>
+<ul>
+  <li>현재 버전은 CSS3 모듈별로 버전이 업데이트된다(지원이 되는지 확인하는 것이 좋다)</li>
+  <li>특정 요소, 선택자를 활용해서 요소에 스타일 규칙을 적용할 수 있다</li>
+  <li>주석은 <code class="language-plaintext highlighter-rouge">/* 내용 */</code>으로 작성할 수 있다</li>
+  <li>선언블럭내 각 값들 이후 세미콜론(<code class="language-plaintext highlighter-rouge">;</code>)를 붙힌다 (여러개 선언할 경우 무조건 <strong>필수</strong>)</li>
+  <li>선언 블럭내 코드들은 속성과 값이 쌍을 이룬다</li>
+</ul>
+
+<h2 id="️-css를-적용하는-방법">▶️ CSS를 적용하는 방법</h2>
+
 <ol>
-  <li>새로운 메모르 공간 확보</li>
-  <li>확보된 메모리에 값 저장</li>
-  <li>변수가 참조하는 메모리 변경</li>
+  <li>내부 스타일(embedded)</li>
+  <li>인라인 스타일(inline)</li>
+  <li>외부 스타일(external)</li>
 </ol>
 
-<p>값이 변하지 않아 이를 <strong>불변성</strong>이라고 함</p>
+<h3 id="1-내부-스타일embedded">1. 내부 스타일(embedded)</h3>
+<p><code class="language-plaintext highlighter-rouge">&lt;head&gt;&lt;/head&gt;</code>내에 <code class="language-plaintext highlighter-rouge">&lt;style&gt;&lt;/style&gt;</code>을 생성해서 적용한다</p>
+
+<p>브라우저가 html문서를 해석하다가 style을 만나면 css로 인식하고 해석한다</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
+
+    <span class="c">&lt;!-- 내부스타일 부분 --&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+        <span class="nt">p</span> <span class="p">{</span>
+            <span class="nl">font-size</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Hi Jongbin!<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="2-인라인-스타일inline">2. 인라인 스타일(inline)</h3>
+<p>html 내부에서 하나의 요소에 적용하고 싶을때 사용한다</p>
+
+<ul>
+  <li>유지보수 측면에서 좋지 않기 때문에 권장하지 않는다</li>
+  <li>요소의 태그 내 <code class="language-plaintext highlighter-rouge">style</code> 전역속성을 사용한다</li>
+  <li>여러가지 스타일을 적용하기 위해서는 세미콜론(<code class="language-plaintext highlighter-rouge">;</code>)을 입력해서 구분한다</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="c">&lt;!-- 인라인 스타일 --&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"font-size:50px;"</span><span class="nt">&gt;</span>Hi Jongbin!<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="3-외부-스타일external">3. 외부 스타일(external)</h3>
+<p>따로 css 파일을 생성해서 html에서 <code class="language-plaintext highlighter-rouge">link</code>태그를 이용해서 명시</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">rel</code>속성: 현재파일과 해당 파일이 어떤 관계인지를 명시</li>
+  <li><code class="language-plaintext highlighter-rouge">href</code>속성: 파일의 경로</li>
+  <li>빈태그이다</li>
+  <li><u>가장 권장하는 방법이다</u></li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"파일의 경로"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Hi Jongbin!<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h2 id="️-cascading-원칙">▶️ Cascading 원칙</h2>
+<p>css는 <strong>상속이 되므로</strong> 지정한 스타일이 중복되어 무시되거나 덮어씌워진다. 따라서 <strong>우선순위</strong>를 정해줘야 하는데 규칙은 다음과 같다</p>
+
+<ol>
+  <li>상속이 되므로 자식요소는 부모의 스타일을 덮어쓴다 (산속되지 않는 속성도 있음)</li>
+  <li>동일한 스타일이라도 선언된 곳에 따라 우선순위가 정해진다</li>
+  <li>적용범위가 작을 수록 우선된다</li>
+  <li>코드상 뒤에 위치할수록 우선된다</li>
+</ol>
+
+<h2 id="️-우선순위가-강한-정도">▶️ 우선순위가 강한 정도</h2>
+
+<p><strong>➡︎ 선언된 위치에 따라서</strong><br />
+브라우저에 의해 정의된 스타일 &lt; 개발자가 선언한 스타일 &lt; 사용자가 구성한 스타일</p>
+
+<p><strong>➡︎ 적용범위에 따라서</strong><br />
+tag(요소) 스타일 &lt; class스타일(.클래스명) &lt; id스타일(#아이디명) &lt; 인라인스타일</p>
+
+<ul>
+  <li>우선순위가 낮을 경우 스타일이 무시된다</li>
+  <li>css는 상속이 된다(상속되지 않는 속성도 존재)</li>
+</ul>
 
 <p><br /></p>
 
-<h2>값에 의한 전달</h2>
+<p>CSS의 프로퍼티나 기능 등 브라우저의 지원현황을 확인하고 싶은 경우 다음과 같은 사이트를 이용하면 좋다</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hi</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="c1">// 참조된 주소가 아닌 값이 전달</span>
-<span class="kd">let</span> <span class="nx">jb</span> <span class="o">=</span> <span class="nx">jongbin</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jongbin</span> <span class="o">===</span> <span class="nx">jb</span><span class="p">);</span>    <span class="c1">// true</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>변수 age   -&gt;   0x000000f2(주소)  |  26(값)
-              
-              ⬇︎ age copy
-
-변수 age   -&gt;   0x000000f2(주소)  |  26(값)
-변수 jbAge  -&gt;  0x00001222(주소)  |  26(값)
-</code></pre></div></div>
-
-<p>메모리주소(저장된 값)을 복사한다(참조된 주소값은 다름!)<br />
-<strong>메모리 주소를 복사하지만 주소값이 같은 것이 아님</strong> → 전달된 메모리 주소로 값을 참조할 수 있다</p>
-
-<p><u>→ 복사한 변수를 수정해도 원본에 영향을 미치지 않음</u></p>
-
-<p><br /></p>
-
-<h1 id="2-객체">2. 객체</h1>
-<hr />
-
-<p>객체는 메모리 크기가 정해져 있지도 않고, 프로퍼티를 추가, 삭제, 갱신 할 수 있기 때문에 원시값과는 다른 동작방식을 지닌다.</p>
-
-<h2>변경 가능한 값</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>객체 jongbin -&gt; 0x000000f2(주소)  |  0x00001222(값)   
-                                ⬋ 참조(값에 주소를 저장)
-               0x00001222(주소)  |  { age: 26 }(값)
-</code></pre></div></div>
-
-<p>원시값과는 다르게 객체는 메모리에 참조값을 저장한다. 객체는 변경이 가능한 값이므로 내부 프로퍼티를 수정할 수 있지만 내부 프로퍼티를 수정해도 참조값은 바뀌지않는다.</p>
-
-<p>이런 방식은 계속해서 변하는 객체의 특성 때문에 고려된 메모리 사용의 효율성과 성능을 위한 방식이다. 하지만 단점으로 <strong>여러개의 식별자가 동일한 객체를 공유</strong>할 수 있다.</p>
-
-<p><br /></p>
-
-<h2>참조에 의한 전달</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>객체 jongbin -&gt; 0x000000f2(주소)  |  0x00001222(값)   
-               0x00001222(주소)  |  { age: 26 }(값)   // 동일한 객체
-
-                               ⬇︎ copy
-
-객체 jb   -&gt;    0x00002323(주소)  |  0x00001222(값)                   
-               0x00001222(주소)  |  { age: 26 }(값)   // 동일한 객체
-</code></pre></div></div>
-
-<p>복사를 하게 되면 메모리의 값(참조값)을 복사하기 때문에 동일한 객체를 참조하게 된다. 이는 <u>여러개의 변수가 서로 영향을 미칠 수 있다.</u></p>
-
-<p>원본의 참조값이 복사되어 전달되는 것을 <strong>참조에 의한 전달</strong>이라고 한다</p>
-
-<p class="notice--info">참조 값만 복사하는 것을 <strong>얇은 복사</strong>라고 함</p>
-
-<p class="notice--info"><strong>깊은 복사</strong>는 객체에 중첩되어 있는 객체까지도 전부 복사함</p>
-
-<p><br />
-<br /></p>
-
-<p><del>자바스크립트는 결국 메모리에 저장되어 있는 값을 전달한다 근데 그 값이 그냥 값인지 참조값인지에 따라 나뉘는 것 같다!</del></p>
-
-<p><br />
-<br /></p>
-
-<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+<blockquote>
+  <ul>
+    <li>브라우저 지원 : <a href="https://caniuse.com/">https://caniuse.com/</a></li>
+    <li>요소나 프로퍼티 기능 등의 설명: <a href="https://developer.mozilla.org/ko/">https://developer.mozilla.org/ko/</a></li>
+  </ul>
+</blockquote>
 
 
         
@@ -585,9 +587,7 @@ ___________________________________________
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a><span class="sep">, </span>
-    
-      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a>
+      <a href="/tags/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
     
     </span>
   </p>
@@ -604,7 +604,7 @@ ___________________________________________
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a>
+      <a href="/categories/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
     
     </span>
   </p>
@@ -612,7 +612,7 @@ ___________________________________________
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-08-15">August 15, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-29">September 29, 2021</time></p>
 
       </footer>
 
@@ -621,22 +621,22 @@ ___________________________________________
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+11%EC%9E%A5+%EC%9B%90%EC%8B%9C%EA%B0%92%EA%B3%BC+%EA%B0%9D%EC%B2%B4%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive11%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=CSS%EA%B0%9C%EC%9A%94%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Fcss%25EA%25B0%259C%25EC%259A%2594%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive11%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Fcss%25EA%25B0%259C%25EC%259A%2594%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive11%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Fcss%25EA%25B0%259C%25EC%259A%2594%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/deepdive/deepDive10/" class="pagination--pager" title="[Deep Dive] 10장 객체리터럴
+      <a href="/html/HTML%EC%9A%94%EC%86%8C3/" class="pagination--pager" title="HTML 요소 3
 ">이전</a>
     
     
-      <a href="/deepdive/deepDive12-1/" class="pagination--pager" title="[Deep Dive] 12장 함수(1)
+      <a href="/html/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0/" class="pagination--pager" title="메타데이터
 ">다음</a>
     
   </nav>
@@ -741,46 +741,6 @@ ___________________________________________
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/css/css%EA%B0%9C%EC%9A%94/" rel="permalink">CSS개요
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">CSS 개요
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
         <a href="/html/HTML%EC%9A%94%EC%86%8C3/" rel="permalink">HTML 요소 3
 </a>
       
@@ -807,6 +767,46 @@ ___________________________________________
 
 
     <p class="archive__item-excerpt" itemprop="description">폼 관련 요소
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/html/HTML%EC%9A%94%EC%86%8C2/" rel="permalink">HTML 요소 2
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">구조, 목록과 표, 임베디드
 </p>
   </article>
 </div>
