@@ -51,12 +51,27 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+        <span class="nav__sub-title">git</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "git" %}
+                        <li class="nav__items-one"><a href="/blog/categories/git" class="">git ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
 
         <span class="nav__sub-title">etc</span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Blog" %}
                         <li class="nav__items-one"><a href="/blog/categories/Blog" class="">Blog ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "vim" %}
+                        <li class="nav__items-one"><a href="/blog/categories/vim" class="">vim ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

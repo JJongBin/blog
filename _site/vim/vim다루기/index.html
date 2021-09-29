@@ -1,0 +1,1029 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>vi,vim | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="vi의 명령어들">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="vi,vim">
+<meta property="og:url" content="https://jjongbin.github.io/blog//vim/vim%EB%8B%A4%EB%A3%A8%EA%B8%B0/">
+
+
+  <meta property="og:description" content="vi의 명령어들">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-09-29T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-09-29T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://jjongbin.github.io/blog//vim/vim%EB%8B%A4%EB%A3%A8%EA%B8%B0/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "https://jjongbin.github.io/blog//"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="icon" href="/assets/images/study.ico" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://jjongbin.github.io/blog//">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://jjongbin.github.io/blog//" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li class="nav__all-posts">
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">27</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/DeepDive" class="">DeepDive (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Method" class="">Method (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+     
+        <span class="nav__sub-title">html</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/HTML" class="">HTML (6)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">css</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/CSS" class="">CSS (2)</a></li>
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">git</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Blog" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/vim" class="">vim (1)</a></li>
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="vi,vim">
+    <meta itemprop="description" content="vi의 명령어들">
+    <meta itemprop="datePublished" content="2021-09-29T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-09-29T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://jjongbin.github.io/blog//vim/vim%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="u-url" itemprop="url">vi,vim
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#vi-편집기-명령어-정리">vi 편집기 명령어 정리</a><ul><li><a href="#1-vi">1. vi</a></li><li><a href="#2-i">2. i</a></li><li><a href="#3-wq">3. :wq</a></li><li><a href="#4-라인수-표기">4. 라인수 표기</a></li><li><a href="#5-h-j-k-l">5. h, j, k, l</a></li><li><a href="#6-dd-yy-p">6. dd, yy, p</a></li><li><a href="#7-되돌리기u-다시되돌리기controlr">7. 되돌리기(u), 다시되돌리기(control+r)</a></li><li><a href="#️-명령모드-command">▶️ 명령모드 command</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <ul>
+  <li>
+    <p><strong>vi</strong>: 유닉스 환경에서 사용되는 텍스트 편집기(editor)이다</p>
+  </li>
+  <li>
+    <p><strong>vim</strong>:  ‘Vi IMproved’ 의 약자로  vi 호환 텍스트 편집기이다</p>
+  </li>
+</ul>
+
+<p>vi는 모드가 존재한다</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">명령모드</code>: <code class="language-plaintext highlighter-rouge">esc</code>를 이용해서 입력모드에서 명령모드로 전환할 수 있고, 명령어를 사용해서 복사를 한다던지 이동한다던지 하는 동작을 수행할 수 있다</li>
+  <li><code class="language-plaintext highlighter-rouge">입력모드</code>: <code class="language-plaintext highlighter-rouge">i</code>를 이용해서 입력할 수 있는 모드로 전환한다</li>
+  <li><code class="language-plaintext highlighter-rouge">라인모드</code>: 저장하거나, vi편집기를 종료하는 등의 작업을 수행할 수 있다</li>
+</ol>
+
+<p><br /></p>
+
+<h1 id="vi-편집기-명령어-정리">vi 편집기 명령어 정리</h1>
+
+<h2 id="1-vi">1. vi</h2>
+<p>vi을 실행하기 위해서는 터미널에서 <code class="language-plaintext highlighter-rouge">vi 파일명</code>을 사용한다</p>
+<ul>
+  <li>해당 파일이 존재하지 않는 상태라면 알아서 생성이 된다</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% vi README.md
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~
+~
+~
+~
+~
+"README.md" [New File]
+</code></pre></div></div>
+<p>이런 화면이 나오면 정상적으로 성공이다!</p>
+
+<h2 id="2-i">2. i</h2>
+<p>입력모드로 전환하기 위해서는 명령모드인 상태에서 <code class="language-plaintext highlighter-rouge">i</code>를 입력해서 전환할 수 있다 <code class="language-plaintext highlighter-rouge">i</code>를 입력하면 다음과 같이 하단에 INSERT가 나오며 입력모드임을 알 수 있다</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~
+~
+~
+~
+~
+-- INSERT --
+</code></pre></div></div>
+<p>이 상태에서는 텍스트를 입력할 수 있다</p>
+
+<p><code class="language-plaintext highlighter-rouge">esc</code>를 눌러서 명령모드로 전환할 수 있다</p>
+
+<h2 id="3-wq">3. :wq</h2>
+<p>[라인모드] 입력을 완료하고 파일을 저장해야 한다 이때 콜론(<code class="language-plaintext highlighter-rouge">:</code>)을 입력하고, w(저장), q(종료)를 사용할 수 있다</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>text1
+text2
+text3
+~
+~
+:wq
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">w</code>와 <code class="language-plaintext highlighter-rouge">q</code>는 각각 사용도 가능하고 조합해서 사용이 가능하다</p>
+
+<h2 id="4-라인수-표기">4. 라인수 표기</h2>
+<p>라인모드로 현재 입력한 라인수를 볼 수 있다 콜론(<code class="language-plaintext highlighter-rouge">:</code>)을 입력후에 <code class="language-plaintext highlighter-rouge">set nu</code>를 입력하면 라인수가 편집기 내부에 보여지게 된다</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  1 Hi!
+  2 my name is JongBin
+  3 I'm 26 years old
+  4 I living in Suwon
+  5 Bye!
+~
+~
+~
+~
+:set nu
+</code></pre></div></div>
+
+<h2 id="5-h-j-k-l">5. h, j, k, l</h2>
+<p><code class="language-plaintext highlighter-rouge">h</code>, <code class="language-plaintext highlighter-rouge">j</code>, <code class="language-plaintext highlighter-rouge">k</code>, <code class="language-plaintext highlighter-rouge">l</code>는 화살표와 같다 명령모드 상태에서 각각 ←, ↓, ↑, → 로 동작한다</p>
+
+<h2 id="6-dd-yy-p">6. dd, yy, p</h2>
+<p><code class="language-plaintext highlighter-rouge">dd</code>: 잘라내기
+<code class="language-plaintext highlighter-rouge">yy</code>: 복사하기
+<code class="language-plaintext highlighter-rouge">p</code>: 붙여넣기</p>
+
+<h2 id="7-되돌리기u-다시되돌리기controlr">7. 되돌리기(<code class="language-plaintext highlighter-rouge">u</code>), 다시되돌리기(<code class="language-plaintext highlighter-rouge">control</code>+<code class="language-plaintext highlighter-rouge">r</code>)</h2>
+<p><code class="language-plaintext highlighter-rouge">u</code>를 입력하면 되돌릴 수 있다(←) 이후 되돌린 작업을 다시 반대방향으로 되돌리기(→) 위해서는 <code class="language-plaintext highlighter-rouge">control</code> + <code class="language-plaintext highlighter-rouge">r</code>를 입력해서 되돌릴 수 있다</p>
+
+<p>다시 되돌릴 상태가 없는 최신 상태에서 <code class="language-plaintext highlighter-rouge">control</code>+<code class="language-plaintext highlighter-rouge">r</code>을 입력하게 되면 하단에 <code class="language-plaintext highlighter-rouge">Already at newest change</code>라는 텍스트가 출력된다</p>
+
+<h2 id="️-명령모드-command">▶️ 명령모드 command</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">키</th>
+      <th style="text-align: left"> 의미</th>
+      <th style="text-align: center"> 키</th>
+      <th style="text-align: left">의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">i</code> </td>
+      <td style="text-align: left">현재 커서 위치부터 입력</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">I</code></td>
+      <td style="text-align: left"> 현재 커서 줄의 맨 앞에서 입력</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">a</code></td>
+      <td style="text-align: left">현재 커서 다음 위치부터 입력 </td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">A</code></td>
+      <td style="text-align: left">현재 커서 줄의 맨 뒤부터 입력</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">o</code></td>
+      <td style="text-align: left">현재 커서의 다음 줄에 입력</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">O</code></td>
+      <td style="text-align: left">현재 커서의 이전 줄에 입력</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">s</code></td>
+      <td style="text-align: left">현재 커서의 한 글자 지우고 입력</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">S</code></td>
+      <td style="text-align: left">현재 커서 한 줄을 지우고 입력</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">^</code></td>
+      <td style="text-align: left">현재 줄의 처음으로 이동</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">$</code></td>
+      <td style="text-align: left">현재 줄의 마지막으로 이동</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge"> gg</code></td>
+      <td style="text-align: left"> 맨 앞 첫 번째 줄로 이동</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">G</code></td>
+      <td style="text-align: left"> 맨 끝 줄로 이동</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">숫자</code>+<code class="language-plaintext highlighter-rouge">G</code></td>
+      <td style="text-align: left"> 해당 숫자 줄로 이동</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">u</code></td>
+      <td style="text-align: left"> 되돌리기</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">Ctrl</code>+<code class="language-plaintext highlighter-rouge">F</code></td>
+      <td style="text-align: left"> 다음 화면으로 이동</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">Ctrl</code>+<code class="language-plaintext highlighter-rouge">B</code></td>
+      <td style="text-align: left"> 이전 화면으로 이동</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">x</code></td>
+      <td style="text-align: left">현재 커서가 위치한 글자 삭제</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">X</code></td>
+      <td style="text-align: left">현재 커서가 위치한 앞 글자 삭제</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">d</code>+<code class="language-plaintext highlighter-rouge">d</code></td>
+      <td style="text-align: left">현재 커서의 줄 삭제</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">숫자</code>+<code class="language-plaintext highlighter-rouge">d</code>+<code class="language-plaintext highlighter-rouge">d</code></td>
+      <td style="text-align: left">현재 커서부터 숫자만큼 줄 삭제</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">y</code>+<code class="language-plaintext highlighter-rouge">y</code></td>
+      <td style="text-align: left">현재 커서가 있는 줄 복사</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">숫자</code>+<code class="language-plaintext highlighter-rouge">y</code>+<code class="language-plaintext highlighter-rouge">y</code></td>
+      <td style="text-align: left">현재 커서부터 숫자만큼 줄 복사</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">p</code></td>
+      <td style="text-align: left"> 복사한 내용을 현재 줄 이후로 붙여넣기</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">P</code></td>
+      <td style="text-align: left"> 복사한 내용을 현재 줄 이전에 붙여넣기</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">w</code></td>
+      <td style="text-align: left"> 현재 커서에서 다음 단어로 이동</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">-</code></td>
+      <td style="text-align: left">이전 줄의 처음으로 이동</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">.</code></td>
+      <td style="text-align: left"> 이전에 사용한 명령어 재실행</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">~</code></td>
+      <td style="text-align: left"> 대소문자 변경</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">J</code></td>
+      <td style="text-align: left"> 현재 줄과 다음 줄을 연결</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">&lt;</code>+<code class="language-plaintext highlighter-rouge">&lt;</code></td>
+      <td style="text-align: left"> 현재 줄을 왼쪽으로 내어쓰기</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">&gt;</code>+<code class="language-plaintext highlighter-rouge">&gt;</code></td>
+      <td style="text-align: left"> 현재 줄을 오른쪽으로 들여쓰기</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">r</code></td>
+      <td style="text-align: left"> 한 글자 변경하기</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">Ctrl</code>+<code class="language-plaintext highlighter-rouge">G</code></td>
+      <td style="text-align: left"> 마지막 줄에 현재 줄 정보 출력</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">)</code></td>
+      <td style="text-align: left"> 다음 문장으로 이동</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">(</code></td>
+      <td style="text-align: left"> 이전 문장으로 이동</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">}</code></td>
+      <td style="text-align: left"> 다음 문단으로 이동</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">{</code></td>
+      <td style="text-align: left"> 이전 문단으로 이동</td>
+      <td style="text-align: center"> <code class="language-plaintext highlighter-rouge">+</code></td>
+      <td style="text-align: left"> 다음 줄의 처음으로 이동 </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<p><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbfsl4x%2Fbtqt3IK05cz%2FUC9v6Yr10seWElzqmuCN8K%2Fimg.jpg" alt="cmd" />
+<small>(출처 : <a href="https://inpages.tistory.com/124">https://inpages.tistory.com/124</a>)</small></p>
+
+<p><br /></p>
+
+<p><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FswMsf%2Fbtqt4yuFGOZ%2F0bwaclSJ1quAvboAk7D2hK%2Fimg.jpg" alt="cmd" />
+<small>(출처 : <a href="https://inpages.tistory.com/124">https://inpages.tistory.com/124</a>)</small></p>
+
+<p><br /></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#vim" class="page__taxonomy-item p-category" rel="tag">vim</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#vim" class="page__taxonomy-item p-category" rel="tag">vim</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-29">September 29, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=vi%2Cvim%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fvim%2Fvim%25EB%258B%25A4%25EB%25A3%25A8%25EA%25B8%25B0%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fvim%2Fvim%25EB%258B%25A4%25EB%25A3%25A8%25EA%25B8%25B0%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fvim%2Fvim%25EB%258B%25A4%25EB%25A3%25A8%25EA%25B8%25B0%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/css/css%EA%B0%9C%EC%9A%94/" class="pagination--pager" title="CSS개요
+">이전</a>
+    
+    
+      <a href="/html/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0/" class="pagination--pager" title="메타데이터
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1/" rel="permalink">전역속성
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">html의 전역속성
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/%EC%84%A0%ED%83%9D%EC%9E%90(selector)/" rel="permalink">CSS 선택자 (selector)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CSS 선택자 (selector)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/html/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="permalink">메타데이터
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">메타데이터 요소
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/css%EA%B0%9C%EC%9A%94/" rel="permalink">CSS개요
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CSS 개요
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
