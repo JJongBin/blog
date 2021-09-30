@@ -473,7 +473,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 분 소요
+          5 분 소요
         
       </span>
     
@@ -488,14 +488,16 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#️-정방향으로-git을-사용하는-방법">▶️ 정방향으로 git을 사용하는 방법</a><ul><li><a href="#--git-init">- git init</a></li><li><a href="#--clone">- clone</a></li><li><a href="#--참고">- 참고</a></li><li><a href="#commit-작성-요령">commit 작성 요령</a></li><li><a href="#commit-시-주의-사항">commit 시 주의 사항</a></li><li><a href="#readmemd">README.md</a></li><li><a href="#gitignire">.gitignire</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#️-정방향으로-git을-사용하는-방법">▶️ 정방향으로 git을 사용하는 방법</a><ul><li><a href="#1-git-init">1. git init</a></li><li><a href="#2-clone">2. clone</a></li><li><a href="#--참고">- 참고</a></li></ul></li><li><a href="#️-commit-작성-요령">▶️ commit 작성 요령</a></li><li><a href="#️-commit-시-주의-사항">▶️ commit 시 주의 사항</a></li><li><a href="#️-readmemd">▶️ README.md</a></li><li><a href="#️-gitignire">▶️ .gitignire</a></li><li><a href="#️-license">▶️ LICENSE</a></li><li><a href="#️-branch">▶️ branch</a></li><li><a href="#️-merge">▶️ merge</a></li><li><a href="#️-git-flow">▶️ git flow</a><ul><li><a href="#--feature">- feature</a></li><li><a href="#--release">- release</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
         <p><img src="../../imgs/git.png" alt="git" /></p>
 
-<p>git을 사용하기 전에 설정을 해서 보다 정확하고 편리하게 사용하자!</p>
+<p>git은 분산 버전 관리 시스템(Version Control System)이다. git을 사용하면 동료들과 협업하기가 매우 수월해지고 버전을 관리하는데 용이하다</p>
+
+<p>git을 사용하기 전에 설정을 하고 보다 정확하고 편리하게 사용하자!</p>
 
 <ol>
   <li><code class="language-plaintext highlighter-rouge">git config --global user.name "name"</code></li>
@@ -512,9 +514,9 @@ core.pager=cat
 </code></pre></div></div>
 <p>config를 수정한 부분이 정상적으로 수정되었는지 확인한다!</p>
 
-<h1 id="️-정방향으로-git을-사용하는-방법">▶️ 정방향으로 git을 사용하는 방법</h1>
+<h2 id="️-정방향으로-git을-사용하는-방법">▶️ 정방향으로 git을 사용하는 방법</h2>
 
-<h2 id="--git-init">- git init</h2>
+<h3 id="1-git-init">1. git init</h3>
 
 <p>사용자가 remote repository까지 밀어넣는법은 다음과 같다</p>
 
@@ -527,7 +529,7 @@ core.pager=cat
   <li><code class="language-plaintext highlighter-rouge">git push origin main</code>: remote repository로 commit 된 내역들을 밀어넣는다 이때 만약 commit이 처음 이라면 싱크를 맞춰주기 위해 <code class="language-plaintext highlighter-rouge">-u</code> flag를 사용한다</li>
 </ol>
 
-<h2 id="--clone">- clone</h2>
+<h3 id="2-clone">2. clone</h3>
 <p>git페이지에서 저장소를 생성한 후에 주소를 복사하고 다음의 명령어를 입력한다</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone [repository주소]
@@ -535,7 +537,7 @@ core.pager=cat
 
 <p>이하 과정은 remote 이후의 과정과 동일하다!</p>
 
-<h2 id="--참고">- 참고</h2>
+<h3 id="--참고">- 참고</h3>
 <p>추가적으로 권장하지 않는 사항이 있다</p>
 
 <ol>
@@ -543,7 +545,7 @@ core.pager=cat
   <li><code class="language-plaintext highlighter-rouge">git commit -m ""</code>: 간단하게 vi를 이용하지 않고 commit message를 작성할 수 있는 방법이지만 여러줄을 이용해서 제목, 내용을 commit message로 작성하는 것을 권장하고, 여러줄을 작성할때 -m을 사용한 commit은 이전줄의 수정이 어렵기 때문에 처음부터 다시 해야될 수 있다</li>
 </ol>
 
-<h2 id="commit-작성-요령">commit 작성 요령</h2>
+<h2 id="️-commit-작성-요령">▶️ commit 작성 요령</h2>
 
 <ol>
   <li>영어로 commit message를 작성한다</li>
@@ -602,7 +604,7 @@ core.pager=cat
   </tbody>
 </table>
 
-<h2 id="commit-시-주의-사항">commit 시 주의 사항</h2>
+<h2 id="️-commit-시-주의-사항">▶️ commit 시 주의 사항</h2>
 <ol>
   <li>동작하는 최소단위로 커밋한다 -&gt; 동작한다는 것을 전제로 하고 있기 때문에</li>
   <li>영어를 사용해서 commit message를 작성한다</li>
@@ -610,14 +612,164 @@ core.pager=cat
   <li>내용에서는 제목에서 작성하지 못한 세부적인 부분을 작성한다</li>
 </ol>
 
-<h2 id="readmemd">README.md</h2>
+<h2 id="️-readmemd">▶️ README.md</h2>
 <p>프로젝트와 저장소를 설명하는 문서로 repository를 보는 다른 사람들을 위한 표지의 역할을 한다</p>
 
-<h2 id="gitignire">.gitignire</h2>
-<p>gitignore는 git에 올리지 않도록 하는 역할을 한다. 폴더나 파일명을 적어주면 된다</p>
+<h2 id="️-gitignire">▶️ .gitignire</h2>
+<p>.gitignore는 git에 올리지 않도록 하는 역할을 한다. 폴더나 파일명을 적어주면 된다</p>
 <blockquote>
   <p>쉽게 작성할 수 있는 사이트: <a href="https://gitignore.io">https://gitignore.io</a></p>
 </blockquote>
+
+<h2 id="️-license">▶️ LICENSE</h2>
+<p>많이 사용되는 라이센스는 다음과 같다</p>
+
+<ul>
+  <li><strong>MIT License</strong>: 오픈소스로 자유롭게 사용</li>
+  <li><strong>Apache License2.0</strong>: 무료로 사용해도 되지만 소유권을 주장할 수 있다</li>
+  <li><strong>GNU General Public License v3.0</strong>: 해당 코드를 참조하면 GNU가 됨 -&gt; 의무적(MIT로 풀 수 없다)</li>
+</ul>
+
+<p>만약 무엇이든 가져다 사용하는 경우가 있는 경우 라이센스를 확인해야한다 (<u>라이센스가 보이지 않아도 메일을 보내는 등 꼭! 확인해봐야 한다</u>)</p>
+
+<h2 id="️-branch">▶️ branch</h2>
+<p>git은 동일한 코드를 다른 동료들과 함께 공유하고 다룰 수 있는데 branch라는 개념이 있기 때문이다 branch는 가지라는 뜻으로 현재 줄기에서 가지를 새로 뻗는다고 생각하면 된다</p>
+
+<p>현재 git은 main branch를 사용한다 이 main에서 새로운 branch를 생성하여(branch를 친다라고 한다) 수정하고 merge해서 main에 반영할 수 있다</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">git branch [branch-name]</code>으로 새로운 branch를 생성한다</li>
+  <li>아직 현재 branch는 main이므로 새로운 branch로 이동해줘야 한다 → <code class="language-plaintext highlighter-rouge">git switch [branch-name]</code> or <code class="language-plaintext highlighter-rouge">git checkout [branch-name]</code></li>
+</ol>
+
+<p>만약 새로운 branch에서 파일을 수정하고 merge하기전에 기존의 main에서 수정한 파일이 수정되어 있다면 무언가 잘못된 것이다 → 각각의 branch에서 작업한 내용은 merge하기전에 반영되지 않는다</p>
+
+<h2 id="️-merge">▶️ merge</h2>
+<p>별도의 branch에서 파일을 작성하거나, 수정하고 기존의 branch로 반영하기 위해서는 <code class="language-plaintext highlighter-rouge">git merge [branch-name]</code>라는 명령어를 이용한다</p>
+
+<p>기존의 branch에서 별도의 branch에서 수정한 파일을 동시에 수정하지 않았다면 그냥 병합된다</p>
+
+<p>하지만 동시에 똑같은 파일을 수정했을 경우를 충돌했다고 하는데 협의 후 진행하도록 기존 branch의 파일 내용과 별도 branch의 파일 내용이 같이 존재하는 파일이 생성된다</p>
+
+<p>test.py파일을 생성하고, 새로운 branch를 만들어서 테스트해봤다</p>
+
+<ul>
+  <li>main branch test.py
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"This is main branch!!!"</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>stem branch test.py
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"This is stem branch!"</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">git merge stem</code>을 한 결과 다음과 같은 메세지를 볼 수 있었다</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Auto-merging test.py
+CONFLICT (content): Merge conflict in test.py
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre></div></div>
+<p>merging이라는 메세지를 보니 merge가 아직 진행중이며 완료되지 않았음을 알 수 있었다</p>
+
+<p>main의 test.py를 보면 다음과 같다</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"This is main branch!!!"</span><span class="p">)</span>
+<span class="o">=======</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"This is stem branch!"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="n">stem</span>
+</code></pre></div></div>
+<p>두 파일이 합쳐져있었다 여기서 협의를 해서 최종적인 코드를 작성하면 된다</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"This is main branch but stem plused main branch!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>이후 add, commit , push 해주면 정상적으로 remote repository에 반영이 된다</p>
+
+<h2 id="️-git-flow">▶️ git flow</h2>
+<p>git을 이용해 여러명이 개발을 할때 거의 표준처럼 사용되는 방법이다</p>
+
+<p>git flow에서는 branch를 5가지를 사용한다</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">branch</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">main</td>
+      <td style="text-align: left">기준이 되는 브랜치로 제품을 배포하는 브랜치</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">develop</td>
+      <td style="text-align: left">개발 브랜치로 개발자들이 이 브랜치를 기준으로 각자 작업한 기능들을 합친다</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">feature</td>
+      <td style="text-align: left">단위 기능을 개발하는 브랜치로 기능 개발이 완료되면 develop 브랜치에 합친다</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">release</td>
+      <td style="text-align: left">배포를 위해 main 브랜치로 보내기 전에 먼저 검사 하기위한 브랜치</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">hotfix</td>
+      <td style="text-align: left">main 브랜치로 배포를 했는데 버그가 생겼을 떄 긴급 수정하는 브랜치</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>git flow를 하기 위해서는 준비가 필요하다</p>
+
+<p>macos의 경우 다음의 명령어를 이용해서 git-flow를 다운받는다(brew를 이용하므로 brew 필요!)
+<code class="language-plaintext highlighter-rouge">brew install git-flow-avh</code></p>
+
+<p>window의 경우 git bash를 이용하는 경우 받지 않아도 된다</p>
+
+<blockquote>
+  <p>참고 <a href="https://danielkummer.github.io/git-flow-cheatsheet/index.ko_KR.html">https://danielkummer.github.io/git-flow-cheatsheet/index.ko_KR.html</a></p>
+</blockquote>
+
+<h3 id="--feature">- feature</h3>
+<p>feature는 개발하기 위한 branch이다</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Git flow feature start [branch 이름]		// branch를 생성하고 해당 branch로 이동
+Git flow feature finish [branch 이름]	  // branch를 종료하고 원래 branch로 이동
+</code></pre></div></div>
+<p>기존에는 branch를 생성하고 switch를 이용해서 이동까지 해야하지만 자동으로 해준다</p>
+
+<p>이렇게 생성된 branch는 <code class="language-plaintext highlighter-rouge">feature/입력한 branch이름</code>이 된다</p>
+
+<p>만약 잘못 생성한 경우 main branch로 이동한 후 해당 branch를 삭제해주면 된다 (<code class="language-plaintext highlighter-rouge">git branch -D [branch-name]</code>)</p>
+
+<h3 id="--release">- release</h3>
+<p>relaese는 main으로 반영하기 전에 검사를 할 수 있는 branch이다</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Git flow release start  [버전]
+Git flow release finish [버전]
+</code></pre></div></div>
+<p>finish를 하게 되면 세번의 vi을 마주하게 된다 첫번째는 main, 두번째는 release note(tag) 세번째는 develop에 반영이 되는 commit이다</p>
+
+<p>이후 각각 main, develop, tag에 push를 해주면 된다</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin main
+git push origin develop
+git push --tag
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3> # 버전의 표현</h3>
+<p>버전은 보통 v0.0.0 처럼 표현한다 만약 다음과 같이 세자리로 구성되어 있다면</p>
+
+<p><strong>Release Number . Major Number . Minor Number</strong></p>
+
+<ul>
+  <li><strong>Release Number</strong>: 1로 시작해서 큰 변화가 발생했을 때 이 수치를 올린다</li>
+  <li><strong>Major Number</strong>: 0으로 시작해서 주요 기능의 추가나 변경 등 사용상 혹은 컨텐츠의 주요 변화가 발생했을 때 1 또는 무작위로 증가한다. 간혹 알파벳이 붙기도 하는데 예를 들어 Beta(테스트버전)의 경우 b를 숫자 뒤에 붙이는 경향이 있다.</li>
+  <li><strong>Minor Number</strong>: 0으로 시작해서 버그 수정 등 미미한 변화가 발생하면 1씩 혹은 무작위로 증가한다. 역시 개발사 정책에 따라 특정 알파벳이 붙을 수도 있다.</li>
+</ul>
 
 
         
