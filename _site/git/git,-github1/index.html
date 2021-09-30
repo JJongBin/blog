@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Deep Dive] 06장 데이터타입 | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="데이터 값은 값의 종류">
+<!-- begin _includes/seo.html --><title>Git, Github | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="Git, Github">
 
 
   <meta name="author" content="원종빈">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="[Deep Dive] 06장 데이터타입">
-<meta property="og:url" content="http://localhost:4502/deepdive/deepDive06/">
+<meta property="og:title" content="Git, Github">
+<meta property="og:url" content="http://localhost:4502/git/git,-github1/">
 
 
-  <meta property="og:description" content="데이터 값은 값의 종류">
-
-
-
+  <meta property="og:description" content="Git, Github">
 
 
 
 
-  <meta property="article:published_time" content="2021-08-10T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-08-10T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-09-30T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2021-09-30T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4502/deepdive/deepDive06/">
+
+<link rel="canonical" href="http://localhost:4502/git/git,-github1/">
 
 
 
@@ -447,16 +447,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Deep Dive] 06장 데이터타입">
-    <meta itemprop="description" content="데이터 값은 값의 종류">
-    <meta itemprop="datePublished" content="2021-08-10T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-08-10T00:00:00+09:00">
+    <meta itemprop="headline" content="Git, Github">
+    <meta itemprop="description" content="Git, Github">
+    <meta itemprop="datePublished" content="2021-09-30T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-09-30T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4502/deepdive/deepDive06/" class="u-url" itemprop="url">[Deep Dive] 06장 데이터타입
+            <a href="http://localhost:4502/git/git,-github1/" class="u-url" itemprop="url">Git, Github
 </a>
           </h1>
           
@@ -473,7 +473,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          1 분 소요
         
       </span>
     
@@ -488,225 +488,136 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-숫자-타입">1. 숫자 타입</a></li><li><a href="#2-문자열-타입">2. 문자열 타입</a><ul><li><a href="#템플릿-리터럴">템플릿 리터럴</a></li></ul></li><li><a href="#3-불리언-타입">3. 불리언 타입</a></li><li><a href="#4-undefined-타입">4. undefined 타입</a></li><li><a href="#5-null-타입">5. null 타입</a></li><li><a href="#6-심벌-타입">6. 심벌 타입</a></li><li><a href="#7-객체-타입">7. 객체 타입</a></li><li><a href="#데이터-타입의-필요성">데이터 타입의 필요성</a></li><li><a href="#동적-타이핑">동적 타이핑</a></li></ul>
+              <ul class="toc__menu"><li><a href="#️-정방향으로-git을-사용하는-방법">▶️ 정방향으로 git을 사용하는 방법</a><ul><li><a href="#--git-init">- git init</a></li><li><a href="#--clone">- clone</a></li><li><a href="#--참고">- 참고</a></li><li><a href="#commit-작성-요령">commit 작성 요령</a></li><li><a href="#commit-시-주의-사항">commit 시 주의 사항</a></li><li><a href="#readmemd">README.md</a></li><li><a href="#gitignire">.gitignire</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <p><br /></p>
+        <p><img src="../../imgs/git.png" alt="git" /></p>
 
-<p>자바스크립트는 7개의 데이터 타입을 제공한다.</p>
+<p>git을 사용하기 전에 설정을 해서 보다 정확하고 편리하게 사용하자!</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">git config --global user.name "name"</code></li>
+  <li><code class="language-plaintext highlighter-rouge">git config --global user.email "email"</code></li>
+  <li><code class="language-plaintext highlighter-rouge">git config --global core.pager "cat"</code></li>
+  <li><code class="language-plaintext highlighter-rouge">git config --global core.editor "vim"</code></li>
+  <li><code class="language-plaintext highlighter-rouge">git config --list</code>로 제대로 설정이 되었는지 확인하기</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user.email=gghkdu2@gmail.com
+user.name=JJongBin
+core.editor=vim
+core.pager=cat
+</code></pre></div></div>
+<p>config를 수정한 부분이 정상적으로 수정되었는지 확인한다!</p>
+
+<h1 id="️-정방향으로-git을-사용하는-방법">▶️ 정방향으로 git을 사용하는 방법</h1>
+
+<h2 id="--git-init">- git init</h2>
+
+<p>사용자가 remote repository까지 밀어넣는법은 다음과 같다</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">git init</code>: 현재 폴더를 git을 사용할 수 있도록 만든다</li>
+  <li><code class="language-plaintext highlighter-rouge">git branch -M main</code>: git의 branch가 master에서 main으로 변경되었기 때문에 branch를 main으로 변경한다</li>
+  <li><code class="language-plaintext highlighter-rouge">git remote add [alias] [repository 주소]</code>: 사용자의 git 저장소와 연결시켜준다</li>
+  <li>파일을 작업한 후에 <code class="language-plaintext highlighter-rouge">git add [file-name]</code>으로 stage에 파일을 올려준다</li>
+  <li><code class="language-plaintext highlighter-rouge">git commit</code>: local repository로 stage에 있는 파일을 commit message와 함께 올려준다</li>
+  <li><code class="language-plaintext highlighter-rouge">git push origin main</code>: remote repository로 commit 된 내역들을 밀어넣는다 이때 만약 commit이 처음 이라면 싱크를 맞춰주기 위해 <code class="language-plaintext highlighter-rouge">-u</code> flag를 사용한다</li>
+</ol>
+
+<h2 id="--clone">- clone</h2>
+<p>git페이지에서 저장소를 생성한 후에 주소를 복사하고 다음의 명령어를 입력한다</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone [repository주소]
+</code></pre></div></div>
+
+<p>이하 과정은 remote 이후의 과정과 동일하다!</p>
+
+<h2 id="--참고">- 참고</h2>
+<p>추가적으로 권장하지 않는 사항이 있다</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">git add .</code>: 모든 파일들이 모두 stage로 올라가기 때문에 관리 측면에서 어렵고 꼬일 수 있는 경우가 많다</li>
+  <li><code class="language-plaintext highlighter-rouge">git commit -m ""</code>: 간단하게 vi를 이용하지 않고 commit message를 작성할 수 있는 방법이지만 여러줄을 이용해서 제목, 내용을 commit message로 작성하는 것을 권장하고, 여러줄을 작성할때 -m을 사용한 commit은 이전줄의 수정이 어렵기 때문에 처음부터 다시 해야될 수 있다</li>
+</ol>
+
+<h2 id="commit-작성-요령">commit 작성 요령</h2>
+
+<ol>
+  <li>영어로 commit message를 작성한다</li>
+  <li>commit 제목만 보고도 작업의 유형을 유추할 수 있도록 적어주는 것이 좋다</li>
+  <li>작업단위가 다른 경우에는 commit을 따로 해줘야한다</li>
+  <li>commit의 제목은 40자를 넘기지 않도록 한다</li>
+  <li>제목과 내용 사이에는 한줄의 공간을 준다</li>
+</ol>
+
+<p>commit message의 첫 부분에 type을 명시하는 것이 좋다고 하는데 어떤 작업을 했는지 유추할 수 있기 때문이다 type은 다음과 같이 정해져있다</p>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center">구분</th>
-      <th style="text-align: center">데이터 타입</th>
-      <th>설명</th>
+      <th style="text-align: center">type</th>
+      <th style="text-align: left">설명</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">숫자 타입</td>
-      <td>숫자, 정수와 실수 구분 없이 하나의 숫자 타입만 존재</td>
+      <td style="text-align: center">feat</td>
+      <td style="text-align: left">새로운 기능에 대한 커밋</td>
     </tr>
     <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">문자열 타입</td>
-      <td>문자열</td>
+      <td style="text-align: center">fix</td>
+      <td style="text-align: left">버그 수정에 대한 커밋</td>
     </tr>
     <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">불리언 타입</td>
-      <td>논리적 참(true), 거짓(false)</td>
+      <td style="text-align: center">build</td>
+      <td style="text-align: left">빌드 관련 파일 수정에 대한 커밋</td>
     </tr>
     <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">undefined 타입</td>
-      <td>var 키워드로 선언된 변수에 암묵적으로 할당되는 값</td>
+      <td style="text-align: center">chore</td>
+      <td style="text-align: left">그 외 자잘한 수정에 대한 커밋</td>
     </tr>
     <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">null 타입</td>
-      <td>값이 없다는 것을 의도적으로 명시할 때 사용하는 값</td>
+      <td style="text-align: center">ci</td>
+      <td style="text-align: left">CI관련 설정 수정에 대한 커밋</td>
     </tr>
     <tr>
-      <td style="text-align: center">원시타입</td>
-      <td style="text-align: center">심벌 타입</td>
-      <td>ES6에서 추가된 7번째 타입</td>
+      <td style="text-align: center">docs</td>
+      <td style="text-align: left">문서 수정에 대한 커밋</td>
     </tr>
     <tr>
-      <td style="text-align: center">객체타입</td>
-      <td style="text-align: center">객체 타입</td>
-      <td>객체, 함수, 배열 등</td>
+      <td style="text-align: center">style</td>
+      <td style="text-align: left">코드 스타일 혹은 포맷 등에 관한 커밋</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">refactor</td>
+      <td style="text-align: left">코드 리팩토링에 대한 커밋</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">test</td>
+      <td style="text-align: left">테스트 코드 수정에 대한 커밋</td>
     </tr>
   </tbody>
 </table>
 
-<p><br /></p>
-
-<h1 id="1-숫자-타입">1. 숫자 타입</h1>
-<hr />
-
-<ul>
-  <li>자바스크립트의 숫자 타입은 모두 <strong>실수</strong>로 처리함.</li>
-  <li>메모리에 저장될때 2진수로 저장됨.</li>
-  <li>값을 참조할때 모두 <strong>10진수</strong>로 해석됨.</li>
-</ul>
-
-<p class="notice--info"><strong>* 숫자타입의 특별한 세가지</strong><br />
-- Infinity: 양의 무한대<br />
-- -Infinity: 음의 무한대<br />
-- NaN: 산술 연산 불가</p>
-
-<p><br /></p>
-
-<h1 id="2-문자열-타입">2. 문자열 타입</h1>
-<hr />
-
-<ul>
-  <li>문자열은 0개 이상의 16비트 유니코드 문자(UTF-16)의 집합.</li>
-  <li><code class="language-plaintext highlighter-rouge">작은따옴표(' ')</code>, <code class="language-plaintext highlighter-rouge">큰따옴표(" ")</code>, <code class="language-plaintext highlighter-rouge">백틱(` `)</code>으로 표현.</li>
-  <li>문자열은 불변값임(연산시 새로운 값을 할당한 후 참조주소를 변경)</li>
-</ul>
-
-<p><br /></p>
-
-<h2 id="템플릿-리터럴">템플릿 리터럴</h2>
-<p>ES6부터 템플릿 리터럴이라는 새로운 문자열 표기법 도입.</p>
-<ul>
-  <li>백틱(``)을 사용해 멀티라인 문자열 가능</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="s2">`hello
-I'm jongbin`</span><span class="p">;</span>
-
-<span class="c1">// 출력결과</span>
-<span class="c1">// hello</span>
-<span class="c1">// I'm jongbin</span>
-</code></pre></div></div>
-
-<p><br /></p>
-<ul>
-  <li>표현식 삽입 (<code class="language-plaintext highlighter-rouge">${}</code>를 사용해서 표현식을 삽입한다.)</li>
-</ul>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">jongbin</span> <span class="o">=</span> <span class="s2">`I',m </span><span class="p">${</span><span class="mi">20</span><span class="o">+</span><span class="mi">6</span><span class="p">}</span><span class="s2"> years old`</span><span class="p">;</span> 
-
-<span class="c1">// 출력결과</span>
-<span class="c1">// I'm 26 years old</span>
-</code></pre></div></div>
-
-<p><br /></p>
-
-<h1 id="3-불리언-타입">3. 불리언 타입</h1>
-<hr />
-
-<p>불리언 타입은 <code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>값 두가지가 있다.</p>
-
-<p><br /></p>
-
-<h1 id="4-undefined-타입">4. undefined 타입</h1>
-<hr />
-
-<p><code class="language-plaintext highlighter-rouge">undefined</code>은 값을 할당하지 않은 변수를 참조했을때 반환된다.</p>
-
-<p>선언만 하고 값을 할당하지 않은 변수를을 <code class="language-plaintext highlighter-rouge">undefined</code>로 초기화한다.</p>
-
-<p><br /></p>
-
-<h1 id="5-null-타입">5. null 타입</h1>
-<hr />
-
-<p><code class="language-plaintext highlighter-rouge">null</code>은 변수에 값이 없음을 의도적으로 명시할 때 사용한다.</p>
-
-<p>이전의 값의 참조를 명시적으로 제거할 때 사용</p>
-
-<p><br /></p>
-
-<h1 id="6-심벌-타입">6. 심벌 타입</h1>
-<hr />
-
-<ul>
-  <li><strong>변경불가능</strong>한 원시타입의 값</li>
-  <li>다른 값과 <strong>중복되지 않는</strong> 유일한 값</li>
-</ul>
-
-<p><br /></p>
-
-<h1 id="7-객체-타입">7. 객체 타입</h1>
-<hr />
-
-<ul>
-  <li>자바스크립트의 기본 타입은 객체(object).</li>
-  <li>객체란 실생활에서 우리가 인식할 수 있는 사물로 볼 수 있다.</li>
-  <li>객체는 여러 프로퍼티(property)나 메소드(method)를 같은 이름으로 묶어놓은 일종의 집합체.</li>
-  <li>자바스크립트를 이루고 있는 거의 모든 것이 객체.</li>
-</ul>
-
-<p><br /></p>
-
-<h1 id="데이터-타입의-필요성">데이터 타입의 필요성</h1>
-<hr />
-
+<h2 id="commit-시-주의-사항">commit 시 주의 사항</h2>
 <ol>
-  <li>메모리
-    <ul>
-      <li>메모리에 값을 저장하려면 공간을 확보해야함.</li>
-      <li><strong>변수에 할당되는 값의 <u>데이터 타입</u>에 따라 확보해야 할 메모리 공간의 크기가 결정됨</strong>
-<br />
-<br /></li>
-    </ul>
-  </li>
-  <li>값의 해석
-    <ul>
-      <li>데이터 타입에 따라 다르게 해석한다.(메모리에 저장된 이진수(값)을 문자열? 숫자?)</li>
-    </ul>
-  </li>
+  <li>동작하는 최소단위로 커밋한다 -&gt; 동작한다는 것을 전제로 하고 있기 때문에</li>
+  <li>영어를 사용해서 commit message를 작성한다</li>
+  <li>제목은 축약, 내용은 문장형으로 작성한다</li>
+  <li>내용에서는 제목에서 작성하지 못한 세부적인 부분을 작성한다</li>
 </ol>
 
-<p class="notice--info"><strong>심벌 테이블</strong><br />
-컴파일러 또는 인터프리터는 <u>심벌테이블</u>라고 부르는 자료 구조를 통해 식별자를 키로 바인딩된 값의 메모리 주소, 데이터 타입, 스코프 등을 관리한다.</p>
+<h2 id="readmemd">README.md</h2>
+<p>프로젝트와 저장소를 설명하는 문서로 repository를 보는 다른 사람들을 위한 표지의 역할을 한다</p>
 
-<ul>
-  <li><strong>값을 저장할 깨 확보해야 하는 메모리 공간의 크기를 결정.</strong></li>
-  <li><strong>값을 참조할 때 한번에 읽어야 할 메모리 공간의 크기를 결정.</strong></li>
-  <li><strong>메모리에서 읽어들인 2진수를 어떻게 해석할지 결정.</strong></li>
-</ul>
-
-<p><br /></p>
-
-<h1 id="동적-타이핑">동적 타이핑</h1>
-<hr />
-
-<p>자바스크립트는 정적 타입 언어와 다르게 변수 선언시 타입을 지정하지 않는다. 대신 <code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">const</code>, <code class="language-plaintext highlighter-rouge">let</code> 키워드를 사용해 변수 선언을 한다.</p>
-
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// c 언어</span>
-<span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
-</code></pre></div></div>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// javascript</span>
-<span class="kd">var</span> <span class="nx">t1</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">t2</span><span class="p">;</span>
-<span class="kd">let</span> <span class="nx">t3</span><span class="p">;</span>
-</code></pre></div></div>
-<p><br /></p>
-
-<ul>
-  <li><strong>자바스크립트는 할당된 값에 의해 타입이 결정된다.</strong></li>
-  <li><strong>재할당에 의해 타입이 동적으로 변할 수 있다.</strong></li>
-  <li>이런 언어를 <strong><u>동적 타입 언어</u></strong>라고 한다.</li>
-</ul>
-
-<p>동적타입언어는 개발자의 의도와는 다른 변수타입을 제공할 수 있다. → 동적타입언어는 유연성은 높지만 <u>신뢰성은 떨어진다</u>.</p>
-
-<p><br />
-<br /></p>
-
-<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+<h2 id="gitignire">.gitignire</h2>
+<p>gitignore는 git에 올리지 않도록 하는 역할을 한다. 폴더나 파일명을 적어주면 된다</p>
+<blockquote>
+  <p>쉽게 작성할 수 있는 사이트: <a href="https://gitignore.io">https://gitignore.io</a></p>
+</blockquote>
 
 
         
@@ -724,9 +635,7 @@ I'm jongbin`</span><span class="p">;</span>
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a><span class="sep">, </span>
-    
-      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a>
+      <a href="/tags/#git" class="page__taxonomy-item p-category" rel="tag">Git</a>
     
     </span>
   </p>
@@ -743,7 +652,7 @@ I'm jongbin`</span><span class="p">;</span>
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a>
+      <a href="/categories/#git" class="page__taxonomy-item p-category" rel="tag">Git</a>
     
     </span>
   </p>
@@ -751,7 +660,7 @@ I'm jongbin`</span><span class="p">;</span>
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-08-10">August 10, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-30">September 30, 2021</time></p>
 
       </footer>
 
@@ -760,23 +669,22 @@ I'm jongbin`</span><span class="p">;</span>
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+06%EC%9E%A5+%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85%20http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive06%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Git%2C+Github%20http%3A%2F%2Flocalhost%3A4502%2Fgit%2Fgit%2C-github1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive06%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fgit%2Fgit%2C-github1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fdeepdive%2FdeepDive06%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fgit%2Fgit%2C-github1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/deepdive/deepDive05/" class="pagination--pager" title="[Deep Dive] 05장 표현식과 문
+      <a href="/css/CSS%EC%9A%94%EC%86%8C1/" class="pagination--pager" title="CSS요소 1
 ">이전</a>
     
     
-      <a href="/deepdive/deepDive07/" class="pagination--pager" title="[Deep Dive] 07장 연산자
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -790,46 +698,6 @@ I'm jongbin`</span><span class="p">;</span>
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/git/git,-github1/" rel="permalink">Git, Github
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Git, Github
-</p>
-  </article>
-</div>
-
         
           
 
@@ -938,7 +806,7 @@ I'm jongbin`</span><span class="p">;</span>
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          5 분 소요
+          4 분 소요
         
       </span>
     
@@ -946,6 +814,46 @@ I'm jongbin`</span><span class="p">;</span>
 
 
     <p class="archive__item-excerpt" itemprop="description">CSS 선택자 (selector)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/html/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="permalink">메타데이터
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">메타데이터 요소
 </p>
   </article>
 </div>

@@ -9,30 +9,36 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>CSS | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="공부한 내용을 기록하는 블로그">
+<!-- begin _includes/seo.html --><title>CSS요소 1 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="폰트 관련 속성">
 
 
   <meta name="author" content="원종빈">
   
+  <meta property="article:author" content="원종빈">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="CSS">
-<meta property="og:url" content="http://localhost:4502/categories/CSS">
+<meta property="og:title" content="CSS요소 1">
+<meta property="og:url" content="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C1/">
 
 
-  <meta property="og:description" content="공부한 내용을 기록하는 블로그">
-
-
-
+  <meta property="og:description" content="폰트 관련 속성">
 
 
 
 
 
+
+
+  <meta property="article:published_time" content="2021-09-30T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-09-30T00:00:00+09:00">
 
 
 
@@ -41,7 +47,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4502/categories/CSS">
+<link rel="canonical" href="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C1/">
 
 
 
@@ -94,7 +100,7 @@
 
   </head>
 
-  <body class="layout--archive">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -440,87 +446,351 @@
 
 
 
-  <div class="archive">
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="CSS요소 1">
+    <meta itemprop="description" content="폰트 관련 속성">
+    <meta itemprop="datePublished" content="2021-09-30T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-09-30T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C1/" class="u-url" itemprop="url">CSS요소 1
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
     
-      <h1 id="page-title" class="page__title">CSS</h1>
+
     
+
     
-<div class="list__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <!-- <a href="/css/CSS%EC%9A%94%EC%86%8C1/">CSS요소 1</a> -->
-              <a href="/blog/css/CSS%EC%9A%94%EC%86%8C1/">CSS요소 1</a>
-            </span>
-            <small> 
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.30
-              <!--Archive page 용-: (post -> page)-->
-<!--page__taxonomy.html에서 가져 옴-->
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
         
-        <span class="page__taxonomy">
-            <span itemprop="keywords"><a href="/categories/#css" class="page__taxonomy-item-category" rel="tag">CSS</a>
-                    
-                    
-                    <a href="/tags/#css" class="page__taxonomy-item-tag" rel="tag">CSS</a>
-                
-            </span>
-        </span>
-            </small>
-        </div>
-      </article>
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#️-font-size">▶️ font-size</a></li><li><a href="#️-font-style">▶️ font-style</a></li><li><a href="#️-font-weight">▶️ font-weight</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>텍스트에 적용될 수 있는 css 요소들을 살펴보겠습니다</p>
+
+<p>CSS를 적용할 HTML예제는 다음과 같습니다</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"default"</span><span class="nt">&gt;</span>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    <span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div>
+
+<h2 id="️-font-size">▶️ font-size</h2>
+<p>기본적으로 브라우저의 기본값은 16px이다 폰트의 크기를 변경할 수 있다</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.text</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>px, rem, rm의 단위를 많이 사용헤서 표현한다</li>
+</ul>
+
+<h2 id="️-font-style">▶️ font-style</h2>
+<p>글꼴을 시스템폰트로 설정할 수 있다</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.text</span> <span class="p">{</span>
+  <span class="nl">font-style</span><span class="p">:</span> <span class="nb">italic</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">italic</code>체로 변경하기 위해 많이 사용한다 (기울임)</li>
+  <li>기본값은 <code class="language-plaintext highlighter-rouge">normal</code></li>
+</ul>
+
+<h2 id="️-font-weight">▶️ font-weight</h2>
+<p>텍스트의 굵기를 변경할 수 있다</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.text</span> <span class="p">{</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="m">500</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>보통 100단위의 숫자를 사용함 (400 = normal)</li>
+  <li>normale(400), bold(700), lighter(부모보다 얇게), bolder(부모보다 굴게) - 키워드로 입력할 수 있다</li>
+  <li>폰트마다 지원하는 굵기가 다를 수 있다</li>
+</ul>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-30">September 30, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=CSS%EC%9A%94%EC%86%8C+1%20http%3A%2F%2Flocalhost%3A4502%2Fcss%2FCSS%25EC%259A%2594%25EC%2586%258C1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fcss%2FCSS%25EC%259A%2594%25EC%2586%258C1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fcss%2FCSS%25EC%259A%2594%25EC%2586%258C1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1/" class="pagination--pager" title="전역속성
+">이전</a>
+    
+    
+      <a href="/git/git,-github1/" class="pagination--pager" title="Git, Github
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/git/git,-github1/" rel="permalink">Git, Github
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Git, Github
+</p>
+  </article>
 </div>
 
-<div class="list__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <!-- <a href="/css/%EC%84%A0%ED%83%9D%EC%9E%90(selector)/">CSS 선택자 (selector)</a> -->
-              <a href="/blog/css/%EC%84%A0%ED%83%9D%EC%9E%90(selector)/">CSS 선택자 (selector)</a>
-            </span>
-            <small> 
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.29
-              <!--Archive page 용-: (post -> page)-->
-<!--page__taxonomy.html에서 가져 옴-->
         
-        <span class="page__taxonomy">
-            <span itemprop="keywords"><a href="/categories/#css" class="page__taxonomy-item-category" rel="tag">CSS</a>
-                    
-                    
-                    <a href="/tags/#css" class="page__taxonomy-item-tag" rel="tag">CSS</a>
-                
-            </span>
-        </span>
-            </small>
-        </div>
-      </article>
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1/" rel="permalink">전역속성
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">html의 전역속성
+</p>
+  </article>
 </div>
 
-<div class="list__item">
-    <article class="archive-item">
-        <div>
-            <span>
-              <!-- <a href="/css/css%EA%B0%9C%EC%9A%94/">CSS개요</a> -->
-              <a href="/blog/css/css%EA%B0%9C%EC%9A%94/">CSS개요</a>
-            </span>
-            <small> 
-              <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i> 2021.09.29
-              <!--Archive page 용-: (post -> page)-->
-<!--page__taxonomy.html에서 가져 옴-->
         
-        <span class="page__taxonomy">
-            <span itemprop="keywords"><a href="/categories/#css" class="page__taxonomy-item-category" rel="tag">CSS</a>
-                    
-                    
-                    <a href="/tags/#css" class="page__taxonomy-item-tag" rel="tag">CSS</a>
-                
-            </span>
-        </span>
-            </small>
-        </div>
-      </article>
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/%EC%84%A0%ED%83%9D%EC%9E%90(selector)/" rel="permalink">CSS 선택자 (selector)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CSS 선택자 (selector)
+</p>
+  </article>
 </div>
 
-  </div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/html/%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="permalink">메타데이터
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">메타데이터 요소
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
 </div>
     </div>
 
