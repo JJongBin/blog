@@ -473,7 +473,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          2 분 소요
         
       </span>
     
@@ -488,7 +488,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#️-font-size">▶️ font-size</a></li><li><a href="#️-font-style">▶️ font-style</a></li><li><a href="#️-font-weight">▶️ font-weight</a></li></ul>
+              <ul class="toc__menu"><li><a href="#️-font-size">▶️ font-size</a></li><li><a href="#️-font-style">▶️ font-style</a></li><li><a href="#️-font-weight">▶️ font-weight</a></li><li><a href="#️-font-family">▶️ font-family</a></li><li><a href="#️-line-height">▶️ line-height</a></li><li><a href="#️-font">▶️ font</a></li><li><a href="#️-letter-spacing">▶️ letter-spacing</a></li><li><a href="#️-word-spacing">▶️ word-spacing</a></li><li><a href="#️-text-align">▶️ text-align</a></li><li><a href="#️-text-indent">▶️ text-indent</a></li><li><a href="#️-text-decoration">▶️ text-decoration</a></li><li><a href="#️-word-break">▶️ word-break</a></li><li><a href="#️-text-transform">▶️ text-transform</a></li></ul>
 
             </nav>
           </aside>
@@ -544,6 +544,158 @@
   <li>보통 100단위의 숫자를 사용함 (400 = normal)</li>
   <li>normale(400), bold(700), lighter(부모보다 얇게), bolder(부모보다 굴게) - 키워드로 입력할 수 있다</li>
   <li>폰트마다 지원하는 굵기가 다를 수 있다</li>
+</ul>
+
+<h2 id="️-font-family">▶️ font-family</h2>
+<p>텍스트의 글꼴을 지정할 수 있다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Verdana</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>여러개가 값으로 들어간 경우 앞에서부터 차례대로 있는지 확인하고 있으면 사용하고 나머지는 무시한다</li>
+  <li>마지막에 있는 값은 지정한 폰트가 없을때 브라우저에서 해당 유형의 글꼴을 알아서 선택한다</li>
+</ul>
+
+<h2 id="️-line-height">▶️ line-height</h2>
+<p>줄의 높이를 의미</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">2.0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>폰트의 작성자가 기본값을 지정한다 (폰트마다 다를 수 있음)</li>
+  <li>값(양수, px, %)을 지정해서 모든 글들의 높이를 맞추는 것이 좋다</li>
+</ul>
+
+<h2 id="️-font">▶️ font</h2>
+<p>단축속성으로 여러 요소를 한줄로 표현할 수 있다 (6가지)</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">p</span> <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Times New Roman'</span><span class="p">,</span> <span class="n">Times</span><span class="p">,</span> <span class="nb">serif</span><span class="p">;</span>
+    <span class="nl">font-style</span><span class="p">:</span> <span class="nb">italic</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="m">700</span><span class="p">;</span>
+    <span class="nl">line-height</span><span class="p">:</span> <span class="m">2.0</span><span class="p">;</span>
+
+    <span class="c">/* 위 코드와 동일 */</span>
+    <span class="nl">font</span><span class="p">:</span> <span class="nb">italic</span> <span class="n">weight</span> <span class="m">20px</span><span class="p">/</span><span class="m">2.0</span> <span class="s2">'Times New Roman'</span><span class="p">,</span> <span class="n">Times</span><span class="p">,</span> <span class="nb">serif</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>필수속성: <code class="language-plaintext highlighter-rouge">font-size</code>, <code class="language-plaintext highlighter-rouge">font-family</code></li>
+  <li>선택속성: <code class="language-plaintext highlighter-rouge">font-style</code>, <code class="language-plaintext highlighter-rouge">font-variant</code>, <code class="language-plaintext highlighter-rouge">font-weight</code>, <code class="language-plaintext highlighter-rouge">line-height</code></li>
+  <li><code class="language-plaintext highlighter-rouge">style</code>과 <code class="language-plaintext highlighter-rouge">weight</code>는 <code class="language-plaintext highlighter-rouge">size</code>보다 앞에 있어야 한다</li>
+  <li><code class="language-plaintext highlighter-rouge">line-height</code>는 <code class="language-plaintext highlighter-rouge">size</code>뒤에 <code class="language-plaintext highlighter-rouge">/</code>를 붙이고 표현한다</li>
+  <li>작성을 하지 않으면 <code class="language-plaintext highlighter-rouge">inital</code>값이 된다</li>
+</ul>
+
+<h2 id="️-letter-spacing">▶️ letter-spacing</h2>
+<p>글자간의 간격을 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">letter-spacing</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>기본값 <code class="language-plaintext highlighter-rouge">normal</code></li>
+  <li>음수를 사용하면 글자끼리 겹치기도 함</li>
+  <li>px, rem em 단위를 사용할 수 있다</li>
+  <li>폰트 제작자가 기본값을 지정해주었기 때문에 폰트마다 다르다</li>
+  <li>굳이 조절하지 않는 것이 좋다</li>
+</ul>
+
+<h2 id="️-word-spacing">▶️ word-spacing</h2>
+<p>단어 사이의 간격을 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">word-spacing</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>px, rem, em, % 단위를 사용할 수 있다</li>
+</ul>
+
+<h2 id="️-text-align">▶️ text-align</h2>
+<p>텍스트를 정렬할 수 있다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">left</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>많이 사용하는 값으로는 왼쪽 오른쪽, 중앙 정렬이 있다(<code class="language-plaintext highlighter-rouge">left</code>, <code class="language-plaintext highlighter-rouge">right</code>, <code class="language-plaintext highlighter-rouge">center</code>)</li>
+  <li><strong>block요소</strong>에서 변하는 길이에 맞춰서 정렬이 된다</li>
+</ul>
+
+<h2 id="️-text-indent">▶️ text-indent</h2>
+<p>들여쓰기에 관련되어 제일 앞 부분을 어느정도 띄울지 지정할 수 있다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">text-indent</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>상속이 된다</li>
+  <li><strong>block요소</strong>에만 적용이 된다</li>
+  <li>% 단위도 사용이 가능하다</li>
+</ul>
+
+<h2 id="️-text-decoration">▶️ text-decoration</h2>
+<p>단축속성으로 글자의 장식을 지정한다</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span> <span class="p">{</span>
+    <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">underline</span> <span class="no">skyblue</span> <span class="m">5px</span> <span class="nb">double</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>공백으로 구분</li>
+  <li>순서가 중요하지 않다</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">text-decoration-style</code></td>
+      <td><code class="language-plaintext highlighter-rouge">solid</code>, <code class="language-plaintext highlighter-rouge">double</code>, <code class="language-plaintext highlighter-rouge">dooted</code>, <code class="language-plaintext highlighter-rouge">dashed</code>, <code class="language-plaintext highlighter-rouge">wavy</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">text-decoration-line</code></td>
+      <td><code class="language-plaintext highlighter-rouge">none</code>, <code class="language-plaintext highlighter-rouge">underline</code>, <code class="language-plaintext highlighter-rouge">overline</code>, <code class="language-plaintext highlighter-rouge">line-through</code> <br /> 여러개를 동시에 사용할 수 있다</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">text-decoration-color</code></td>
+      <td>텍스트의 색상을 지정한다</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">text-decoration-thickness</code></td>
+      <td>장식의 두께를 지정한다</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="️-word-break">▶️ word-break</h2>
+<p>자신의 영역 이외로 나가게 될경우 줄바꿈을 하는데 단어가 분리되지 않는다 (줄바꿈의 기준 설정)</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span> <span class="p">{</span>
+    <span class="nl">word-break</span><span class="p">:</span> <span class="n">break-all</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>기본값일때 영어(<code class="language-plaintext highlighter-rouge">keep-all</code>)의 경우 요소를 뚫고나감, 한글(<code class="language-plaintext highlighter-rouge">break-all</code>)은 줄바꿈</li>
+  <li>기본값은 <code class="language-plaintext highlighter-rouge">normal</code></li>
+  <li><code class="language-plaintext highlighter-rouge">break-all</code>: 줄바꿈을 한다</li>
+  <li><code class="language-plaintext highlighter-rouge">keep-all</code>: 요소를 벗어나도 줄바꿈이 되지 않음</li>
+</ul>
+
+<h2 id="️-text-transform">▶️ text-transform</h2>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span> <span class="p">{</span>
+    <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>한글에는 적용할 수 없음</li>
+  <li>기본값은 <code class="language-plaintext highlighter-rouge">none</code></li>
+  <li><code class="language-plaintext highlighter-rouge">uppercase</code>: 대문자</li>
+  <li><code class="language-plaintext highlighter-rouge">lowercase</code>: 소문자</li>
+  <li><code class="language-plaintext highlighter-rouge">capitalize</code>: 문장의 제일 앞글자만 대문자</li>
+  <li>개발자도구로 보았을때는 소문자로 표시 (보여질때 css가 적용되어 대문자로 보임)</li>
 </ul>
 
 
