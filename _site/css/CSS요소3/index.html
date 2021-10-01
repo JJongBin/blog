@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Git, Github 2 - git flow | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="undo, git flow">
+<!-- begin _includes/seo.html --><title>CSS요소3 - 박스 모델 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="박스 모델">
 
 
   <meta name="author" content="원종빈">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="Git, Github 2 - git flow">
-<meta property="og:url" content="http://localhost:4502/git/git,-github2/">
+<meta property="og:title" content="CSS요소3 - 박스 모델">
+<meta property="og:url" content="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C3/">
 
 
-  <meta property="og:description" content="undo, git flow">
+  <meta property="og:description" content="박스 모델">
 
 
 
@@ -47,7 +47,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4502/git/git,-github2/">
+<link rel="canonical" href="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C3/">
 
 
 
@@ -447,8 +447,8 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Git, Github 2 - git flow">
-    <meta itemprop="description" content="undo, git flow">
+    <meta itemprop="headline" content="CSS요소3 - 박스 모델">
+    <meta itemprop="description" content="박스 모델">
     <meta itemprop="datePublished" content="2021-10-01T00:00:00+09:00">
     <meta itemprop="dateModified" content="2021-10-01T00:00:00+09:00">
 
@@ -456,7 +456,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4502/git/git,-github2/" class="u-url" itemprop="url">Git, Github 2 - git flow
+            <a href="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C3/" class="u-url" itemprop="url">CSS요소3 - 박스 모델
 </a>
           </h1>
           
@@ -473,7 +473,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          3 분 소요
+          2 분 소요
         
       </span>
     
@@ -488,160 +488,193 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#상황별-되돌리기">상황별 되돌리기</a><ul><li><a href="#️-파일의-이름을-바꾸거나-이동시킬때">▶️ 파일의 이름을 바꾸거나 이동시킬때</a></li><li><a href="#️-파일을-수정하고-최신의-commit으로-돌아가는-경우">▶️ 파일을 수정하고 최신의 commit으로 돌아가는 경우</a></li><li><a href="#️-변경사항을-잘못-add-했을때">▶️ 변경사항을 잘못 add 했을때</a></li><li><a href="#️-가장-최신의-commit을-수정하는-방법">▶️ 가장 최신의 commit을 수정하는 방법</a></li><li><a href="#️-commit을-취소하는-방법">▶️ commit을 취소하는 방법</a></li></ul></li><li><a href="#git-flow">git flow</a><ul><li><a href="#️-issue">▶️ Issue</a><ul><li><a href="#--label">- Label</a></li><li><a href="#--milestone">- Milestone</a></li></ul></li><li><a href="#️-project">▶️ Project</a></li><li><a href="#️-team-단위의-협업">▶️ team 단위의 협업</a><ul><li><a href="#-팀장의-역할">▶ 팀장의 역할</a></li><li><a href="#️-팀원의-역할">▶️ 팀원의 역할</a></li></ul></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#박스모델">박스모델</a><ul><li><a href="#️-width-height">▶️ width, height</a></li><li><a href="#️-max-min">▶️ max, min</a></li><li><a href="#️-margin">▶️ margin</a></li><li><a href="#️-margin-collapsong마진상쇄">▶️ margin collapsong(마진상쇄)</a></li><li><a href="#️-padding">▶️ padding</a></li><li><a href="#️-border">▶️ border</a></li><li><a href="#️-border-radius">▶️ border-radius</a></li><li><a href="#️-box-sizing">▶️ box-sizing</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="상황별-되돌리기">상황별 되돌리기</h1>
-<p>git flow를 이용해서 어떤 작업을 하더라도 feature branch를 생성해서 하는 것을 권장한다 (main branch는 실제 서비스를 담당하는 부분이기 때문에 main branch에서 실수를 할 수도 있기 때문이다)</p>
+        <h1 id="박스모델">박스모델</h1>
+<p>브라우저에서는 전부 네모 형태로 계산이 되어진다</p>
 
-<p>또한 develop branch에서 commit을 하지 않는 것을 권장한다 (feature branch를 생성해서 하는 것 권장!)</p>
+<p><img src="../../imgs/box-model.png" alt="box-model" /></p>
 
-<h2 id="️-파일의-이름을-바꾸거나-이동시킬때">▶️ 파일의 이름을 바꾸거나 이동시킬때</h2>
-<p>cmd나 터미널에서 <code class="language-plaintext highlighter-rouge">mv [file-name] [path]</code>를 이용해서 파일의 경로를 변경하거나 이름을 변경하는 경우 git에서는 파일이 이동하거나 이름이 변경된 것을 인식하지 못한다 → <strong>기존의 파일이 삭제되고 새로운 파일이 생성됬다고 인식</strong></p>
+<p>바깥쪽부터 <strong>margin영역-border영역-padding영역-content영역</strong>으로 나눠져있다</p>
 
-<p>따라서 git에게 파일을 이동하거나 이름을 변경한다고 전달해주어야 한다 이때 명령어 앞에 <code class="language-plaintext highlighter-rouge">git</code>을 붙여주면 된다</p>
+<h2 id="️-width-height">▶️ width, height</h2>
+<p>요소의 너비 및 높이를 설정할 수 있다</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git mv [file-name] [path]
-
-// ex
-git mv README.md readme2.md
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
-
-<p>이렇게 했을 경우 <code class="language-plaintext highlighter-rouge">git status</code>로 확인하면</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Changes to be committed:
-  (use "git restore --staged &lt;file&gt;..." to unstage)
-	renamed:    README.md -&gt; readme2.md
-</code></pre></div></div>
-<p>renamed라고 이름이 변경됨을 인식할 수 있었다</p>
-
-<h2 id="️-파일을-수정하고-최신의-commit으로-돌아가는-경우">▶️ 파일을 수정하고 최신의 commit으로 돌아가는 경우</h2>
-<p>여러 파일을 수정하다가 꼬여서 최근의 commit으로 돌아가야 하는 경우가 있다 이럴때는 다음과 같은 명령어를 사용한다</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 하나의 파일
-git checkout -- [filename]
-
-// 여러개 파일
-git checkout -- .
-</code></pre></div></div>
-
-<p>최근 <code class="language-plaintext highlighter-rouge">checkout</code>이라는 명령어가 변경되어 <code class="language-plaintext highlighter-rouge">restore</code>로 사용가능하다 (현재 둘다 사용가능)</p>
-
-<h2 id="️-변경사항을-잘못-add-했을때">▶️ 변경사항을 잘못 add 했을때</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset HEAD [filename]
-</code></pre></div></div>
-
-<p>HEAD는 현재 가르키는 최신상태이고 이를 reset하는 명령어이다</p>
-
-<h2 id="️-가장-최신의-commit을-수정하는-방법">▶️ 가장 최신의 commit을 수정하는 방법</h2>
-<p>commit message를 입력하다가 잘못 입력한 경우 가장 최근의 commit을 수정하는 다음과 같은 명령어를 사용하면 된다</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit --amend
-</code></pre></div></div>
-
-<p>vi 창이 열리면서 수정이 가능하다</p>
-
-<h2 id="️-commit을-취소하는-방법">▶️ commit을 취소하는 방법</h2>
-<p>commit을 수정하기 위한 방법으로는 두가지로 볼수 있다</p>
-
-<ol>
-  <li>강제적으로 commit 취소
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset —-hard HEAD~3
-git push -f origin [branch]
-</code></pre></div>    </div>
-    <p>–hard는 굉장히 위험한 flag로 권장하지 않는다</p>
-  </li>
-  <li>잘못된 commit을 두고 새로 수정하는 방법
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git revert --no-commit HEAD~[개수]..
-</code></pre></div>    </div>
-    <p>revert는 하나를 되돌릴 때마다 commit이 하나씩 작성되기 때문에 <code class="language-plaintext highlighter-rouge">--no-commit</code>은 이런 commit을 작성하지 않도록 한다</p>
-  </li>
-</ol>
-
-<p><code class="language-plaintext highlighter-rouge">revert</code>를 사용하면 잘못을 인정하고 되돌리는 commit을 다시 작성하는 형식이다</p>
-
-<p>반면에 <code class="language-plaintext highlighter-rouge">reset --hard</code>를 이용한 commit의 취소는 강제적이다 그러나 내가 commit을 강제적으로 취소했더라도 다른 동료가 이전에 그 파일을 가지고 있었다면 좀비파일처럼 계속해서 다시 생기는 경우를 볼 수 있다</p>
-
-<p>따라서 revert를 수행하는 것을 권장한다</p>
-
-<p><code class="language-plaintext highlighter-rouge">revert</code>를 수행할때 고민할 수 있는 부분이 있는데 만약 feature branch를 생성하고 작업을 하고 있었다면 잘못 되었을때 branch를 삭제하고 아에 새로하는 방법을 선택하지 아니면 revert를 수행해서 어느정도의 commit을 취소한뒤 재작업할지 고민할 수 있다 →</p>
-
-<p><br /></p>
-
-<h1 id="git-flow">git flow</h1>
-<p>git flow를 이용해서는 다른 동료들과 협업을 진행할 수 있다 → issue, project</p>
-
-<h2 id="️-issue">▶️ Issue</h2>
-<p>프로젝트를 진행라면서 해야할 일들, log를 등록할 용도로 사용할 수 있다</p>
-
-<h3 id="--label">- Label</h3>
-<p>해당 이슈가 어떤 카테고리에 속하는지 지정할 수 있다</p>
-
-<h3 id="--milestone">- Milestone</h3>
-<p>보통 각 기능별 단위별 데드라인을 지정할 수 있다</p>
-
 <ul>
-  <li>이슈를 작성할 때 <code class="language-plaintext highlighter-rouge">- [ ]</code>를 이용해서 checkbox를 만들 수 있다</li>
-  <li>하나의 작업(checkbox 하나)를 완료하고 checkbox에 체크를 한다</li>
-  <li>이슈를 작성할 때 이유를 같이 명시하는 것이 좋다</li>
-  <li>팀장이 Assignees로 이슈의 담당원을 명시할 수 있다</li>
+  <li>px, em, rem, % , vw, vh 단위를 사용할 수 있다</li>
+  <li>상속이 되지 않는다</li>
+  <li>기본값이 <code class="language-plaintext highlighter-rouge">auto</code>는 블록요소의 경우 너비가 최대(100%) 높이는 내부 content만큼을 차지한다</li>
+  <li>인라인 요소의 경우 너비 및 너비가 내부 content만큼 차지한다(<code class="language-plaintext highlighter-rouge">width</code>, <code class="language-plaintext highlighter-rouge">height</code> 지정 x)</li>
 </ul>
 
-<h2 id="️-project">▶️ Project</h2>
-<p>project에서는 이슈를 개별로 backlog, todo, done의 구간으로 옮길 수 있다</p>
+<h2 id="️-max-min">▶️ max, min</h2>
+<p>최대, 최소의 너비 및 높이를 설정할 수 있다.</p>
 
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">min-width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 <ul>
-  <li>모든 backlog를 done의 공간으로 옮겨야 한다</li>
+  <li>위 코드에서 box 클래스는 부모의 50%의 너비를 가지지만 최소 100px의 값을 가진다</li>
+  <li><code class="language-plaintext highlighter-rouge">max-width</code>, <code class="language-plaintext highlighter-rouge">min-width</code>, <code class="language-plaintext highlighter-rouge">max-height</code>, <code class="language-plaintext highlighter-rouge">min-height</code></li>
 </ul>
 
-<h2 id="️-team-단위의-협업">▶️ team 단위의 협업</h2>
-<p>team 단위로 작업을 할 수 있는데 이때 방법이 두가지가 있다</p>
+<h2 id="️-margin">▶️ margin</h2>
+<p>단축속성으로 다른 요소와의 간격을 조절할 수 있다(요소의 외부 여백을 지정)</p>
 
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="c">/* === margin: 10px 10px 10px 10px; */</span>
+    <span class="c">/* 각각 다른 값을 입력할 수 있고, 특정방향의 margin을 주지 않으려면 0을 입력한다 */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">margin</code>은 단축속성으로 <code class="language-plaintext highlighter-rouge">margin-top</code>, <code class="language-plaintext highlighter-rouge">margin-right</code>, <code class="language-plaintext highlighter-rouge">margin-bottom</code>, <code class="language-plaintext highlighter-rouge">margin-left</code>로 구분될 수 있다</li>
+  <li>단축속성은 공백으로 구분된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">margin</code>의 단축속성은 <code class="language-plaintext highlighter-rouge">margin: top right bottom left;</code>로 시계방향으로 지정하면 된다</li>
+  <li>단축속성의 값으로 두개를 입력시 (top, bottom) / (left, right)으로 표현</li>
+  <li>단축속성의 값으로 세개를 입력할 경우 (top) / (left, right) / (bottom) 으로 표현</li>
+  <li>%는 부모의 너비(width)를 기준으로 한다</li>
+  <li>음수값이 사용가능하다</li>
+</ul>
+
+<h2 id="️-margin-collapsong마진상쇄">▶️ margin collapsong(마진상쇄)</h2>
+<p>마진이 겹쳐져서 상쇄되는 특성이다 (더 큰값이 적용 - 작은값 무시)</p>
+<ul>
+  <li>float요소와 절대위치의 요소는 여뱍상쇄가 일어나지 않는다</li>
+</ul>
+
+<p>이런 현상이 발생될 수 있는 경우</p>
 <ol>
-  <li>cooaborator를 추가하는 방법(권장x)
+  <li>인접 형제
     <ul>
-      <li>팀장이 manage access를 팀원에게 할당한다 (권한을 줌)</li>
-      <li>원본에 바로 밀어넣는 형태이기 때문에 잘못하면 원본이 꼬일 수 있다</li>
+      <li>두 형제의 위아래의 여백이 상쇄됨(좌우는 x)</li>
     </ul>
   </li>
-  <li>fullrequest 
-팀원은 사본을 가지고 작업하고 원본에 반영이 되도록 팀장에게 요청하는 방법</li>
+  <li>부모 자식요소간
+    <ul>
+      <li>부모요소의 여백과 자식요소의 여백이 만났을때(상하) -&gt; border나 padding값으로 구분해줄 수 있다</li>
+    </ul>
+  </li>
+  <li>빈블록
+    <ul>
+      <li>빈블록이면 해당 블록의 <code class="language-plaintext highlighter-rouge">margin-top</code>과 <code class="language-plaintext highlighter-rouge">margin-bottom</code>이 만나게 된다 따라서 <code class="language-plaintext highlighter-rouge">margin-top</code>과 <code class="language-plaintext highlighter-rouge">margin-bottom</code>중에 더 큰 값으로 상쇄된다</li>
+    </ul>
+  </li>
 </ol>
 
-<h3 id="-팀장의-역할">▶ 팀장의 역할</h3>
-<ol>
-  <li>새로운 repository를 생성</li>
-  <li>clone 진행</li>
-  <li>branch를 생성한다 (<code class="language-plaintext highlighter-rouge">git flow init</code>)</li>
-  <li>대상 파일 생성 (<code class="language-plaintext highlighter-rouge">touch [file-name]</code>)</li>
-  <li><code class="language-plaintext highlighter-rouge">git add [file-name]</code></li>
-  <li>commit message와 함께 commit을 진행한다 (<code class="language-plaintext highlighter-rouge">git commit</code>)</li>
-  <li><code class="language-plaintext highlighter-rouge">git push -u origin develop</code> (처음이라면 -u 플래그를 사용한다)</li>
-</ol>
+<blockquote>
+  <p>MDN <a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing">https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing</a></p>
+</blockquote>
 
-<h3 id="️-팀원의-역할">▶️ 팀원의 역할</h3>
-<ol>
-  <li>팀장이 생성한 repository 주소를 받는다</li>
-  <li>팀원이 스스로 Issue를 작성한다</li>
-  <li>FORK를 진행해서 사본을 만든다(개인의 repository)</li>
-  <li>FORK한 repository의 주소로 clone을 진행한다 (<code class="language-plaintext highlighter-rouge">git clone [forked-repo]</code>)</li>
-  <li><code class="language-plaintext highlighter-rouge">git flow init</code>: branch를 생성한다</li>
-  <li>Feature branch를 생성한다(<code class="language-plaintext highlighter-rouge">git flow feature start [branch-name]</code>)</li>
-  <li>작업을 완료하고 <code class="language-plaintext highlighter-rouge">git add [file-name]</code>, <code class="language-plaintext highlighter-rouge">git commit</code>을 진행한다</li>
-  <li>마지막 commit에서는 이슈가 마무리 되었음을 알리기 위해 resolve, close, fix과 넘버링된 이슈를 입력해준다(<code class="language-plaintext highlighter-rouge">resolve [issue-numer]</code>)</li>
-  <li><code class="language-plaintext highlighter-rouge">git flow feature finish [branch-name]</code></li>
-  <li><code class="language-plaintext highlighter-rouge">git push origin develop</code> (첫 push인 경우 <code class="language-plaintext highlighter-rouge">-u</code>를 추가한다)</li>
-  <li><strong>fullrequest</strong>를 진행한다</li>
-  <li>수정사항이 있을시에 develop branch에서 add, commit, push를 진행하고 팀장이 확인한다</li>
-</ol>
+<h2 id="️-padding">▶️ padding</h2>
+<p>단축속성으로 요소 내부의 여백을 줄 수 있다</p>
 
-<p>여러명이서 진행하다보면 파일 충돌의 위험이 있다 이럴때는 다음과 같은 과정을 진행한다</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add upstream [leader-repo]
-git fetc upstream develop
-git merge FETCH_HEAD
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">padding</span><span class="p">:</span><span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
-<p>자신이 수정한 파일에 충돌이 된부분을 해결하고 ad,, commit, push한다</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">padding-top</code>, <code class="language-plaintext highlighter-rouge">padding-right</code>, <code class="language-plaintext highlighter-rouge">padding-bottom</code>, <code class="language-plaintext highlighter-rouge">padding-left</code> 순으로 적용가능하다 (시계방향)</li>
+  <li>패딩상쇄는 존재하지 않는다</li>
+  <li>음수값을 사용할 수 없다</li>
+  <li>퍼센트(%)를 사용할 경우 부모요소의 가로길이(width)를 기준으로 한다</li>
+  <li>만약 요소의 크기가 100px일때 padding을 추가하면 그만큼 크기가 늘어난다</li>
+</ul>
+
+<h2 id="️-border">▶️ border</h2>
+<p>단축속성으로 요소의 테두리를 설정해줄 수 있다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="n">width</span> <span class="n">style</span> <span class="n">color</span><span class="p">;</span>
+    <span class="c">/* border: 1px solid #000; */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">border</code>의 초기값은 0</li>
+  <li><code class="language-plaintext highlighter-rouge">border-width</code>: 키워드(<code class="language-plaintext highlighter-rouge">thin</code>, <code class="language-plaintext highlighter-rouge">medium</code>, <code class="language-plaintext highlighter-rouge">thick</code>)또는 단위(px)을 사용해서 굵기를 나타낸다</li>
+  <li><code class="language-plaintext highlighter-rouge">border-style</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">none</code>: 보이지 않음(우선순위 제일 낮음)</li>
+      <li><code class="language-plaintext highlighter-rouge">hidden</code>: 보이지 않음(우선순위 제일높음)</li>
+      <li><code class="language-plaintext highlighter-rouge">dotted</code>: 둥근 점</li>
+      <li><code class="language-plaintext highlighter-rouge">dashed</code>: 직사각형 여러개</li>
+      <li><code class="language-plaintext highlighter-rouge">solid</code>: 하나의 직선</li>
+      <li><code class="language-plaintext highlighter-rouge">double</code>: 두개의 직선</li>
+      <li><code class="language-plaintext highlighter-rouge">groove</code>: 테두리가 파인 것처럼 보임</li>
+      <li><code class="language-plaintext highlighter-rouge">ridge</code>: 테두리가 튀어나온 것처럼 보임</li>
+      <li><code class="language-plaintext highlighter-rouge">inset</code>: 요소개 파인 것처럼 보임</li>
+      <li><code class="language-plaintext highlighter-rouge">outset</code>: 요소가 튀어나온 것처럼 보임</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">border-color</code>: 테두리 선의 색상을 설정</li>
+  <li>각 속성의 값을 하나를 입력하면 (상 / 하 /)</li>
+  <li>각 속성의 값을 두개 입력하면 (상하 / 좌우)</li>
+  <li>각 속성의 값을 세개 입력하면 (상 / 좌우 / 하)</li>
+  <li><code class="language-plaintext highlighter-rouge">border: width style color;</code> 형태로 단축속성을 작성한다</li>
+  <li><code class="language-plaintext highlighter-rouge">border-bottom</code>처럼 bottom, top, left, right로 지정할 수 있다</li>
+</ul>
+
+<h2 id="️-border-radius">▶️ border-radius</h2>
+<p>테두리 경계를 둥글게 설정해준다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>모서리 끝에 원이 생겨서  <code class="language-plaintext highlighter-rouge">border-radius</code>의 값으로 넣은 값이 반지름이 되고 모서리의 모양이 원의 테두리처럼 반영</li>
+  <li><code class="language-plaintext highlighter-rouge">border-radius: 50%</code>는 원을 생성한다</li>
+  <li>값은 % 또는 px로 지정해준다</li>
+  <li>네가지 값을 입력할 경우 왼쪽 상단부터 시계방향으로 설정이 된다</li>
+  <li>두개의 경우 대각선을 기준으로 (왼쪽상단, 오른쪽하단) / (오른쪽 상단, 왼쪽하단)으로 묶어 표현</li>
+  <li>최대값은 50%이다</li>
+</ul>
+
+<h2 id="️-box-sizing">▶️ box-sizing</h2>
+<p>요소의 크기를 어떤 것을 기준으로 지정할지 명시한다</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">10px</span> <span class="nb">solid</span> <span class="nb">block</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">box-sizing</code>을 명시하지 않았기 때문에 기본값인 <code class="language-plaintext highlighter-rouge">content-box</code></p>
+
+<p>따라서 전체 크기는 100px(content)+40px(padding)+20px(border) = <u>160px</u></p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">10px</span> <span class="nb">solid</span> <span class="nb">block</span><span class="p">;</span>
+    <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>같은 경우에 <code class="language-plaintext highlighter-rouge">box-sizing</code>을 <code class="language-plaintext highlighter-rouge">border-box</code>로 지정해준 경우에는 border까지의 크기가 100px이 되므로 전체 크기는 <u>100px</u></p>
+
+<ul>
+  <li>두가지 값이 있다</li>
+  <li><code class="language-plaintext highlighter-rouge">content-box</code>: content를 기준으로 지정한 크기로 설정(기본값)</li>
+  <li><code class="language-plaintext highlighter-rouge">border-box</code>: border를 기준으로 지정한 크기로 설정(<code class="language-plaintext highlighter-rouge">padding</code>, <code class="language-plaintext highlighter-rouge">border</code>가 포함됨)</li>
+</ul>
 
 
         
@@ -659,7 +692,7 @@ git merge FETCH_HEAD
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#git" class="page__taxonomy-item p-category" rel="tag">Git</a>
+      <a href="/tags/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
     
     </span>
   </p>
@@ -676,7 +709,7 @@ git merge FETCH_HEAD
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#git" class="page__taxonomy-item p-category" rel="tag">Git</a>
+      <a href="/categories/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
     
     </span>
   </p>
@@ -693,22 +726,23 @@ git merge FETCH_HEAD
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Git%2C+Github+2+-+git+flow%20http%3A%2F%2Flocalhost%3A4502%2Fgit%2Fgit%2C-github2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=CSS%EC%9A%94%EC%86%8C3+-+%EB%B0%95%EC%8A%A4+%EB%AA%A8%EB%8D%B8%20http%3A%2F%2Flocalhost%3A4502%2Fcss%2FCSS%25EC%259A%2594%25EC%2586%258C3%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fgit%2Fgit%2C-github2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fcss%2FCSS%25EC%259A%2594%25EC%2586%258C3%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fgit%2Fgit%2C-github2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fcss%2FCSS%25EC%259A%2594%25EC%2586%258C3%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/css/CSS%EC%9A%94%EC%86%8C3/" class="pagination--pager" title="CSS요소3 - 박스 모델
+      <a href="/css/CSS%EC%9A%94%EC%86%8C2/" class="pagination--pager" title="CSS요소2 - 단위와 값
 ">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/git/git,-github2/" class="pagination--pager" title="Git, Github 2 - git flow
+">다음</a>
     
   </nav>
 
@@ -732,7 +766,7 @@ git merge FETCH_HEAD
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/css/CSS%EC%9A%94%EC%86%8C3/" rel="permalink">CSS요소3 - 박스 모델
+        <a href="/git/git,-github2/" rel="permalink">Git, Github 2 - git flow
 </a>
       
     </h2>
@@ -750,14 +784,14 @@ git merge FETCH_HEAD
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          3 분 소요
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">박스 모델
+    <p class="archive__item-excerpt" itemprop="description">undo, git flow
 </p>
   </article>
 </div>
