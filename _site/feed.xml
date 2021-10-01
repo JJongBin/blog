@@ -1,4 +1,152 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-10-01T17:29:17+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">CSS요소2 - 단위와 값</title><link href="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C2/" rel="alternate" type="text/html" title="CSS요소2 - 단위와 값" /><published>2021-10-01T00:00:00+09:00</published><updated>2021-10-01T00:00:00+09:00</updated><id>http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C2</id><content type="html" xml:base="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C2/">&lt;p&gt;MDN을 참고하면 CSS마다 허용하는 단위값이 따로 있다 따라서 MDN을 참고 해서 허용되는 범위, 단위를 알고 사용해야 한다!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-10-01T19:20:27+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">Git, Github 2 - git flow</title><link href="http://localhost:4502/git/git,-github2/" rel="alternate" type="text/html" title="Git, Github 2 - git flow" /><published>2021-10-01T00:00:00+09:00</published><updated>2021-10-01T00:00:00+09:00</updated><id>http://localhost:4502/git/git,%20github2</id><content type="html" xml:base="http://localhost:4502/git/git,-github2/">&lt;h1 id=&quot;상황별-되돌리기&quot;&gt;상황별 되돌리기&lt;/h1&gt;
+&lt;p&gt;git flow를 이용해서 어떤 작업을 하더라도 feature branch를 생성해서 하는 것을 권장한다 (main branch는 실제 서비스를 담당하는 부분이기 때문에 main branch에서 실수를 할 수도 있기 때문이다)&lt;/p&gt;
+
+&lt;p&gt;또한 develop branch에서 commit을 하지 않는 것을 권장한다 (feature branch를 생성해서 하는 것 권장!)&lt;/p&gt;
+
+&lt;h2 id=&quot;️-파일의-이름을-바꾸거나-이동시킬때&quot;&gt;▶️ 파일의 이름을 바꾸거나 이동시킬때&lt;/h2&gt;
+&lt;p&gt;cmd나 터미널에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mv [file-name] [path]&lt;/code&gt;를 이용해서 파일의 경로를 변경하거나 이름을 변경하는 경우 git에서는 파일이 이동하거나 이름이 변경된 것을 인식하지 못한다 → &lt;strong&gt;기존의 파일이 삭제되고 새로운 파일이 생성됬다고 인식&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;따라서 git에게 파일을 이동하거나 이름을 변경한다고 전달해주어야 한다 이때 명령어 앞에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git&lt;/code&gt;을 붙여주면 된다&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git mv [file-name] [path]
+
+// ex
+git mv README.md readme2.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이렇게 했을 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git status&lt;/code&gt;로 확인하면&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Changes to be committed:
+  (use &quot;git restore --staged &amp;lt;file&amp;gt;...&quot; to unstage)
+	renamed:    README.md -&amp;gt; readme2.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;renamed라고 이름이 변경됨을 인식할 수 있었다&lt;/p&gt;
+
+&lt;h2 id=&quot;️-파일을-수정하고-최신의-commit으로-돌아가는-경우&quot;&gt;▶️ 파일을 수정하고 최신의 commit으로 돌아가는 경우&lt;/h2&gt;
+&lt;p&gt;여러 파일을 수정하다가 꼬여서 최근의 commit으로 돌아가야 하는 경우가 있다 이럴때는 다음과 같은 명령어를 사용한다&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 하나의 파일
+git checkout -- [filename]
+
+// 여러개 파일
+git checkout -- .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;최근 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;checkout&lt;/code&gt;이라는 명령어가 변경되어 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;restore&lt;/code&gt;로 사용가능하다 (현재 둘다 사용가능)&lt;/p&gt;
+
+&lt;h2 id=&quot;️-변경사항을-잘못-add-했을때&quot;&gt;▶️ 변경사항을 잘못 add 했을때&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git reset HEAD [filename]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;HEAD는 현재 가르키는 최신상태이고 이를 reset하는 명령어이다&lt;/p&gt;
+
+&lt;h2 id=&quot;️-가장-최신의-commit을-수정하는-방법&quot;&gt;▶️ 가장 최신의 commit을 수정하는 방법&lt;/h2&gt;
+&lt;p&gt;commit message를 입력하다가 잘못 입력한 경우 가장 최근의 commit을 수정하는 다음과 같은 명령어를 사용하면 된다&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git commit --amend
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;vi 창이 열리면서 수정이 가능하다&lt;/p&gt;
+
+&lt;h2 id=&quot;️-commit을-취소하는-방법&quot;&gt;▶️ commit을 취소하는 방법&lt;/h2&gt;
+&lt;p&gt;commit을 수정하기 위한 방법으로는 두가지로 볼수 있다&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;강제적으로 commit 취소
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git reset —-hard HEAD~3
+git push -f origin [branch]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;–hard는 굉장히 위험한 flag로 권장하지 않는다&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;잘못된 commit을 두고 새로 수정하는 방법
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git revert --no-commit HEAD~[개수]..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;revert는 하나를 되돌릴 때마다 commit이 하나씩 작성되기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--no-commit&lt;/code&gt;은 이런 commit을 작성하지 않도록 한다&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;revert&lt;/code&gt;를 사용하면 잘못을 인정하고 되돌리는 commit을 다시 작성하는 형식이다&lt;/p&gt;
+
+&lt;p&gt;반면에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reset --hard&lt;/code&gt;를 이용한 commit의 취소는 강제적이다 그러나 내가 commit을 강제적으로 취소했더라도 다른 동료가 이전에 그 파일을 가지고 있었다면 좀비파일처럼 계속해서 다시 생기는 경우를 볼 수 있다&lt;/p&gt;
+
+&lt;p&gt;따라서 revert를 수행하는 것을 권장한다&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;revert&lt;/code&gt;를 수행할때 고민할 수 있는 부분이 있는데 만약 feature branch를 생성하고 작업을 하고 있었다면 잘못 되었을때 branch를 삭제하고 아에 새로하는 방법을 선택하지 아니면 revert를 수행해서 어느정도의 commit을 취소한뒤 재작업할지 고민할 수 있다 →&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;git-flow&quot;&gt;git flow&lt;/h1&gt;
+&lt;p&gt;git flow를 이용해서는 다른 동료들과 협업을 진행할 수 있다 → issue, project&lt;/p&gt;
+
+&lt;h2 id=&quot;️-issue&quot;&gt;▶️ Issue&lt;/h2&gt;
+&lt;p&gt;프로젝트를 진행라면서 해야할 일들, log를 등록할 용도로 사용할 수 있다&lt;/p&gt;
+
+&lt;h3 id=&quot;--label&quot;&gt;- Label&lt;/h3&gt;
+&lt;p&gt;해당 이슈가 어떤 카테고리에 속하는지 지정할 수 있다&lt;/p&gt;
+
+&lt;h3 id=&quot;--milestone&quot;&gt;- Milestone&lt;/h3&gt;
+&lt;p&gt;보통 각 기능별 단위별 데드라인을 지정할 수 있다&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이슈를 작성할 때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;- [ ]&lt;/code&gt;를 이용해서 checkbox를 만들 수 있다&lt;/li&gt;
+  &lt;li&gt;하나의 작업(checkbox 하나)를 완료하고 checkbox에 체크를 한다&lt;/li&gt;
+  &lt;li&gt;이슈를 작성할 때 이유를 같이 명시하는 것이 좋다&lt;/li&gt;
+  &lt;li&gt;팀장이 Assignees로 이슈의 담당원을 명시할 수 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-project&quot;&gt;▶️ Project&lt;/h2&gt;
+&lt;p&gt;project에서는 이슈를 개별로 backlog, todo, done의 구간으로 옮길 수 있다&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;모든 backlog를 done의 공간으로 옮겨야 한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-team-단위의-협업&quot;&gt;▶️ team 단위의 협업&lt;/h2&gt;
+&lt;p&gt;team 단위로 작업을 할 수 있는데 이때 방법이 두가지가 있다&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;cooaborator를 추가하는 방법(권장x)
+    &lt;ul&gt;
+      &lt;li&gt;팀장이 manage access를 팀원에게 할당한다 (권한을 줌)&lt;/li&gt;
+      &lt;li&gt;원본에 바로 밀어넣는 형태이기 때문에 잘못하면 원본이 꼬일 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;fullrequest 
+팀원은 사본을 가지고 작업하고 원본에 반영이 되도록 팀장에게 요청하는 방법&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;-팀장의-역할&quot;&gt;▶ 팀장의 역할&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;새로운 repository를 생성&lt;/li&gt;
+  &lt;li&gt;clone 진행&lt;/li&gt;
+  &lt;li&gt;branch를 생성한다 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git flow init&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;대상 파일 생성 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;touch [file-name]&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add [file-name]&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;commit message와 함께 commit을 진행한다 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push -u origin develop&lt;/code&gt; (처음이라면 -u 플래그를 사용한다)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;️-팀원의-역할&quot;&gt;▶️ 팀원의 역할&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;팀장이 생성한 repository 주소를 받는다&lt;/li&gt;
+  &lt;li&gt;팀원이 스스로 Issue를 작성한다&lt;/li&gt;
+  &lt;li&gt;FORK를 진행해서 사본을 만든다(개인의 repository)&lt;/li&gt;
+  &lt;li&gt;FORK한 repository의 주소로 clone을 진행한다 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git clone [forked-repo]&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git flow init&lt;/code&gt;: branch를 생성한다&lt;/li&gt;
+  &lt;li&gt;Feature branch를 생성한다(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git flow feature start [branch-name]&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;작업을 완료하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add [file-name]&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit&lt;/code&gt;을 진행한다&lt;/li&gt;
+  &lt;li&gt;마지막 commit에서는 이슈가 마무리 되었음을 알리기 위해 resolve, close, fix과 넘버링된 이슈를 입력해준다(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resolve [issue-numer]&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git flow feature finish [branch-name]&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push origin develop&lt;/code&gt; (첫 push인 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-u&lt;/code&gt;를 추가한다)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;fullrequest&lt;/strong&gt;를 진행한다&lt;/li&gt;
+  &lt;li&gt;수정사항이 있을시에 develop branch에서 add, commit, push를 진행하고 팀장이 확인한다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;여러명이서 진행하다보면 파일 충돌의 위험이 있다 이럴때는 다음과 같은 과정을 진행한다&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add upstream [leader-repo]
+git fetc upstream develop
+git merge FETCH_HEAD
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;자신이 수정한 파일에 충돌이 된부분을 해결하고 ad,, commit, push한다&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Git" /><category term="Git" /><summary type="html">undo, git flow</summary></entry><entry><title type="html">CSS요소2 - 단위와 값</title><link href="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C2/" rel="alternate" type="text/html" title="CSS요소2 - 단위와 값" /><published>2021-10-01T00:00:00+09:00</published><updated>2021-10-01T00:00:00+09:00</updated><id>http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C2</id><content type="html" xml:base="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C2/">&lt;p&gt;MDN을 참고하면 CSS마다 허용하는 단위값이 따로 있다 따라서 MDN을 참고 해서 허용되는 범위, 단위를 알고 사용해야 한다!&lt;/p&gt;
 
 &lt;h1 id=&quot;단위&quot;&gt;단위&lt;/h1&gt;
 &lt;ol&gt;
@@ -104,210 +252,7 @@
   &lt;span class=&quot;c&quot;&gt;/* 전체 너비와 100px 중에서 더 큰 값 */&lt;/span&gt;
   &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CSS" /><category term="CSS" /><summary type="html">단위와 값</summary></entry><entry><title type="html">CSS요소 1</title><link href="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C1/" rel="alternate" type="text/html" title="CSS요소 1" /><published>2021-09-30T00:00:00+09:00</published><updated>2021-09-30T00:00:00+09:00</updated><id>http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C1</id><content type="html" xml:base="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C1/">&lt;p&gt;텍스트에 적용될 수 있는 css 요소들을 살펴보겠습니다&lt;/p&gt;
-
-&lt;p&gt;CSS를 적용할 HTML예제는 다음과 같습니다&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;default&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;️-font-size&quot;&gt;▶️ font-size&lt;/h2&gt;
-&lt;p&gt;기본적으로 브라우저의 기본값은 16px이다 폰트의 크기를 변경할 수 있다&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;px, rem, rm의 단위를 많이 사용헤서 표현한다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-font-style&quot;&gt;▶️ font-style&lt;/h2&gt;
-&lt;p&gt;글꼴을 시스템폰트로 설정할 수 있다&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;font-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;italic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;italic&lt;/code&gt;체로 변경하기 위해 많이 사용한다 (기울임)&lt;/li&gt;
-  &lt;li&gt;기본값은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;normal&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-font-weight&quot;&gt;▶️ font-weight&lt;/h2&gt;
-&lt;p&gt;텍스트의 굵기를 변경할 수 있다&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;보통 100단위의 숫자를 사용함 (400 = normal)&lt;/li&gt;
-  &lt;li&gt;normale(400), bold(700), lighter(부모보다 얇게), bolder(부모보다 굴게) - 키워드로 입력할 수 있다&lt;/li&gt;
-  &lt;li&gt;폰트마다 지원하는 굵기가 다를 수 있다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-font-family&quot;&gt;▶️ font-family&lt;/h2&gt;
-&lt;p&gt;텍스트의 글꼴을 지정할 수 있다&lt;/p&gt;
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;font-family&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Verdana&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Arial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sans-serif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;여러개가 값으로 들어간 경우 앞에서부터 차례대로 있는지 확인하고 있으면 사용하고 나머지는 무시한다&lt;/li&gt;
-  &lt;li&gt;마지막에 있는 값은 지정한 폰트가 없을때 브라우저에서 해당 유형의 글꼴을 알아서 선택한다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-line-height&quot;&gt;▶️ line-height&lt;/h2&gt;
-&lt;p&gt;줄의 높이를 의미&lt;/p&gt;
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;line-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;폰트의 작성자가 기본값을 지정한다 (폰트마다 다를 수 있음)&lt;/li&gt;
-  &lt;li&gt;값(양수, px, %)을 지정해서 모든 글들의 높이를 맞추는 것이 좋다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-font&quot;&gt;▶️ font&lt;/h2&gt;
-&lt;p&gt;단축속성으로 여러 요소를 한줄로 표현할 수 있다 (6가지)&lt;/p&gt;
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;font-family&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&apos;Times New Roman&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Times&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;serif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;font-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;italic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;700&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;line-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;c&quot;&gt;/* 위 코드와 동일 */&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;font&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;italic&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2.0&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&apos;Times New Roman&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Times&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;serif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;필수속성: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-size&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-family&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;선택속성: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-style&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-variant&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-weight&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;line-height&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;style&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;weight&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;size&lt;/code&gt;보다 앞에 있어야 한다&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;line-height&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;size&lt;/code&gt;뒤에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt;를 붙이고 표현한다&lt;/li&gt;
-  &lt;li&gt;작성을 하지 않으면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inital&lt;/code&gt;값이 된다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-letter-spacing&quot;&gt;▶️ letter-spacing&lt;/h2&gt;
-&lt;p&gt;글자간의 간격을 지정한다&lt;/p&gt;
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;letter-spacing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;기본값 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;normal&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;음수를 사용하면 글자끼리 겹치기도 함&lt;/li&gt;
-  &lt;li&gt;px, rem em 단위를 사용할 수 있다&lt;/li&gt;
-  &lt;li&gt;폰트 제작자가 기본값을 지정해주었기 때문에 폰트마다 다르다&lt;/li&gt;
-  &lt;li&gt;굳이 조절하지 않는 것이 좋다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-word-spacing&quot;&gt;▶️ word-spacing&lt;/h2&gt;
-&lt;p&gt;단어 사이의 간격을 지정한다&lt;/p&gt;
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;word-spacing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;px, rem, em, % 단위를 사용할 수 있다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-text-align&quot;&gt;▶️ text-align&lt;/h2&gt;
-&lt;p&gt;텍스트를 정렬할 수 있다&lt;/p&gt;
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;많이 사용하는 값으로는 왼쪽 오른쪽, 중앙 정렬이 있다(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;left&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;right&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;center&lt;/code&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;block요소&lt;/strong&gt;에서 변하는 길이에 맞춰서 정렬이 된다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-text-indent&quot;&gt;▶️ text-indent&lt;/h2&gt;
-&lt;p&gt;들여쓰기에 관련되어 제일 앞 부분을 어느정도 띄울지 지정할 수 있다&lt;/p&gt;
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;text-indent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;상속이 된다&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;block요소&lt;/strong&gt;에만 적용이 된다&lt;/li&gt;
-  &lt;li&gt;% 단위도 사용이 가능하다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-text-decoration&quot;&gt;▶️ text-decoration&lt;/h2&gt;
-&lt;p&gt;단축속성으로 글자의 장식을 지정한다&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;text-decoration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;underline&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;skyblue&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;double&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;공백으로 구분&lt;/li&gt;
-  &lt;li&gt;순서가 중요하지 않다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-decoration-style&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;solid&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dooted&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dashed&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wavy&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-decoration-line&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;underline&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;overline&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;line-through&lt;/code&gt; &lt;br /&gt; 여러개를 동시에 사용할 수 있다&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-decoration-color&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;텍스트의 색상을 지정한다&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-decoration-thickness&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;장식의 두께를 지정한다&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;️-word-break&quot;&gt;▶️ word-break&lt;/h2&gt;
-&lt;p&gt;자신의 영역 이외로 나가게 될경우 줄바꿈을 하는데 단어가 분리되지 않는다 (줄바꿈의 기준 설정)&lt;/p&gt;
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;word-break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;break-all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;기본값일때 영어(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keep-all&lt;/code&gt;)의 경우 요소를 뚫고나감, 한글(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;break-all&lt;/code&gt;)은 줄바꿈&lt;/li&gt;
-  &lt;li&gt;기본값은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;normal&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;break-all&lt;/code&gt;: 줄바꿈을 한다&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keep-all&lt;/code&gt;: 요소를 벗어나도 줄바꿈이 되지 않음&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-text-transform&quot;&gt;▶️ text-transform&lt;/h2&gt;
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;text-transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;uppercase&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;한글에는 적용할 수 없음&lt;/li&gt;
-  &lt;li&gt;기본값은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uppercase&lt;/code&gt;: 대문자&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lowercase&lt;/code&gt;: 소문자&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;capitalize&lt;/code&gt;: 문장의 제일 앞글자만 대문자&lt;/li&gt;
-  &lt;li&gt;개발자도구로 보았을때는 소문자로 표시 (보여질때 css가 적용되어 대문자로 보임)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CSS" /><category term="CSS" /><summary type="html">폰트 관련 속성</summary></entry><entry><title type="html">Git, Github</title><link href="http://localhost:4502/git/git,-github1/" rel="alternate" type="text/html" title="Git, Github" /><published>2021-09-30T00:00:00+09:00</published><updated>2021-09-30T00:00:00+09:00</updated><id>http://localhost:4502/git/git,%20github1</id><content type="html" xml:base="http://localhost:4502/git/git,-github1/">&lt;p&gt;&lt;img src=&quot;../../imgs/git.png&quot; alt=&quot;git&quot; /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CSS" /><category term="CSS" /><summary type="html">단위와 값</summary></entry><entry><title type="html">Git, Github</title><link href="http://localhost:4502/git/git,-github1/" rel="alternate" type="text/html" title="Git, Github" /><published>2021-09-30T00:00:00+09:00</published><updated>2021-09-30T00:00:00+09:00</updated><id>http://localhost:4502/git/git,%20github1</id><content type="html" xml:base="http://localhost:4502/git/git,-github1/">&lt;p&gt;&lt;img src=&quot;../../imgs/git.png&quot; alt=&quot;git&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;git은 분산 버전 관리 시스템(Version Control System)이다. git을 사용하면 동료들과 협업하기가 매우 수월해지고 버전을 관리하는데 용이하다&lt;/p&gt;
 
@@ -583,7 +528,210 @@ git push --tag
   &lt;li&gt;&lt;strong&gt;Release Number&lt;/strong&gt;: 1로 시작해서 큰 변화가 발생했을 때 이 수치를 올린다&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Major Number&lt;/strong&gt;: 0으로 시작해서 주요 기능의 추가나 변경 등 사용상 혹은 컨텐츠의 주요 변화가 발생했을 때 1 또는 무작위로 증가한다. 간혹 알파벳이 붙기도 하는데 예를 들어 Beta(테스트버전)의 경우 b를 숫자 뒤에 붙이는 경향이 있다.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Minor Number&lt;/strong&gt;: 0으로 시작해서 버그 수정 등 미미한 변화가 발생하면 1씩 혹은 무작위로 증가한다. 역시 개발사 정책에 따라 특정 알파벳이 붙을 수도 있다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Git" /><category term="Git" /><summary type="html">Git, Github</summary></entry><entry><title type="html">전역속성</title><link href="http://localhost:4502/html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1/" rel="alternate" type="text/html" title="전역속성" /><published>2021-09-29T00:00:00+09:00</published><updated>2021-09-29T00:00:00+09:00</updated><id>http://localhost:4502/html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1</id><content type="html" xml:base="http://localhost:4502/html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1/">&lt;h1 id=&quot;전역속성&quot;&gt;전역속성&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Git" /><category term="Git" /><summary type="html">Git, Github</summary></entry><entry><title type="html">CSS요소 1</title><link href="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C1/" rel="alternate" type="text/html" title="CSS요소 1" /><published>2021-09-30T00:00:00+09:00</published><updated>2021-09-30T00:00:00+09:00</updated><id>http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C1</id><content type="html" xml:base="http://localhost:4502/css/CSS%EC%9A%94%EC%86%8C1/">&lt;p&gt;텍스트에 적용될 수 있는 css 요소들을 살펴보겠습니다&lt;/p&gt;
+
+&lt;p&gt;CSS를 적용할 HTML예제는 다음과 같습니다&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;default&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;️-font-size&quot;&gt;▶️ font-size&lt;/h2&gt;
+&lt;p&gt;기본적으로 브라우저의 기본값은 16px이다 폰트의 크기를 변경할 수 있다&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;px, rem, rm의 단위를 많이 사용헤서 표현한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-font-style&quot;&gt;▶️ font-style&lt;/h2&gt;
+&lt;p&gt;글꼴을 시스템폰트로 설정할 수 있다&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;italic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;italic&lt;/code&gt;체로 변경하기 위해 많이 사용한다 (기울임)&lt;/li&gt;
+  &lt;li&gt;기본값은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;normal&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-font-weight&quot;&gt;▶️ font-weight&lt;/h2&gt;
+&lt;p&gt;텍스트의 굵기를 변경할 수 있다&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;보통 100단위의 숫자를 사용함 (400 = normal)&lt;/li&gt;
+  &lt;li&gt;normale(400), bold(700), lighter(부모보다 얇게), bolder(부모보다 굴게) - 키워드로 입력할 수 있다&lt;/li&gt;
+  &lt;li&gt;폰트마다 지원하는 굵기가 다를 수 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-font-family&quot;&gt;▶️ font-family&lt;/h2&gt;
+&lt;p&gt;텍스트의 글꼴을 지정할 수 있다&lt;/p&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-family&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Verdana&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Arial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sans-serif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;여러개가 값으로 들어간 경우 앞에서부터 차례대로 있는지 확인하고 있으면 사용하고 나머지는 무시한다&lt;/li&gt;
+  &lt;li&gt;마지막에 있는 값은 지정한 폰트가 없을때 브라우저에서 해당 유형의 글꼴을 알아서 선택한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-line-height&quot;&gt;▶️ line-height&lt;/h2&gt;
+&lt;p&gt;줄의 높이를 의미&lt;/p&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;line-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;폰트의 작성자가 기본값을 지정한다 (폰트마다 다를 수 있음)&lt;/li&gt;
+  &lt;li&gt;값(양수, px, %)을 지정해서 모든 글들의 높이를 맞추는 것이 좋다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-font&quot;&gt;▶️ font&lt;/h2&gt;
+&lt;p&gt;단축속성으로 여러 요소를 한줄로 표현할 수 있다 (6가지)&lt;/p&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;font-family&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&apos;Times New Roman&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Times&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;serif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;font-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;italic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;700&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;line-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;/* 위 코드와 동일 */&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;font&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;italic&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2.0&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&apos;Times New Roman&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Times&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;serif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;필수속성: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-size&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-family&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;선택속성: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-style&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-variant&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-weight&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;line-height&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;style&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;weight&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;size&lt;/code&gt;보다 앞에 있어야 한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;line-height&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;size&lt;/code&gt;뒤에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt;를 붙이고 표현한다&lt;/li&gt;
+  &lt;li&gt;작성을 하지 않으면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inital&lt;/code&gt;값이 된다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-letter-spacing&quot;&gt;▶️ letter-spacing&lt;/h2&gt;
+&lt;p&gt;글자간의 간격을 지정한다&lt;/p&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;letter-spacing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;기본값 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;normal&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;음수를 사용하면 글자끼리 겹치기도 함&lt;/li&gt;
+  &lt;li&gt;px, rem em 단위를 사용할 수 있다&lt;/li&gt;
+  &lt;li&gt;폰트 제작자가 기본값을 지정해주었기 때문에 폰트마다 다르다&lt;/li&gt;
+  &lt;li&gt;굳이 조절하지 않는 것이 좋다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-word-spacing&quot;&gt;▶️ word-spacing&lt;/h2&gt;
+&lt;p&gt;단어 사이의 간격을 지정한다&lt;/p&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;word-spacing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;px, rem, em, % 단위를 사용할 수 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-text-align&quot;&gt;▶️ text-align&lt;/h2&gt;
+&lt;p&gt;텍스트를 정렬할 수 있다&lt;/p&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;많이 사용하는 값으로는 왼쪽 오른쪽, 중앙 정렬이 있다(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;left&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;right&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;center&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;block요소&lt;/strong&gt;에서 변하는 길이에 맞춰서 정렬이 된다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-text-indent&quot;&gt;▶️ text-indent&lt;/h2&gt;
+&lt;p&gt;들여쓰기에 관련되어 제일 앞 부분을 어느정도 띄울지 지정할 수 있다&lt;/p&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;text-indent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;상속이 된다&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;block요소&lt;/strong&gt;에만 적용이 된다&lt;/li&gt;
+  &lt;li&gt;% 단위도 사용이 가능하다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-text-decoration&quot;&gt;▶️ text-decoration&lt;/h2&gt;
+&lt;p&gt;단축속성으로 글자의 장식을 지정한다&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;text-decoration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;underline&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;skyblue&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;double&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;공백으로 구분&lt;/li&gt;
+  &lt;li&gt;순서가 중요하지 않다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-decoration-style&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;solid&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dooted&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dashed&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wavy&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-decoration-line&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;underline&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;overline&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;line-through&lt;/code&gt; &lt;br /&gt; 여러개를 동시에 사용할 수 있다&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-decoration-color&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;텍스트의 색상을 지정한다&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-decoration-thickness&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;장식의 두께를 지정한다&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;️-word-break&quot;&gt;▶️ word-break&lt;/h2&gt;
+&lt;p&gt;자신의 영역 이외로 나가게 될경우 줄바꿈을 하는데 단어가 분리되지 않는다 (줄바꿈의 기준 설정)&lt;/p&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;word-break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;break-all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;기본값일때 영어(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keep-all&lt;/code&gt;)의 경우 요소를 뚫고나감, 한글(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;break-all&lt;/code&gt;)은 줄바꿈&lt;/li&gt;
+  &lt;li&gt;기본값은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;normal&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;break-all&lt;/code&gt;: 줄바꿈을 한다&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;keep-all&lt;/code&gt;: 요소를 벗어나도 줄바꿈이 되지 않음&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;️-text-transform&quot;&gt;▶️ text-transform&lt;/h2&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;text-transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;uppercase&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;한글에는 적용할 수 없음&lt;/li&gt;
+  &lt;li&gt;기본값은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uppercase&lt;/code&gt;: 대문자&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lowercase&lt;/code&gt;: 소문자&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;capitalize&lt;/code&gt;: 문장의 제일 앞글자만 대문자&lt;/li&gt;
+  &lt;li&gt;개발자도구로 보았을때는 소문자로 표시 (보여질때 css가 적용되어 대문자로 보임)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CSS" /><category term="CSS" /><summary type="html">폰트 관련 속성</summary></entry><entry><title type="html">전역속성</title><link href="http://localhost:4502/html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1/" rel="alternate" type="text/html" title="전역속성" /><published>2021-09-29T00:00:00+09:00</published><updated>2021-09-29T00:00:00+09:00</updated><id>http://localhost:4502/html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1</id><content type="html" xml:base="http://localhost:4502/html/%EC%A0%84%EC%97%AD%EC%86%8D%EC%84%B1/">&lt;h1 id=&quot;전역속성&quot;&gt;전역속성&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;전역속성은 어떤태그에도 전부다 사용할 수 있다&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;️-id&quot;&gt;▶️ id&lt;/h2&gt;
@@ -2249,429 +2397,4 @@ css2에서는 콜론이 하나였다가, css3에는 더블클론으로 바뀌었
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p class=&quot;notice&quot;&gt;다음 포스팅에서 이어서 진행하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="HTML" /><category term="HTML" /><summary type="html">구조, 목록과 표, 임베디드</summary></entry><entry><title type="html">HTML 요소 1</title><link href="http://localhost:4502/html/HTML%EC%9A%94%EC%86%8C1/" rel="alternate" type="text/html" title="HTML 요소 1" /><published>2021-09-28T00:00:00+09:00</published><updated>2021-09-28T00:00:00+09:00</updated><id>http://localhost:4502/html/HTML%EC%9A%94%EC%86%8C1</id><content type="html" xml:base="http://localhost:4502/html/HTML%EC%9A%94%EC%86%8C1/">&lt;h1 id=&quot;1-텍스트-요소&quot;&gt;1. 텍스트 요소&lt;/h1&gt;
-&lt;h2 id=&quot;️-h1--h6&quot;&gt;▶️ h1 ~ h6&lt;/h2&gt;
-&lt;p&gt;block 요소로 제목을 나타낸다. h1이 가장 크고, h6가 제일 작다.&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Jongbin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;Jongbin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;Jongbin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h4&amp;gt;&lt;/span&gt;Jongbin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h4&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h5&amp;gt;&lt;/span&gt;Jongbin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h5&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;h6&amp;gt;&lt;/span&gt;Jongbin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h6&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;웹 접근성을 향상시키기 위해 다음과 항목이 권장된다&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;제목의 단계를 건너뛰지 않는 것이 좋다(순차적으로 진행)&lt;/li&gt;
-  &lt;li&gt;글씨 크기를 키우기 위해 제목 태그를 사용하는 것은 좋지 않다&lt;/li&gt;
-  &lt;li&gt;하나의 페이지에는 하나의 h1만 있는 것이 좋다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-p&quot;&gt;▶️ p&lt;/h2&gt;
-&lt;p&gt;하나의 문단을 나타낸다(paragraph)&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Hello! Hello! Hello! Hello! Hello!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Jongbin Jongbin Jongbin Jongbin Jongbin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;blcok요소이다&lt;/li&gt;
-  &lt;li&gt;space가 두개 이상 사용되도 한번만 표시 -&amp;gt; 개행문자나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt; 사용&lt;/li&gt;
-  &lt;li&gt;각 문단 사이에는 한줄높이의 여백이 추가된다.&lt;/li&gt;
-  &lt;li&gt;빈 p태그로 여백을 추가하는 것은 웹 접근성측면에서 좋지 않다 -&amp;gt; CSS이용&lt;/li&gt;
-  &lt;li&gt;p태그 내부에는 block요소가 올 수 없다 (block요소를 만나면 자동으로 닫힘)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;--개행문자&quot;&gt;- 개행문자&lt;/h3&gt;
-&lt;p&gt;라인을 제어하기 위한 문자&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;개행문자&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;기능&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\n&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;줄바꿈&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\b&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;백스페이스&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\t&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;탭&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\s&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;스페이스&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;️-br&quot;&gt;▶️ br&lt;/h2&gt;
-&lt;p&gt;텍스트 내부에 줄바꿈을 생성&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;jongbin is gone&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
-    he is 26 years old
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 다음과 같이 출력
-    jongbin is gone
-    he is 26 years old 
-    --&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;문단 사이의 여백을 많이 주고 싶을때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt;을 많이 사용하는 것은 좋지 않다&lt;/li&gt;
-  &lt;li&gt;문단 구분을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;br&amp;gt;&lt;/code&gt;로 하는 것은 웹 접근성면에서 좋지 않다(태그는 존재하지만, 빈내용)&lt;/li&gt;
-  &lt;li&gt;빈요소이다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-blockquote-q&quot;&gt;▶️ blockquote, q&lt;/h2&gt;
-&lt;p&gt;두 태그 모두 인용을 위한 태그&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;jongbin jongbin jongbin jongbin jongbin jongbin jongbin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;jongbin said, &lt;span class=&quot;nt&quot;&gt;&amp;lt;q&amp;gt;&lt;/span&gt;hi&lt;span class=&quot;nt&quot;&gt;&amp;lt;q&amp;gt;&amp;lt;p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- jongbin said &quot;hi&quot; --&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/code&gt;은 &lt;strong&gt;block&lt;/strong&gt;요소, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;q&amp;gt;&lt;/code&gt;는 &lt;strong&gt;inline&lt;/strong&gt;요소&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;q&amp;gt;&lt;/code&gt; 텍스트 사이에 자연스럽게 넣을 목적으로 사용, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/code&gt;는 모두 묶어서 블록처럼 사용&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/code&gt;는 앞뒤로 여백이 생긴다.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;q&amp;gt;&lt;/code&gt;를 사용하면 쌍따옴표가 붙는다&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;q&amp;gt;&lt;/code&gt;는 동일하게 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cite&lt;/code&gt; 속성으로 출처를 나타낼 수 있다 (사용자에게 보여지지는 않음) / 요소 내용으로 사용도 가능&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;️-pre&quot;&gt;▶️ pre&lt;/h2&gt;
-&lt;p&gt;미리 서식이 지정된 텍스트를 나타낸다.&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;pre&amp;gt;&lt;/span&gt;
-  \    /
-   \()/
-    ||
-    /\
-   /  \
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;개행에 상관없이 입력한 형식 그대로 출력된다&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;고정된 글꼴&lt;/strong&gt;을 사용해 랜더링된다(모든 글자의 크기가 같음 - &lt;u&gt;monospace font&lt;/u&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;️-figure-figcaption&quot;&gt;▶️ figure, figcaption&lt;/h2&gt;
-&lt;p&gt;독립적인 컨텐츠를 표현한다(삽화나 다이어그램, 사진 등 문서의 주요 흐름과는 독립적)&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;figure&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;filePath&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;image&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/span&gt;this is image&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figcaption&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;HTML5에서 새로 추가된 태그&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;figure&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/code&gt;는 같이 사용됨&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;img&lt;/code&gt;태그 이외 다른 태그들 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pre&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt; 등 도 사용될 수 있다&lt;/li&gt;
-  &lt;li&gt;사용자에게 보여질때 들여쓰기가 조금 들어감&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;figure&amp;gt;&lt;/code&gt;는 연관성이 있음을 알려준다(&lt;u&gt;여러 요소를 감싸줌으로써!&lt;/u&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/code&gt;는 설명하는 역할을 한다(꼭 들어갈 필요는 없다)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-hr&quot;&gt;▶️ hr&lt;/h2&gt;
-&lt;p&gt;수평선 (가로로 줄이 생긴다) -&amp;gt; 구획 내 주제 변경 등에 사용&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;문단을 나눌때 사용하는 경우가 대부분이다&lt;/li&gt;
-  &lt;li&gt;빈요소이다(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;hr/&amp;gt;&lt;/code&gt;)&lt;/li&gt;
-  &lt;li&gt;꾸며줄 수 있는 속성이 있지만 권장하지 않는다(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;align&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;color&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;size&lt;/code&gt;…) ➞ 대신 css를 사용하자(웹표준준수!)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hr&lt;/code&gt;에 css를 사용할 때는 다음과 같다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1.0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Document&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;.box&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;skyblue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;30px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;hr&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;box&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;box&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../imgs/hr-border.png&quot; alt=&quot;hr-border&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;파란색 상자 가운데 있는 것이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hr&lt;/code&gt;이다 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;height&lt;/code&gt;를 이용해서 높이 조정을 하고보니 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;input&lt;/code&gt;처럼 뭔가 들어가야하게 생겼다 -&amp;gt; &lt;u&gt;`border: 0`하면 일반 박스처럼 된다&lt;/u&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;hr&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;url(./hr-css.png)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;background-position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0%&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;33%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;background-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cover&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../imgs/hr-css.png&quot; alt=&quot;hr-css&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;추가적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;background-image&lt;/code&gt;로 지정해줄수도 있다 여기서는 이미지스프라이트 파일로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;position&lt;/code&gt;을 지정했다&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;abbr&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;world wide web&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; www &lt;span class=&quot;nt&quot;&gt;&amp;lt;/abbr&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;address&amp;gt;&lt;/span&gt;
-경기도 수원시 ~~~
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/address&amp;gt;&lt;/span&gt; 
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;bdo&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;dir=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rtl&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; 오른쪽 왼쪽 &lt;span class=&quot;nt&quot;&gt;&amp;lt;bdo&amp;gt;&amp;lt;p&amp;gt;&lt;/span&gt;     
-&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- rtl ➞ right to left --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 쪽왼 쪽른오 --&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;️-abbr&quot;&gt;▶️ abbr&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;abbr&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Jong Bin&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; JB &lt;span class=&quot;nt&quot;&gt;&amp;lt;/abbr&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt; 속성을 사용해서 원래의 의미를 나타낸다 (밑줄이 점선으로 표기되고, &lt;u&gt;마우스를 올리면 내용이 나온다&lt;/u&gt;)&lt;/p&gt;
-
-&lt;h2 id=&quot;️-address&quot;&gt;▶️ address&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;address&amp;gt;&lt;/span&gt;경기도 수원시 ...&lt;span class=&quot;nt&quot;&gt;&amp;lt;/address&amp;gt;&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;주소를 나타낸다(&lt;u&gt;글꼴이 기울여진다&lt;/u&gt;) -&amp;gt; 지도상 주소만 나타냈었으나, 현재는 email, website, sns들도 칭한다&lt;/p&gt;
-
-&lt;h2 id=&quot;️-cite&quot;&gt;▶️ cite&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;figure&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt; jongbin&apos;s age is 26&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/span&gt; 출처는 &lt;span class=&quot;nt&quot;&gt;&amp;lt;cite&amp;gt;&lt;/span&gt;종빈에게서&lt;span class=&quot;nt&quot;&gt;&amp;lt;/cite&amp;gt;&amp;lt;figcaption&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;인용의 출처를 나타낸다&lt;/p&gt;
-
-&lt;h2 id=&quot;️-bdo&quot;&gt;▶️ bdo&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;bdo&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;dir=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rtl&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; ABCD &lt;span class=&quot;nt&quot;&gt;&amp;lt;bdo&amp;gt;&amp;lt;p&amp;gt;&lt;/span&gt;    
-&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- DCBA  --&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;양방향의 의미를 가지고 텍스트를 바꿔줌&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;ltr : left to right (왼쪽에서 오른쪽으로)&lt;/li&gt;
-  &lt;li&gt;rtl : right to left (오른쪽에서 왼쪽으로)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-b-strong&quot;&gt;▶️ b, strong&lt;/h2&gt;
-&lt;p&gt;텍스트를 굵게 만들어준다 (결과 동일)&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;pre&amp;gt;&lt;/span&gt; 
-  1 2 3 4 5 6 7 8 9 &lt;span class=&quot;nt&quot;&gt;&amp;lt;b&amp;gt;&lt;/span&gt;number&lt;span class=&quot;nt&quot;&gt;&amp;lt;/b&amp;gt;&lt;/span&gt;
-  a b c d &lt;span class=&quot;nt&quot;&gt;&amp;lt;strong&amp;gt;&lt;/span&gt;string&lt;span class=&quot;nt&quot;&gt;&amp;lt;/strong&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;b&amp;gt;&lt;/code&gt;: 그냥 굵게 사용하기 위해서(어느정도 강조)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;: 높은 &lt;strong&gt;중요도&lt;/strong&gt;를 가진 것&lt;/li&gt;
-  &lt;li&gt;style적으로 사용하지 않는다 -&amp;gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-weight&lt;/code&gt;를 사용하면 좋을듯!&lt;/li&gt;
-  &lt;li&gt;inline 요소&lt;/li&gt;
-  &lt;li&gt;스크린리더가 읽을때도 다르다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;️-i-em&quot;&gt;▶️ i, em&lt;/h2&gt;
-&lt;p&gt;텍스트를 기울여준다&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;jongbin said, &lt;span class=&quot;nt&quot;&gt;&amp;lt;i&amp;gt;&lt;/span&gt;hi&lt;span class=&quot;nt&quot;&gt;&amp;lt;/i&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;jongbin is &lt;span class=&quot;nt&quot;&gt;&amp;lt;em&amp;gt;&lt;/span&gt;not&lt;span class=&quot;nt&quot;&gt;&amp;lt;em&amp;gt;&lt;/span&gt; child&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;i&amp;gt;&lt;/code&gt;: 주위와 구분해야 하는 부분(분위기가 다름, 다른언어, 숫자 등)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;em&amp;gt;&lt;/code&gt;: 강조하는 역할&lt;/li&gt;
-  &lt;li&gt;style적으로 사용하지 않는다 -&amp;gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;font-style&lt;/code&gt;을 사용하면 좋을듯!&lt;/li&gt;
-  &lt;li&gt;inline 요소&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-mark&quot;&gt;▶️ mark&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt; I&apos;m &lt;span class=&quot;nt&quot;&gt;&amp;lt;mark&amp;gt;&lt;/span&gt;26&lt;span class=&quot;nt&quot;&gt;&amp;lt;mark&amp;gt;&lt;/span&gt; old&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;중요한 내용으로 하이라이트한 부분을 나타내준다(형광펜으로 칠한 것처럼)&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;색상을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;background-color&lt;/code&gt;로 변경할 수 있다.&lt;/li&gt;
-  &lt;li&gt;스크린리더가 구별해서 읽지는 않음&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-small&quot;&gt;▶️ small&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;I can do it!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;small&amp;gt;&lt;/span&gt;- jongbin said&lt;span class=&quot;nt&quot;&gt;&amp;lt;/small&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;추가적으로 덧붙이는 텍스트를 나타냄(크기를 작게 나타냄)&lt;/p&gt;
-
-&lt;h2 id=&quot;️-sup&quot;&gt;▶️ sup&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt; 2&lt;span class=&quot;nt&quot;&gt;&amp;lt;sup&amp;gt;&lt;/span&gt;10&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sup&amp;gt;&lt;/span&gt; = 1024 &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;위 첨자 요소 (ex. 제곱을 나타낼때)&lt;/p&gt;
-
-&lt;h2 id=&quot;️-sub&quot;&gt;▶️ sub&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;log&lt;span class=&quot;nt&quot;&gt;&amp;lt;sub&amp;gt;&lt;/span&gt;a&lt;span class=&quot;nt&quot;&gt;&amp;lt;/sub&amp;gt;&lt;/span&gt;1 = 0&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;아래 첨자 요소 (ex. log 함수의 밑, 각주)&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;장바구니&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;del&amp;gt;&lt;/span&gt;간장&lt;span class=&quot;nt&quot;&gt;&amp;lt;/del&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;ins&amp;gt;&lt;/span&gt;계란&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ins&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;console.log()&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;는 출력한다&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;️-del-ins&quot;&gt;▶️ del, ins&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;장바구니&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;del&amp;gt;&lt;/span&gt;간장&lt;span class=&quot;nt&quot;&gt;&amp;lt;/del&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;ins&amp;gt;&lt;/span&gt;계란&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ins&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;del&lt;/code&gt;: delete의 의미, 삭제된 것을 나타낼 때 (inline요소)&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;속성으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cite&lt;/code&gt;(이슈), &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;datetiem&lt;/code&gt;(일시)가 있다&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;insert의 의미, 추가된 것을 나타낼 때 (inline요소)&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;속성으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cite&lt;/code&gt;(이슈), &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;datetiem&lt;/code&gt;(일시)가 있다&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;스크린리더가 인식하지 않음&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-code&quot;&gt;▶️ code&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;console.log()&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;는 출력하는 기능을 한다&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;pre&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;const age = 26;&lt;span class=&quot;nt&quot;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;console.log(age);&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;inline 요소로 코드를 나태낸다&lt;br /&gt;
-여러줄일 경우, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;pre&amp;gt;&lt;/code&gt;로 감싸고 각 줄을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;code&amp;gt;&lt;/code&gt;로 표현한다&lt;/p&gt;
-
-&lt;h2 id=&quot;️-kbd&quot;&gt;▶️ kbd&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt; if you press &lt;span class=&quot;nt&quot;&gt;&amp;lt;kbd&amp;gt;&lt;/span&gt;m&lt;span class=&quot;nt&quot;&gt;&amp;lt;/kbd&amp;gt;&lt;/span&gt; button, the video will mute&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;키보드 입력 요소를 나타낸다&lt;/p&gt;
-
-&lt;h2 id=&quot;️-a&quot;&gt;▶️ a&lt;/h2&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;If you are interested our products, visit our website&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://jongbin.com&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Home Page&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mailto:gghkdu2@gmail.com&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;mail&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;tel:000-0000&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;phone&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;anchor의 의미, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;href&lt;/code&gt;의 속성을 사용해서 다른 페이지로 이동하거나 하이퍼링크를 만든다&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt;의 요소 내용에는 텍스트만이 아닌 이미지나 문단 등등이 들어갈 수 있다&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt;의 자주 사용되는 속성&lt;/p&gt;
-
-    &lt;table&gt;
-      &lt;thead&gt;
-        &lt;tr&gt;
-          &lt;th style=&quot;text-align: center&quot;&gt;속성&lt;/th&gt;
-          &lt;th style=&quot;text-align: left&quot;&gt;설명&lt;/th&gt;
-        &lt;/tr&gt;
-      &lt;/thead&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;href&lt;/code&gt;&lt;/td&gt;
-          &lt;td style=&quot;text-align: left&quot;&gt;* &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;href&lt;/code&gt;속성을 사용해서 다른 페이지로 이동이 가능케한다(하이퍼링크가 가르키는 URL) &lt;br /&gt; - 절대경로 및 상대경로를 사용해서 지정할 수 있다 &lt;br /&gt; - 작동을 하지 않게 하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;href=&quot;javascript:void(0)&quot;&lt;/code&gt;을 사용하는게 좋다 &lt;br /&gt; - 이메일이나 전화를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;href&lt;/code&gt;의 값으로 할 수 있다. (관련 응용 프로그램이 있으면 작동)&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;target&lt;/code&gt;&lt;/td&gt;
-          &lt;td style=&quot;text-align: left&quot;&gt;* 링크된 URL을 표시할 위치를 명시 (기본값: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_self&lt;/code&gt;) &lt;br /&gt; - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_self&lt;/code&gt;: 현재 창에서 해당 URL로 이동 &lt;br /&gt; - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_blank&lt;/code&gt;: 새 탭을 만들어서 해당 URL로 이동 &lt;br /&gt; - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_parent&lt;/code&gt;: 부모(이전)의 브라우저에서 이동 (없을 시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_self&lt;/code&gt;와 동일) &lt;br /&gt; - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_top&lt;/code&gt;: 최상단의 브라우저에서 이동 (없을 시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_self&lt;/code&gt;와 동일)&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rel&lt;/code&gt;&lt;/td&gt;
-          &lt;td style=&quot;text-align: left&quot;&gt;* 해당 URL과 현재 페이지와의 관계를 나타냄 &lt;br /&gt; - 사용자에게 보여지지 않음 / 브라우저가 인식 &lt;br /&gt; - search, next, prev, hlep ….&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;️-entity&quot;&gt;▶️ Entity&lt;/h2&gt;
-&lt;p&gt;공백이나 꺽쇄등(예약어)을 텍스트로 사용자에게 보여주기 위해 사용한다&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;제목을 나타낼 때는 &lt;span class=&quot;ni&quot;&gt;&amp;amp;lt;&lt;/span&gt;h1&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt; &lt;span class=&quot;ni&quot;&gt;&amp;amp;lt;&lt;/span&gt;/h1&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt;을 사용합니다&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 결과
-제목을 나타낼 때는 &amp;lt;h1&amp;gt; &amp;lt;/h1&amp;gt;을 사용합니다
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;u&gt;일반 텍스트처럼 사용하고 `&amp;amp;`로 시작해서 `;`로 끝난다&lt;/u&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;의미&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;entity&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;lt;&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;gt;&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;quot;&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&apos;&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;apos;&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;amp;&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;` `&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;nbsp;&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;이 외 더 확인할 수 있는 사이트  &lt;a href=&quot;https://dev.w3.org/html5/html-author/charref&quot;&gt;https://dev.w3.org/html5/html-author/charref&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p class=&quot;notice&quot;&gt;다음 포스팅에서 이어서 진행하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="HTML" /><category term="HTML" /><summary type="html">텍스트 요소</summary></entry></feed>
+&lt;p class=&quot;notice&quot;&gt;다음 포스팅에서 이어서 진행하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="HTML" /><category term="HTML" /><summary type="html">구조, 목록과 표, 임베디드</summary></entry></feed>
