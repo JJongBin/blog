@@ -1,0 +1,1099 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>CSS요소8 - flex | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="flex">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="CSS요소8 - flex">
+<meta property="og:url" content="https://jjongbin.github.io/blog//css/flex/">
+
+
+  <meta property="og:description" content="flex">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-04T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-10-04T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://jjongbin.github.io/blog//css/flex/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "https://jjongbin.github.io/blog//"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="icon" href="/assets/images/study.ico" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://jjongbin.github.io/blog//">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://jjongbin.github.io/blog//" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li class="nav__all-posts">
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">37</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/DeepDive" class="">DeepDive (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Method" class="">Method (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+     
+        <span class="nav__sub-title">html</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/HTML" class="">HTML (6)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">css</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/CSS" class="">CSS (10)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">git</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Git" class="">Git (2)</a></li>
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Blog" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/vim" class="">vim (1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="CSS요소8 - flex">
+    <meta itemprop="description" content="flex">
+    <meta itemprop="datePublished" content="2021-10-04T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-10-04T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://jjongbin.github.io/blog//css/flex/" class="u-url" itemprop="url">CSS요소8 - flex
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#flex">flex</a><ul><li><a href="#️-flex-용어">▶️ flex 용어</a></li><li><a href="#️-display">▶️ display</a></li><li><a href="#️-flex-direction">▶️ flex-direction</a></li><li><a href="#️-flex-wrap">▶️ flex-wrap</a></li><li><a href="#️-flex-flow">▶️ flex-flow</a></li><li><a href="#️-order">▶️ order</a></li><li><a href="#️-flex-grow">▶️ flex-grow</a></li><li><a href="#️-flex-shrink">▶️ flex-shrink</a></li><li><a href="#️-flex-basis">▶️ flex-basis</a></li><li><a href="#️-flex">▶️ flex</a><ul><li><a href="#--각-속성의-초기값">- 각 속성의 초기값</a></li><li><a href="#--flex-값이-한개일-때">- flex 값이 한개일 때</a></li><li><a href="#--flex-값이-두개일-때">- flex 값이 두개일 때</a></li><li><a href="#--flex-값이-세개일-때">- flex 값이 세개일 때</a></li></ul></li><li><a href="#️-justify-content">▶️ justify-content</a></li><li><a href="#️-align-items">▶️ align-items</a></li><li><a href="#️-align-content">▶️ align-content</a></li><li><a href="#️-align-self">▶️ align-self</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="flex">flex</h1>
+
+<h2 id="️-flex-용어">▶️ flex 용어</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">용어</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">container</code></td>
+      <td style="text-align: left">바깥쪽 부모영역</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">flex item</code></td>
+      <td style="text-align: left">내부의 요소들</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">main axis</code></td>
+      <td style="text-align: left">주축(초기값 기준 가로축)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">cross axis</code></td>
+      <td style="text-align: left">교차축</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="️-display">▶️ display</h2>
+<p>요소의 유형을 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>바깥쪽(<code class="language-plaintext highlighter-rouge">block</code>, <code class="language-plaintext highlighter-rouge">inline</code>, <code class="language-plaintext highlighter-rouge">inline-block</code>)과 안쪽(<code class="language-plaintext highlighter-rouge">flex</code>, <code class="language-plaintext highlighter-rouge">grid</code>)의 관계로 나눌 수 있다</li>
+  <li>CSS2부터 가운데에 <code class="language-plaintext highlighter-rouge">-</code>를 사용해서 바깥쪽의 관계와 안쪽과의 관계를 설정할 수 있다 (<code class="language-plaintext highlighter-rouge">display: inline-block</code>)</li>
+</ul>
+
+<h2 id="️-flex-direction">▶️ flex-direction</h2>
+<p>container내에 item을 배치할때 <strong>주축 및 방향</strong>을 지정할 수 있다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p class="notice">* 기본값 *
+main의 방향: →  / cross의 방향: ↓</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">row</code>: 주축의 방향을 <strong>→</strong> (기본값)</li>
+  <li><code class="language-plaintext highlighter-rouge">row-reverse</code>: 주축의 방향을 <strong>←</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">column</code>: 주축의 방향을 <strong>↓</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">column-reverse</code>: 주축의 방향을 <strong>↑</strong></li>
+</ul>
+
+<h2 id="️-flex-wrap">▶️ flex-wrap</h2>
+<p>flex container내의 item들을 한줄로 배치할지 여러줄로 배치할지 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-wrap</span><span class="p">:</span> <span class="n">wrap</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">nowrap</code>: 부모요소를 벗어나더라도 한줄로 배치한다(기본값)</li>
+  <li><code class="language-plaintext highlighter-rouge">wrap</code>: 여러행으로 배치한다</li>
+  <li><code class="language-plaintext highlighter-rouge">wrap-reverse</code>: 여러행으로 배치하나(<code class="language-plaintext highlighter-rouge">wrap</code>), 순서가 반대로(시작점과 끝점)</li>
+</ul>
+
+<h2 id="️-flex-flow">▶️ flex-flow</h2>
+<p>단축속성으로 <code class="language-plaintext highlighter-rouge">flex-direction</code>과 <code class="language-plaintext highlighter-rouge">flex-wrap</code>을 한번에 지정할 수 있다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-flow</span><span class="p">:</span> <span class="n">row</span> <span class="n">wrap</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c">/* .container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+} */</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">direction</code>과 <code class="language-plaintext highlighter-rouge">wrap</code> 순서로 지정한다</li>
+</ul>
+
+<h2 id="️-order">▶️ order</h2>
+<p>개별적으로 현재 요소의 배치 순서를 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.item-2</span> <span class="p">{</span>
+  <span class="nl">order</span><span class="p">:</span> <span class="m">-1</span>
+<span class="p">}</span>
+<span class="c">/* 기본값이 0이므로 다른 item보다 앞에 배치 */</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>개별적으로 item에 지정한다</strong></li>
+  <li>기본값은 0</li>
+  <li>낮은 값일수록 앞으로, 높은 값이면 뒤로 배치</li>
+  <li>같은 경우 코드상의 순서대로 배치</li>
+  <li>화면에 보이는 순서에만 영향을 준다(코드상에는 원래 순서대로 되어 있다)</li>
+</ul>
+
+<h2 id="️-flex-grow">▶️ flex-grow</h2>
+<p>남는 공간이 있을때 더 많은 영역을 차지할 수 있게 한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.item</span> <span class="p">{</span>
+  <span class="nl">flex-grow</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>기본값은 0</li>
+  <li>각 item이 동일한 값을 가지면 남은 공간을 각 아이템이 남는 영역을 같은 비율로 나눠가진다</li>
+  <li>item별로 <strong>flex-grow값의 비율에 따라</strong> 남는 공간을 나눠가진다</li>
+  <li>음수값은 허용하지 않는다</li>
+  <li>소수점 사용가능하다</li>
+</ul>
+
+<h2 id="️-flex-shrink">▶️ flex-shrink</h2>
+<p>요소의 크기가 줄어들때 줄어드는 비율을 지정한다(item이 container가 더 클때)</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.item</span> <span class="p">{</span>
+  <span class="nl">flex-shrink</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>기본값이 1</strong>이므로 <code class="language-plaintext highlighter-rouge">display:flex</code>를 했을때 container가 줄어들때 item의 크기가 작아진다</li>
+  <li>값이 0이면 줄어들지 않는다</li>
+  <li>음수값이 허용되지 않는다</li>
+  <li>줄어든 영역을 비율만큼 각각 item이 줄어든다</li>
+</ul>
+
+<h2 id="️-flex-basis">▶️ flex-basis</h2>
+<p>flex내 item의 초기 크기를 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.item</span> <span class="p">{</span>
+  <span class="nl">flex-basis</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">box-sizing</code>을 지정하지 않으면 컨텐츠박스의 크기를 변경</li>
+  <li><code class="language-plaintext highlighter-rouge">auto</code>: 자동으로 변한다(기본값)</li>
+  <li><code class="language-plaintext highlighter-rouge">content</code>: item의 크기에 따라 자동으로 변한다(<code class="language-plaintext highlighter-rouge">auto</code>와 동일)</li>
+  <li>값을 입력해서 동일한 너비를 가지게 할 수 있다</li>
+  <li><u>0으로 값이 들어가면 grow값을 주게 되면 item이 모두 동일한 크기를 가진다</u></li>
+</ul>
+
+<h2 id="️-flex">▶️ flex</h2>
+<p>단축속성으로 item이 크기를 키우거나 줄어거나 할 때 비율을 지정할 수 있다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.item</span> <span class="p">{</span>
+  <span class="nl">flex</span><span class="p">:</span> <span class="m">1</span> <span class="m">1</span> <span class="m">100px</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="--각-속성의-초기값">- 각 속성의 초기값</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">속성</th>
+      <th style="text-align: center">값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">flex-grow</code></td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">flex-shrink</code></td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">flex-basis</code></td>
+      <td style="text-align: center">auto</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">flex-basis</code>와 다르게 단축성성 <code class="language-plaintext highlighter-rouge">flex</code>를 이용할 때 기입하지 않으면 0이 값이 된다</li>
+  <li>키워드 <code class="language-plaintext highlighter-rouge">initial</code>: <strong>(0, 1, auto)</strong>로 초기값이 됨</li>
+  <li>키워드 <code class="language-plaintext highlighter-rouge">auto</code>: <strong>(1, 1, auto)</strong>로 <code class="language-plaintext highlighter-rouge">flex-grow</code>값은 1이됨</li>
+  <li>키워드 <code class="language-plaintext highlighter-rouge">none</code>: <code class="language-plaintext highlighter-rouge">width</code>와 <code class="language-plaintext highlighter-rouge">height</code>에 따라 정해지고 크기의 변화가 없다 <strong>(0, 0, auto)</strong></li>
+</ul>
+
+<h3 id="--flex-값이-한개일-때">- flex 값이 한개일 때</h3>
+<ul>
+  <li>값이 1개일때 <code class="language-plaintext highlighter-rouge">flex-grow</code> 값을 뜻한다</li>
+  <li>단위를 입력하면 <code class="language-plaintext highlighter-rouge">flex-basis</code> 값을 뜻한다</li>
+</ul>
+
+<h3 id="--flex-값이-두개일-때">- flex 값이 두개일 때</h3>
+<ul>
+  <li>첫번째 값으로 <code class="language-plaintext highlighter-rouge">flex-basis</code>가 올 수 없다 따라서 무조건 숫자만 위치할 수 있다</li>
+  <li>첫번째 값은 무조건 <code class="language-plaintext highlighter-rouge">flex-grow</code>이다</li>
+</ul>
+
+<h3 id="--flex-값이-세개일-때">- flex 값이 세개일 때</h3>
+<ul>
+  <li>순서대로 <code class="language-plaintext highlighter-rouge">flex-grow</code>, <code class="language-plaintext highlighter-rouge">flex-shrink</code>, <code class="language-plaintext highlighter-rouge">flex-basis</code>가 지정된다</li>
+</ul>
+
+<h2 id="️-justify-content">▶️ justify-content</h2>
+<p>item을 주축(main)을 기준으로 어떻게 정렬할지를 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">flex-start</code>: 주축이 시작하는 지점부터 정렬한다</li>
+  <li><code class="language-plaintext highlighter-rouge">flex-end</code>: 주축이 끝나는 지점부터 정렬한다</li>
+  <li><code class="language-plaintext highlighter-rouge">center</code>: 가운데 정렬</li>
+  <li><code class="language-plaintext highlighter-rouge">space-between</code>: item별 간격을 자동으로 정렬한다</li>
+  <li><code class="language-plaintext highlighter-rouge">space-around</code>: item 앞뒤로 동일한 여백을 추가하며 정렬한다</li>
+</ul>
+
+<h2 id="️-align-items">▶️ align-items</h2>
+<p>전체 container 입장에서 item을 교차축(cross)을 기준으로 어떻게 정렬할지를 지정</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="n">start</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">stretch</code>: item이 차지할 수 있는 가장 넓은 영역을 차지한다</li>
+  <li><code class="language-plaintext highlighter-rouge">center</code>: 가운데 정렬</li>
+  <li><code class="language-plaintext highlighter-rouge">flex-start</code>: 교차축의 시작점을 기준으로 정렬한다</li>
+  <li><code class="language-plaintext highlighter-rouge">flex-end</code>: 교차축의 끝점을 기준으로 정렬한다</li>
+</ul>
+
+<ol class="notice">
+  <li>요소가 여러줄일때는 <code class="language-plaintext highlighter-rouge">align-content</code>를 사용한다 <br />
+  (<code class="language-plaintext highlighter-rouge">flex-start</code>, <code class="language-plaintext highlighter-rouge">flex-end</code>, <code class="language-plaintext highlighter-rouge">center</code>, <code class="language-plaintext highlighter-rouge">space-between</code>, <code class="language-plaintext highlighter-rouge">space-around</code>)</li>
+  <li>여러줄일때 <code class="language-plaintext highlighter-rouge">align-items</code>이 적용되면 <strong>라인 수만큼</strong> 가상의 container를 각각 만든 것처럼 동작한다<br />
+  (flex-end일때 원래는 가장 아래로 정렬되야 한다면 층마다의 아래쪽에 배치가 된다)</li>
+</ol>
+
+<h2 id="️-align-content">▶️ align-content</h2>
+<p>여러줄일때 교차축에 대한 정렬을 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">align-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">flex-start</code>: 교차축이 시작하는 지점부터 정렬한다</li>
+  <li><code class="language-plaintext highlighter-rouge">flex-end</code>: 교차축이 끝나는 지점부터 정렬한다</li>
+  <li><code class="language-plaintext highlighter-rouge">center</code>: 가운데 정렬</li>
+  <li><code class="language-plaintext highlighter-rouge">space-between</code>: item별 간격을 자동으로 정렬한다</li>
+  <li><code class="language-plaintext highlighter-rouge">space-around</code>: item 앞뒤로 동일한 여백을 추가해서 정렬한다</li>
+</ul>
+
+<h2 id="️-align-self">▶️ align-self</h2>
+<p>flex 정렬시, item별로 align(교차축정렬)을 지정할 수 있다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">align-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.item-1</span> <span class="p">{</span>
+  <span class="nl">align-self</span><span class="p">:</span> <span class="n">flex-end</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c">/* item-1 만 아래로 배치된다 */</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">stretch</code>: 차지할 수 있는 가장 큰 영역을 차지한다</li>
+  <li><code class="language-plaintext highlighter-rouge">center</code>: 중앙에 위치한다</li>
+  <li><code class="language-plaintext highlighter-rouge">flex-start</code>: 주축의 시작점에 위치한다</li>
+  <li><code class="language-plaintext highlighter-rouge">flex-end</code>: 주축의 끝점에 위치한다</li>
+  <li>하나의 아이템만 다른값으로 별도지정하고 싶을때 사용한다</li>
+  <li>각 아이템에 지정한다</li>
+</ul>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-04">October 4, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=CSS%EC%9A%94%EC%86%8C8+-+flex%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Fflex%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Fflex%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Fflex%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/css/%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83/" class="pagination--pager" title="CSS요소4 - 레이아웃
+">이전</a>
+    
+    
+      <a href="/css/transform/" class="pagination--pager" title="CSS요소6 - transform
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/%EC%83%89%EC%83%9D%EA%B3%BC%EB%B0%B0%EA%B2%BD/" rel="permalink">CSS요소5 - 색상과 배경
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">색상과 배경
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/transition/" rel="permalink">CSS요소7 - transition, animation
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">transition과 animation
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/transform/" rel="permalink">CSS요소6 - transform
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">transform
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83/" rel="permalink">CSS요소4 - 레이아웃
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">레이아웃
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
