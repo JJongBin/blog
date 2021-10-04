@@ -1,0 +1,1168 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>CSS요소7 - transition, animation | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="transition과 animation">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="CSS요소7 - transition, animation">
+<meta property="og:url" content="https://jjongbin.github.io/blog//css/transition/">
+
+
+  <meta property="og:description" content="transition과 animation">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-04T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-10-04T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://jjongbin.github.io/blog//css/transition/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "https://jjongbin.github.io/blog//"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="icon" href="/assets/images/study.ico" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://jjongbin.github.io/blog//">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://jjongbin.github.io/blog//" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li class="nav__all-posts">
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">36</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/DeepDive" class="">DeepDive (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Method" class="">Method (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+     
+        <span class="nav__sub-title">html</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/HTML" class="">HTML (6)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">css</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/CSS" class="">CSS (9)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">git</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Git" class="">Git (2)</a></li>
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Blog" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/vim" class="">vim (1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="CSS요소7 - transition, animation">
+    <meta itemprop="description" content="transition과 animation">
+    <meta itemprop="datePublished" content="2021-10-04T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-10-04T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://jjongbin.github.io/blog//css/transition/" class="u-url" itemprop="url">CSS요소7 - transition, animation
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#️-transition">✏️ transition</a><ul><li><a href="#️-transition-속성의-기본값">▶️ transition 속성의 기본값</a></li><li><a href="#️-transition-property">▶️ transition-property</a></li><li><a href="#️-transition-duration">▶️ transition-duration</a></li><li><a href="#️-transition-delay">▶️ transition-delay</a></li><li><a href="#️-transition-timing-function">▶️ transition-timing-function</a><ul><li><a href="#-timing-function-value">→ timing function value</a></li></ul></li></ul></li><li><a href="#️-animation">✏️ animation</a><ul><li><a href="#️-animation-속성의-기본값">▶️ animation 속성의 기본값</a></li><li><a href="#️-ketframes">▶️ @ketframes</a></li><li><a href="#️-animation-name">▶️ animation-name</a></li><li><a href="#️-animation-duration">▶️ animation-duration</a></li><li><a href="#️-animation-delay">▶️ animation-delay</a></li><li><a href="#️-animation-timing-function">▶️ animation-timing-function</a></li><li><a href="#️-animation-iteration-count">▶️ animation-iteration-count</a></li><li><a href="#️-animation-direction">▶️ animation-direction</a></li><li><a href="#️-animation-play-state">▶️ animation-play-state</a></li><li><a href="#️-animation-fill-mode">▶️ animation-fill-mode</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="️-transition">✏️ transition</h1>
+<p>변환이 되는 요소의 과정을 단축속성으로 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">transition</span><span class="p">:</span> <span class="n">all</span> <span class="m">1s</span> <span class="n">ease</span> <span class="m">2s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">property</code>, <code class="language-plaintext highlighter-rouge">duration</code>, <code class="language-plaintext highlighter-rouge">timing-function</code>, <code class="language-plaintext highlighter-rouge">delay</code></li>
+  <li>시간 값(s)이 한개만 있으면 무조건 duration으로 동작</li>
+  <li>시간 값(s)이 두개이면 duration, delay 순서로 위치</li>
+</ul>
+
+<h2 id="️-transition-속성의-기본값">▶️ transition 속성의 기본값</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">프로퍼티</th>
+      <th style="text-align: center">값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">transition-delay</code></td>
+      <td style="text-align: center">0s</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">transition-duration</code></td>
+      <td style="text-align: center">0s</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">transition-property</code></td>
+      <td style="text-align: center">all</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">transition-timing-function</code></td>
+      <td style="text-align: center">ease</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="️-transition-property">▶️ transition-property</h2>
+<p>변환되는 css의 특정 요소를 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">transition-property</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">transition-property</span><span class="p">:</span> <span class="n">all</span><span class="p">;</span>
+  <span class="nl">transition-property</span><span class="p">:</span> <span class="n">element</span> <span class="p">(</span><span class="n">margin</span><span class="p">,</span><span class="n">color</span><span class="p">...);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>모든 요소를 지정하려면 <code class="language-plaintext highlighter-rouge">all</code>을 사용하면 된다</li>
+  <li>property를 여러개 지정하는 경우 <code class="language-plaintext highlighter-rouge">,</code>로 구분한다</li>
+  <li><code class="language-plaintext highlighter-rouge">::before</code>, <code class="language-plaintext highlighter-rouge">::after</code>에도 적용이 가능하다</li>
+</ul>
+
+<h2 id="️-transition-duration">▶️ transition-duration</h2>
+<p>변환하는데 걸리는 시간을 얼마로 할지 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">transition-duration</span><span class="p">:</span> <span class="m">1s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>ms단위로도 지정할 수 있다(1000ms = 1s)</li>
+  <li>property를 여러개 따로 지정해줬을 경우에는 duration을 각각 <code class="language-plaintext highlighter-rouge">,</code>로 구분해서 명시한다</li>
+</ul>
+
+<h2 id="️-transition-delay">▶️ transition-delay</h2>
+<p>변환하는 시점을 일정 시간동안 지연시킨다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">transition-delay</span><span class="p">:</span> <span class="m">1s</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>delay를 이용하면 여러개의 요소가 있을때 순차적으로 움직을 수 있다</li>
+</ul>
+
+<h2 id="️-transition-timing-function">▶️ transition-timing-function</h2>
+<p>시간의 흐름에 따라 어떤 방식으로 변환이 되는지를 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">transition-timing-function</span><span class="p">:</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="-timing-function-value">→ timing function value</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">function</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">ease</code></td>
+      <td style="text-align: left">느리게 시작해 빨라지다가 다시 느리게</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">ease-in</code></td>
+      <td style="text-align: left">느리게 시작하고 빨라짐</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">ease-out</code></td>
+      <td style="text-align: left">빠른 속도로 시작해 느려짐</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">ease-in-out</code></td>
+      <td style="text-align: left">ease와 동일(ease는 시작속도가 조금 더 빠름)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">linear</code></td>
+      <td style="text-align: left">처음부터 끝까지 일정(선형)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">cubic-bezier</code></td>
+      <td style="text-align: left">(x, y, x’, y’) 네개의 포인트로 function의 그래프를 그린다</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>cubic-bezier를 이용해서 커스텀하고 코드를 제공해주는 사이트
+https://matthewlein.com/tools/ceaser</p>
+</blockquote>
+
+<h2><br /></h2>
+<p><br /></p>
+
+<h1 id="️-animation">✏️ animation</h1>
+<p>단축속성으로 전환시키는 과정을 지정할 수 있다</p>
+
+<ul>
+  <li>특정 액션을 하지 않아도 동작하게 할 수 있다</li>
+  <li>keyframe을 사용해서 세부적으로 애니메이션 과정을 지정해 줄 수 있다</li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* 단축속성사용 */</span>
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">animation</span><span class="p">:</span> <span class="m">3s</span> <span class="n">ease</span> <span class="m">1s</span> <span class="n">infinitie</span> <span class="n">reverse</span> <span class="n">forwards</span> <span class="n">running</span> <span class="n">test</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">duration</code>, <code class="language-plaintext highlighter-rouge">function</code>, <code class="language-plaintext highlighter-rouge">delay</code>, <code class="language-plaintext highlighter-rouge">count</code>, <code class="language-plaintext highlighter-rouge">direction</code>, <code class="language-plaintext highlighter-rouge">mode</code>, <code class="language-plaintext highlighter-rouge">state</code>, <code class="language-plaintext highlighter-rouge">name</code></li>
+  <li>시간값이 두개 지정되면 앞의 값은 <code class="language-plaintext highlighter-rouge">duration</code>, 뒤의 값은 <code class="language-plaintext highlighter-rouge">delay</code>가 지정된다</li>
+</ul>
+
+<h2 id="️-animation-속성의-기본값">▶️ animation 속성의 기본값</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">프로퍼티</th>
+      <th style="text-align: center">값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">animation-name</code></td>
+      <td style="text-align: center">none</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">animation-duration</code></td>
+      <td style="text-align: center">0s</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">animation-timing-function</code></td>
+      <td style="text-align: center">ease</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">animation-delay</code></td>
+      <td style="text-align: center">0s</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">animation-iteration-count</code></td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">animation-direction</code></td>
+      <td style="text-align: center">normal</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">animation-property</code></td>
+      <td style="text-align: center">all</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">animation-fill-mode</code></td>
+      <td style="text-align: center">none</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">animation-play-state</code></td>
+      <td style="text-align: center">running</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="️-ketframes">▶️ @ketframes</h2>
+<p>여러가지의 애니메이션을 지정해놓을 수 있다 이후 animation을 이용해서 사용한다</p>
+
+<p>keyframe을 세부적으로 지정하는 방법에는 두가지가 있다</p>
+<ol>
+  <li><strong>from, to</strong>: 처음과 끝을 지정한다</li>
+  <li><strong>%</strong>: %별로 구간을 나눠서 지정이 가능하다</li>
+</ol>
+
+<p>두 방법 모두 <code class="language-plaintext highlighter-rouge">{}</code>로 구간을 분리해서 css를 개별 적용한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* from - to 이용 */</span>
+<span class="k">@keyframes</span> <span class="n">이름</span> <span class="p">{</span>
+  <span class="nt">from</span><span class="p">{</span>
+    <span class="err">내용</span>
+  <span class="p">}</span>
+  <span class="nt">to</span> <span class="p">{</span>
+    <span class="err">내용</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c">/* % 이용 */</span>
+<span class="k">@keyframes</span> <span class="n">이름</span> <span class="p">{</span>
+  <span class="err">0</span><span class="o">%</span> <span class="p">{</span> <span class="err">내용</span> <span class="p">}</span>
+  <span class="err">25</span><span class="o">%</span> <span class="p">{</span> <span class="err">내용</span> <span class="p">}</span>
+  <span class="err">50</span><span class="o">%</span> <span class="p">{</span> <span class="err">내용</span> <span class="p">}</span>
+  <span class="err">75</span><span class="o">%</span> <span class="p">{</span> <span class="err">내용</span> <span class="p">}</span>
+  <span class="err">100</span><span class="o">%</span> <span class="p">{</span> <span class="err">내용</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>animation에 이름을 입력하고 다른 속성을 입력해서 사용 (<code class="language-plaintext highlighter-rouge">alternate</code> 속성을 주면 다시 되돌아옴)</li>
+  <li><code class="language-plaintext highlighter-rouge">keyframes</code>의 이름은 <code class="language-plaintext highlighter-rouge">animation-name</code>의 값이 된다</li>
+  <li><code class="language-plaintext highlighter-rouge">keyframes</code> 네이밍 규칙
+    <ul>
+      <li>대소문자를 구분한다</li>
+      <li>특수문자는 <code class="language-plaintext highlighter-rouge">-</code>,<code class="language-plaintext highlighter-rouge">_</code>만 사용가능</li>
+      <li>글로벌 값으로 지정해서는 안된다(<code class="language-plaintext highlighter-rouge">initial</code>, <code class="language-plaintext highlighter-rouge">inherit</code>, <code class="language-plaintext highlighter-rouge">revert</code>, <code class="language-plaintext highlighter-rouge">unset</code>…)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="️-animation-name">▶️ animation-name</h2>
+<p>미리 작성한 keyframe중 어떤 keyframe을 사용할지 명시한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">animation-name</span><span class="p">:</span> <span class="n">keyframes-name</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>기본값은 <code class="language-plaintext highlighter-rouge">none</code></li>
+</ul>
+
+<h2 id="️-animation-duration">▶️ animation-duration</h2>
+<p>애니메이션이 동작하는 시간을 명시한다(한 사이클을 완료하는데 걸리는 시간)</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">animation-duration</span><span class="p">:</span> <span class="m">1s</span>
+  <span class="c">/* 1초동안 애니메이션의 한 사이클이 1초 */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>ms, s단위를 사용한다</li>
+  <li>음수 사용 불가</li>
+</ul>
+
+<h2 id="️-animation-delay">▶️ animation-delay</h2>
+<p>애니메이션을 시작하기 전에 지연시킬 시간을 지정</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">animation-delay</span><span class="p">:</span> <span class="m">3s</span>
+  <span class="c">/* 3초 이후에 애니메이션이 동작한다 */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>ms, s단위 사용</li>
+  <li>음수값을 사용할 경우 곧바로 재생이 되는 대신 음수값만큼의 도중에서 시작된다</li>
+</ul>
+
+<h2 id="️-animation-timing-function">▶️ animation-timing-function</h2>
+<p>동작하는 방식을 지정(시간에 흐름에 따른 변화 속도)</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">animation-timing-function</span><span class="p">:</span> <span class="n">linear</span><span class="p">;</span>
+  <span class="c">/* 일정한 속도로 애니메이션을 진행 */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">transition</code>의 <code class="language-plaintext highlighter-rouge">timing-function</code>과 동일하다</li>
+  <li><code class="language-plaintext highlighter-rouge">ease</code>, <code class="language-plaintext highlighter-rouge">ease-in</code>, <code class="language-plaintext highlighter-rouge">ease-out</code>, <code class="language-plaintext highlighter-rouge">ease-in-out</code>, <code class="language-plaintext highlighter-rouge">linear</code>, <code class="language-plaintext highlighter-rouge">cubic-bezier</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ease</code>: 중간까지 속도 증가, 이후 느려짐 / <code class="language-plaintext highlighter-rouge">cubic-bezier(0.25, 0.1, 0.25, 1.0)</code>과 동일</li>
+  <li><code class="language-plaintext highlighter-rouge">ease-in</code>: 천천히 증가하면서 시작됨 / <code class="language-plaintext highlighter-rouge">cubic-bezier(0.42, 0, 1.0, 1.0)</code>과 동일</li>
+  <li><code class="language-plaintext highlighter-rouge">ease-out</code>: 빠르게 시작해 속도가 줄어든다 / <code class="language-plaintext highlighter-rouge">cubic-bezier(0, 0, 0.58, 1.0)</code>과 동일</li>
+  <li><code class="language-plaintext highlighter-rouge">ease-in-out</code>:천천히 증가하면서 시작했다가 속도가 즐어든다 /  <code class="language-plaintext highlighter-rouge">cubic-bezier(0, 0, 0.58, 1.0)</code>과 동일</li>
+  <li><code class="language-plaintext highlighter-rouge">linear</code>: 동일한 속도 유지 / <code class="language-plaintext highlighter-rouge">cubic-bezier(0.0, 0.0, 1.0, 1.0)</code>과 동일</li>
+  <li><code class="language-plaintext highlighter-rouge">cubic-bezier</code>: 값(x, y, x’, y’)을 지정하는대로 속도의 증가 및 변환이 이루어진다</li>
+</ul>
+
+<h2 id="️-animation-iteration-count">▶️ animation-iteration-count</h2>
+<p>반복하는 횟수를 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">animation-iteration-count</span><span class="p">:</span> <span class="n">infinite</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>값으로 숫자가 들어가거나 <code class="language-plaintext highlighter-rouge">infinite</code>(무한반복)이 들어갈 수 있음</li>
+  <li>0.5도 가능 (50% 재생)</li>
+</ul>
+
+<h2 id="️-animation-direction">▶️ animation-direction</h2>
+<p>애니메이션을 반대로 재생할 수 있음</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">animation-direction</span><span class="p">:</span> <span class="n">reverse</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">normal</code>: 원래대로 진행(기본값)</li>
+  <li><code class="language-plaintext highlighter-rouge">reverse</code>: 반대로 진행</li>
+  <li><code class="language-plaintext highlighter-rouge">alternate</code>: 정방향, 역방향으로 반복해서 진행</li>
+  <li><code class="language-plaintext highlighter-rouge">alternate-reverse</code>: 역방향, 정방향 반복해서 진행</li>
+</ul>
+
+<h2 id="️-animation-play-state">▶️ animation-play-state</h2>
+<p>재생 유무를 설정한다(일시정지)</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">animation-play-state</span><span class="p">:</span> <span class="n">running</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nc">.box</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">animation-play-state</span><span class="p">:</span> <span class="n">paused</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c">/* 기존에 애니메이션이 동작하다가 마우스를 올리면 중지됨 */</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">running</code>: 재생되고 있는 상태(기본값)</li>
+  <li><code class="language-plaintext highlighter-rouge">paused</code>: 일시정지</li>
+</ul>
+
+<h2 id="️-animation-fill-mode">▶️ animation-fill-mode</h2>
+<p>애니메이션이 실행하기 전과 후의 css를 적용하는지의 경우를 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">skyblue</span><span class="p">;</span>
+  <span class="nl">animation-fill-mode</span><span class="p">:</span> <span class="n">forwards</span><span class="p">;</span>
+  <span class="nl">animation</span><span class="p">:</span> <span class="n">colorChange</span> <span class="m">1s</span><span class="p">;</span>
+  <span class="c">/* colorChange를 1초 사이클로 동작한다 */</span>
+<span class="p">}</span>
+<span class="k">@keyframes</span> <span class="n">colorChange</span> <span class="p">{</span>
+  <span class="nt">from</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nt">to</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c">/* 애니메이션이 끝났음에도 color는 red이다 */</span>
+<span class="c">/* fill-mode가 backwards라면 시작할때부터 yellow의 color값을 가진다 */</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">none</code>: 재생될때만 keyframes에 있는 스타일 적용(기본값)</li>
+  <li><code class="language-plaintext highlighter-rouge">forwards</code>: 끝난 모습의 스타일을 유지</li>
+  <li><code class="language-plaintext highlighter-rouge">backwards</code>: 지연시간동안에도 스타일을 적용</li>
+  <li><code class="language-plaintext highlighter-rouge">both</code>: <code class="language-plaintext highlighter-rouge">forwards</code>, <code class="language-plaintext highlighter-rouge">backwards</code> 둘 다 적용</li>
+</ul>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-04">October 4, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=CSS%EC%9A%94%EC%86%8C7+-+transition%2C+animation%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Ftransition%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Ftransition%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Ftransition%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/css/transform/" class="pagination--pager" title="CSS요소6 - transform
+">이전</a>
+    
+    
+      <a href="/css/%EC%83%89%EC%83%9D%EA%B3%BC%EB%B0%B0%EA%B2%BD/" class="pagination--pager" title="CSS요소5 - 색상과 배경
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/%EC%83%89%EC%83%9D%EA%B3%BC%EB%B0%B0%EA%B2%BD/" rel="permalink">CSS요소5 - 색상과 배경
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">색상과 배경
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/transform/" rel="permalink">CSS요소6 - transform
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">transform
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83/" rel="permalink">CSS요소4 - 레이아웃
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">레이아웃
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/git/git,-github2/" rel="permalink">Git, Github 2 - git flow
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">undo, git flow
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
