@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>CSS요소3 - 박스 모델 | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="박스 모델">
+<!-- begin _includes/seo.html --><title>CSS요소5 - 색상과 배경 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="색상과 배경">
 
 
   <meta name="author" content="원종빈">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="CSS요소3 - 박스 모델">
-<meta property="og:url" content="https://jjongbin.github.io/blog//css/CSS%EC%9A%94%EC%86%8C3/">
+<meta property="og:title" content="CSS요소5 - 색상과 배경">
+<meta property="og:url" content="https://jjongbin.github.io/blog//css/%EC%83%89%EC%83%9D%EA%B3%BC%EB%B0%B0%EA%B2%BD/">
 
 
-  <meta property="og:description" content="박스 모델">
-
-
-
+  <meta property="og:description" content="색상과 배경">
 
 
 
 
-  <meta property="article:published_time" content="2021-10-01T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-10-01T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-10-04T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2021-10-04T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://jjongbin.github.io/blog//css/CSS%EC%9A%94%EC%86%8C3/">
+
+<link rel="canonical" href="https://jjongbin.github.io/blog//css/%EC%83%89%EC%83%9D%EA%B3%BC%EB%B0%B0%EA%B2%BD/">
 
 
 
@@ -447,16 +447,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="CSS요소3 - 박스 모델">
-    <meta itemprop="description" content="박스 모델">
-    <meta itemprop="datePublished" content="2021-10-01T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-10-01T00:00:00+09:00">
+    <meta itemprop="headline" content="CSS요소5 - 색상과 배경">
+    <meta itemprop="description" content="색상과 배경">
+    <meta itemprop="datePublished" content="2021-10-04T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-10-04T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://jjongbin.github.io/blog//css/CSS%EC%9A%94%EC%86%8C3/" class="u-url" itemprop="url">CSS요소3 - 박스 모델
+            <a href="https://jjongbin.github.io/blog//css/%EC%83%89%EC%83%9D%EA%B3%BC%EB%B0%B0%EA%B2%BD/" class="u-url" itemprop="url">CSS요소5 - 색상과 배경
 </a>
           </h1>
           
@@ -488,194 +488,183 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#박스모델">박스모델</a><ul><li><a href="#️-width-height">▶️ width, height</a></li><li><a href="#️-max-min">▶️ max, min</a></li><li><a href="#️-margin">▶️ margin</a></li><li><a href="#️-margin-collapsong마진상쇄">▶️ margin collapsong(마진상쇄)</a></li><li><a href="#️-padding">▶️ padding</a></li><li><a href="#️-border">▶️ border</a></li><li><a href="#️-border-radius">▶️ border-radius</a></li><li><a href="#️-box-sizing">▶️ box-sizing</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#색상-표현">색상 표현</a><ul><li><a href="#1-hex16진수">1. HEX(16진수)</a></li><li><a href="#2-rgb">2. rgb</a></li><li><a href="#3-rgba">3. rgba</a></li></ul></li><li><a href="#색상과-배경">색상과 배경</a><ul><li><a href="#️-color">▶️ color</a></li><li><a href="#️-opacity">▶️ opacity</a></li><li><a href="#️-background-color">▶️ background-color</a></li><li><a href="#️-background-image">▶️ background-image</a></li><li><a href="#️-background-repeat">▶️ background-repeat</a></li><li><a href="#️-background-position">▶️ background-position</a></li><li><a href="#️-background-origin">▶️ background-origin</a></li><li><a href="#️-background-size">▶️ background-size</a></li><li><a href="#️-backgroud">▶️ backgroud</a><ul><li><a href="#background의-8개-하위-속성">background의 8개 하위 속성</a></li></ul></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="박스모델">박스모델</h1>
-<p>브라우저에서는 전부 네모 형태로 계산이 되어진다</p>
+        <h1 id="색상-표현">색상 표현</h1>
 
-<p><img src="../../imgs/box-model.png" alt="box-model" /></p>
+<h2 id="1-hex16진수">1. HEX(16진수)</h2>
+<p><code class="language-plaintext highlighter-rouge">#</code>으로 시작해서 여섯개의 문자가 붙는 16진수의 색상표현</p>
+<ul>
+  <li>6자리가 동일한 문자이면 3자리로 축약해서 사용가능</li>
+  <li><code class="language-plaintext highlighter-rouge">#000000</code> → <code class="language-plaintext highlighter-rouge">#000</code> (검은색)</li>
+  <li><code class="language-plaintext highlighter-rouge">#ffffff</code> → <code class="language-plaintext highlighter-rouge">#fff</code> (흰색)</li>
+</ul>
 
-<p>바깥쪽부터 <strong>margin영역-border영역-padding영역-content영역</strong>으로 나눠져있다</p>
+<h2 id="2-rgb">2. rgb</h2>
+<p>red, green, blue의 정도를 0~255사이의 숫자로 나타낸다</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">rgb(red, green, blue);</code></li>
+  <li><code class="language-plaintext highlighter-rouge">rgb(0, 0, 0)</code> (검은색)</li>
+  <li><code class="language-plaintext highlighter-rouge">rgb(255, 255, 255)</code> (흰색)</li>
+</ul>
 
-<h2 id="️-width-height">▶️ width, height</h2>
-<p>요소의 너비 및 높이를 설정할 수 있다</p>
+<h2 id="3-rgba">3. rgba</h2>
+<p>rgb와 동일하지만 투명도를 명시할 수 있다</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">rgba(red, green, blue, alpha);</code></li>
+</ul>
 
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
-    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
-    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<p><br /></p>
+
+<h1 id="색상과-배경">색상과 배경</h1>
+
+<h2 id="️-color">▶️ color</h2>
+<p>글자의 색상을 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">skyblue</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 <ul>
-  <li>px, em, rem, % , vw, vh 단위를 사용할 수 있다</li>
-  <li>상속이 되지 않는다</li>
-  <li>기본값이 <code class="language-plaintext highlighter-rouge">auto</code>는 블록요소의 경우 너비가 최대(100%) 높이는 내부 content만큼을 차지한다</li>
-  <li>인라인 요소의 경우 너비 및 너비가 내부 content만큼 차지한다(<code class="language-plaintext highlighter-rouge">width</code>, <code class="language-plaintext highlighter-rouge">height</code> 지정 x)</li>
+  <li>키워드: blue, red, green 등등 (transparent는 투명)</li>
 </ul>
 
-<h2 id="️-max-min">▶️ max, min</h2>
-<p>최대, 최소의 너비 및 높이를 설정할 수 있다.</p>
-
+<h2 id="️-opacity">▶️ opacity</h2>
+<p>투명도를 지정할 수 있다</p>
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
-    <span class="nl">width</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
-    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
-    <span class="nl">min-width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#000</span><span class="p">;</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0.5</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>0부터 1까지의 값을 입력할 수 있다.</li>
+  <li>소수점 앞의 0을 생략할 수 있다 (0.5 -&gt; .5)</li>
+  <li>0은 완전히 투명하기 때문에 보이지 않는다</li>
+  <li>1은 투명도가 아에 없으므로 불투명(기본)</li>
+  <li>내부의 모든 요소에 영향을 준다</li>
+</ul>
+
+<h2 id="️-background-color">▶️ background-color</h2>
+<p>배경색상을 지정한다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#000</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="️-background-image">▶️ background-image</h2>
+<p>배경으로 이미지를 지정할 수 있다.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span><span class="p">{</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url("file-path")</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>기본값은 <code class="language-plaintext highlighter-rouge">none</code></li>
+  <li>만약 <code class="language-plaintext highlighter-rouge">background-color</code>와 같이 사용이 되면 <code class="language-plaintext highlighter-rouge">background-image</code>가 위로 올라온다</li>
+  <li><code class="language-plaintext highlighter-rouge">background: url("file-path")</code> 단축속성을 이용해서 이렇게 표현도 가능</li>
+</ul>
+
+<h2 id="️-background-repeat">▶️ background-repeat</h2>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span><span class="p">{</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url("file-path")</span><span class="p">;</span>
+    <span class="nl">background-repeat</span><span class="p">:</span> 
 <span class="p">}</span>
 </code></pre></div></div>
 <ul>
-  <li>위 코드에서 box 클래스는 부모의 50%의 너비를 가지지만 최소 100px의 값을 가진다</li>
-  <li><code class="language-plaintext highlighter-rouge">max-width</code>, <code class="language-plaintext highlighter-rouge">min-width</code>, <code class="language-plaintext highlighter-rouge">max-height</code>, <code class="language-plaintext highlighter-rouge">min-height</code></li>
+  <li>기본값은 <code class="language-plaintext highlighter-rouge">repeat</code></li>
+  <li><code class="language-plaintext highlighter-rouge">repeat</code>: 요소의 크기를 채울만큼 반복한다</li>
+  <li><code class="language-plaintext highlighter-rouge">repeat-x</code>: 가로방향으로 채운다</li>
+  <li><code class="language-plaintext highlighter-rouge">repeat-y</code>: 세로방향으로 채운다</li>
+  <li><code class="language-plaintext highlighter-rouge">no-repeat</code>: 반복하지 않고 한번만 나온다</li>
 </ul>
 
-<h2 id="️-margin">▶️ margin</h2>
-<p>단축속성으로 다른 요소와의 간격을 조절할 수 있다(요소의 외부 여백을 지정)</p>
-
+<h2 id="️-background-position">▶️ background-position</h2>
+<p><code class="language-plaintext highlighter-rouge">background-image</code>의 위치를 지정할 수 있다</p>
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
-    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
-    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
-    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
-    <span class="c">/* === margin: 10px 10px 10px 10px; */</span>
-    <span class="c">/* 각각 다른 값을 입력할 수 있고, 특정방향의 margin을 주지 않으려면 0을 입력한다 */</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url("file-path")</span><span class="p">;</span>
+    <span class="nl">background-position</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+    <span class="c">/* background-position: 100px, 200px; */</span>
 <span class="p">}</span>
 </code></pre></div></div>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">margin</code>은 단축속성으로 <code class="language-plaintext highlighter-rouge">margin-top</code>, <code class="language-plaintext highlighter-rouge">margin-right</code>, <code class="language-plaintext highlighter-rouge">margin-bottom</code>, <code class="language-plaintext highlighter-rouge">margin-left</code>로 구분될 수 있다</li>
-  <li>단축속성은 공백으로 구분된다.</li>
-  <li><code class="language-plaintext highlighter-rouge">margin</code>의 단축속성은 <code class="language-plaintext highlighter-rouge">margin: top right bottom left;</code>로 시계방향으로 지정하면 된다</li>
-  <li>단축속성의 값으로 두개를 입력시 (top, bottom) / (left, right)으로 표현</li>
-  <li>단축속성의 값으로 세개를 입력할 경우 (top) / (left, right) / (bottom) 으로 표현</li>
-  <li>%는 부모의 너비(width)를 기준으로 한다</li>
-  <li>음수값이 사용가능하다</li>
+  <li>x축과 y축을 설정할 수 있다</li>
+  <li>기본적으로 왼쪽 상단을 기준으로 한다(얼마나 떨어져있는지 명시)</li>
+  <li>키워드: <code class="language-plaintext highlighter-rouge">top</code>, <code class="language-plaintext highlighter-rouge">bottom</code>, <code class="language-plaintext highlighter-rouge">left</code>, <code class="language-plaintext highlighter-rouge">right</code>, <code class="language-plaintext highlighter-rouge">center</code></li>
+  <li>이미지스프라이트를 이용해서 사진을 보여줄때 많이 사용된다</li>
 </ul>
 
-<h2 id="️-margin-collapsong마진상쇄">▶️ margin collapsong(마진상쇄)</h2>
-<p>마진이 겹쳐져서 상쇄되는 특성이다 (더 큰값이 적용 - 작은값 무시)</p>
+<h2 id="️-background-origin">▶️ background-origin</h2>
+<p>원점(기준)을 지정할 수 있다.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url("file-path")</span><span class="p">;</span>
+    <span class="nl">background-origin</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
 <ul>
-  <li>float요소와 절대위치의 요소는 여뱍상쇄가 일어나지 않는다</li>
+  <li><code class="language-plaintext highlighter-rouge">border-box</code>: 배경을 테두리박스에 상대적으로 배치</li>
+  <li><code class="language-plaintext highlighter-rouge">padding-box</code>: 배경을 안쪽 여백에 상대적으로 배치(기본값)</li>
+  <li><code class="language-plaintext highlighter-rouge">content-box</code>: 배경을 컨텐츠 박스에 상대적으로 배치</li>
 </ul>
 
-<p>이런 현상이 발생될 수 있는 경우</p>
+<h2 id="️-background-size">▶️ background-size</h2>
+<p>배경의 크기를 지정할 수 있다.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url("file-path")</span><span class="p">;</span>
+    <span class="nl">background-size</span><span class="p">:</span> <span class="n">cover</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>기본값은 <code class="language-plaintext highlighter-rouge">auto</code>으로 원본값의 크기를 가진다</li>
+  <li><code class="language-plaintext highlighter-rouge">contain</code>: 더 짧은 가로 또는 세로에 맞춰 꽉채움(비율 유지)</li>
+  <li><code class="language-plaintext highlighter-rouge">cover</code>: 더 긴 가로 또는 세로에 맞춰 <strong>꽉 채움(비율 유지)</strong></li>
+  <li>값을 지정할 수 있음 ex) <code class="language-plaintext highlighter-rouge">background-size: 100px 100px;</code> (비율 유지x)</li>
+  <li>%를 입력할 수 있음 ex) <code class="language-plaintext highlighter-rouge">background-size: 100%;</code> = 가로에 맞춤</li>
+  <li>비율을 유지하고 요소내 여백을 남기려면 <code class="language-plaintext highlighter-rouge">100%</code>, 비율을 유지하고 여백을 남기지 않으려면 <code class="language-plaintext highlighter-rouge">cover</code>를 사용한다</li>
+</ul>
+
+<h2 id="️-backgroud">▶️ backgroud</h2>
+<p>단축속성으로 배경에 관련된 여러가지를 설정할 수 있다</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="sx">url("파일경로")</span> <span class="nb">no-repeat</span> <span class="nb">center</span><span class="p">/</span><span class="m">100px</span> <span class="no">blue</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>몇개만 선택해서 작성할 수 있다</li>
+  <li>공백(스페이스)로 구분한다</li>
+  <li><code class="language-plaintext highlighter-rouge">color</code>는 마지막에만 올 수 있다</li>
+  <li><code class="language-plaintext highlighter-rouge">size</code>는 <code class="language-plaintext highlighter-rouge">position</code> 뒤에만 올 수 있고 <code class="language-plaintext highlighter-rouge">/</code>로 구분한다 (<code class="language-plaintext highlighter-rouge">position/size</code>)</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="background의-8개-하위-속성">background의 8개 하위 속성</h3>
 <ol>
-  <li>인접 형제
+  <li><code class="language-plaintext highlighter-rouge">background-attachment</code>: 배경이미지를 고정(스크롤 여부)(<code class="language-plaintext highlighter-rouge">기본값: scroll</code>)
     <ul>
-      <li>두 형제의 위아래의 여백이 상쇄됨(좌우는 x)</li>
+      <li><code class="language-plaintext highlighter-rouge">scroll</code>: 페이지와 함께 스크롤(아에 고정)</li>
+      <li><code class="language-plaintext highlighter-rouge">fixed</code>: 페이지와 함께 스크롤되지 않음(부모요소를 스크롤할때 보여지는 배경이 다름)</li>
+      <li><code class="language-plaintext highlighter-rouge">local</code>: 요소 내용과 함께 스크롤(내부요소 스크롤시 같이 스크롤됨)</li>
     </ul>
   </li>
-  <li>부모 자식요소간
+  <li><code class="language-plaintext highlighter-rouge">background-clip</code>: 어느 영역까지 차지할지를 지정(<code class="language-plaintext highlighter-rouge">기본값: border-box</code>)
     <ul>
-      <li>부모요소의 여백과 자식요소의 여백이 만났을때(상하) -&gt; border나 padding값으로 구분해줄 수 있다</li>
+      <li><code class="language-plaintext highlighter-rouge">border-box</code>: 테두리 영역까지</li>
+      <li><code class="language-plaintext highlighter-rouge">padding-box</code>: 요소 내부 여백까지</li>
+      <li><code class="language-plaintext highlighter-rouge">content-box</code>: 컨텐츠박스까지</li>
+      <li><code class="language-plaintext highlighter-rouge">text</code>: 텍스트 위에만</li>
     </ul>
   </li>
-  <li>빈블록
-    <ul>
-      <li>빈블록이면 해당 블록의 <code class="language-plaintext highlighter-rouge">margin-top</code>과 <code class="language-plaintext highlighter-rouge">margin-bottom</code>이 만나게 된다 따라서 <code class="language-plaintext highlighter-rouge">margin-top</code>과 <code class="language-plaintext highlighter-rouge">margin-bottom</code>중에 더 큰 값으로 상쇄된다</li>
-    </ul>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">background-color</code>: 배경의 색상을 지정(<code class="language-plaintext highlighter-rouge">기본값: transparent</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">background-image</code>: 배경을 이미지로 지정(<code class="language-plaintext highlighter-rouge">기본값: none</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">background-origin</code>: 원점을 지정(<code class="language-plaintext highlighter-rouge">기본값: padding-box</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">background-position</code>: 배경의 위치를 지정(<code class="language-plaintext highlighter-rouge">기본값: 0% 0%</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">background-repeat</code>: 배경의 반복을 지정(<code class="language-plaintext highlighter-rouge">기본값: repeat</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">background-size</code>: 배경의 크기를 지정(<code class="language-plaintext highlighter-rouge">기본값: auto auto</code>)</li>
 </ol>
-
-<blockquote>
-  <p>MDN <a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing">https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing</a></p>
-</blockquote>
-
-<h2 id="️-padding">▶️ padding</h2>
-<p>단축속성으로 요소 내부의 여백을 줄 수 있다</p>
-
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
-    <span class="nl">padding</span><span class="p">:</span><span class="m">10px</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">padding-top</code>, <code class="language-plaintext highlighter-rouge">padding-right</code>, <code class="language-plaintext highlighter-rouge">padding-bottom</code>, <code class="language-plaintext highlighter-rouge">padding-left</code> 순으로 적용가능하다 (시계방향)</li>
-  <li>패딩상쇄는 존재하지 않는다</li>
-  <li>음수값을 사용할 수 없다</li>
-  <li>퍼센트(%)를 사용할 경우 부모요소의 가로길이(width)를 기준으로 한다</li>
-  <li>만약 요소의 크기가 100px일때 padding을 추가하면 그만큼 크기가 늘어난다</li>
-</ul>
-
-<h2 id="️-border">▶️ border</h2>
-<p>단축속성으로 요소의 테두리를 설정해줄 수 있다</p>
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
-    <span class="nl">border</span><span class="p">:</span> <span class="n">width</span> <span class="n">style</span> <span class="n">color</span><span class="p">;</span>
-    <span class="c">/* border: 1px solid #000; */</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">border</code>의 초기값은 0</li>
-  <li><code class="language-plaintext highlighter-rouge">border-width</code>: 키워드(<code class="language-plaintext highlighter-rouge">thin</code>, <code class="language-plaintext highlighter-rouge">medium</code>, <code class="language-plaintext highlighter-rouge">thick</code>)또는 단위(px)을 사용해서 굵기를 나타낸다</li>
-  <li><code class="language-plaintext highlighter-rouge">border-style</code>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">none</code>: 보이지 않음(우선순위 제일 낮음)</li>
-      <li><code class="language-plaintext highlighter-rouge">hidden</code>: 보이지 않음(우선순위 제일높음)</li>
-      <li><code class="language-plaintext highlighter-rouge">dotted</code>: 둥근 점</li>
-      <li><code class="language-plaintext highlighter-rouge">dashed</code>: 직사각형 여러개</li>
-      <li><code class="language-plaintext highlighter-rouge">solid</code>: 하나의 직선</li>
-      <li><code class="language-plaintext highlighter-rouge">double</code>: 두개의 직선</li>
-      <li><code class="language-plaintext highlighter-rouge">groove</code>: 테두리가 파인 것처럼 보임</li>
-      <li><code class="language-plaintext highlighter-rouge">ridge</code>: 테두리가 튀어나온 것처럼 보임</li>
-      <li><code class="language-plaintext highlighter-rouge">inset</code>: 요소개 파인 것처럼 보임</li>
-      <li><code class="language-plaintext highlighter-rouge">outset</code>: 요소가 튀어나온 것처럼 보임</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">border-color</code>: 테두리 선의 색상을 설정</li>
-  <li>각 속성의 값을 하나를 입력하면 (상 / 하 /)</li>
-  <li>각 속성의 값을 두개 입력하면 (상하 / 좌우)</li>
-  <li>각 속성의 값을 세개 입력하면 (상 / 좌우 / 하)</li>
-  <li><code class="language-plaintext highlighter-rouge">border: width style color;</code> 형태로 단축속성을 작성한다</li>
-  <li><code class="language-plaintext highlighter-rouge">border-bottom</code>처럼 bottom, top, left, right로 지정할 수 있다</li>
-</ul>
-
-<h2 id="️-border-radius">▶️ border-radius</h2>
-<p>테두리 경계를 둥글게 설정해준다</p>
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
-    <span class="nl">width</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
-    <span class="nl">height</span><span class="p">:</span> <span class="m">150px</span><span class="p">;</span>
-    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>모서리 끝에 원이 생겨서  <code class="language-plaintext highlighter-rouge">border-radius</code>의 값으로 넣은 값이 반지름이 되고 모서리의 모양이 원의 테두리처럼 반영</li>
-  <li><code class="language-plaintext highlighter-rouge">border-radius: 50%</code>는 원을 생성한다</li>
-  <li>값은 % 또는 px로 지정해준다</li>
-  <li>네가지 값을 입력할 경우 왼쪽 상단부터 시계방향으로 설정이 된다</li>
-  <li>두개의 경우 대각선을 기준으로 (왼쪽상단, 오른쪽하단) / (오른쪽 상단, 왼쪽하단)으로 묶어 표현</li>
-  <li>최대값은 50%이다</li>
-</ul>
-
-<h2 id="️-box-sizing">▶️ box-sizing</h2>
-<p>요소의 크기를 어떤 것을 기준으로 지정할지 명시한다</p>
-
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
-    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
-    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
-    <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
-    <span class="nl">border</span><span class="p">:</span> <span class="m">10px</span> <span class="nb">solid</span> <span class="nb">block</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-<p><code class="language-plaintext highlighter-rouge">box-sizing</code>을 명시하지 않았기 때문에 기본값인 <code class="language-plaintext highlighter-rouge">content-box</code></p>
-
-<p>따라서 전체 크기는 100px(content)+40px(padding)+20px(border) = <u>160px</u></p>
-
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
-    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
-    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
-    <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
-    <span class="nl">border</span><span class="p">:</span> <span class="m">10px</span> <span class="nb">solid</span> <span class="nb">block</span><span class="p">;</span>
-    <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-<p>같은 경우에 <code class="language-plaintext highlighter-rouge">box-sizing</code>을 <code class="language-plaintext highlighter-rouge">border-box</code>로 지정해준 경우에는 border까지의 크기가 100px이 되므로 전체 크기는 <u>100px</u></p>
-
-<ul>
-  <li>두가지 값이 있다</li>
-  <li><code class="language-plaintext highlighter-rouge">content-box</code>: content를 기준으로 지정한 크기로 설정(기본값)</li>
-  <li><code class="language-plaintext highlighter-rouge">border-box</code>: border를 기준으로 지정한 크기로 설정(<code class="language-plaintext highlighter-rouge">padding</code>, <code class="language-plaintext highlighter-rouge">border</code>가 포함됨)</li>
-</ul>
-
 
         
       </section>
@@ -717,7 +706,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-01">October 1, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-04">October 4, 2021</time></p>
 
       </footer>
 
@@ -726,23 +715,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=CSS%EC%9A%94%EC%86%8C3+-+%EB%B0%95%EC%8A%A4+%EB%AA%A8%EB%8D%B8%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2FCSS%25EC%259A%2594%25EC%2586%258C3%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=CSS%EC%9A%94%EC%86%8C5+-+%EC%83%89%EC%83%81%EA%B3%BC+%EB%B0%B0%EA%B2%BD%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2F%25EC%2583%2589%25EC%2583%259D%25EA%25B3%25BC%25EB%25B0%25B0%25EA%25B2%25BD%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2FCSS%25EC%259A%2594%25EC%2586%258C3%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2F%25EC%2583%2589%25EC%2583%259D%25EA%25B3%25BC%25EB%25B0%25B0%25EA%25B2%25BD%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2FCSS%25EC%259A%2594%25EC%2586%258C3%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2F%25EC%2583%2589%25EC%2583%259D%25EA%25B3%25BC%25EB%25B0%25B0%25EA%25B2%25BD%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/css/CSS%EC%9A%94%EC%86%8C2/" class="pagination--pager" title="CSS요소2 - 단위와 값
+      <a href="/css/%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83/" class="pagination--pager" title="CSS요소4 - 레이아웃
 ">이전</a>
     
     
-      <a href="/git/git,-github2/" class="pagination--pager" title="Git, Github 2 - git flow
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -756,46 +744,6 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/css/%EC%83%89%EC%83%9D%EA%B3%BC%EB%B0%B0%EA%B2%BD/" rel="permalink">CSS요소5 - 색상과 배경
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">색상과 배경
-</p>
-  </article>
-</div>
-
         
           
 
@@ -872,6 +820,46 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">undo, git flow
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/CSS%EC%9A%94%EC%86%8C3/" rel="permalink">CSS요소3 - 박스 모델
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">박스 모델
 </p>
   </article>
 </div>
