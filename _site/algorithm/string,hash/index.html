@@ -1,0 +1,1191 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Algorithm] String, Hash | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="String, Hash 알고리즘 정리">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="[Algorithm] String, Hash">
+<meta property="og:url" content="https://jjongbin.github.io/blog//algorithm/string,hash/">
+
+
+  <meta property="og:description" content="String, Hash 알고리즘 정리">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-06T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-10-06T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://jjongbin.github.io/blog//algorithm/string,hash/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "https://jjongbin.github.io/blog//"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="icon" href="/assets/images/study.ico" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://jjongbin.github.io/blog//">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://jjongbin.github.io/blog//" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li class="nav__all-posts">
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">39</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/DeepDive" class="">DeepDive (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Method" class="">Method (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+     
+        <span class="nav__sub-title">html</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/HTML" class="">HTML (6)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">css</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/CSS" class="">CSS (11)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">algorithm</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Algorithm" class="">Algorithm (1)</a></li>
+                    
+                
+            </ul>
+        <span class="nav__sub-title">git</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Git" class="">Git (2)</a></li>
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Blog" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/vim" class="">vim (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Algorithm] String, Hash">
+    <meta itemprop="description" content="String, Hash 알고리즘 정리">
+    <meta itemprop="datePublished" content="2021-10-06T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-10-06T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://jjongbin.github.io/blog//algorithm/string,hash/" class="u-url" itemprop="url">[Algorithm] String, Hash
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#string">String</a><ul><li><a href="#1-앞-뒤-문자열의-비교">1. 앞 뒤 문자열의 비교</a></li><li><a href="#2-문자열을-앞-뒤로-비교해주는-방법">2. 문자열을 앞 뒤로 비교해주는 방법</a></li><li><a href="#3-문자열에서의-브루트포스">3. 문자열에서의 브루트포스</a></li></ul></li><li><a href="#hash">Hash</a><ul><li><a href="#해시-테이블hash-table">해시 테이블(Hash Table)</a></li><li><a href="#1-mapset">1. Map.set()</a></li><li><a href="#2-mapget">2. Map.get()</a></li><li><a href="#3-maphas">3. Map.has()</a></li><li><a href="#4-mapdelete">4. Map.delete()</a></li><li><a href="#5-mapsize">5. Map.size()</a></li></ul></li><li><a href="#js-메소드">JS 메소드</a><ul><li><a href="#1-split">1. split()</a></li><li><a href="#2-join">2. join()</a></li><li><a href="#3-substring">3. substring()</a></li><li><a href="#4-sort">4. sort()</a></li><li><a href="#5-reverse">5. reverse()</a></li><li><a href="#6-isnan">6. isNaN()</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="string">String</h1>
+<p>문자열을 다루는 알고리즘을 풀면서 알게된 방법</p>
+
+<h2 id="1-앞-뒤-문자열의-비교">1. 앞 뒤 문자열의 비교</h2>
+
+<blockquote>
+  <p>문자열이 주어지고 각 알파벳이 몇개가 이어지는지 모든 개수를 출력해보는 문제(1개도 출력)</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">aaazbbbccc</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// 공백을 추가해주는 이유는 마지막에 종료하기 위해서</span>
+<span class="nx">str</span> <span class="o">=</span> <span class="nx">str</span> <span class="o">+</span> <span class="dl">""</span>
+
+<span class="c1">// 몇개나 중복되는지 체크하기 위해서(기본적으로 한개는 존재하므로 1)</span>
+<span class="nx">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]){</span>
+    <span class="nx">cnt</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">]}</span><span class="s2">은 </span><span class="p">${</span><span class="nx">cnt</span><span class="p">}</span><span class="s2">개 있습니다`</span><span class="p">)</span>
+    <span class="nx">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>index</strong>를 이용해서 현재 index와 그 다음번의 index를 비교해본다</p>
+
+<p>마지막 index에서는 다음번에 비교할 문자가 없기때문에 미리 공백을 추가해준다(<code class="language-plaintext highlighter-rouge">str = str + " "</code>)</p>
+
+<h2 id="2-문자열을-앞-뒤로-비교해주는-방법">2. 문자열을 앞 뒤로 비교해주는 방법</h2>
+
+<p>index를 이용해서 제일 처음 인덱스 <code class="language-plaintext highlighter-rouge">left</code>, 맨 마지막을 가르키는 <code class="language-plaintext highlighter-rouge">right</code>를 지정한다</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">right</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="c1">// index를 이용하기 때문에 -1을 해준다</span>
+</code></pre></div></div>
+<p>이후 문자열을 확인하면서 +1, -1을 해주면서 다시 확인한다</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">left</code>는 +1(→ 방향)</li>
+  <li><code class="language-plaintext highlighter-rouge">right</code>는 -1(← 방향)</li>
+</ul>
+
+<p class="notice">* <strong>문제타입</strong><br />
+- 문자열에서 문자뒤집기<br />
+- 회문문자열</p>
+
+<h2 id="3-문자열에서의-브루트포스">3. 문자열에서의 브루트포스</h2>
+<p>브루트포스(brute force)란, <strong>완전탐색 알고리즘</strong>이다</p>
+
+<p>가능한 모든 경우의 수를 확인하면서 요구에 충족되는 조건을 리턴할 수 있다 (100% 정답만을 리턴)</p>
+
+<blockquote>
+  <p>같은 문자열이 존재하는가를 확인하는 문제</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">strArr</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">abc</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">abcd</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">efg</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">abc</span><span class="dl">"</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">strArr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">check</span> <span class="o">=</span> <span class="p">(</span><span class="nx">strArr</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// 반복문의 중첩을 통해 모든 경우의 수를 확인한다 (문자열 4개 기준 - 6가지)</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>        <span class="c1">// n은 문자열을 담고있는 배열의 길이</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">){</span>     <span class="c1">// n은 문자열을 담고있는 배열의 길이</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">staArr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="nx">strArr</span><span class="p">[</span><span class="nx">j</span><span class="p">]){</span>    
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>   <span class="c1">// 같은 문자열이 있을때 false를 리턴</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>    <span class="c1">// 반복문동안 false 리턴이 수행되지 않은 경우 중복되는 문자열이 없었다고 판단 (true 리턴)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>반복문의 중첩을 사용해서 <strong>모든 경우를 확인한다</strong></p>
+
+<p>두번째 <code class="language-plaintext highlighter-rouge">for</code>문에서 <code class="language-plaintext highlighter-rouge">j</code>가 <code class="language-plaintext highlighter-rouge">i+1</code>에서부터 시작하는 이유는 이전의 문자열과의 비교는 이전에 수행되었기 때문이다s</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">i</th>
+      <th style="text-align: center">j</th>
+      <th style="text-align: center">str</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">abc</code>, <code class="language-plaintext highlighter-rouge">abcd</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">abc</code>, <code class="language-plaintext highlighter-rouge">efg</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">abc</code>, <code class="language-plaintext highlighter-rouge">abc</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">abcd</code>, <code class="language-plaintext highlighter-rouge">efg</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">abcd</code>, <code class="language-plaintext highlighter-rouge">abc</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">efg</code>, <code class="language-plaintext highlighter-rouge">abc</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="hash">Hash</h1>
+<p>해시테이블과 반복문 등을 사용해서 값의 누적, 중복의 여부 등을 확인할 수 있다</p>
+
+<h2 id="해시-테이블hash-table">해시 테이블(Hash Table)</h2>
+<p>자료구조의 종류 중 하나로 <strong>key</strong>와 <strong>value</strong>를 가지는 자료구조 형태이다</p>
+
+<ul>
+  <li>Hash Function을 이용해서 빠른 접근이 가능하다 (시간복잡도: O(n))</li>
+  <li>Map의 사용
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">hashTable</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="1-mapset">1. Map.set()</h2>
+<p>값을 설정하는 해시테이블(Map)의 함수</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">hashTable</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+
+<span class="nx">hashTable</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">value</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hashTable</span><span class="p">);</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+Map { 'key' =&gt; 'value' }
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">set()</code>에 두개의 인자를 넣는다</p>
+
+<ul>
+  <li>첫번째 인자: key</li>
+  <li>두번째 인자: value</li>
+  <li>인자를 하나만 넣을 경우 인자는 key값이 되고 value는 <code class="language-plaintext highlighter-rouge">undefined</code></li>
+</ul>
+
+<h2 id="2-mapget">2. Map.get()</h2>
+<p>선언한 Map에서 값을 가져오는 해시테이블의(Map)의 함수</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">hashTable</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+
+<span class="nx">hashTable</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">서울</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">서울특별시</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">hashTable</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">수원</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">그냥 수원시</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hashTable</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">서울</span><span class="dl">"</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hashTable</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">수원</span><span class="dl">"</span><span class="p">));</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+서울특별시
+그냥 수원시
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">get()</code>의 인자로 한개를 넣어주게 되는데 이때 <strong>key값</strong>이 들어가게 된다</p>
+
+<h2 id="3-maphas">3. Map.has()</h2>
+<p>선언한 Map에 <strong>key</strong>가 존재하는지를 확인하는 함수</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">hashTable</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+
+<span class="nx">hashTable</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">서울</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">서울특별시</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">hashTable</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">수원</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">그냥 수원시</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hashTable</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="dl">"</span><span class="s2">서울</span><span class="dl">"</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hashTable</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="dl">"</span><span class="s2">제주도</span><span class="dl">"</span><span class="p">));</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+true
+false
+</code></pre></div></div>
+
+<h2 id="4-mapdelete">4. Map.delete()</h2>
+<p>선언된 Map에서 key로 key와 value를 삭제하는 함수</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">hashTable</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+
+<span class="nx">hashTable</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">서울</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">서울특별시</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">hashTable</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">수원</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">그냥 수원시</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">hashTable</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">"</span><span class="s2">수원</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hashTable</span><span class="p">);</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+Map { '서울' =&gt; '서울특별시'}
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>를 리턴한다</li>
+</ul>
+
+<h2 id="5-mapsize">5. Map.size()</h2>
+<p>Map의 크기를 리턴하는 함수</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">hashTable</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+
+<span class="nx">hashTable</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">서울</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">서울특별시</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">hashTable</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">수원</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">그냥 수원시</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hashTable</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+2
+</code></pre></div></div>
+<ul>
+  <li>빈 Map의 size를 출력하면 0</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="js-메소드">JS 메소드</h1>
+
+<h2 id="1-split">1. split()</h2>
+<p>문자열(string)을 지정한 구분자로 구분한다</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">문자열</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">구분자</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/split">MDN Link</a></p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 예시</span>
+<span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">a, b, c, d, e</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">arr</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+[ 'a', 'b', 'c', 'd', 'e' ]
+</code></pre></div></div>
+
+<h2 id="2-join">2. join()</h2>
+<p>배열의 모든 요소를 나열해 하나의 문자열(string)로 만든다</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">배열</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">각 항목 사이에 지정할 문자열</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/join">MDN Link</a></p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 예시</span>
+<span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span>  <span class="p">[</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">d</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">e</span><span class="dl">"</span> <span class="p">];</span>
+
+<span class="nx">str</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+abcde
+</code></pre></div></div>
+
+<h2 id="3-substring">3. substring()</h2>
+<p>문자열(string)의 인덱스를 사용해서 시작인덱스부터 끝인덱스까지의 부분문자열을 반환한다</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">문자열</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">시작인덱스</span><span class="p">,</span> <span class="nx">끝인덱스</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/substring">MDN Link</a></p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">abcdefg</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">subStr</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">subStr</span><span class="p">);</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+bcd
+</code></pre></div></div>
+<ul>
+  <li>만약 끝인덱스를 입력하지 않은경우 끝까지 진행한다</li>
+</ul>
+
+<h2 id="4-sort">4. sort()</h2>
+<p>배열을 정렬해준다</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>배열.sort();
+</code></pre></div></div>
+
+<blockquote>
+  <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">MDN Link</a></p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">d</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">];</span>
+
+<span class="nx">arr</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span><span class="o">-</span><span class="nx">b</span><span class="p">);</span>
+<span class="nx">arr2</span><span class="p">.</span><span class="nx">sort</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr2</span><span class="p">);</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+[ 1, 2, 3, 4 ]
+[ 'a', 'b', 'c', 'd' ]
+</code></pre></div></div>
+
+<ul>
+  <li><strong>복사본을 생성하지 않고 원본이 변경된다</strong></li>
+  <li>기본적으로 문자열의 유니코드 코드에 따라 정렬한다 (숫자의 오름차순 정렬시 1, 2, 11가 있다면 1, 11, 2로 정렬됨)</li>
+  <li>오름차순의 경우(<code class="language-plaintext highlighter-rouge">arr.sort((a,b) =&gt; a-b)</code>)</li>
+  <li>내림차순의 경우(<code class="language-plaintext highlighter-rouge">arr.sort((a,b) =&gt; b-a)</code>)</li>
+</ul>
+
+<h2 id="5-reverse">5. reverse()</h2>
+<p>배열의 순서를 반대로 반전시켜준다</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">배열</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">MDN Link</a></p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+[ 4, 3, 2, 1 ]
+</code></pre></div></div>
+
+<h2 id="6-isnan">6. isNaN()</h2>
+<p>인자가 숫자인지 아닌지 false, true값을 반환한다</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+false
+</code></pre></div></div>
+
+<ul>
+  <li>숫자이면 false반환</li>
+  <li>숫자가 아니면 true 반환</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-06">October 6, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BAlgorithm%5D+String%2C+Hash%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Falgorithm%2Fstring%2Chash%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Falgorithm%2Fstring%2Chash%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Falgorithm%2Fstring%2Chash%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/css/grid/" class="pagination--pager" title="CSS요소9 - grid
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/grid/" rel="permalink">CSS요소9 - grid
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">grid
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/%EC%83%89%EC%83%9D%EA%B3%BC%EB%B0%B0%EA%B2%BD/" rel="permalink">CSS요소5 - 색상과 배경
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">색상과 배경
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/transition/" rel="permalink">CSS요소7 - transition, animation
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">transition과 animation
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/transform/" rel="permalink">CSS요소6 - transform
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">transform
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
