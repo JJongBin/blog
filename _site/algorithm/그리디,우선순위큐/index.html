@@ -1,0 +1,1052 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Algorithm] Greedy, Priority Queue  | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="그리디 알고리즘, 우선순위 큐, 힙">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="[Algorithm] Greedy, Priority Queue">
+<meta property="og:url" content="http://localhost:4502/algorithm/%EA%B7%B8%EB%A6%AC%EB%94%94,%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/">
+
+
+  <meta property="og:description" content="그리디 알고리즘, 우선순위 큐, 힙">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-13T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-10-13T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4502/algorithm/%EA%B7%B8%EB%A6%AC%EB%94%94,%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "http://localhost:4502/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="icon" href="/assets/images/study.ico" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4502/">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4502/" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li class="nav__all-posts">
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">44</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/DeepDive" class="">DeepDive (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Method" class="">Method (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+     
+        <span class="nav__sub-title">html</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/HTML" class="">HTML (6)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">css</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/CSS" class="">CSS (11)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">algorithm</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Algorithm" class="">Algorithm (6)</a></li>
+                    
+                
+            </ul>
+        <span class="nav__sub-title">git</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Git" class="">Git (2)</a></li>
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Blog" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/vim" class="">vim (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Algorithm] Greedy, Priority Queue">
+    <meta itemprop="description" content="그리디 알고리즘, 우선순위 큐, 힙">
+    <meta itemprop="datePublished" content="2021-10-13T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-10-13T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4502/algorithm/%EA%B7%B8%EB%A6%AC%EB%94%94,%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" class="u-url" itemprop="url">[Algorithm] Greedy, Priority Queue
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#️-그리디-알고리즘-greedy-algorithm">▶️ 그리디 알고리즘 (Greedy Algorithm)</a><ul><li><a href="#-회의실-문제-beakjoon---1931">▷ 회의실 문제 (beakjoon - 1931)</a></li></ul></li><li><a href="#️-우선순위-큐-priority-queue">▶️ 우선순위 큐 (Priority Queue)</a><ul><li><a href="#-힙heap">▷ 힙(Heap)</a><ul><li><a href="#1-삽입연산push">1. 삽입연산(push)</a></li><li><a href="#2-삭제연산pop">2. 삭제연산(pop)</a></li></ul></li><li><a href="#-최대-힙max-heap-구현">▷ 최대 힙(Max Heap) 구현</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="️-그리디-알고리즘-greedy-algorithm">▶️ 그리디 알고리즘 (Greedy Algorithm)</h1>
+
+<p>탐욕적인 알고리즘이라는 뜻으로 <strong>현재 상황에서 <u>가장 좋은 경우</u>를 선택</strong>한다</p>
+
+<p>현재 상황에서 가장 좋은 해를 결정하고 다음 단계로 넘어가기 때문에 일부 상황에서는 나쁜 해가 될 수 있다</p>
+
+<blockquote>
+  <p>그리디 알고리즘이 적용될 수 있는 경우</p>
+  <ol>
+    <li>이전의 선택이 이후의 선택에 영향을 주지 않아야 한다.</li>
+    <li>각 부분 문제에 대한 최적해가 문제의 최적해를 얻을 수 있다.</li>
+  </ol>
+</blockquote>
+
+<h2 id="-회의실-문제-beakjoon---1931">▷ 회의실 문제 (beakjoon - 1931)</h2>
+
+<p><img src="../../imgs/회의실문제.png" alt="백준 - 회의실 문제" /></p>
+<ul>
+  <li>입력값
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11
+1 4
+3 5
+0 6
+5 7
+3 8
+5 9
+6 10
+8 11
+8 12
+2 13
+12 14
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<blockquote>
+  <p>회의시간이 겹치지 않고, 제일 많은 회의를 할 수 있는 회의의 개수를 구하면 된다</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">filePath</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">platform</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">linux</span><span class="dl">'</span><span class="p">?</span> <span class="dl">"</span><span class="s2">/dev/stdin</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">./2_1931.txt</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">).</span><span class="nx">toString</span><span class="p">().</span><span class="nx">trim</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">shift</span><span class="p">()[</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="o">+</span><span class="nx">item</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 시작시간이 더 큰수가 기준이 되면 안되기 때문에 시작시간을 기준으로 정렬, 끝나는 시간을 기준으로 정렬 (총 두번 정렬)</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nx">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+
+<span class="c1">// 첫번째 회의는 무조건 시작하기 때문에 result = 1</span>
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="c1">// 끝나는 시간</span>
+<span class="kd">let</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="nx">temp</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nx">temp</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div></div>
+<p>그리디 알고리즘은 보통 최솟값, 최댓값을 찾는 문제가 많으므로 정렬을 사용한다 위에서는 시작시간으로 한번 정렬해주고, 끝나는 시간을 오름차순으로 정렬해준다</p>
+
+<p>정렬된 회의의 시작시간과 끝나는 시간을 가지고 반복문을 통해 처음 위치한 값을 기준으로 <strong>끝나는시간과 시작시간을 비교해서 카운팅</strong>한다</p>
+
+<p><br /></p>
+
+<h1 id="️-우선순위-큐-priority-queue">▶️ 우선순위 큐 (Priority Queue)</h1>
+
+<p>들어간(In) 순서와 상관없이 우선순위가 높은 데이터가 먼저 나온다(Out)</p>
+
+<p><u>힙 탐색의 시간복잡도는 O(logN)이다</u></p>
+
+<p>우선순위 큐는 힙(Heap)을 이용해서 구현할 수 있다</p>
+
+<h2 id="-힙heap">▷ 힙(Heap)</h2>
+<p>힙(Heap)은 최대값 또는 최솟값을 빠르게 찾아내기 위해 고안된 자료구조로 완전 이진 트리의 구로를 가진다</p>
+
+<p class="notice"><strong>완전 이진 트리</strong><br />
+leaf노드를 제외한 나머지 모든 부모 노드들이 자식 노드를 두개씩가지고 있는 이진트리</p>
+
+<p>힙은 두가지 종류를 가진다</p>
+
+<p><img src="../../imgs/heap.png" alt="heap" /></p>
+
+<ol>
+  <li><strong>최대 힙(Max Heap)</strong>: 루트노드로 올라갈수록 값이 커지는 완전 이진 트리(힙)
+    <ul>
+      <li>부모노드가 자식노드보다 무조건 크다</li>
+    </ul>
+  </li>
+  <li><strong>최소 힙(Min Heap)</strong>: 루트노드로 올라갈수록 값이 작아지는 완전 이진 트리(힙)
+    <ul>
+      <li>부모노드가 자식노드보다 무조건 작다</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="1-삽입연산push">1. 삽입연산(push)</h3>
+<ol>
+  <li>삽입연산(push)을 하게되면 left노드에 개수를 고려하면서(한 노드에 자식노드 2개) 삽입이된다</li>
+  <li>삽입된 노드는 부모노드와 값을 비교한다 (크거나 작거나)</li>
+  <li>만약 최대힙에서 자식노드가 부모노드의 값보다 크다면, 부모노드와 자식노드를 교체해준다</li>
+  <li>교체해주는 과정을 더이상 그렇지 않을때까지, 루트노드에 도착했을때까지 반복한다</li>
+</ol>
+
+<h3 id="2-삭제연산pop">2. 삭제연산(pop)</h3>
+<ol>
+  <li>우선순위큐에서의 삭제는 가장 높은 우선순위를 가진 루트노드가 삭제가 된다</li>
+  <li>이후 제일 마지막에 있는 노드를 루트노드의 자리로 옮긴다</li>
+  <li>이후 자식노드들과 비교하면서 자리를 교체한다</li>
+</ol>
+
+<h2 id="-최대-힙max-heap-구현">▷ 최대 힙(Max Heap) 구현</h2>
+
+<blockquote>
+  <p>* 인덱스</p>
+  <ol>
+    <li>왼쪽 자식 노드 인덱스 → 부모 노드 인덱스 * 2 + 1</li>
+    <li>오른쪽 자식 노드 인덱스 → 부모 노드 인덱스 * 2 + 2</li>
+    <li>부모 노드 인덱스 → (자식 노드 인덱스 - 1) / 2 → <code class="language-plaintext highlighter-rouge">parseInt()</code>를 사용</li>
+  </ol>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">MaxHeap</span><span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">1</span><span class="nx">e9</span><span class="p">);</span>    <span class="c1">// 큰 값을 제일 앞에 넣어준다</span>
+  <span class="p">}</span>
+
+  <span class="c1">// heap에 데이터를 삽입</span>
+  <span class="nx">insert</span><span class="p">(</span><span class="nx">value</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="c1">// 값이 들어오면 작거나 큼에 따라 위로 올려준다</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">upheap</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+
+
+  <span class="c1">// insert된 값을 올려주는 메소드</span>
+  <span class="nx">upheap</span><span class="p">(</span><span class="nx">pos</span><span class="p">){</span>
+    <span class="c1">// 마지막으로 들어온 값을 temp에 할당</span>
+    <span class="kd">let</span> <span class="nx">temp</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">pos</span><span class="p">];</span>
+
+    <span class="c1">// 부모노드와 비교하며 현시점의 부모보다 크면 부모노드의 값을 아래로 내림</span>
+    <span class="k">while</span><span class="p">(</span><span class="nx">temp</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">pos</span><span class="o">/</span><span class="mi">2</span><span class="p">)]){</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">pos</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">pos</span><span class="o">/</span><span class="mi">2</span><span class="p">)];</span>
+      <span class="nx">pos</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">pos</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// 마지막으로 현시점의 노드에 temp값을 넣어준다</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">pos</span><span class="p">]</span> <span class="o">=</span> <span class="nx">temp</span><span class="p">;</span>
+  <span class="p">}</span>
+
+
+  <span class="c1">// 루트노드를 가져오는 메소드</span>
+  <span class="kd">get</span><span class="p">(){</span>
+    <span class="c1">// 만약 heap의 크기가 0인데 pop을 하려고 하면 false반환</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="c1">// 만약 heap의 크기가 2라면 downheap()을 하지않고 pop만 수행</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">===</span> <span class="mi">2</span><span class="p">)</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="c1">// 루트노드값을 result 변수에 임시저장하고, 루트노드 자리에 제일 마지막 노드를 위치시킨다</span>
+    <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="c1">// 아래로 진행하면서 자리배치</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">downheap</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">downheap</span><span class="p">(</span><span class="nx">pos</span><span class="p">,</span> <span class="nx">len</span><span class="p">){</span>
+    <span class="c1">// 루트노드에 위치한 값을 임시 저장</span>
+    <span class="kd">let</span> <span class="nx">temp</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">pos</span><span class="p">],</span> <span class="nx">child</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="nx">pos</span> <span class="o">&lt;=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">len</span><span class="o">/</span><span class="mi">2</span><span class="p">)){</span>
+      <span class="nx">child</span> <span class="o">=</span> <span class="nx">pos</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>        <span class="c1">// 왼쪽 자식</span>
+      <span class="c1">// 자식노드가 하나만 존재할 수 있기 때문에 child &lt; len</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">child</span> <span class="o">&lt;</span> <span class="nx">len</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">child</span><span class="p">]</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">child</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="nx">child</span><span class="o">++</span><span class="p">;</span>      <span class="c1">// +1로 오른쪽자식과 비교한다 </span>
+      <span class="c1">// 자식노드보다 크다면 멈춘다</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">temp</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">child</span><span class="p">])</span> <span class="k">break</span><span class="p">;</span>
+      <span class="c1">// 자식노드와 부모노드의 자리를 교환</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">pos</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">child</span><span class="p">];</span>
+      <span class="c1">// 인덱스를 아래로 옮김</span>
+      <span class="nx">pos</span> <span class="o">=</span> <span class="nx">child</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// 현재 시점의 노드에 값 할당</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">[</span><span class="nx">pos</span><span class="p">]</span> <span class="o">=</span> <span class="nx">temp</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  
+  <span class="c1">// heap의 크기를 반환하는 메서드</span>
+  <span class="nx">size</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">heap</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">insert()</code>: heap에 데이터를 삽입</li>
+  <li><code class="language-plaintext highlighter-rouge">upheap()</code>: <code class="language-plaintext highlighter-rouge">insert()</code>내에 존재하면서 데이터가 삽입이되면 정렬시켜줌</li>
+  <li><code class="language-plaintext highlighter-rouge">get()</code>: heap의 루트노드를 반환</li>
+  <li><code class="language-plaintext highlighter-rouge">downheap()</code>: <code class="language-plaintext highlighter-rouge">get()</code>에 존재하면서 루트노드가 삭제되면 정렬하면서 채워줌</li>
+  <li><code class="language-plaintext highlighter-rouge">size()</code>: heap의 크기를 반환</li>
+</ol>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-13">October 13, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BAlgorithm%5D+Greedy%2C+Priority+Queue+%20http%3A%2F%2Flocalhost%3A4502%2Falgorithm%2F%25EA%25B7%25B8%25EB%25A6%25AC%25EB%2594%2594%2C%25EC%259A%25B0%25EC%2584%25A0%25EC%2588%259C%25EC%259C%2584%25ED%2581%2590%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Falgorithm%2F%25EA%25B7%25B8%25EB%25A6%25AC%25EB%2594%2594%2C%25EC%259A%25B0%25EC%2584%25A0%25EC%2588%259C%25EC%259C%2584%25ED%2581%2590%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Falgorithm%2F%25EA%25B7%25B8%25EB%25A6%25AC%25EB%2594%2594%2C%25EC%259A%25B0%25EC%2584%25A0%25EC%2588%259C%25EC%259C%2584%25ED%2581%2590%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/%EC%8A%A4%ED%85%8D,%ED%81%90,%EB%8D%B0%ED%81%AC/" class="pagination--pager" title="[Algorithm] stack, queue, deque
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%85%8D,%ED%81%90,%EB%8D%B0%ED%81%AC/" rel="permalink">[Algorithm] stack, queue, deque
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">스텍, 큐, 데크
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/2%EC%B0%A8%EC%9B%90%EB%B0%B0%EC%97%B4/" rel="permalink">[Algorithm] 2차원 배열
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">2차원 배열
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%94%A9%EC%9C%88%EB%8F%84%EC%9A%B0/" rel="permalink">[Algorithm] 슬라이딩 윈도우, 투 포인트
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">슬라이딩 윈도우, 투 포인트
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/array/" rel="permalink">[Algorithm] array
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">1차원 배열 구현 정리, 배열함수
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
