@@ -524,7 +524,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#️-dfs-깊이-우선-탐색">▶️ DFS (깊이 우선 탐색)</a><ul><li><a href="#-부분집합문제">▷ 부분집합문제</a></li><li><a href="#-중복순열">▷ 중복순열</a></li><li><a href="#-중복이-없는-순열">▷ 중복이 없는 순열</a></li><li><a href="#-memoization-메모이제이션">▷ Memoization (메모이제이션)</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#️-dfs-깊이-우선-탐색">▶️ DFS (깊이 우선 탐색)</a><ul><li><a href="#-부분집합문제">▷ 부분집합문제</a></li><li><a href="#-중복순열">▷ 중복순열</a></li><li><a href="#-중복이-없는-순열">▷ 중복이 없는 순열</a></li><li><a href="#-memoization-메모이제이션">▷ Memoization (메모이제이션)</a></li><li><a href="#-참고---함수와-스텍">▷ 참고 - 함수와 스텍</a></li></ul></li></ul>
 
             </nav>
           </aside>
@@ -651,6 +651,16 @@
 
 <p>이때 fibo(8)이 겹치게 되는데 메모이제이션을 사용하지 않는다면 계산을 두번 반복하게 된다 이는 아래로 내려갈수록 더욱 잦아지게 된다 따라서 속도가 느려질 수 있는데 이를 개선하기 위해 <strong>메모이제이션을 사용하면 배열에 값이 있는지를 확인하고 있다면 그 수를 사용해 불필요한 계산을 방지할 수 있다</strong></p>
 
+<h2 id="-참고---함수와-스텍">▷ 참고 - 함수와 스텍</h2>
+<p>함수가 호출이 되면 내부적으로 스텍에 함수가 들어가게 된다 이때 스텍프레임이라고 하며 이 스텍 프레임 각각에는 함수의 정보가 담긴다</p>
+
+<ol>
+  <li>매개변수</li>
+  <li>지역변수</li>
+  <li>복귀주소</li>
+</ol>
+
+<p>재귀함수는 전역변수를 다루지 않는다 → 지역변수를 사용해서 문제를 해결하자!</p>
 
         
       </section>
