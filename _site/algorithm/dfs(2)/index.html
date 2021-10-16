@@ -1,0 +1,1058 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[Algorithm] DFS(2)  | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="깊이우선탐색">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="[Algorithm] DFS(2)">
+<meta property="og:url" content="http://localhost:4502/algorithm/dfs(2)/">
+
+
+  <meta property="og:description" content="깊이우선탐색">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-10-15T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-10-15T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4502/algorithm/dfs(2)/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "http://localhost:4502/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="icon" href="/assets/images/study.ico" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4502/">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4502/" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li class="nav__all-posts">
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">47</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/DeepDive" class="">DeepDive (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Method" class="">Method (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+     
+        <span class="nav__sub-title">html</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/HTML" class="">HTML (6)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">css</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/CSS" class="">CSS (11)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">algorithm</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Algorithm" class="">Algorithm (9)</a></li>
+                    
+                
+            </ul>
+        <span class="nav__sub-title">git</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Git" class="">Git (2)</a></li>
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Blog" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/vim" class="">vim (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Algorithm] DFS(2)">
+    <meta itemprop="description" content="깊이우선탐색">
+    <meta itemprop="datePublished" content="2021-10-15T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-10-15T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4502/algorithm/dfs(2)/" class="u-url" itemprop="url">[Algorithm] DFS(2)
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#️-dfs-bepth-first-search">▶️ DFS (Bepth-First Search)</a></li><li><a href="#️-bfs-breadth-first-search">▶️ BFS (Breadth-First Search)</a></li><li><a href="#️-그래프탐색">▶️ 그래프탐색</a></li><li><a href="#️-그래프-종류">▶️ 그래프 종류</a></li><li><a href="#️-인접행렬-인접리스트">▶️ 인접행렬, 인접리스트</a><ul><li><a href="#1-인접행렬-그래프의-연결관계를-행렬로-나타낸것-노드의-번호와-대응한다">1. 인접행렬: 그래프의 연결관계를 행렬로 나타낸것 (노드의 번호와 대응한다)</a></li><li><a href="#2-인접리스트-그래프의-연결관계를-벡터의-배열로-나타낸다">2. 인접리스트: 그래프의 연결관계를 벡터의 배열로 나타낸다</a></li></ul></li><li><a href="#-간단한-dfs-bfs-응용-문제">▷ 간단한 DFS, BFS 응용 문제</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="️-dfs-bepth-first-search">▶️ DFS (Bepth-First Search)</h2>
+<p>DFS알고리즘이란 <strong>깊이 우선 알고리즘</strong>으로 <strong>그래프탐색에</strong> 많이 이용된다.</p>
+
+<h2 id="️-bfs-breadth-first-search">▶️ BFS (Breadth-First Search)</h2>
+<p>BFS는 너비 우선 탐색이다 BFS인 깊이 우선 탐색과는 다르게 한쪽 노드를 깊이 탐색하는 것이 아닌 넓게 탐색한다</p>
+<ul>
+  <li>재귀적으로 구현할 수 없다</li>
+  <li>FIFO(선입선출)을 원칙으로 하는 큐를 이용해서 구현한다</li>
+  <li>DFS와 마찬가지로 탐색한 노드를 확실하게 구별해야 한다</li>
+</ul>
+
+<h2 id="️-그래프탐색">▶️ 그래프탐색</h2>
+<p>그래프안에 어떤 값이 있는지를 확인할 수 있다 하나의 정점에서 시작해서 차례대로 모든 정점을 방문한다</p>
+
+<ul>
+  <li>그래프: 자료구조의 일종으로, 정점(노드)과 간선(관계)의 집합</li>
+  <li>차수: 정점과 연결되어 있는 간선의 개수</li>
+  <li>정점: 노드(아래 사진의 동그라미) - 프로그래밍에서변수로 표현</li>
+  <li>간선: 정점을 연결해줌(관계, 선) - 어디에 연결되어있는지 저장(배열 등 자료구조)</li>
+</ul>
+
+<h2 id="️-그래프-종류">▶️ 그래프 종류</h2>
+<p>그래프는 방향성과 연결정도에 따라 구분할 수 있다</p>
+<ol>
+  <li><strong>무방향 그래프</strong>: 방향성이 없는 그래프이다</li>
+  <li><strong>방향 그래프</strong>: 진행할 수 있는 방향이 존재하는 그래프이다</li>
+  <li><strong>완전 그래프</strong>: 각각의 정점에서 진행할 수 있는 모든 정점으로 연결된 그래프이다</li>
+  <li><strong>부분 그래프</strong>: 원래의 그래프에서 일부 정점이나 간선을 제거한 그래프이다</li>
+  <li><strong>가중 그래프</strong>: 간선에 가중치가 존재하는 그래프이다</li>
+</ol>
+
+<h2 id="️-인접행렬-인접리스트">▶️ 인접행렬, 인접리스트</h2>
+<p>DFS에서 이용할 수 있도록 형태를 변화시켜주는 것이 좋은데 인접행렬과 인접리스트 형태로 변화시킬 수 있다</p>
+
+<p><img src="../../imgs/그래프.png" alt="그래프" /></p>
+
+<h3 id="1-인접행렬-그래프의-연결관계를-행렬로-나타낸것-노드의-번호와-대응한다">1. <strong>인접행렬</strong>: 그래프의 연결관계를 행렬로 나타낸것 (노드의 번호와 대응한다)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[
+  [0, 1, 1, 1],
+  [1, 0, 0, 0],
+  [1, 0, 0, 0],
+  [1, 0, 0, 0],
+]
+</code></pre></div></div>
+<p><img src="../../imgs/index.png" alt="index" /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(a, b)가 주어졌을때   -&gt;   graph[a][b] = 1
+</code></pre></div></div>
+<p>만약 양방양인 경우 <code class="language-plaintext highlighter-rouge">graph[a][b] = 1</code>, <code class="language-plaintext highlighter-rouge">graph[b][a] = 1</code>로 둘다 표현해준다</p>
+
+<p>방향이 없는 그래프이기 때문에 대각선을 기준으로 대칭이 된다</p>
+
+<p>각각 노드(index)를 기준으로 연결되어 있는 값을 1로 표현한다</p>
+
+<p>쉽게 구현할 수 있지만 노드의 수가 많아질수록 메모리를 많이 사용한다는 단점이 존재한다</p>
+
+<h3 id="2-인접리스트-그래프의-연결관계를-벡터의-배열로-나타낸다">2. <strong>인접리스트</strong>: 그래프의 연결관계를 벡터의 배열로 나타낸다</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[
+  [1, 2, 3],
+  [0],
+  [0],
+  [0]
+]
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "0": [1, 2, 3],
+  "1": [0],
+  "2": [0],
+  "3": [0]
+}
+</code></pre></div></div>
+
+<h2 id="-간단한-dfs-bfs-응용-문제">▷ 간단한 DFS, BFS 응용 문제</h2>
+
+<p><a href="https://www.acmicpc.net/problem/1260"> 백준 - 1260 </a></p>
+
+<p><img src="../../imgs/백준1260.png" alt="백준 1260" /></p>
+
+<p>연결된 노드가 주어지고, DFS와 BFS로 구현하는 문제이다</p>
+
+<h3>통과한 코드</h3>
+<ul>
+  <li>빙문한 노드와 방문하지 않은 노드를 구분하여 배열에 저장하는 방식</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">filePath</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">platform</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">linux</span><span class="dl">'</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">/dev/stdin</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">./1_1260.txt</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">).</span><span class="nx">toString</span><span class="p">().</span><span class="nx">trim</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">input</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="o">+</span><span class="nx">item</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">m</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">v</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="nx">graph</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">input</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">graph</span><span class="p">[</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]]</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">){</span>
+      <span class="nx">graph</span><span class="p">[</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">j</span> <span class="o">===</span> <span class="mi">0</span> <span class="p">?</span> <span class="p">[</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span> <span class="p">:</span> <span class="p">[</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">graph</span><span class="p">[</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]].</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+      <span class="nx">graph</span><span class="p">[</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]].</span><span class="nx">push</span><span class="p">(</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">graph</span><span class="p">[</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]].</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+      <span class="nx">graph</span><span class="p">[</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]].</span><span class="nx">push</span><span class="p">(</span><span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">dfs</span> <span class="o">=</span> <span class="p">(</span><span class="nx">graph</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">visit</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="kd">let</span> <span class="nx">notVisit</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="nx">notVisit</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+  <span class="k">while</span><span class="p">(</span><span class="nx">notVisit</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">notVisit</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">visit</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">temp</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+      <span class="nx">visit</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">temp</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">graph</span><span class="p">[</span><span class="nx">temp</span><span class="p">]</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">){</span>
+        <span class="nx">notVisit</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">notVisit</span><span class="p">,</span> <span class="p">...(</span><span class="nx">graph</span><span class="p">[</span><span class="nx">temp</span><span class="p">].</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="k">return</span> <span class="nx">b</span><span class="o">-</span><span class="nx">a</span><span class="p">}))];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">visit</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">bfs</span> <span class="o">=</span> <span class="p">(</span><span class="nx">graph</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">visit</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="kd">let</span> <span class="nx">notVisit</span> <span class="o">=</span> <span class="p">[];</span>
+  
+  <span class="nx">notVisit</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+  <span class="k">while</span><span class="p">(</span><span class="nx">notVisit</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">notVisit</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">visit</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">temp</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+      <span class="nx">visit</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">temp</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">graph</span><span class="p">[</span><span class="nx">temp</span><span class="p">]</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">){</span>
+        <span class="nx">notVisit</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">notVisit</span><span class="p">,</span> <span class="p">...(</span><span class="nx">graph</span><span class="p">[</span><span class="nx">temp</span><span class="p">].</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="k">return</span> <span class="nx">a</span><span class="o">-</span><span class="nx">b</span><span class="p">}))];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">visit</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="nx">dfs</span><span class="p">(</span><span class="nx">graph</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+<span class="nx">bfs</span><span class="p">(</span><span class="nx">graph</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3>다른 방식</h3>
+<ul>
+  <li>재귀를 통한 DFS, 하나의 queue를 이용한 BFS</li>
+  <li>그러나 백준에서는 시간초과 (테스트케이스는 정상통과)</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">checkDFS</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1001</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="nx">checkDFS</span><span class="p">[</span><span class="nx">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">flag</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">temp</span> <span class="o">=</span> <span class="p">[</span><span class="nx">v</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">resultDFS</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">dfs</span> <span class="o">=</span> <span class="p">(</span><span class="nx">L</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">flag</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">L</span> <span class="o">===</span> <span class="nx">n</span><span class="p">){</span>
+    <span class="nx">flag</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">resultDFS</span> <span class="o">=</span> <span class="nx">temp</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span><span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">graph</span><span class="p">[</span><span class="nx">v</span><span class="p">].</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">checkDFS</span><span class="p">[</span><span class="nx">graph</span><span class="p">[</span><span class="nx">v</span><span class="p">][</span><span class="nx">i</span><span class="p">]]</span> <span class="o">===</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="nx">temp</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">graph</span><span class="p">[</span><span class="nx">v</span><span class="p">][</span><span class="nx">i</span><span class="p">])</span>
+        <span class="nx">checkDFS</span><span class="p">[</span><span class="nx">graph</span><span class="p">[</span><span class="nx">v</span><span class="p">][</span><span class="nx">i</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">dfs</span><span class="p">(</span><span class="nx">L</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">graph</span><span class="p">[</span><span class="nx">v</span><span class="p">][</span><span class="nx">i</span><span class="p">]);</span>
+        <span class="nx">temp</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+        <span class="nx">checkDFS</span><span class="p">[</span><span class="nx">graph</span><span class="p">[</span><span class="nx">v</span><span class="p">][</span><span class="nx">i</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">dfs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">v</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">resultDFS</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">checkBFS</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1001</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">const</span> <span class="nx">bfs</span> <span class="o">=</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+  <span class="nx">checkBFS</span><span class="p">[</span><span class="nx">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="kd">let</span> <span class="nx">L</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="k">while</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+      <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="nx">n</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">graph</span><span class="p">[</span><span class="nx">x</span><span class="p">].</span><span class="nx">length</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">checkBFS</span><span class="p">[</span><span class="nx">graph</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">j</span><span class="p">]]</span> <span class="o">===</span> <span class="mi">0</span><span class="p">){</span>
+          <span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">graph</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">j</span><span class="p">]);</span>
+          <span class="nx">checkBFS</span><span class="p">[</span><span class="nx">graph</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">j</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">L</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bfs</span><span class="p">(</span><span class="nx">v</span><span class="p">))</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-15">October 15, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BAlgorithm%5D+DFS%282%29+%20http%3A%2F%2Flocalhost%3A4502%2Falgorithm%2Fdfs%282%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Falgorithm%2Fdfs%282%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Falgorithm%2Fdfs%282%29%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/bfs/" class="pagination--pager" title="[Algorithm] BFS
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/bfs/" rel="permalink">[Algorithm] BFS
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">너비우선탐색
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/dfs/" rel="permalink">[Algorithm] DFS
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">깊이우선탐색
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/%EA%B7%B8%EB%A6%AC%EB%94%94,%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" rel="permalink">[Algorithm] Greedy, Priority Queue
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">그리디 알고리즘, 우선순위 큐, 힙
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/%EC%8A%A4%ED%85%8D,%ED%81%90,%EB%8D%B0%ED%81%AC/" rel="permalink">[Algorithm] stack, queue, deque
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">스텍, 큐, 데크
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
