@@ -9,30 +9,36 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>공부하는 종빈🧑🏻‍💻 &#124; 페이지 3</title>
-<meta name="description" content="공부한 내용을 기록하는 블로그">
+<!-- begin _includes/seo.html --><title>[Algorithm] Dynamic Programming | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="동적 프로그래밍">
 
 
   <meta name="author" content="원종빈">
   
+  <meta property="article:author" content="원종빈">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:url" content="https://jjongbin.github.io/blog//page3/">
+<meta property="og:title" content="[Algorithm] Dynamic Programming">
+<meta property="og:url" content="https://jjongbin.github.io/blog//algorithm/DP/">
 
 
-  <meta property="og:description" content="공부한 내용을 기록하는 블로그">
-
-
-
+  <meta property="og:description" content="동적 프로그래밍">
 
 
 
 
 
+
+
+  <meta property="article:published_time" content="2021-10-19T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-10-19T00:00:00+09:00">
 
 
 
@@ -41,13 +47,9 @@
   
 
 
-<link rel="canonical" href="https://jjongbin.github.io/blog//page3/">
+<link rel="canonical" href="https://jjongbin.github.io/blog//algorithm/DP/">
 
 
-  <link rel="prev" href="https://jjongbin.github.io/blog//page2/">
-
-
-  <link rel="next" href="https://jjongbin.github.io/blog//page4/">
 
 
 <script type="application/ld+json">
@@ -98,7 +100,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -480,33 +482,20 @@
 
 
 
-  <div class="archive">
-    
-      <h1 id="page-title" class="page__title"></h1>
-    
-    
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[Algorithm] Dynamic Programming">
+    <meta itemprop="description" content="동적 프로그래밍">
+    <meta itemprop="datePublished" content="2021-10-19T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-10-19T00:00:00+09:00">
 
-<h3 class="archive__subtitle">최근 포스트</h3>
-
-
-
-
-<div class="entries-list">
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+    <div class="page__inner-wrap">
       
-        <a href="/algorithm/string,hash/" rel="permalink">[Algorithm] String, Hash
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://jjongbin.github.io/blog//algorithm/DP/" class="u-url" itemprop="url">[Algorithm] Dynamic Programming
 </a>
-      
-    </h2>
-    
+          </h1>
+          
 
   <p class="page__meta">
     
@@ -520,149 +509,171 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          3 분 소요
+          1 분 소요
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">String, Hash 알고리즘 정리
-</p>
-  </article>
-</div>
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#️-동적프로그래밍-dynamic-programming">▶️ 동적프로그래밍 (Dynamic Programming)</a><ul><li><a href="#-동적-프로그래밍-문제">▷ 동적 프로그래밍 문제</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="️-동적프로그래밍-dynamic-programming">▶️ 동적프로그래밍 (Dynamic Programming)</h1>
+
+<p>동적 프로그래밍이란, 하나의 문제를 잘게 쪼개며 푸는 방식이다</p>
+
+<blockquote>
+  <p>직관적으로 알 수 있을민큼 작게!!</p>
+</blockquote>
+
+<p>점화식의 측면에서 생각하면 된다 예를 들어 피보나치 수열을 예시로 fibo(0), fibo(1)이 될때까지 잘게 쪼갠다</p>
+
+<p><img src="../../imgs/dp.png" alt="DP" /></p>
+
+<p>fibo(1), fibo(0)는 직관적으로 계산이 가능하기 때문에 이 값을 기준으로 Bottom-Up 방식으로 계산한다</p>
+
+<p>같은 fibo들은 계산 값이 같기 때문에 계산을 반복할 필요가 없다</p>
+
+<h2 id="-동적-프로그래밍-문제">▷ 동적 프로그래밍 문제</h2>
+
+<p><a href="https://www.acmicpc.net/problem/2579">백준 2579 - 계단 오르기</a></p>
+
+<p><img src="../../imgs/beakjoon2579_1.png" alt="백준 2579" />
+<img src="../../imgs/beakjoon2579_2.png" alt="백준 2579" /></p>
+
+<h3>- 풀이</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">filePath</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">platform</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">linux</span><span class="dl">'</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">/dev/stdin</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">./7_2579.txt</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">).</span><span class="nx">toString</span><span class="p">().</span><span class="nx">trim</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">n</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+<span class="nx">input</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="o">+</span><span class="nx">item</span><span class="p">);</span>
+
+<span class="c1">// 3개의 계단의 값을 계산에 이용하기 때문에 세개 계단의 값을 미리 구한다</span>
+<span class="kd">const</span> <span class="nx">dy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nx">dy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>   
+<span class="nx">dy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="nx">input</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="nx">dy</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="nx">input</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nx">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="nx">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">way1</span> <span class="o">=</span> <span class="nx">dy</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>     <span class="c1">// 3개 블록(3개전의 블록합 + 전블록 + 현재블록)</span>
+  <span class="kd">const</span> <span class="nx">way2</span> <span class="o">=</span> <span class="nx">dy</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>      <span class="c1">// 2개 블록 (2개전의 블록합 + 현재블록)</span>
+  <span class="nx">dy</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">way1</span><span class="p">,</span> <span class="nx">way2</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dy</span><span class="p">[</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<ol>
+  <li>값을 저장할 <code class="language-plaintext highlighter-rouge">dy</code>라는 배열을 하나 생성한다</li>
+  <li>초기 계산에 이용할 (0, 1, 2)의 값(idex기준)을 계산해서 넣어준다</li>
+  <li>계단을 오르는 규칙으로 <strong>3개전의 블록합, 전블록, 현재블록의 점수</strong> / <strong>2개전의 블록합, 현재블록의 점수</strong> 중 큰 값을 구해야 하기 때문에 <code class="language-plaintext highlighter-rouge">Math.max</code>를 사용한다</li>
+  <li>마지막 계단의 점수를 출력해주면 된다(dy의 마지막 요소)</li>
+</ol>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
 
   
-    
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
     
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/css/grid/" rel="permalink">CSS요소9 - grid
-</a>
-      
-    </h2>
+      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a>
     
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          5 분 소요
-        
-      </span>
-    
+    </span>
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">grid
-</p>
-  </article>
-</div>
+
 
   
-    
 
 
+  
 
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
     
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/css/%EC%83%89%EC%83%9D%EA%B3%BC%EB%B0%B0%EA%B2%BD/" rel="permalink">CSS요소5 - 색상과 배경
-</a>
-      
-    </h2>
+      <a href="/categories/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a>
     
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
+    </span>
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">색상과 배경
-</p>
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-19">October 19, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BAlgorithm%5D+Dynamic+Programming%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Falgorithm%2FDP%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Falgorithm%2FDP%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Falgorithm%2FDP%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/Binary_Search/" class="pagination--pager" title="[Algorithm] Binary Search
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
   </article>
-</div>
 
   
-    
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/css/transition/" rel="permalink">CSS요소7 - transition, animation
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          3 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">transition과 animation
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/css/transform/" rel="permalink">CSS요소6 - transform
+        <a href="/algorithm/Binary_Search/" rel="permalink">[Algorithm] Binary Search
 </a>
       
     </h2>
@@ -687,83 +698,136 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">transform
+    <p class="archive__item-excerpt" itemprop="description">이분 탐색 알고리즘
 </p>
   </article>
 </div>
 
-  
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/dfs(2)/" rel="permalink">[Algorithm] DFS(2)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">깊이우선탐색
+</p>
+  </article>
 </div>
 
+        
+          
 
-<nav class="pagination">
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/bfs/" rel="permalink">[Algorithm] BFS
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">너비우선탐색
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/dfs/" rel="permalink">[Algorithm] DFS
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">깊이우선탐색
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
   
-  <ul>
-    
-    
-      
-        <li><a href="/page2/">이전</a></li>
-      
-    
-
-    
-    
-      <li><a href="/">1</a></li>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-        
-        
-        
-        <li><a href="/page2/">2</a></li>
-      
-    
-      
-        <li><a href="/page3/" class="disabled current">3</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page4/">4</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page5/">5</a></li>
-      
-    
-
-    
-    
-      <li><a href="#" class="disabled">&hellip;</a></li>
-    
-
-    
-      <li><a href="/page10/">10</a></li>
-    
-
-    
-    
-      <li><a href="/page4/">다음</a></li>
-    
-  </ul>
-</nav>
-
-
-
-  </div>
+  
 </div>
     </div>
 
