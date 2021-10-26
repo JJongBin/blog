@@ -287,7 +287,7 @@
   <ul class="nav__items" id="category_tag_menu">
       <!--전체 글 수-->
       <li class="nav__all-posts">
-            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">52</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">53</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
       </li>
 
       <li>
@@ -375,7 +375,7 @@
                     
                 
                     
-                        <li class="nav__items-one"><a href="/blog/categories/CSS" class="">CSS (11)</a></li>
+                        <li class="nav__items-one"><a href="/blog/categories/CSS" class="">CSS (12)</a></li>
                     
                 
                     
@@ -600,7 +600,7 @@
 
 <p>시멘틱태그를 이용해서 해당 부분이 어떤 부분인지 큰 대목으로 알 수 있다면 이전에 말한 <code class="language-plaintext highlighter-rouge">aria-*</code>를 이용해서 사용자가 원할하게 웹을 이용할 수 있도록 해줄 수 있다(시멘틱 요소와 <code class="language-plaintext highlighter-rouge">role</code>, <code class="language-plaintext highlighter-rouge">aria</code>를 혼용해서 사용하는 것은 좋지 않다)</p>
 
-<p>메가 메뉴(메뉴가 굉장히 많은 드롭다운식의 메뉴)를 이용할 때 해달 요소에 마우스를 hover하거나, click해야 주메뉴 아래의 서브메뉴들을 확인할 수 있다 이때 서브메뉴를 열 수 있도록 하는 요소에 <code class="language-plaintext highlighter-rouge">aria-label="submenu-opne"</code>와 같이 해당 요소가 어떤 역할을 하는지 알려주는 것이 좋다</p>
+<p>메가 메뉴(메뉴가 굉장히 많은 드롭다운식의 메뉴)를 이용할 때 해달 요소에 마우스를 hover하거나, click해야 주메뉴 아래의 서브메뉴들을 확인할 수 있다 이때 서브메뉴를 열 수 있도록 하는 요소에 <code class="language-plaintext highlighter-rouge">aria-label="submenu-open"</code>와 같이 해당 요소가 어떤 역할을 하는지 알려주는 것이 좋다</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
@@ -611,7 +611,7 @@
       <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"screen-leader-only"</span><span class="nt">&gt;</span>menu(nav)<span class="nt">&lt;/h2&gt;</span>
       <span class="nt">&lt;ul&gt;</span>
         <span class="nt">&lt;li&gt;</span>
-          <span class="nt">&lt;button</span> <span class="na">aria-label=</span><span class="s">"submenu-opne"</span><span class="nt">&gt;</span>주 메뉴 1<span class="nt">&lt;/button&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">aria-label=</span><span class="s">"submenu-open"</span><span class="nt">&gt;</span>주 메뉴 1<span class="nt">&lt;/button&gt;</span>
           <span class="nt">&lt;ul&gt;</span>
             <span class="nt">&lt;li</span> <span class="na">aria-label=</span><span class="s">"submenu"</span><span class="nt">&gt;&lt;a&gt;</span>서브메뉴 1-1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
             <span class="nt">&lt;li</span> <span class="na">aria-label=</span><span class="s">"submenu"</span><span class="nt">&gt;&lt;a&gt;</span>서브메뉴 1-2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
@@ -619,7 +619,7 @@
           <span class="nt">&lt;/ul&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
         <span class="nt">&lt;li&gt;</span>
-          <span class="nt">&lt;button</span> <span class="na">aria-label=</span><span class="s">"submenu-opne"</span><span class="nt">&gt;</span>주 메뉴 2<span class="nt">&lt;/button&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">aria-label=</span><span class="s">"submenu-open"</span><span class="nt">&gt;</span>주 메뉴 2<span class="nt">&lt;/button&gt;</span>
           <span class="nt">&lt;ul&gt;</span>
             <span class="nt">&lt;li</span> <span class="na">aria-label=</span><span class="s">"submenu"</span><span class="nt">&gt;&lt;a&gt;</span>서브메뉴 2-1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
             <span class="nt">&lt;li</span> <span class="na">aria-label=</span><span class="s">"submenu"</span><span class="nt">&gt;&lt;a&gt;</span>서브메뉴 2-2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
@@ -636,7 +636,13 @@
 
 <p><img src="../../imgs/web-structure.png" alt="web-structure" /></p>
 
-<p>위 코드를 보면 시멘틱 요소(<code class="language-plaintext highlighter-rouge">&lt;header&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;main&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;footer&gt;</code>)를 이용해서 각 요소를 명시적으로 표현하고 주메뉴 하나 하나를 구성하는 요소(자바스크립트로 드롭다운 구현)를 <code class="language-plaintext highlighter-rouge">button</code> 태그로 작성했다 이때 이 <code class="language-plaintext highlighter-rouge">button</code>이 무슨 역할을 하는지 알 수 없는 상황이 있다. 이때 <code class="language-plaintext highlighter-rouge">aria-label</code>을 이용해서 브라우저가 이 태그가 무엇을 하는지 사용자에게 알려줄 수 있다(<code class="language-plaintext highlighter-rouge">aria-labelledby</code>는 디테일한 설명)</p>
+<p>위 코드를 보면 시멘틱 요소(<code class="language-plaintext highlighter-rouge">&lt;header&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;main&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;footer&gt;</code>)를 이용해서 각 요소를 명시적으로 표현하고 주메뉴 하나 하나를 구성하는 요소(자바스크립트로 드롭다운 구현)를 <code class="language-plaintext highlighter-rouge">button</code> 태그로 작성했다 이때 이 <code class="language-plaintext highlighter-rouge">button</code>이 무슨 역할을 하는지 알 수 없는 상황이 있다. 이때 <code class="language-plaintext highlighter-rouge">aria-label</code>을 이용해서 브라우저가 이 태그가 무엇을 하는지 사용자에게 알려줄 수 있다</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">aria-label</code>: 레이블로 사용할 문자열을 지정할 수 있다 (<code class="language-plaintext highlighter-rouge">aria-label</code>이 해당 요소의 텍스트보다 우선시됨)</li>
+  <li><code class="language-plaintext highlighter-rouge">aria-labelledby</code>: 자신을 참조하는 요소를 가르킨다</li>
+  <li><code class="language-plaintext highlighter-rouge">aria-describedby</code>: 기능을 설명하는 요소를 가르킨다(자신을 설명하는 lable을 가르킨다)</li>
+</ul>
 
 
         
@@ -703,7 +709,8 @@
 ">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/css/float/" class="pagination--pager" title="float
+">다음</a>
     
   </nav>
 
@@ -717,6 +724,46 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/float/" rel="permalink">float
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자식요소의 float를 해제하기
+</p>
+  </article>
+</div>
+
         
           
 
@@ -833,46 +880,6 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">동적 프로그래밍
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/algorithm/Binary_Search/" rel="permalink">[Algorithm] Binary Search
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">이분 탐색 알고리즘
 </p>
   </article>
 </div>

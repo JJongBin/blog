@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Deep Dive] 14장 전역 변수의 문제점 | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="전연 변수의 무분별한 사용은 위험!">
+<!-- begin _includes/seo.html --><title>float | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="자식요소의 float를 해제하기">
 
 
   <meta name="author" content="원종빈">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="[Deep Dive] 14장 전역 변수의 문제점">
-<meta property="og:url" content="https://jjongbin.github.io/blog//deepdive/deepDive14/">
+<meta property="og:title" content="float">
+<meta property="og:url" content="https://jjongbin.github.io/blog//css/float/">
 
 
-  <meta property="og:description" content="전연 변수의 무분별한 사용은 위험!">
-
-
-
+  <meta property="og:description" content="자식요소의 float를 해제하기">
 
 
 
 
-  <meta property="article:published_time" content="2021-09-06T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-09-06T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-10-26T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2021-10-26T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://jjongbin.github.io/blog//deepdive/deepDive14/">
+
+<link rel="canonical" href="https://jjongbin.github.io/blog//css/float/">
 
 
 
@@ -483,16 +483,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Deep Dive] 14장 전역 변수의 문제점">
-    <meta itemprop="description" content="전연 변수의 무분별한 사용은 위험!">
-    <meta itemprop="datePublished" content="2021-09-06T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-09-06T00:00:00+09:00">
+    <meta itemprop="headline" content="float">
+    <meta itemprop="description" content="자식요소의 float를 해제하기">
+    <meta itemprop="datePublished" content="2021-10-26T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-10-26T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://jjongbin.github.io/blog//deepdive/deepDive14/" class="u-url" itemprop="url">[Deep Dive] 14장 전역 변수의 문제점
+            <a href="https://jjongbin.github.io/blog//css/float/" class="u-url" itemprop="url">float
 </a>
           </h1>
           
@@ -524,121 +524,122 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#변수의-생명주기">변수의 생명주기</a><ul><li><a href="#-즉-변수의-생명주기는-함수의-생명주기와-일치한다">➞ 즉 변수의 생명주기는 함수의 생명주기와 일치한다.</a></li></ul></li></ul></li><li><a href="#전역-변수의-문제점">전역 변수의 문제점</a><ul><li><a href="#암묵적-결합">암묵적 결합</a></li><li><a href="#긴-생명주기">긴 생명주기</a></li><li><a href="#스코프-체인상-종점에-존재">스코프 체인상 종점에 존재</a></li><li><a href="#네임스페이스-오염">네임스페이스 오염</a></li></ul></li><li><a href="#전역-변수-사용의-억제방법">전역 변수 사용의 억제(방법)</a><ul><li><a href="#즉시-실행-함수">즉시 실행 함수</a></li><li><a href="#네임스페이스-객체">네임스페이스 객체</a></li><li><a href="#모듈-패턴">모듈 패턴</a></li><li><a href="#es6-모듈">ES6 모듈</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#float">float</a><ul><li><a href="#-1-clearfix">▷ 1. clearfix</a></li><li><a href="#-2-가상-요소-선택자">▷ 2. 가상 요소 선택자</a></li><li><a href="#-3-overflow-hidden">▷ 3. overflow: hidden;</a></li><li><a href="#-4-flow-root">▷ 4. flow-root</a></li><li><a href="#-5-부모요소의-float">▷ 5. 부모요소의 float</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <p>전역변수를 많이 사용하다보면 의도하지 않은 재할당이 일어날 수 있고, 메모리를 잡아먹는 등 문제점들이 있다.
-<br /></p>
+        <h1 id="float">float</h1>
+<p>float는 일반적은 요소들의 흐름에서 벗어나 “둥” 떠있는 것처럼 동작을 한다</p>
 
-<h1 id="변수의-생명주기">변수의 생명주기</h1>
+<p>MDN의 float에 대한 설명을 참조하자면 다음과 같다</p>
 
-<p>함수 내부에서 변수가 선언될 경우 초기에 전역변수처럼 호이스팅이 일어나지 않는다.</p>
+<blockquote>
+  <p><a href="https://developer.mozilla.org/ko/docs/Web/CSS/float">MDN - float</a><br />
+CSS 속성(property) float은 한 요소(element)가 보통 흐름(normal flow)으로부터 빠져 텍스트 및 인라인(inline) 요소가 그 주위를 감싸는 자기 컨테이너의 좌우측을 따라 배치되어야 함을 지정합니다.</p>
+</blockquote>
 
-<p>함수가 실했되었을 때 자바스크립트 엔진에 의해서 가장 먼저 실행(선언)된다</p>
+<p>보통 흐름으로부터 빠져 자신의 부모를 기준으로 좌우측으로 정렬이 되는데 이때 어떤 부모요소의 자식요소들이 모두 <code class="language-plaintext highlighter-rouge">float</code>로 지정이 되었다면 그 부모요소는 자신의 높이를 잃어버리게 된다(부모의 높이가 지정되어 있지 않고 내부 요소들의 내용에 따라 높이가 정해지는 경우)</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">func</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>    <span class="c1">// 10</span>
+<p><img src="../../imgs/float.png" alt="float" /></p>
+
+<p>왼쪽의 레이아웃에서 main 영역에 3개의 요소를 그림과 같이 배치하려고 할때 float를 이용한다면 파란색의 main 영역이 사라지는 것을 볼 수 있다</p>
+
+<p><img src="../../imgs/clear.png" alt="clear" /></p>
+
+<p>왼쪽의 레이아웃은 main 내부의 요소들을 <code class="language-plaintext highlighter-rouge">float</code>로 변경했을때의 현상이다 footer의 레이아웃까지 무너지는 것을 볼 수 있다(float가 가리는 텍스트는 옆으로 빠져나옴 “footer”라는 텍스트는 가려지지 않고 옆으로 빠짐) 이때 footer에 <code class="language-plaintext highlighter-rouge">clear: both;</code>를 사용하게 되면 <code class="language-plaintext highlighter-rouge">float</code>가 footer에 영향을 미치는 것을 막을 수 있다</p>
+
+<p>하지만 문제는 여전히 <strong>main의 영역이 사라졌다는</strong> 것이다 자식요소의 영역만큼 영역을 차지하는 부모요소는 자식요소가 모두 <code class="language-plaintext highlighter-rouge">float</code>로 지정이 되면 높이를 잃어버린 것처럼 동작한다</p>
+
+<p>이러한 문제를 해결하기 위한 방법으로 5가지정도가 존재한다</p>
+
+<h2 id="-1-clearfix">▷ 1. clearfix</h2>
+<p>main의 내용과 관련없는 clearfix라는 클래스의 <code class="language-plaintext highlighter-rouge">div</code>요소를 임의로 생성한다</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;main&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"group group1"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"group group2"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"group group3"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"clearfix"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">main</span> <span class="nc">.clearfix</span> <span class="p">{</span>
+  <span class="nl">clear</span><span class="p">:</span> <span class="nb">both</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">func</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>    <span class="c1">// error</span>
+</code></pre></div></div>
+<p>하지만 의미없는 태그로 코드상으로 보여지기도 하므로 좋은 방법이 아니다</p>
+
+<h2 id="-2-가상-요소-선택자">▷ 2. 가상 요소 선택자</h2>
+<p>위에서 clearfix의 방법을 가상 요소 선택자 <code class="language-plaintext highlighter-rouge">::after</code>를 이용해서 작성하는 방법이다</p>
+<ul>
+  <li>가상 요소 선택자로 작성된 content는 <code class="language-plaintext highlighter-rouge">display</code>가 <code class="language-plaintext highlighter-rouge">inline</code>이다 <code class="language-plaintext highlighter-rouge">clear: both</code>는 <code class="language-plaintext highlighter-rouge">block</code>요소에만 적용되기 때문에 <code class="language-plaintext highlighter-rouge">display: block</code>을 해준다</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;main&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"group group1"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"group group2"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"group group3"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
 </code></pre></div></div>
 
-<p>위 코드를 보게되면 이해하기 쉽다. 우리가 알던대로라면 호이스팅이 일어나서 변수들의 선언이 가장 먼저 실행되어 가장 아랫줄의 <code class="language-plaintext highlighter-rouge">console.log(x);</code>은 <code class="language-plaintext highlighter-rouge">undefined</code>가 되어야 한다. 하지만 <strong>함수 내에서 변수를 선언한 경우에는 변수를 실행했을때 함수 내부 코드를 실행하는 측면에서만 가장 먼저 변수 선언이 일어난다</strong></p>
-
-<p>이후 <strong>함수를 실행하고 변수가 선언이 되었더라도 함수가 종료되면 변수도 사라지게 된다</strong></p>
-
-<h3 id="-즉-변수의-생명주기는-함수의-생명주기와-일치한다"><u>➞ 즉 변수의 생명주기는 함수의 생명주기와 일치한다.</u></h3>
-
-<p>전역변수도 마찬가지로 자바스크립트에 의해 어떤 객체보다도 먼저 생성되는 전역 객체의 생명주기와 동일하다</p>
-
-<p><br /></p>
-
-<h1 id="전역-변수의-문제점">전역 변수의 문제점</h1>
-
-<h2 id="암묵적-결합">암묵적 결합</h2>
-<p>전역변수는 어디서든 참조하고 할당할 수 있다. 따라서 어디서든지 전역변수를 참조하고 변경할 수 있다. 이처럼 유효 범위가 크면 가독성이 나빠지고 변수관리가 어렵다</p>
-
-<h2 id="긴-생명주기">긴 생명주기</h2>
-<p>전역변수의 생명 주기는 전역 객체의 생명주기와 동일하므로 코드 전체의 생명주기와 같다. 따라서 그만큼 시스템 자원(메모리 리소스)을 오래 차지하고 있다는 뜻이 된다.</p>
-
-<h2 id="스코프-체인상-종점에-존재">스코프 체인상 종점에 존재</h2>
-<p>스코프 체인상에서 보면 거슬러 올라가야 하기 때문에 전역변수를 참조해야 할때 가장 종점까지 거슬러 올라가야 한다. 따라서 그만큼 시간이 오래 걸린다.(큰 차이는 없으나 시간 차이는 존재)</p>
-
-<h2 id="네임스페이스-오염">네임스페이스 오염</h2>
-<p>파일이 분리되어 있더라도 하나의 전역 스코프를 공유한다. 따라서 동일한 이름의 전역변수가 존재할 수 있다.</p>
-
-<p><br /></p>
-
-<h1 id="전역-변수-사용의-억제방법">전역 변수 사용의 억제(방법)</h1>
-
-<p>이러한 문제점들을 방지하기 위한 방법들이 있다</p>
-
-<h2 id="즉시-실행-함수">즉시 실행 함수</h2>
-<p>즉시 실행 함수는 한번만 실행되므로 이를 이용해서 변수의 유효 범위를 제한한다(지역변수로)</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">(){</span>
-  <span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">jongbin</span><span class="dl">"</span><span class="p">;</span>
-<span class="p">}());</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>   <span class="c1">// error</span>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">main</span><span class="nd">::after</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
+  <span class="nl">clear</span><span class="p">:</span> <span class="nb">both</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<h2 id="네임스페이스-객체">네임스페이스 객체</h2>
-<p>전역에 객체를 생성하고 객체 내에 객체를 생성해 계층적으로 관리할 수 있다. <br />
-( 중복을 방지할 수 있으나 전역 변수로 선언되는 것은 동일하다 )</p>
+<h2 id="-3-overflow-hidden">▷ 3. overflow: hidden;</h2>
+<p><strong>부모요소</strong>에 <code class="language-plaintext highlighter-rouge">overflow: hidden</code>를 이용해서 작성하는 방법</p>
+<ul>
+  <li>원래 <code class="language-plaintext highlighter-rouge">overflow: hidden</code>은 넘치는 요소를 숨김처리하는 역할을 하기 때문에 만약 자식요소가 부모요소의 크기를 넘어서게 되면 보이지 않게 되는 큰 단점이 존재한다</li>
+  <li><a href="https://developer.mozilla.org/ko/docs/Web/Guide/CSS/Block_formatting_context">BFC(Block Format Context)</a>를 생성하게 된다 → 자신만의 독립된 영역을 가지게 된다</li>
+</ul>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
+<blockquote>
+  <p>BFC가 생성되는 조건</p>
+  <ul>
+    <li>루트(root) 요소일 때</li>
+    <li>html는 웹 문서의 시작을 알리는 최상위 요소이다. 따라서 기본적으로 하위 요소들은 독립적인 레이아웃을 가질 수 있도록 되어 있다.
+플로팅(Floating) 되었을 때</li>
+    <li>하위 요소가 선택적으로 float 속성 값을 none이 아닌 값을 가지게 되면 독립적인 레이아웃 환경을 갖는다.</li>
+    <li>position 속성이 absolute 또는 fixed로 적용되어 있을 때</li>
+    <li>하위 요소가 선택적으로 position 속성 값을 absolute 또는 fixed 값을 가지게 되면 독립적인 레이아웃 환경을 갖는다.</li>
+    <li>display 속성이 inline-block으로 적용되어 있을 때</li>
+    <li>하위 요소가 inline-block을 갖게되면 주변 inline 요소와 관계가 무너지면서 독립적인 공간을 형성하게 되므로 역시 독립적인 레이아웃 환경을 갖는다.</li>
+    <li>overflow 속성의 값이 visible 이외의 값으로 적용되어 있을 때</li>
+    <li>overflow 속성 값이 visible 이외의 값을 갖는 다는 것은 공간에 대한 크기 정의를 했다고 볼 수 있다. 그렇게 때문에 독립적인 공간을 형성한 것으로 볼 수 있으며 따라서 BFC를 요건을 가지고 있다.</li>
+  </ul>
+</blockquote>
 
-<span class="nx">obj</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">jongbin</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">main</span> <span class="p">{</span>
+  <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<h2 id="모듈-패턴">모듈 패턴</h2>
-<p>클래스를 모방해서 변수와 함수를 모아 즉시 실행 함수로 감싸 하나의 모듈로써 만든다.</p>
+<h2 id="-4-flow-root">▷ 4. flow-root</h2>
+<p><code class="language-plaintext highlighter-rouge">display: flow-root</code>를 사용해서 작성하는 방법</p>
+<ul>
+  <li>비교적 최근에 나온 속성이기 때문에 오래된 브라우저, IE에서는 <strong>작동이 되지 않는다</strong></li>
+  <li>부모요소에 적용한다</li>
+</ul>
 
-<p>네임스페이스의 오염을 막고, 정보은닉에도 활용된다.</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Mo</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(){</span>
-  <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">jongbin</span><span class="dl">"</span><span class="p">;</span>
-
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">hi</span><span class="p">(){</span>
-      <span class="k">return</span> <span class="nx">name</span><span class="o">+</span><span class="dl">"</span><span class="s2"> Hi!</span><span class="dl">"</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="nx">bye</span><span class="p">(){</span>
-      <span class="k">return</span> <span class="nx">name</span><span class="o">+</span><span class="dl">"</span><span class="s2"> Bye!</span><span class="dl">"</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}())</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Mo</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// undifined (정보은닉)</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Mo</span><span class="p">.</span><span class="nx">hi</span><span class="p">());</span>     <span class="c1">// jongbin Hi!</span>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">main</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flow-root</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
-<p>외부에서 <code class="language-plaintext highlighter-rouge">Mo</code>내부의 <code class="language-plaintext highlighter-rouge">name</code>이라는 변수를 참조할 수 없다</p>
 
-<h2 id="es6-모듈">ES6 모듈</h2>
-<p>파일 자체의 독자적인 모듈 스코프를 제공한다.<br />
-(모듈 내에서 <code class="language-plaintext highlighter-rouge">var</code>키워드로 선언한 변수는 전역변수가 아니다)<br />
-<del>그렇다면 const, let 키워드는 해당이 안되는건가???</del></p>
+<h2 id="-5-부모요소의-float">▷ 5. 부모요소의 float</h2>
+<p>자식요소가 모두 float로 지정되었을 때 부모요소까지도 float로 지정해주는 방법</p>
+<ul>
+  <li>부모의 float를 해제해 주어야 하므로 좋은 방법은 아니라는것이 개인적인 생각이다</li>
+</ul>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"nodule"</span> <span class="na">src=</span><span class="s">"lib.mjs"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"nodule"</span> <span class="na">src=</span><span class="s">"app.mjs"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">main</span> <span class="p">{</span>
+  <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
-<p>ES6의 모듈은 구형 브라우저에서는 작동하지 않는다. 또한 트랜스파일링이나 번들링이 필요하므로 Webpack을 더 사용한다.</p>
-
-<p class="notice"><strong>* 트랜스파일링</strong>: 한 언어로 작성된 소스코드를 비슷한 수준의 추상화(Abstraction)를 가진 다른 언어로 변환하는 것<br />
-<strong>* 번들링</strong>: 여러개의 파일을 모아서 하나로 만드는 것<br />
-<strong>* Webpack</strong>: 오픈 소스 자바스크립트 모듈 번들러</p>
-
-<p><br />
-<br /></p>
-
-<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
 
 
         
@@ -656,9 +657,7 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a><span class="sep">, </span>
-    
-      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a>
+      <a href="/tags/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
     
     </span>
   </p>
@@ -675,7 +674,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a>
+      <a href="/categories/#css" class="page__taxonomy-item p-category" rel="tag">CSS</a>
     
     </span>
   </p>
@@ -683,7 +682,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-06">September 6, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-26">October 26, 2021</time></p>
 
       </footer>
 
@@ -692,23 +691,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+14%EC%9E%A5+%EC%A0%84%EC%97%AD+%EB%B3%80%EC%88%98%EC%9D%98+%EB%AC%B8%EC%A0%9C%EC%A0%90%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive14%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=float%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Ffloat%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive14%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Ffloat%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive14%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fcss%2Ffloat%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/deepdive/deepDive13/" class="pagination--pager" title="[Deep Dive] 13장 스코프
+      <a href="/html/main_menu/" class="pagination--pager" title="Main Menu
 ">이전</a>
     
     
-      <a href="/deepdive/deepDive15/" class="pagination--pager" title="[Deep Dive] 15장 var, let, const
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -722,46 +720,6 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/css/float/" rel="permalink">float
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">자식요소의 float를 해제하기
-</p>
-  </article>
-</div>
-
         
           
 
@@ -830,7 +788,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          6 분 소요
+          8 분 소요
         
       </span>
     
@@ -878,6 +836,46 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">냅색 알고리즘
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/DP/" rel="permalink">[Algorithm] Dynamic Programming
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">동적 프로그래밍
 </p>
   </article>
 </div>
