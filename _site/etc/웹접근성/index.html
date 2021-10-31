@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Deep Dive] 15장 var, let, const | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="var, let, const의 차이">
+<!-- begin _includes/seo.html --><title>웹 접근성 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="WCAG 웹 접근성 지침 요약">
 
 
   <meta name="author" content="원종빈">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="[Deep Dive] 15장 var, let, const">
-<meta property="og:url" content="https://jjongbin.github.io/blog//deepdive/deepDive15/">
+<meta property="og:title" content="웹 접근성">
+<meta property="og:url" content="https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/">
 
 
-  <meta property="og:description" content="var, let, const의 차이">
-
-
-
+  <meta property="og:description" content="WCAG 웹 접근성 지침 요약">
 
 
 
 
-  <meta property="article:published_time" content="2021-09-10T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-09-10T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-10-31T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2021-10-31T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://jjongbin.github.io/blog//deepdive/deepDive15/">
+
+<link rel="canonical" href="https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/">
 
 
 
@@ -499,16 +499,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Deep Dive] 15장 var, let, const">
-    <meta itemprop="description" content="var, let, const의 차이">
-    <meta itemprop="datePublished" content="2021-09-10T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-09-10T00:00:00+09:00">
+    <meta itemprop="headline" content="웹 접근성">
+    <meta itemprop="description" content="WCAG 웹 접근성 지침 요약">
+    <meta itemprop="datePublished" content="2021-10-31T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-10-31T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://jjongbin.github.io/blog//deepdive/deepDive15/" class="u-url" itemprop="url">[Deep Dive] 15장 var, let, const
+            <a href="https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/" class="u-url" itemprop="url">웹 접근성
 </a>
           </h1>
           
@@ -540,119 +540,62 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#var-키워드">var 키워드</a><ul><li><a href="#es6-이전의-변수-선언-키워드로서-중복선언이-가능한-키워드이다">ES6 이전의 변수 선언 키워드로서 중복선언이 가능한 키워드이다</a></li><li><a href="#함수-레벨-스코프">함수 레벨 스코프</a></li><li><a href="#호이스팅">호이스팅</a></li></ul></li><li><a href="#let-키워드">let 키워드</a><ul><li><a href="#중복-선언이-금지된다">중복 선언이 금지된다</a></li><li><a href="#블록-레벨-스코프">블록 레벨 스코프</a></li><li><a href="#호이스팅이-되지-않는-것처럼-동작">호이스팅이 되지 않는 것처럼 동작</a></li><li><a href="#전역객체의-프로퍼티가-되지-않음">전역객체의 프로퍼티가 되지 않음</a></li></ul></li><li><a href="#const-키워드">const 키워드</a><ul><li><a href="#재할당-금지">재할당 금지</a></li><li><a href="#선언과-동시에-초기화">선언과 동시에 초기화</a></li><li><a href="#재할당이-금지-객체의-값-변경은-가능">재할당이 금지, 객체의 값 변경은 가능</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#wcag">WCAG</a><ul><li><a href="#1-인식의-용이성">1. 인식의 용이성</a></li><li><a href="#2-운용의-용이성">2. 운용의 용이성</a></li><li><a href="#3-이해의-용이성">3. 이해의 용이성</a></li><li><a href="#4-견고성">4. 견고성</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="var-키워드"><code class="language-plaintext highlighter-rouge">var</code> 키워드</h1>
-<h2 id="es6-이전의-변수-선언-키워드로서-중복선언이-가능한-키워드이다">ES6 이전의 변수 선언 키워드로서 <strong>중복선언이 가능한 키워드</strong>이다</h2>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <h1 id="wcag">WCAG</h1>
 
-<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">y</span><span class="p">;</span>    <span class="c1">// 초기화문(초기값할당)이 없으면 무시</span>
+<p>WCAG는 Web Content Accessibility Guideline의 약자로 웹사이트 또는 애플리케이션에서 충족해야 하는 기준을 정의해 장애, 비장애의 사용자가 보다 쉽게 이용할 수 있도록 준수해야 하는 지침이다</p>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="c1">// 10</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="c1">// 1</span>
-</code></pre></div></div>
-
-<h2 id="함수-레벨-스코프">함수 레벨 스코프</h2>
-<p>블록 레벨 스코프가 아니고, <strong>함수의 코드 블록만 지역 스코프로 인정</strong></p>
+<p>WCAG는 크게 네가지의 대분류로 나뉠 수 있다</p>
 <ul>
-  <li>for문, if문, while문 등 모두 인정하지 않음</li>
+  <li>인식의 용이성(Perceivable)</li>
+  <li>운용의 용이성(Operable)</li>
+  <li>이해의 용이성(Understandable)</li>
+  <li>견고성(Robust)</li>
 </ul>
 
-<h2 id="호이스팅">호이스팅</h2>
-<p><code class="language-plaintext highlighter-rouge">var</code> 키워드로 선언한 변수들은 모두 <strong>호이스팅</strong>된다</p>
-
-<p><br /></p>
-
-<h1 id="let-키워드"><code class="language-plaintext highlighter-rouge">let</code> 키워드</h1>
-<h2 id="중복-선언이-금지된다">중복 선언이 금지된다</h2>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>   <span class="c1">// error</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h2 id="블록-레벨-스코프">블록 레벨 스코프</h2>
-<p><code class="language-plaintext highlighter-rouge">let</code>키워드는 <strong>모든 코드블록</strong>(for, if, while try/catch 등)을 지역변수 스코프로 인정한다</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// error</span>
-</code></pre></div></div>
-
-<h2 id="호이스팅이-되지-않는-것처럼-동작">호이스팅이 되지 않는 것처럼 동작</h2>
-<p>사실 내부적으로 호이스팅이 되지만 그렇지 않은것처럼 동작한다</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>   <span class="c1">// error</span>
-<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-</code></pre></div></div>
-
+<h2 id="1-인식의-용이성">1. 인식의 용이성</h2>
+<p>사용자가 웹에서 제공하는 모든 콘텐츠를 모두 동등하게 인식할 수 있어야 한다 (웹사이트를 이루는 요소들을 명확하게 알 수 있도록 해야한다)</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">var</code>: 선언단계 + 초기화 단계(<code class="language-plaintext highlighter-rouge">undefined</code>) -&gt; 할당(<code class="language-plaintext highlighter-rouge">x=1</code>)</li>
-  <li><code class="language-plaintext highlighter-rouge">let</code>: 선언단계 -&gt; <strong>일시적 사각지대</strong> -&gt; 초기화단계 -&gt; 할당</li>
+  <li>모든 콘텐츠는 대체할 수 있는 수단을 가져야 한다
+    <ul>
+      <li>이미지 또는 오디오 등에 대체텍스트를 제공</li>
+      <li>식별이 용이하도록 색상을 사용하거나 오디오제공과 같은 시각적, 청각적인 요소를 제공</li>
+    </ul>
+  </li>
 </ul>
 
-<p>코드를 읽기전에 초기화단계까지 진행(var)하기 때문에 호이스팅발생<br />
-하지만 let키워드는 코드상에서 선언문을 만나야 초기화단계가 실행된다</p>
-
-<blockquote>
-  <p><code class="language-plaintext highlighter-rouge">let</code> 키워드는 <strong>일시적 사각지대(TDZ)</strong>가 존재한다<br />
-스코프 시작 지점부터 초기화 시작 지점까지 변수를 참조할 수 없는 구간</p>
-</blockquote>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-<span class="c1">// SyntaxError: Identifier 'x' has already been declared</span>
-</code></pre></div></div>
-<p>호이스팅이 발생하는 것을 알수 있다(<u>console.log(x)가 출력되고 에러가 발생했어야 함</u>)</p>
-
-<h2 id="전역객체의-프로퍼티가-되지-않음">전역객체의 프로퍼티가 되지 않음</h2>
-<p>브라우저 상에서 let키워드는 전역객체 window의 프로퍼티가 되지 않는다</p>
+<h2 id="2-운용의-용이성">2. 운용의 용이성</h2>
+<p>사용자가 웹 사이트의 인터페이스 구성요소 및 네비게이션을 모두 동등하게 운용할 수 있어야 한다</p>
 <ul>
-  <li>var 키워드
-<code class="language-plaintext highlighter-rouge">var x = 1;</code></li>
-  <li>암묵적 전역
-<code class="language-plaintext highlighter-rouge">y = 1;</code></li>
-  <li>전역 함수
-<code class="language-plaintext highlighter-rouge">function xx() {}</code></li>
+  <li>키보드를 통해서 모든 요소에 접근가능해야 한다</li>
+  <li>키보드를 통해 만료시간을 조정하거나, 컨텐츠의 동작을 관리할 수 있도록 해야 한다</li>
+  <li>발작 및 신체적 반응을 일으키지 않도록 설계해야 한다(초당 3회 번쩍이는 콘텐츠를 포함하지 않도록 한다)</li>
+  <li>키보드 이외의 다양한 입력장치를 통해 쉽게 조작할 수 있어야 한다</li>
 </ul>
 
-<p>위는 모두 <code class="language-plaintext highlighter-rouge">window.x</code> 또는 <code class="language-plaintext highlighter-rouge">window.y</code> <code class="language-plaintext highlighter-rouge">window.xx</code>로 출력할 수 있다 하지만 let의 경우에는 프로퍼티에 해당하지 않아 <code class="language-plaintext highlighter-rouge">window.(let으로 선언한 변수)</code>는 <code class="language-plaintext highlighter-rouge">undefined</code>가 출력된다</p>
+<h2 id="3-이해의-용이성">3. 이해의 용이성</h2>
+<p>사용자가 웹 사이트에서 제공하는 모든 요소들을 이해할 수 있어야 한다</p>
+<ul>
+  <li>가독성이 좋아야 한다</li>
+  <li>생소한 단어, 약어, 독해, 발음에 대한 대응책을 갖춰야한다</li>
+  <li>예측가능한 방식으로 동작해야 한다(사용자가 생각하는 일반적인 방식으로 동작해야 한다)</li>
+</ul>
 
-<p><br /></p>
-
-<h1 id="const-키워드"><code class="language-plaintext highlighter-rouge">const</code> 키워드</h1>
-<h2 id="재할당-금지">재할당 금지</h2>
-<p><code class="language-plaintext highlighter-rouge">const</code>로 선언한 변수는 재할당이 금지되고, 재선언되지 않는다</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="nx">x</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">//error</span>
-</code></pre></div></div>
-
-<h2 id="선언과-동시에-초기화">선언과 동시에 초기화</h2>
-<p><code class="language-plaintext highlighter-rouge">const</code>로 변수를 선언할 때에는 재할당이 되지 않기 때문에 선언과 동시에 값을 할당해 초기화해야 한다</p>
-
-<h2 id="재할당이-금지-객체의-값-변경은-가능">재할당이 금지, 객체의 값 변경은 가능</h2>
-<p><code class="language-plaintext highlighter-rouge">const</code> 변수에 객체를 할당했을 경우 변수에는 해당 객체의 주소값이 들어가기 때문에 객체 내부의 값은 변경이 가능하다 (변수를 조작하는 것이 아니다)</p>
-
-<p><br /></p>
-<hr />
-
-<p><br /></p>
-
-<p><code class="language-plaintext highlighter-rouge">var</code>키워드를 사용하면 사용자도 모르게 전역변수가 되어버리는 경우가 있다(함수 이외 코드블럭에서의 사용) 따라서 메모리를 할당받는 것이고, <code class="language-plaintext highlighter-rouge">const</code>를 사용하면 재할당을 방지할 수 있다. <code class="language-plaintext highlighter-rouge">let</code>의 경우에도 재선언을 방지하기 때문에 변수관리가 쉽다.</p>
-
-<p>따라서 보통의 경우에는 <code class="language-plaintext highlighter-rouge">const</code>를 사용하다가 재할당이 필요한 변수에 <code class="language-plaintext highlighter-rouge">let</code>키워드를 사용하는 것이 좋다고 한다</p>
-
-<p><br />
-<br /></p>
-
-<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
+<h2 id="4-견고성">4. 견고성</h2>
+<p>사용자가 웹 사이트를 이용하는데 기술의 영향을 받지 않아야 한다 (다양한 환경에서 동작하고 오류가 없어야 한다)</p>
+<ul>
+  <li>웹 사이트는 다양한 환경에서도 동일하게 동작되어야 한다</li>
+  <li>웹사이트를 구성하는데 문법적인 오류가 없어야 한다
+    <ul>
+      <li>웹 사이트를 구성하는 태그들의 시작태그, 종료태그가 온전해야 한다</li>
+      <li>속성이 중복되거나, id가 중복되지 않도록 한다</li>
+    </ul>
+  </li>
+</ul>
 
 
         
@@ -670,9 +613,7 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a><span class="sep">, </span>
-    
-      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a>
+      <a href="/tags/#etc" class="page__taxonomy-item p-category" rel="tag">ETC</a>
     
     </span>
   </p>
@@ -689,7 +630,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a>
+      <a href="/categories/#etc" class="page__taxonomy-item p-category" rel="tag">ETC</a>
     
     </span>
   </p>
@@ -697,7 +638,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-10">September 10, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-31">October 31, 2021</time></p>
 
       </footer>
 
@@ -706,23 +647,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+15%EC%9E%A5+var%2C+let%2C+const%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive15%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%EC%9B%B9+%EC%A0%91%EA%B7%BC%EC%84%B1%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fetc%2F%25EC%259B%25B9%25EC%25A0%2591%25EA%25B7%25BC%25EC%2584%25B1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive15%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fetc%2F%25EC%259B%25B9%25EC%25A0%2591%25EA%25B7%25BC%25EC%2584%25B1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive15%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fetc%2F%25EC%259B%25B9%25EC%25A0%2591%25EA%25B7%25BC%25EC%2584%25B1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/deepdive/deepDive14/" class="pagination--pager" title="[Deep Dive] 14장 전역 변수의 문제점
+      <a href="/css/float/" class="pagination--pager" title="float
 ">이전</a>
     
     
-      <a href="/html/html/" class="pagination--pager" title="HTML 개요
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -736,46 +676,6 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/" rel="permalink">웹 접근성
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">WCAG 웹 접근성 지침 요약
-</p>
-  </article>
-</div>
-
         
           
 
@@ -884,7 +784,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          6 분 소요
+          8 분 소요
         
       </span>
     
@@ -892,6 +792,46 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">다익스트라 알고리즘
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/algorithm/Knapsack/" rel="permalink">[Algorithm] Knapsack
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">냅색 알고리즘
 </p>
   </article>
 </div>
