@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Deep Dive] 13장 스코프 | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="변수에 접근할 수 있는 유효범위">
+<!-- begin _includes/seo.html --><title>BigInt | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="자바스크립트의 BigInt">
 
 
   <meta name="author" content="원종빈">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="[Deep Dive] 13장 스코프">
-<meta property="og:url" content="https://jjongbin.github.io/blog//deepdive/deepDive13/">
+<meta property="og:title" content="BigInt">
+<meta property="og:url" content="https://jjongbin.github.io/blog//other/bigint/">
 
 
-  <meta property="og:description" content="변수에 접근할 수 있는 유효범위">
-
-
-
+  <meta property="og:description" content="자바스크립트의 BigInt">
 
 
 
 
-  <meta property="article:published_time" content="2021-09-01T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-09-01T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-11-24T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2021-11-24T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="https://jjongbin.github.io/blog//deepdive/deepDive13/">
+
+<link rel="canonical" href="https://jjongbin.github.io/blog//other/bigint/">
 
 
 
@@ -583,308 +583,19 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Deep Dive] 13장 스코프">
-    <meta itemprop="description" content="변수에 접근할 수 있는 유효범위">
-    <meta itemprop="datePublished" content="2021-09-01T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-09-01T00:00:00+09:00">
+    <meta itemprop="headline" content="BigInt">
+    <meta itemprop="description" content="자바스크립트의 BigInt">
+    <meta itemprop="datePublished" content="2021-11-24T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-11-24T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://jjongbin.github.io/blog//deepdive/deepDive13/" class="u-url" itemprop="url">[Deep Dive] 13장 스코프
+            <a href="https://jjongbin.github.io/blog//other/bigint/" class="u-url" itemprop="url">BigInt
 </a>
           </h1>
           
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-        </header>
-      
-
-      <section class="page__content e-content" itemprop="text">
-        
-          <aside class="sidebar__right sticky">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-스코프">1. 스코프</a></li><li><a href="#2-스코프의-종류">2. 스코프의 종류</a></li><li><a href="#3-스코프-체인">3. 스코프 체인</a></li><li><a href="#4-함수-레벨-스코프">4. 함수 레벨 스코프</a></li><li><a href="#5-렉시컬-스코프">5. 렉시컬 스코프</a></li></ul>
-
-            </nav>
-          </aside>
-        
-        <p><br /></p>
-
-<p class="notice">함수의 매개변수는 함수 몸체 내부에서만 참조할 수 있고, 함수 내부에서 선언한 변수는 함수 외부에서는 참조할 수 없고 함수 몸체 내에서만 참조할 수 있다.</p>
-<p>왜냐하면 <strong>스코프</strong>가 정해져있기 때문이다</p>
-
-<p><br /></p>
-
-<h1 id="1-스코프">1. 스코프</h1>
-<hr />
-
-<p>모든 식별자(변수 이름, 함수 이름, 클래스 이름 등)는 자신이 선언된 위치에 의해 다른 코드가 식별자 자신을 참조할 수 있는 유효 범위가 결정된다</p>
-
-<p>➞ 이를 <strong>스코프</strong> 라고 한다 (<u>식별자가 유효한 범위</u>)</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// let, const는 중복 선언이 안되기 때문에 var를 사용</span>
-<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-
-<span class="nx">fuinction</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// 10</span>
-<span class="p">}</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// 1</span>
-</code></pre></div></div>
-
-<p><br /></p>
-
-<h1 id="2-스코프의-종류">2. 스코프의 종류</h1>
-<hr />
-<p>스코프는 “<strong>전역스코프</strong>”, “<strong>지역스코프</strong>” 이렇게 두개로 나뉜다</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">구분</th>
-      <th style="text-align: center">설명</th>
-      <th style="text-align: center">스코프</th>
-      <th style="text-align: center">변수</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">전역</td>
-      <td style="text-align: center">코드의 가장 바깥 영역</td>
-      <td style="text-align: center">전역 스코프</td>
-      <td style="text-align: center">전역 변수</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">지역</td>
-      <td style="text-align: center">함수 몸체 내부</td>
-      <td style="text-align: center">지역 스코프</td>
-      <td style="text-align: center">지역 변수</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><img src="https://blog.kakaocdn.net/dn/okSvC/btq9AjLxXcg/yLqKkFWqxJkUEBLePywxW0/img.png" alt="scope" /></p>
-<blockquote>
-  <p>출처 <a>https://frontj.com/entry/5-Javascript%EC%9D%98-%EC%8A%A4%EC%BD%94%ED%94%84</a></p>
-</blockquote>
-
-<p>위 그림을 보면 <strong>전역 스코프</strong>는 함수를 포함한 그 밖의 영역 제일 바깥쪽이다</p>
-
-<p>그리고 지역 스코프는 <code class="language-plaintext highlighter-rouge">foo()</code>함수의 내부에 1개, <code class="language-plaintext highlighter-rouge">bar()</code>함수의 내부에 1개, 총 2개가 있다</p>
-
-<ul>
-  <li>지역은 <u>함수 몸체 내부</u>를 뜻하고 지역변수는 자신의 지역 스코프와 하위의 지역 스코프에서도 유효하다</li>
-  <li>전역 스코프는 어디에서나 유효하다(최상단에 있기 때문)</li>
-</ul>
-
-<p><br /></p>
-
-<h1 id="3-스코프-체인">3. 스코프 체인</h1>
-
-<p>함수는 중첩될 수 있으므로(각각 함수 내부의 함수는 중첩함수, 외부는 외부함수) <u>스코프도 중첩된다</u></p>
-
-<p>➞ <strong>스코프가 함수의 중첩에 의해 계층적 구조를 가짐</strong></p>
-
-<p>지역 스코프의 상위 스코프는 함수기준 외부 함수의 스코프이다. 계층적으로 연결된 것을 <strong>스코프 체인</strong>이라고 한다</p>
-
-<p><br /></p>
-
-<p><strong><em><u>변수를 참조할때 자바스크립트 엔진은 스코프 체인을 통해 변수를 참조하는 코드의 스코프에서 시작하여 상위 스코프 방향으로 이동하며 선언된 변수를 검색한다</u></em></strong></p>
-
-<p>하위 스코프에서 유효한 변수를 상위스코프에서 참조할 수 없다</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// let, const는 중복 선언이 안되기 때문에 var를 사용</span>
-<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">global</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="nx">fuinction</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">inner</span><span class="dl">"</span><span class="p">;</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// 내부</span>
-<span class="p">}</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>    <span class="c1">// 외부</span>
-</code></pre></div></div>
-<p>즉 내부에서 <code class="language-plaintext highlighter-rouge">x</code>를 호출했을 때 내부의 변수 <code class="language-plaintext highlighter-rouge">x</code>가 참조되지 외부의 <code class="language-plaintext highlighter-rouge">x</code>(global)이 참조될 수 없다는 뜻이다</p>
-
-<p class="notice"><strong>렉시컬 환경</strong><br />
-스코프 체인은 실행 컨텍스트의 렉시컬 환경을 단방향으로 연결한 것이다<br />
-변수 선언 -&gt; 렉시컬환경에 키 등록<br />
-변수 할당 -&gt; 해당하는 값 변경</p>
-
-<p><br /></p>
-
-<h1 id="4-함수-레벨-스코프">4. 함수 레벨 스코프</h1>
-<p><code class="language-plaintext highlighter-rouge">var</code> 키워드로 선언된 변수는 <strong>코드블럭이 아닌 <u>함수에 의해서만</u> 지역 스코프가 생성됨</strong></p>
-
-<p class="notice"><code class="language-plaintext highlighter-rouge">const</code>, <code class="language-plaintext highlighter-rouge">let</code> 키워드로 선언된 변수는 블록 레벨 스코프를 지원한다</p>
-
-<p><br /></p>
-
-<h1 id="5-렉시컬-스코프">5. 렉시컬 스코프</h1>
-
-<p>상위 스코프를 결정하는 패턴은 두가지가 있다</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">스코프</th>
-      <th style="text-align: left">방법</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">동적 스코프</td>
-      <td style="text-align: left">함수를 어디서 호출했는지에 따라 함수의 상위 스코프를 결정</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">렉시컬 스코프</td>
-      <td style="text-align: left">함수를 어디서 정의했는지에 따라 함수의 상위 스코프를 결정</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>자바스크립트는 <strong>렉시컬 스코프</strong>를 따른다.</p>
-
-<p><u>따라서 어디서 정의했는지에 따라 상위스코프를 결정</u></p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">global</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">function</span> <span class="nx">func1</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">inner</span><span class="dl">"</span><span class="p">;</span>
-  <span class="nx">funt2</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">func2</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nx">func1</span><span class="p">();</span>   <span class="c1">// global</span>
-<span class="nx">func2</span><span class="p">();</span>   <span class="c1">// global</span>
-</code></pre></div></div>
-<p><code class="language-plaintext highlighter-rouge">func2</code> 함수가 외부에서 선언되었기 때문에 <code class="language-plaintext highlighter-rouge">func1</code>함수 내부에서 <code class="language-plaintext highlighter-rouge">func2</code>를 호출하더라도 “global”을 출력한다 (스코프가 <strong>전역</strong>이므로)</p>
-
-<p><br />
-<br /></p>
-
-<p class="notice--info">이웅모 선생님의 모던 자바스크립트 Deep Dive를 공부하기 위해 정리한 글입니다.<br />
-혹시나 보시다가 고칠 부분이나 마음에 안드시는 부분이 있다면 말씀해주시면 감사하겠습니다!</p>
-
-
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/tags/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a><span class="sep">, </span>
-    
-      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/categories/#deepdive" class="page__taxonomy-item p-category" rel="tag">DeepDive</a>
-    
-    </span>
-  </p>
-
-
-        
-
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-09-01">September 1, 2021</time></p>
-
-      </footer>
-
-      <section class="page__share">
-  
-    <h4 class="page__share-title">공유하기</h4>
-  
-
-  <a href="https://twitter.com/intent/tweet?text=%5BDeep+Dive%5D+13%EC%9E%A5+%EC%8A%A4%EC%BD%94%ED%94%84%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive13%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive13%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fdeepdive%2FdeepDive13%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
-
-      
-  <nav class="pagination">
-    
-      <a href="/method/instanceof/" class="pagination--pager" title="instanceof
-">이전</a>
-    
-    
-      <a href="/deepdive/deepDive14/" class="pagination--pager" title="[Deep Dive] 14장 전역 변수의 문제점
-">다음</a>
-    
-  </nav>
-
-    </div>
-
-    
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h2 class="page__related-title">참고</h2>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/other/bigint/" rel="permalink">BigInt
-</a>
-      
-    </h2>
-    
 
   <p class="page__meta">
     
@@ -905,11 +616,167 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">자바스크립트의 BigInt
-</p>
-  </article>
-</div>
+        </header>
+      
 
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#bigint">BigInt</a><ul><li><a href="#bigint-사용-방법">BigInt 사용 방법</a></li><li><a href="#bigint를-number로-변환">BigInt를 Number로 변환</a></li><li><a href="#주의사항">주의사항</a></li><li><a href="#mdn-권장사항">MDN 권장사항</a></li><li><a href="#추가적으로">추가적으로!</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>풀었던 백준문제: <a href="https://www.acmicpc.net/problem/13305">백준 13305</a></p>
+
+<p class="notice"><del>이전에 백준에서 문제를 풀면서 BigInt를 사용하게 된 경험이 있는데 최근 강의를 수강하면서 BigInt가 ECMA에 비교적 최근에 추가된 내용이기 때문에 궁금해서 조사를 해봤다.</del></p>
+
+<p>자바스크립트의 변수 타입(정확히는 값 타입)에는 원시타입에 속하는 Number, String, boolean, undefined, Null, Symbol과 객체타입에 속하는 Object로 총 7가지가 존재한다.</p>
+
+<p>하지만 최근 ECMA Scropt 2020의 ES11에서 <strong>BigInt</strong>라는 새로운 숫자 타입이 생겨나게 되었다.</p>
+
+<p>기존의 자바스크립트는 64비트의 IEEE 754(널리 사용되는 부동소수점 표기 표준)을 따르기 때문에 숫자를 표현할때 <strong>2<sup>53</sup> - 1</strong> 까지만 안전하게 표현할 수 있었다.</p>
+
+<p class="notice">이 이상의 길이의 숫자를 표현하게 되었을때 근사치로 계산을 하기 때문에 오류는 발생하지 않지만 정확한 값이 나오지 않는다.</p>
+
+<p>하지만 BigInt를 이용하면 그 이상의 숫자를 표현할 수 있다.</p>
+
+<h1 id="bigint">BigInt</h1>
+
+<p>BigInt는 이름에서부터 알 수 있듯이 큰 수를 표현하는 방법이다. MDN에서 BigInt를 어떻게 설명하는지 확인해보니 다음과 같았다.</p>
+
+<blockquote>
+  <p>BigInt는 Number 원시 값이 안정적으로 나타낼 수 있는 최대치인 2^53 - 1보다 큰 정수를 표현할 수 있는 내장 객체입니다.<br />
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt">MDN - BigInt</a></p>
+</blockquote>
+
+<h2 id="bigint-사용-방법">BigInt 사용 방법</h2>
+
+<ol>
+  <li>정수리터럴 뒤에 <code class="language-plaintext highlighter-rouge">n</code>을 붙혀서 BigInt로 변환한다.</li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">temp</span> <span class="o">=</span> <span class="mi">10</span><span class="nx">n</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ol>
+  <li>함수 <code class="language-plaintext highlighter-rouge">BigInt()</code>를 사용한다.</li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">BigInt</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="bigint를-number로-변환">BigInt를 Number로 변환</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Number(BigInt형);
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Number</span><span class="p">(</span><span class="mi">10</span><span class="nx">n</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="주의사항">주의사항</h2>
+
+<ol>
+  <li>내장객체 Math 사용이 불가능하다.</li>
+  <li>Number 타입과의 연산이 불가능하다 (BigInt타입끼리만 연산가능!)</li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">10</span><span class="nx">n</span> <span class="o">+</span> <span class="mi">20</span><span class="nx">n</span><span class="p">);</span> <span class="c1">// 30n</span>
+</code></pre></div></div>
+
+<h2 id="mdn-권장사항">MDN 권장사항</h2>
+
+<p>BigInt를 무작정 사용하기보다 BigInt를 Number로 변환하는 과정에서 정확성이 떨어질 수 있기때문에 2<sup>53</sup> - 1 이상이 될것이라고 예측될 때 사용하는 것이 좋다.</p>
+
+<h2 id="추가적으로">추가적으로!</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">0n</code>은 falsy한 값이다.</li>
+  <li><code class="language-plaintext highlighter-rouge">1n === 1</code>은 <code class="language-plaintext highlighter-rouge">false</code></li>
+  <li><code class="language-plaintext highlighter-rouge">1n == 1</code>은 <code class="language-plaintext highlighter-rouge">ture</code> → 타입은 다르지만 같은 타입인 경우 같은 값!</li>
+  <li><code class="language-plaintext highlighter-rouge">typeof 10n</code>은 <code class="language-plaintext highlighter-rouge">BigInt</code></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#other" class="page__taxonomy-item p-category" rel="tag">Other</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#other" class="page__taxonomy-item p-category" rel="tag">Other</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-11-24">November 24, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=BigInt%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fother%2Fbigint%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fother%2Fbigint%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fother%2Fbigint%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/cs/ascii_unicode/" class="pagination--pager" title="ASCII, 유니코드
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
         
           
 
@@ -1026,6 +893,46 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">자식요소의 float를 해제하기
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/html/main_menu/" rel="permalink">Main Menu
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">메인메뉴의 구성과 웹 접근성
 </p>
   </article>
 </div>

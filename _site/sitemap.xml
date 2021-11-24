@@ -221,6 +221,10 @@
 <lastmod>2021-11-23T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>https://jjongbin.github.io/blog//other/bigint/</loc>
+<lastmod>2021-11-24T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>https://jjongbin.github.io/blog//categories/Algorithm</loc>
 </url>
 <url>
@@ -243,6 +247,9 @@
 </url>
 <url>
 <loc>https://jjongbin.github.io/blog//categories/Method</loc>
+</url>
+<url>
+<loc>https://jjongbin.github.io/blog//categories/Other</loc>
 </url>
 <url>
 <loc>https://jjongbin.github.io/blog//categories/vim</loc>
@@ -286,5 +293,8 @@
 </url>
 <url>
 <loc>https://jjongbin.github.io/blog//page11/</loc>
+</url>
+<url>
+<loc>https://jjongbin.github.io/blog//page12/</loc>
 </url>
 </urlset>
