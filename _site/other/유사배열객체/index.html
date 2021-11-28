@@ -1,0 +1,1127 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>유사배열객체 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="배열과 유사배열객체, 유사배열, 유사객체">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="유사배열객체">
+<meta property="og:url" content="https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/">
+
+
+  <meta property="og:description" content="배열과 유사배열객체, 유사배열, 유사객체">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-11-28T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-11-28T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "https://jjongbin.github.io/blog//"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="icon" href="/assets/images/study.ico" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://jjongbin.github.io/blog//">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://jjongbin.github.io/blog//" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li class="nav__all-posts">
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">57</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/DeepDive" class="">DeepDive (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Method" class="">Method (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Other" class="">Other (2)</a></li>
+                    
+                
+            </ul>
+     
+        <span class="nav__sub-title">html</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/HTML" class="">HTML (7)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">css</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/CSS" class="">CSS (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">algorithm</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Algorithm" class="">Algorithm (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">git</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Git" class="">Git (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Blog" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/vim" class="">vim (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/CS" class="">CS (1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="유사배열객체">
+    <meta itemprop="description" content="배열과 유사배열객체, 유사배열, 유사객체">
+    <meta itemprop="datePublished" content="2021-11-28T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-11-28T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/" class="u-url" itemprop="url">유사배열객체
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#배열">배열</a><ul><li><a href="#1-배열의-사용선언">1. 배열의 사용(선언)</a></li><li><a href="#2-배열의-메서드">2. 배열의 메서드</a><ul><li><a href="#1-push">1. push()</a></li><li><a href="#2-shift-unshift">2. shift(), unshift()</a></li><li><a href="#3-pop">3. pop()</a></li><li><a href="#4-그외-배열을-다루는데-유용한-배열의-메서드들">4. 그외 배열을 다루는데 유용한 배열의 메서드들</a></li></ul></li></ul></li><li><a href="#유사배열객체">유사배열객체</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><del>강사님의 수업을 듣다가 유사객체라는 말씀을 하셨는데 유사객체에는 무엇이 있고 어떻게 사용될 수 있는지 궁금해졌다. 오늘은 유사객체에 대해서 공부를 해보려고 한다.</del></p>
+
+<p>유사객체는 유사배열, 유사객체, 유사배열객체 등 다양한 이름으로 불리워진다.(이하 내용에서는 유사배열객체라고 설명하려고 한다!)</p>
+
+<p>배열과 유사하게 동작되는 유사배열객체에 대해서 작성하기 전에 먼저 배열에 대해서 간략하게 정리했다.</p>
+
+<h1 id="배열">배열</h1>
+
+<p>배열이란 인덱스를 가지고, 자료들을 담는자료구조이다. 각각의 데이터들은 순차적으로 저장되고 중복이 가능하다.</p>
+
+<p>다양한 자료형의 데이터들을 배열에 넣을 수 있는데 보통 같은 자료형의 데이터를 다루는 경우가 많다.</p>
+
+<p>배열은 다른 자료구조들과는 다른게 <strong>인덱스</strong>가 존재하는데 인덱스를 사용해서 각각의 자료에 접근할 수 있다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">D</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">E</span><span class="dl">"</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// A</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="c1">// C</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span> <span class="c1">// E</span>
+</code></pre></div></div>
+
+<p>배열내 자료의 순서에 따라 인덱스가 정해지게 된다. 인덱스는 <u>0부터 시작해서 배열 내 자료들의 개수 - 1</u>까지로 지정된다.</p>
+
+<h2 id="1-배열의-사용선언">1. 배열의 사용(선언)</h2>
+
+<p>배열을 선언하는데는 두가지 방식이 존재한다.</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">new</code>키워드와 생성자 함수</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">new</code> 키워드와 함께 <code class="language-plaintext highlighter-rouge">Array</code>생성자 함수를 이용하는 방법이다. 배열의 길이를 기존에 지정해 줄 수 있고, <code class="language-plaintext highlighter-rouge">fill</code> 메서드를 사용하면 지정된 길이만큼 초기 데이터를 넣어줄 수 있다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">배열의</span> <span class="nx">길이</span><span class="p">);</span>
+
+<span class="c1">// 추가적으로 배열에 데이터에 기본값을 셋팅하는 방법(fill)</span>
+<span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">n</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1">// 배열의 길이 n만큼 0으로 채워라</span>
+</code></pre></div></div>
+
+<ol>
+  <li>리터럴 사용</li>
+</ol>
+
+<p>리터럴을 사용해서 간단하게 배열을 선언할 수 있다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// 빈 배열을 생성</span>
+<span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span> <span class="c1">// 내부의 데이터를 넣어줄 수도 있다.</span>
+</code></pre></div></div>
+
+<h2 id="2-배열의-메서드">2. 배열의 메서드</h2>
+
+<h3 id="1-push">1. <code class="language-plaintext highlighter-rouge">push()</code></h3>
+
+<p>선언된 배열에 데이터를 넣어줄 수 있다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// [1]</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// [1, 2]</span>
+</code></pre></div></div>
+
+<h3 id="2-shift-unshift">2. <code class="language-plaintext highlighter-rouge">shift()</code>, <code class="language-plaintext highlighter-rouge">unshift()</code></h3>
+
+<p>선언된 배열의 첫번째 값을 꺼내거나(<code class="language-plaintext highlighter-rouge">shift()</code>) 첫번째에 집어넣을 수 있다.(<code class="language-plaintext highlighter-rouge">unshift()</code>)</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span> <span class="c1">// [2, 3]</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// [10, 2, 3]</span>
+</code></pre></div></div>
+
+<h3 id="3-pop">3. <code class="language-plaintext highlighter-rouge">pop()</code></h3>
+
+<p>선언된 배열의 마지막 인덱스에 해당하는 값을 꺼낼 수 있다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span> <span class="c1">// [1, 2]</span>
+</code></pre></div></div>
+
+<h3 id="4-그외-배열을-다루는데-유용한-배열의-메서드들">4. 그외 배열을 다루는데 유용한 배열의 메서드들</h3>
+
+<ul>
+  <li>배열의 각 데이터를 합쳐주는 <code class="language-plaintext highlighter-rouge">join()</code></li>
+  <li>인자를 구분자로 문자열을 배열로 나눠주는 <code class="language-plaintext highlighter-rouge">split()</code></li>
+  <li>배열의 순서를 거꾸로 만들어주는 <code class="language-plaintext highlighter-rouge">reverse()</code></li>
+  <li>지정한 부분을 삭제해주는 <code class="language-plaintext highlighter-rouge">splice()</code></li>
+  <li>특정부분을 반환하는 <code class="language-plaintext highlighter-rouge">slice()</code></li>
+  <li>값을 찾아 인덱스를 반환하는 <code class="language-plaintext highlighter-rouge">find()</code></li>
+</ul>
+
+<p><del>이 외에도 수많은 메서드들이 존재하지만 이후에 포스팅하려고 한다!</del></p>
+
+<p><br /></p>
+
+<p>이처럼 배열은 수많은 메서드들이 존재하고 많이 사용하게 되는 자료구조이다.</p>
+
+<h1 id="유사배열객체">유사배열객체</h1>
+
+<p>자바스크립트에는 유사배열객체가 존재하는데 유사배열객체는 배열은 아니지만 배열처럼 동작하는 것을 말한다. 심지어 JS의 객체를 이용해서 배열처럼 동작하도록 할 수 있다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="mi">0</span><span class="p">:</span> <span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span>
+  <span class="mi">1</span><span class="p">:</span> <span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span>
+  <span class="mi">2</span><span class="p">:</span> <span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// A</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// A</span>
+</code></pre></div></div>
+
+<p>프로퍼티 키로 인덱스를 입력하고, 프로퍼티 값으로 데이터를 입력해준다. 해당 객체는 배열이 아니지만 배열처럼 동작하는 유사배열객체이다.(<code class="language-plaintext highlighter-rouge">Array.form()</code>을 사용하면 실제 배열로 만들어 반환해준다.)</p>
+
+<p>유사배열이 되기 위해서는 몇가지 조건이 있는데 다음과 같다.</p>
+
+<ol>
+  <li><strong>length</strong>가 반드시 존재해야 한다</li>
+  <li>index가 0부터 시작해서 1씩 증가해야 한다.</li>
+</ol>
+
+<p>이외에 대표적으로 함수의 arguments, HTMLCollection NodeList들이 있다. 또한 문자열도 유사배열객체처럼 동작하는 것을 볼 수 있다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">ABCDE</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// 5</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// A</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="c1">// C</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span> <span class="c1">// E</span>
+</code></pre></div></div>
+
+<p>문자열은 원시값인데 인덱스를 이용해서 순서에 해당하는 문자를 반환해준다.</p>
+
+<p>또한 문자열에 <code class="language-plaintext highlighter-rouge">length</code>라는 프로퍼티가 존재할 수 없는데 <code class="language-plaintext highlighter-rouge">문자열변수.length</code>를 입력했을때 제대로 동작한다.</p>
+
+<p class="notice">문자열 뒤에 (.)을 붙이면 문자열은 유사배열객체가 된다. 따라서 <code class="language-plaintext highlighter-rouge">.length</code>를 사용할 수 있고 이후 다시 문자열로 돌려준다.</p>
+
+<p><strong>함수의 arguments</strong>같은 경우에는 함수의 인자로 넣어준 값들을 arguments에 모두 저장하게 되는데 이때 arguments는 배열은 아니지만 유사배열객체이다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">jongbin</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">jongbin</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// [Arguments] { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5 }</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">ABCDE</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">s</span> <span class="k">of</span> <span class="nx">str</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 결과
+A
+B
+C
+D
+E
+</code></pre></div></div>
+
+<p>혹시나 싶어서 map 메서드는 사용해봤는데 역시 사용할 수 없었다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">str</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">item</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">!</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: str.map is not a function
+</code></pre></div></div>
+
+<p>또한 DOM에서 HTMLCollection과 NodeList를 찾아서 출력해보았다.
+<img src="../../imgs/HTMLCollection.png" alt="HTMLCollection" />
+<img src="../../imgs/HTMLCollection.png" alt="NodeList" /></p>
+
+<p>HTMLCollection와 NodeList를 봤을때 배열처럼 느껴지지만 배열인지 확인하는 <code class="language-plaintext highlighter-rouge">Array.isArray</code>를 사용해서 확인해보면 <code class="language-plaintext highlighter-rouge">false</code>가 출력된다.</p>
+
+<p><img src="../../imgs/isarray.png" alt="isarray" /></p>
+
+<p>따라서 유사배열객체임을 알 수 있다.</p>
+
+<p>해당 객체를 for..of문을 사용해서 각각 출력했을때는 다음과 같이 동작한다.</p>
+
+<p><img src="../../imgs/forof.png" alt="forof" /></p>
+
+<p><br /></p>
+
+<p>이처럼 유사배열객체에 사용가능한 배열의 메서드들이 있지만 사용할 수 없는 메서드들도 존재하고 유사배열객체는 배열이 아니기 때문에 주의할 필요가 있다고 생각한다.</p>
+
+<p>유사배열객체를 겪는 일이 생각보다 많을거라고 예상하는데 유사배열객체를 보고 배열인지 헷갈린다면 꼭 디버그해보고(<code class="language-plaintext highlighter-rouge">Array.isArray()</code> 사용!) 확실하게 판달할 필요가 있어보인다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#other" class="page__taxonomy-item p-category" rel="tag">Other</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#other" class="page__taxonomy-item p-category" rel="tag">Other</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-11-28">November 28, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4%20https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fother%2F%25EC%259C%25A0%25EC%2582%25AC%25EB%25B0%25B0%25EC%2597%25B4%25EA%25B0%259D%25EC%25B2%25B4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fother%2F%25EC%259C%25A0%25EC%2582%25AC%25EB%25B0%25B0%25EC%2597%25B4%25EA%25B0%259D%25EC%25B2%25B4%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fjjongbin.github.io%2Fblog%2F%2Fother%2F%25EC%259C%25A0%25EC%2582%25AC%25EB%25B0%25B0%25EC%2597%25B4%25EA%25B0%259D%25EC%25B2%25B4%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/other/bigint/" class="pagination--pager" title="BigInt
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/other/bigint/" rel="permalink">BigInt
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트의 BigInt
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cs/ascii_unicode/" rel="permalink">ASCII, 유니코드
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">아스키코드와 유니코드
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/" rel="permalink">웹 접근성
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">WCAG 웹 접근성 지침 요약
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/css/float/" rel="permalink">float
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자식요소의 float를 해제하기
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
