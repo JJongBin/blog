@@ -1,4 +1,240 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://jjongbin.github.io/blog//feed.xml" rel="self" type="application/atom+xml" /><link href="https://jjongbin.github.io/blog//" rel="alternate" type="text/html" /><updated>2021-11-29T00:46:35+09:00</updated><id>https://jjongbin.github.io/blog//feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">유사배열객체</title><link href="https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/" rel="alternate" type="text/html" title="유사배열객체" /><published>2021-11-28T00:00:00+09:00</published><updated>2021-11-28T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/">&lt;p&gt;&lt;del&gt;강사님의 수업을 듣다가 유사객체라는 말씀을 하셨는데 유사객체에는 무엇이 있고 어떻게 사용될 수 있는지 궁금해졌다. 오늘은 유사객체에 대해서 공부를 해보려고 한다.&lt;/del&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-12-07T21:41:17+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">자바스크립트 객체의 변경방지 - 불변성</title><link href="http://localhost:4502/other/property_attribute/" rel="alternate" type="text/html" title="자바스크립트 객체의 변경방지 - 불변성" /><published>2021-12-07T00:00:00+09:00</published><updated>2021-12-07T00:00:00+09:00</updated><id>http://localhost:4502/other/property_attribute</id><content type="html" xml:base="http://localhost:4502/other/property_attribute/">&lt;p&gt;만약 변하지 않아야 하는 값들이 의도처럼 수정되지 않아야 하지만 수정된다면 의도와 다른 결과가 출력되거나 에러를 일으킬 가능성이 크다.&lt;/p&gt;
+
+&lt;p&gt;이때 값들이 변하지 않는 것을 불변하다고 한다 즉 변하지 않는 특성을 불변성이라고 한다.&lt;/p&gt;
+
+&lt;p&gt;객체를 다루는데에도 외부의 객체를 수정하지 않도록 하거나, 변하지 않도록 하기 위해서 의도적으로 객체의 프로퍼티가 변경되지 않도록 불변성을 줄 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 객체 변경 방지&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;preventExtensions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 객체 밀봉&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 객체 동결&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;freeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 Object 함수의 정적메서드들이 대표적인 것들이다.&lt;/p&gt;
+
+&lt;p&gt;해당 메서드들에 대해서 공부하다가 의문점을 가지고 질문을 드려본적이 있는데 이런 부분들에 대해서 이야기 하기전에 &lt;strong&gt;프로퍼티 어트리뷰트&lt;/strong&gt;를 알아야 한다&lt;/p&gt;
+
+&lt;h1 id=&quot;프로퍼티-어트리뷰트&quot;&gt;프로퍼티 어트리뷰트&lt;/h1&gt;
+
+&lt;p&gt;자바스크립트 엔진은 우리가 프로퍼티를 만들때, 프로퍼티의 상태를 나타내는 프로퍼티 어트리뷰트를 기본값으로 자동 정의한다&lt;/p&gt;
+
+&lt;h2 id=&quot;내부-슬롯과-내부-메서드&quot;&gt;내부 슬롯과 내부 메서드&lt;/h2&gt;
+
+&lt;p&gt;내부 슬롯과 내부 메서드는 자바스크립트 엔징의 구현 알고히즘을 설명하기 위햐 ECMAScript 사양에서 사용하는 의사 프로퍼티 및 의사 메서드이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[ ]]&lt;/code&gt; 이중 대괄호를 사용해서 나타낸다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;다음은 ECMAScript를 참고한 데이터 프로퍼티의 내부 슬롯이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/dataProperty.png&quot; alt=&quot;data property attribute&quot; /&gt;
+&lt;a href=&quot;https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-property-attributes&quot;&gt; 출처 - tc39&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;데이터-프로퍼티와-접근자-프로퍼티&quot;&gt;데이터 프로퍼티와 접근자 프로퍼티&lt;/h2&gt;
+
+&lt;p&gt;프로퍼티는 데이터 프로퍼티와 접근자 프로퍼티로 구분될 수 있다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;데이터 프로퍼티&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;키와 값으로 구성된 일반적인 프로퍼티&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;접근자 프로퍼티&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;자체적으로는 값을 갖지 않고 다른 데이터 프로퍼티의 값을 읽거나 저장할때 호풀되는 접근자 함수로 구성된 프로퍼티&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;데이터-프로퍼티의-어트리뷰트&quot;&gt;데이터 프로퍼티의 어트리뷰트&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;프로퍼티 어트리뷰트&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[Value]]&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;프로퍼티 키를 통해 프로퍼티 값에 접근하면 반환되는 값.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[Writable]]&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;프로퍼티 값의 변경 가능 여부를 나타내며 불리언 값을 가진다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[Enumerable]]&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;프로퍼티의 열거 가능 여부를 나타내며 불리언 값을 가진다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[Configurable]]&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;프로퍼티의 재정의 가능 여부를 나타내며 불리언 값을 가진다. (삭제와 프로퍼티 재정의)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;접근자-프로퍼티의-어트리뷰트&quot;&gt;접근자 프로퍼티의 어트리뷰트&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;프로퍼티 어트리뷰트&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[Get]]&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;데이터 프로퍼티의 값을 읽을 때 호출되는 접근자 함수(getter 함수를 호출)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[Set]]&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;데이터 프로퍼티의 값을 저장할 때 호출되는 접근자 함수(setter 함수를 호출)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[Enumerable]]&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;프로퍼티의 열거 가능 여부를 나타내며 불리언 값을 가진다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[Configurable]]&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;프로퍼티의 재정의 가능 여부를 나타내며 불리언 값을 가진다. (삭제와 프로퍼티 재정의)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;이런 프로퍼티 어트리뷰트를 확인하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.getOwnPropertyDescriptors(obj)&lt;/code&gt;를 이용해 각 프로퍼티의 어트리뷰트를 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;위의 프로퍼티 어트리뷰트를 수정해서 객체를 불변하게 만들 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;객체-확장-금지&quot;&gt;객체 확장 금지&lt;/h2&gt;
+
+&lt;p&gt;객체에 새로운 프로퍼티가 추가되는 것을 방지한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 객체 확장 금지&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;preventExtensions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;프로퍼티의 추가는&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;동적추가&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.defineProperty&lt;/code&gt; 메서드&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;를 통해서 할 수 있는데 이때 이러한 동작을 불가능하게 한다.&lt;/p&gt;
+
+&lt;p&gt;확장이 가능한 객체인지 확인할때는 다음과 같은 메서드를 사용한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isExtensible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;객체-밀봉&quot;&gt;객체 밀봉&lt;/h2&gt;
+
+&lt;p&gt;프로퍼티 추가, 삭제, 재정의를 금지한다 → 읽기와 쓰기만 가능&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 객체 밀봉&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;seal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이때 밀봉된 객체의 프로퍼티 어트리뷰트 &lt;strong&gt;[[Configurable]]&lt;/strong&gt;은 &lt;strong&gt;false&lt;/strong&gt;이다.&lt;/p&gt;
+
+&lt;p&gt;따라서 프로퍼티의 삭제가 불가능하고 프로퍼티 어트리뷰트를 재정의 할 수 없다.&lt;/p&gt;
+
+&lt;p&gt;밀봉된 객체인지 확인할때는 다음과 같은 메서드를 사용한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isSealed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;객체-동결&quot;&gt;객체 동결&lt;/h2&gt;
+
+&lt;p&gt;프로퍼티 추가, 삭제, 재정의, 갱신을 금지한다 → 읽기와 가능&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 객체 밀봉&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;freeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이때 동결된 객체의 프로퍼티 어트리뷰트 &lt;strong&gt;[[writeable]]&lt;/strong&gt;과 &lt;strong&gt;[[Configurable]]&lt;/strong&gt;은 &lt;strong&gt;false&lt;/strong&gt;이다. 따라서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[Value]]&lt;/code&gt;의 값을 변경할 수 없고 프로퍼티 삭제, 프로퍼티 어트리뷰트의 재정의가 불가능하다.&lt;/p&gt;
+
+&lt;p&gt;동결된 객체인지 확인할때는 다음과 같은 메서드를 사용한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isfrozen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;이때 내가 떠오른 의문점은 바로 다음과 같았다.&lt;/u&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;아니?! 왜 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.seal()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.freeze()&lt;/code&gt;들은 프로퍼티 어트리뷰트의 값을 변경해서 명시적으로 각 기능들이 동작하지 않고록 금지시키는 것은 알겠는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.preventExtensions()&lt;/code&gt;는 바꿔주는게 없는건가? 그렇다면 자바스크립트 엔진이 프로퍼티를 추가할 수 있는지 없는지 어떻게 알지?&lt;/p&gt;
+
+&lt;p&gt;결론부터 이야기하자면 애초에 말이 안되는 의문이었다. &lt;u&gt;프로퍼티 어트리뷰트는 각 프로퍼티에 존재하는 값들인데 객체에 프로퍼티를 추가할 경우 프로퍼티의 내부슬롯을 확인하는 것이 아니라 다른 부분(객체의 측면)에서 자바스크립트 엔진이 내부적으로 확인한다는 것이 스스로의 결론이었다.&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;기나긴 시간 동안의 구글링후에 tc39에서 해당 내용을 찾을 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/isExtensible.png&quot; alt=&quot;isExtensible&quot; /&gt;
+&lt;img src=&quot;../../imgs/isExtensible2.png&quot; alt=&quot;isExtensible&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;내부적으로 해당 함수가 arguments와 함께 호출되었을때, 타입이 Object가 아니면 false를 반환하고 Object일때 추상연산을 수행하는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[isExtensible]]&lt;/code&gt;를 호출한다&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;[[IsExtensible]] : Boolean을 return한다. 해당 객체에 추가적으로 속성을 추가할 수 있는지 확인하는 메소드&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 메서드들을 사용하는 것은 객체가 의도치않게 변경되는 것을 방지할 수 있으며, 객체에 불변성을 줌으로서 안전하도록 만든다. 하지만 이런 메소드들에도 한계가 존재하는데 얕은 복사처럼 한단계에만 적용이 된다는 것이다. 따라서 중첩 객체의 경우 재귀적으로 내부의 중첩객체들에 적용을 해주어야 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;마지막으로 객체의 변경을 방지하는 메서드들이 어떤 상태로 변경되는지 표로 정리하자면 다음과 같다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;구분&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;메서드&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;프로퍼티 추가&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;프로퍼티 삭제&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;프로퍼티 값 읽기&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;프로퍼티 값 쓰기&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;프로퍼티 어트리뷰트 재정의&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;객체 확장 금지&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.preventExtensions&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;o&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;o&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;o&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;o&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;객체 밀봉&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.seal&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;o&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;o&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;객체 동결&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.freeze&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;o&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">Object.preventExtensions(), Object.seal(), Object.freeze()</summary></entry><entry><title type="html">유사배열객체</title><link href="http://localhost:4502/other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/" rel="alternate" type="text/html" title="유사배열객체" /><published>2021-11-28T00:00:00+09:00</published><updated>2021-11-28T00:00:00+09:00</updated><id>http://localhost:4502/other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4</id><content type="html" xml:base="http://localhost:4502/other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/">&lt;p&gt;&lt;del&gt;강사님의 수업을 듣다가 유사객체라는 말씀을 하셨는데 유사객체에는 무엇이 있고 어떻게 사용될 수 있는지 궁금해졌다. 오늘은 유사객체에 대해서 공부를 해보려고 한다.&lt;/del&gt;&lt;/p&gt;
 
 &lt;p&gt;유사객체는 유사배열, 유사객체, 유사배열객체 등 다양한 이름으로 불리워진다.(이하 내용에서는 유사배열객체라고 설명하려고 한다!)&lt;/p&gt;
 
@@ -111,7 +347,7 @@
 &lt;p&gt;유사배열이 되기 위해서는 몇가지 조건이 있는데 다음과 같다.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;length&lt;/strong&gt;가 반드시 존재해야 한다&lt;/li&gt;
+  &lt;li&gt;length가 반드시 존재해야 한다&lt;/li&gt;
   &lt;li&gt;index가 0부터 시작해서 1씩 증가해야 한다.&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -159,8 +395,11 @@ E
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;TypeError: str.map is not a function
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;또한 DOM에서 HTMLCollection과 NodeList를 찾아서 출력해보았다.
-&lt;img src=&quot;../../imgs/HTMLCollection.png&quot; alt=&quot;HTMLCollection&quot; /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;또한 DOM에서 HTMLCollection과 NodeList를 찾아서 출력해보았다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/HTMLCollection.png&quot; alt=&quot;HTMLCollection&quot; /&gt;
 &lt;img src=&quot;../../imgs/HTMLCollection.png&quot; alt=&quot;NodeList&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;HTMLCollection와 NodeList를 봤을때 배열처럼 느껴지지만 배열인지 확인하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Array.isArray&lt;/code&gt;를 사용해서 확인해보면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;가 출력된다.&lt;/p&gt;
@@ -177,7 +416,7 @@ E
 
 &lt;p&gt;이처럼 유사배열객체에 사용가능한 배열의 메서드들이 있지만 사용할 수 없는 메서드들도 존재하고 유사배열객체는 배열이 아니기 때문에 주의할 필요가 있다고 생각한다.&lt;/p&gt;
 
-&lt;p&gt;유사배열객체를 겪는 일이 생각보다 많을거라고 예상하는데 유사배열객체를 보고 배열인지 헷갈린다면 꼭 디버그해보고(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Array.isArray()&lt;/code&gt; 사용!) 확실하게 판달할 필요가 있어보인다.&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">배열과 유사배열객체, 유사배열, 유사객체</summary></entry><entry><title type="html">BigInt</title><link href="https://jjongbin.github.io/blog//other/bigint/" rel="alternate" type="text/html" title="BigInt" /><published>2021-11-24T00:00:00+09:00</published><updated>2021-11-24T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/bigint</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/bigint/">&lt;p&gt;풀었던 백준문제: &lt;a href=&quot;https://www.acmicpc.net/problem/13305&quot;&gt;백준 13305&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;유사배열객체를 겪는 일이 생각보다 많을거라고 예상하는데 유사배열객체를 보고 배열인지 헷갈린다면 꼭 디버그해보고(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Array.isArray()&lt;/code&gt; 사용!) 확실하게 판단할 필요가 있어보인다.&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">배열과 유사배열객체, 유사배열, 유사객체</summary></entry><entry><title type="html">BigInt</title><link href="http://localhost:4502/other/bigint/" rel="alternate" type="text/html" title="BigInt" /><published>2021-11-24T00:00:00+09:00</published><updated>2021-11-24T00:00:00+09:00</updated><id>http://localhost:4502/other/bigint</id><content type="html" xml:base="http://localhost:4502/other/bigint/">&lt;p&gt;풀었던 백준문제: &lt;a href=&quot;https://www.acmicpc.net/problem/13305&quot;&gt;백준 13305&lt;/a&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice&quot;&gt;&lt;del&gt;이전에 백준에서 문제를 풀면서 BigInt를 사용하게 된 경험이 있는데 최근 강의를 수강하면서 BigInt가 ECMA에 비교적 최근에 추가된 내용이기 때문에 궁금해서 조사를 해봤다.&lt;/del&gt;&lt;/p&gt;
 
@@ -245,7 +484,7 @@ E
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1n === 1&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1n == 1&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ture&lt;/code&gt; → 타입은 다르지만 같은 타입인 경우 같은 값!&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typeof 10n&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BigInt&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">자바스크립트의 BigInt</summary></entry><entry><title type="html">ASCII, 유니코드</title><link href="https://jjongbin.github.io/blog//cs/ascii_unicode/" rel="alternate" type="text/html" title="ASCII, 유니코드" /><published>2021-11-23T00:00:00+09:00</published><updated>2021-11-23T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//cs/ascii_unicode</id><content type="html" xml:base="https://jjongbin.github.io/blog//cs/ascii_unicode/">&lt;p&gt;컴퓨터는 사람들이 말하는 a, b, c같은 문자를 그대로 이해할 수 없다. 따라서 컴퓨터에게 ~는 a이다 라고 알려줘야 하는데 이때 컴퓨터마다 표현방법이 다르다면 혼란이 있을 수 있다. 따라서 이를 국제적으로 표준화했다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">자바스크립트의 BigInt</summary></entry><entry><title type="html">ASCII, 유니코드</title><link href="http://localhost:4502/cs/ascii_unicode/" rel="alternate" type="text/html" title="ASCII, 유니코드" /><published>2021-11-23T00:00:00+09:00</published><updated>2021-11-23T00:00:00+09:00</updated><id>http://localhost:4502/cs/ascii_unicode</id><content type="html" xml:base="http://localhost:4502/cs/ascii_unicode/">&lt;p&gt;컴퓨터는 사람들이 말하는 a, b, c같은 문자를 그대로 이해할 수 없다. 따라서 컴퓨터에게 ~는 a이다 라고 알려줘야 하는데 이때 컴퓨터마다 표현방법이 다르다면 혼란이 있을 수 있다. 따라서 이를 국제적으로 표준화했다.&lt;/p&gt;
 
 &lt;h1 id=&quot;아스키코드ascii&quot;&gt;아스키코드(ASCII)&lt;/h1&gt;
 
@@ -276,7 +515,7 @@ E
 
 &lt;p&gt;유니코드는 전 세계의 모든 문자를 컴퓨터에서 일관되게 표현하고 다룰 수 있도록 설계된 산업 표준이며, 유니코드 협회(Unicode Consortium)가 제정한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://unicode-table.com/kr/#basic-latin&quot;&gt;유니코드 백과사전&lt;/a&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CS" /><category term="CS" /><summary type="html">아스키코드와 유니코드</summary></entry><entry><title type="html">웹 접근성</title><link href="https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/" rel="alternate" type="text/html" title="웹 접근성" /><published>2021-10-31T00:00:00+09:00</published><updated>2021-10-31T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1</id><content type="html" xml:base="https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/">&lt;h1 id=&quot;wcag&quot;&gt;WCAG&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://unicode-table.com/kr/#basic-latin&quot;&gt;유니코드 백과사전&lt;/a&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CS" /><category term="CS" /><summary type="html">아스키코드와 유니코드</summary></entry><entry><title type="html">웹 접근성</title><link href="http://localhost:4502/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/" rel="alternate" type="text/html" title="웹 접근성" /><published>2021-10-31T00:00:00+09:00</published><updated>2021-10-31T00:00:00+09:00</updated><id>http://localhost:4502/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1</id><content type="html" xml:base="http://localhost:4502/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/">&lt;h1 id=&quot;wcag&quot;&gt;WCAG&lt;/h1&gt;
 
 &lt;p&gt;WCAG는 Web Content Accessibility Guideline의 약자로 웹사이트 또는 애플리케이션에서 충족해야 하는 기준을 정의해 장애, 비장애의 사용자가 보다 쉽게 이용할 수 있도록 준수해야 하는 지침이다&lt;/p&gt;
 
@@ -326,7 +565,7 @@ E
       &lt;li&gt;속성이 중복되거나, id가 중복되지 않도록 한다&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="ETC" /><category term="ETC" /><summary type="html">WCAG 웹 접근성 지침 요약</summary></entry><entry><title type="html">float</title><link href="https://jjongbin.github.io/blog//css/float/" rel="alternate" type="text/html" title="float" /><published>2021-10-26T00:00:00+09:00</published><updated>2021-10-26T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//css/float</id><content type="html" xml:base="https://jjongbin.github.io/blog//css/float/">&lt;h1 id=&quot;float&quot;&gt;float&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="ETC" /><category term="ETC" /><summary type="html">WCAG 웹 접근성 지침 요약</summary></entry><entry><title type="html">float</title><link href="http://localhost:4502/css/float/" rel="alternate" type="text/html" title="float" /><published>2021-10-26T00:00:00+09:00</published><updated>2021-10-26T00:00:00+09:00</updated><id>http://localhost:4502/css/float</id><content type="html" xml:base="http://localhost:4502/css/float/">&lt;h1 id=&quot;float&quot;&gt;float&lt;/h1&gt;
 &lt;p&gt;float는 일반적은 요소들의 흐름에서 벗어나 “둥” 떠있는 것처럼 동작을 한다&lt;/p&gt;
 
 &lt;p&gt;MDN의 float에 대한 설명을 참조하자면 다음과 같다&lt;/p&gt;
@@ -436,7 +675,7 @@ CSS 속성(property) float은 한 요소(element)가 보통 흐름(normal flow)�
 &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CSS" /><category term="CSS" /><summary type="html">자식요소의 float를 해제하기</summary></entry><entry><title type="html">Main Menu</title><link href="https://jjongbin.github.io/blog//html/main_menu/" rel="alternate" type="text/html" title="Main Menu" /><published>2021-10-25T00:00:00+09:00</published><updated>2021-10-25T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//html/main_menu</id><content type="html" xml:base="https://jjongbin.github.io/blog//html/main_menu/">&lt;blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CSS" /><category term="CSS" /><summary type="html">자식요소의 float를 해제하기</summary></entry><entry><title type="html">Main Menu</title><link href="http://localhost:4502/html/main_menu/" rel="alternate" type="text/html" title="Main Menu" /><published>2021-10-25T00:00:00+09:00</published><updated>2021-10-25T00:00:00+09:00</updated><id>http://localhost:4502/html/main_menu</id><content type="html" xml:base="http://localhost:4502/html/main_menu/">&lt;blockquote&gt;
   &lt;p&gt;웹 접근성 측면에서의 메뉴!&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -549,7 +788,7 @@ CSS 속성(property) float은 한 요소(element)가 보통 흐름(normal flow)�
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria-label&lt;/code&gt;: 레이블로 사용할 문자열을 지정할 수 있다 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria-label&lt;/code&gt;이 해당 요소의 텍스트보다 우선시됨)&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria-labelledby&lt;/code&gt;: 자신을 참조하는 요소를 가르킨다&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria-describedby&lt;/code&gt;: 기능을 설명하는 요소를 가르킨다(자신을 설명하는 lable을 가르킨다)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="HTML" /><category term="HTML" /><summary type="html">메인메뉴의 구성과 웹 접근성</summary></entry><entry><title type="html">[Algorithm] Dijkstra</title><link href="https://jjongbin.github.io/blog//algorithm/Dijkstra/" rel="alternate" type="text/html" title="[Algorithm] Dijkstra" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-23T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//algorithm/Dijkstra</id><content type="html" xml:base="https://jjongbin.github.io/blog//algorithm/Dijkstra/">&lt;h1 id=&quot;️-다익스트라dijkstra-algorithm&quot;&gt;▶️ 다익스트라(Dijkstra Algorithm)&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="HTML" /><category term="HTML" /><summary type="html">메인메뉴의 구성과 웹 접근성</summary></entry><entry><title type="html">[Algorithm] Dijkstra</title><link href="http://localhost:4502/algorithm/Dijkstra/" rel="alternate" type="text/html" title="[Algorithm] Dijkstra" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-23T00:00:00+09:00</updated><id>http://localhost:4502/algorithm/Dijkstra</id><content type="html" xml:base="http://localhost:4502/algorithm/Dijkstra/">&lt;h1 id=&quot;️-다익스트라dijkstra-algorithm&quot;&gt;▶️ 다익스트라(Dijkstra Algorithm)&lt;/h1&gt;
 
 &lt;p&gt;다익스트라 알고리즘은 DP(Dynamic Programming)을 활용해서 최단거리를 계산할 수 있는 알고리즘이다&lt;/p&gt;
 
@@ -933,7 +1172,7 @@ A, B 모두 귀가 완료까지 예상되는 최저 택시요금은 34 + 2 + 46 
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;삼중 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문과 이차원 배열(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy[i][j]&lt;/code&gt; = i에서 j로 가는 최단거리)을 이용해서 최단거리를 구해준다&lt;/strong&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">다익스트라 알고리즘</summary></entry><entry><title type="html">[Algorithm] Knapsack</title><link href="https://jjongbin.github.io/blog//algorithm/Knapsack/" rel="alternate" type="text/html" title="[Algorithm] Knapsack" /><published>2021-10-20T00:00:00+09:00</published><updated>2021-10-20T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//algorithm/Knapsack</id><content type="html" xml:base="https://jjongbin.github.io/blog//algorithm/Knapsack/">&lt;h1 id=&quot;️-냅색-알고리즘-knapsack&quot;&gt;▶️ 냅색 알고리즘 (Knapsack)&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;삼중 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문과 이차원 배열(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy[i][j]&lt;/code&gt; = i에서 j로 가는 최단거리)을 이용해서 최단거리를 구해준다&lt;/strong&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">다익스트라 알고리즘</summary></entry><entry><title type="html">[Algorithm] Knapsack</title><link href="http://localhost:4502/algorithm/Knapsack/" rel="alternate" type="text/html" title="[Algorithm] Knapsack" /><published>2021-10-20T00:00:00+09:00</published><updated>2021-10-20T00:00:00+09:00</updated><id>http://localhost:4502/algorithm/Knapsack</id><content type="html" xml:base="http://localhost:4502/algorithm/Knapsack/">&lt;h1 id=&quot;️-냅색-알고리즘-knapsack&quot;&gt;▶️ 냅색 알고리즘 (Knapsack)&lt;/h1&gt;
 
 &lt;p&gt;냅색 알고리즘은 동적 프로그래밍(Dynamic Programming)의 일종으로 여러개의 항목이 있을때 조건에 맞는 조합을 구하는 문제이다&lt;/p&gt;
 
@@ -985,7 +1224,7 @@ A, B 모두 귀가 완료까지 예상되는 최저 택시요금은 34 + 2 + 46 
   &lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy[j]&lt;/code&gt;는 현재의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy[j]&lt;/code&gt;와 &lt;u&gt;현재 무게에서 외부의 for문에서 선택된 물건의 무게를 빼준 항목에 현재 선택된 물건의 가치를 더해준 것&lt;/u&gt;과 비교해서 더 가치가 큰 값을 선택한다&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문이 정상적으로 완료되면 계산할 수 있는 dy들이 모두 채워지고, 이때 가장 큰 값이 가방에 담을 수 있는 가장 큰 가치가 된다!&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">냅색 알고리즘</summary></entry><entry><title type="html">[Algorithm] Dynamic Programming</title><link href="https://jjongbin.github.io/blog//algorithm/DP/" rel="alternate" type="text/html" title="[Algorithm] Dynamic Programming" /><published>2021-10-19T00:00:00+09:00</published><updated>2021-10-19T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//algorithm/DP</id><content type="html" xml:base="https://jjongbin.github.io/blog//algorithm/DP/">&lt;h1 id=&quot;️-동적프로그래밍-dynamic-programming&quot;&gt;▶️ 동적프로그래밍 (Dynamic Programming)&lt;/h1&gt;
+&lt;/ol&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">냅색 알고리즘</summary></entry><entry><title type="html">[Algorithm] Dynamic Programming</title><link href="http://localhost:4502/algorithm/DP/" rel="alternate" type="text/html" title="[Algorithm] Dynamic Programming" /><published>2021-10-19T00:00:00+09:00</published><updated>2021-10-19T00:00:00+09:00</updated><id>http://localhost:4502/algorithm/DP</id><content type="html" xml:base="http://localhost:4502/algorithm/DP/">&lt;h1 id=&quot;️-동적프로그래밍-dynamic-programming&quot;&gt;▶️ 동적프로그래밍 (Dynamic Programming)&lt;/h1&gt;
 
 &lt;p&gt;동적 프로그래밍이란, 하나의 문제를 잘게 쪼개며 푸는 방식이다&lt;/p&gt;
 
@@ -1038,94 +1277,4 @@ A, B 모두 귀가 완료까지 예상되는 최저 택시요금은 34 + 2 + 46 
   &lt;li&gt;초기 계산에 이용할 (0, 1, 2)의 값(idex기준)을 계산해서 넣어준다&lt;/li&gt;
   &lt;li&gt;계단을 오르는 규칙으로 &lt;strong&gt;3개전의 블록합, 전블록, 현재블록의 점수&lt;/strong&gt; / &lt;strong&gt;2개전의 블록합, 현재블록의 점수&lt;/strong&gt; 중 큰 값을 구해야 하기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Math.max&lt;/code&gt;를 사용한다&lt;/li&gt;
   &lt;li&gt;마지막 계단의 점수를 출력해주면 된다(dy의 마지막 요소)&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">동적 프로그래밍</summary></entry><entry><title type="html">[Algorithm] Binary Search</title><link href="https://jjongbin.github.io/blog//algorithm/Binary_Search/" rel="alternate" type="text/html" title="[Algorithm] Binary Search" /><published>2021-10-18T00:00:00+09:00</published><updated>2021-10-18T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//algorithm/Binary_Search</id><content type="html" xml:base="https://jjongbin.github.io/blog//algorithm/Binary_Search/">&lt;h1 id=&quot;이분-탐색-binary-search&quot;&gt;이분 탐색 (Binary Search)&lt;/h1&gt;
-
-&lt;p&gt;이분 탐색 알고리즘은 탐색해야할 대상을 절반으로 계속 나눠주기 때문에 일반적으로 전체를 탐색하는 것에 비해 O(logN)의 시간복잡도를 가진다&lt;/p&gt;
-
-&lt;p&gt;만약 [1, 2, 3, 4, 5, 6, 7, 8, 9]라는 수열이 있을때 7을 찾는다고 하면 다음과 같은 과정이 이루어진다&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;이분 탐색 알고리즘은 기본적으로 정렬이 되어야 한다&lt;/p&gt;
-  &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// 오름차순&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../imgs/binary_search1.png&quot; alt=&quot;Binary Search&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;가운데 인덱스(값으로 5)를 기준으로 찾으려고 하는 대상과 비교한다&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;현재 수열은 오름차순이고, 타겟값인 7보다 작기 때문에 가운데를 기준으로 오른쪽만을 사용한다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../imgs/binary_search2.png&quot; alt=&quot;Binary Search&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;[6, 7, 8, 9]의 수열중에서 가운데 값인 7 또는 8을 이용해서 확인한다(위 사진은 8일 이용하므로 타겟보다 가운데 값이 더 크기 때문에 왼쪽의 배열을 사용한다)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../imgs/binary_search3.png&quot; alt=&quot;Binary Search&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이후 7을 찾을 수 있다&lt;/p&gt;
-
-&lt;p&gt;기본적으로 완전 탐색을 하게 된다면 7번째에 위치하므로 확인하는 과정이 7번 진행되었을 것이다. 하지만 이분탐색 알고리즘을 이용해서 3~4번 내에 찾을 수 있다&lt;/p&gt;
-
-&lt;p&gt;이는 데이터가 많을 수록 더 효율적으로 작동할 수 있다&lt;/p&gt;
-
-&lt;h2 id=&quot;-이분-탐색-문제&quot;&gt;▷ 이분 탐색 문제&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1654&quot;&gt;백준 1654 - 랜선자르기&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../imgs/beakjoon1654.png&quot; alt=&quot;백준 랜선자르기 문제&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;배열로 주어진 랜선을 자르는데 원하는 개수로 자를 수 있는 최대 길이를 반환해주면 된다&lt;br /&gt;
- [802, 743, 457, 539]&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3&gt;- 풀이&lt;/h3&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filePath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;platform&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;linux&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/dev/stdin&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./3_1654.txt&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readFileSync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;mid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  
-  &lt;span class=&quot;c1&quot;&gt;// 자른 개수가 몇개인지 계산&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;cnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;cnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reduce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;curr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;curr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;prev&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;// 만약 자른 개수가 더 많으면 자르는 크기를 늘리고, 더 적으면 자르는 크기를 줄인다&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이 문제를 풀기 위해서는 먼저 두개의 변수를 선언해줘야한다 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;left&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;right&lt;/code&gt;)&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;left&lt;/code&gt;: 자를 크기의 가능한 가장 작은 크기 (1)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;right&lt;/code&gt;: 자를 크기의 가능한 가장 큰 크기 (802)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while&lt;/code&gt;문을 돌면서 left와 right의 중간값을 찾아서(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;parseInt((left+right)/2)&lt;/code&gt;) 비교한다&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while&lt;/code&gt;문은 left가 right보다 클때까지 계속한다 (left는 증가, right는 감소하므로 어느 한점에서 만난다!)&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while&lt;/code&gt;문 내에서는 잘라서 만들어진 개수를 기준으로 비교하고 &lt;u&gt;만약 개수가 더 많으면 자르는 크기를 늘리고, 개수가 적으면 크기를 줄인다&lt;/u&gt;&lt;/p&gt;
-
-&lt;p&gt;만약 자른 개수가 큰 경우에는 우선 이후 출력할 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;answer&lt;/code&gt;에 할당하므로 계속해서 더 좋은 조건으로 갱신이 된다(최대 크기이므로 해당 else 코드블럭은 left의 증가로 자르는 크기의 증가)&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">이분 탐색 알고리즘</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">동적 프로그래밍</summary></entry></feed>

@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>instanceof | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="typeof와 instanceof">
+<!-- begin _includes/seo.html --><title>자바스크립트 객체의 변경방지 - 불변성 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="Object.preventExtensions(), Object.seal(), Object.freeze()">
 
 
   <meta name="author" content="원종빈">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="instanceof">
-<meta property="og:url" content="http://localhost:4502/method/instanceof/">
+<meta property="og:title" content="자바스크립트 객체의 변경방지 - 불변성">
+<meta property="og:url" content="http://localhost:4502/other/property_attribute/">
 
 
-  <meta property="og:description" content="typeof와 instanceof">
-
-
-
+  <meta property="og:description" content="Object.preventExtensions(), Object.seal(), Object.freeze()">
 
 
 
 
-  <meta property="article:published_time" content="2021-08-30T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-08-30T00:00:00+09:00">
+  <meta property="article:published_time" content="2021-12-07T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2021-12-07T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4502/method/instanceof/">
+
+<link rel="canonical" href="http://localhost:4502/other/property_attribute/">
 
 
 
@@ -583,214 +583,19 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="instanceof">
-    <meta itemprop="description" content="typeof와 instanceof">
-    <meta itemprop="datePublished" content="2021-08-30T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-08-30T00:00:00+09:00">
+    <meta itemprop="headline" content="자바스크립트 객체의 변경방지 - 불변성">
+    <meta itemprop="description" content="Object.preventExtensions(), Object.seal(), Object.freeze()">
+    <meta itemprop="datePublished" content="2021-12-07T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-12-07T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4502/method/instanceof/" class="u-url" itemprop="url">instanceof
+            <a href="http://localhost:4502/other/property_attribute/" class="u-url" itemprop="url">자바스크립트 객체의 변경방지 - 불변성
 </a>
           </h1>
           
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-        </header>
-      
-
-      <section class="page__content e-content" itemprop="text">
-        
-          <aside class="sidebar__right sticky">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#instanceof">instanceof</a></li><li><a href="#mdn문서를-확인해보았을때-정확하게-말하자면-다음과-같다">MDN문서를 확인해보았을때 정확하게 말하자면 다음과 같다.</a></li></ul>
-
-            </nav>
-          </aside>
-        
-        <p>개인 프로젝트(car_management)를 진행하면서 웹페이지에서 check박스를 클릭해 db의 값을 수정하는 것이 목표였다. 프론트에서 데이터를 넘겨줬을때 백에서 request.body에 checkbox에서 지정한 name으로 값이 넘어오는 것을 알게 되었다. <br />
-<br />
-<u>문제는 여러개를 선택했을때는 배열값으로 넘어오고 한개를 선택했을때는 문자열값으로 데이터가 전달된다는 것이었다.</u> <br />
-<br />
-update를 진행하려면 mongose를 이용해 id값을 입력하고 update하려는 값을 인자로 전달해주어야했기 때문에 어떻게 해야 수정하려는 값이 한개일 때 혹은 여러개일 때 어떻게 처리할지 고민하였다.</p>
-
-<p>처음 생각한 방법은 다음과 같다.</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전달된 값의 타입이 object일때</span>
-<span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">target</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">object</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// target의 길이만큼 반복</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">target</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>   
-        <span class="c1">// DB update</span>
-    <span class="p">}</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="c1">// DB update</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>하지만 <code class="language-plaintext highlighter-rouge">if(typeof target === "object")</code> 이 부분이 작동하지 않았었다. <strong>하지만 해당 글을 기록하면서 테스트를 해보다가 되는걸 알게되고 다시 <code class="language-plaintext highlighter-rouge">typeof</code>를 적용해보니 아주 잘 정상 작동한다…!</strong></p>
-
-<p>어쨌든…! <code class="language-plaintext highlighter-rouge">instanceof</code>의 결과를 보자면 제대로 작동했고 다음과 같다.</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">target</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// DB update</span>
-    <span class="p">};</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="c1">// DB update</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p><br /></p>
-
-<h2 id="instanceof">instanceof</h2>
-<p>instanceof는 <code class="language-plaintext highlighter-rouge">true</code>, <code class="language-plaintext highlighter-rouge">false</code>값을 반환 받을 수 있다.</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{}</span>
-
-<span class="c1">// typeof</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">obj</span><span class="p">)</span>     <span class="c1">// object</span>
-
-<span class="c1">// instanceof</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">)</span>      <span class="c1">// true</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">)</span>      <span class="c1">// false</span>
-</code></pre></div></div>
-
-<h2 id="mdn문서를-확인해보았을때-정확하게-말하자면-다음과-같다">MDN문서를 확인해보았을때 정확하게 말하자면 다음과 같다.</h2>
-
-<blockquote>
-  <p><code class="language-plaintext highlighter-rouge">instanceof</code> 연산자는 생성자의 <code class="language-plaintext highlighter-rouge">prototype</code> 속성이 객체의 프로토타입 체인 어딘가 존재하는지 판별합니다.</p>
-</blockquote>
-
-<p><u>또한 `instanof`는 생성자의 프로퍼티를 확인하는 것이기 때문에 내가 정의한 생성자함수로도 확인이 가능하다!</u></p>
-
-<p><br /></p>
-
-<p>typeof의 문제점은 이런점이 있다.</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="p">{})</span>     <span class="c1">// object</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="p">[])</span>     <span class="c1">// object</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">null</span><span class="p">)</span>     <span class="c1">// object</span>
-</code></pre></div></div>
-
-<p>객체와 배열, <code class="language-plaintext highlighter-rouge">null</code>값이 모두 <code class="language-plaintext highlighter-rouge">object</code>로 반환된다는 점이다. 이럴때 instanceof를 사용하면 좋을 것 같다!</p>
-
-<p><del>조금 허무하지만 instanceof라는 메소드를 알게되서 다행이라고 생각해야겠다..</del></p>
-
-        
-      </section>
-
-      <footer class="page__meta">
-        
-        
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a><span class="sep">, </span>
-    
-      <a href="/tags/#method" class="page__taxonomy-item p-category" rel="tag">Method</a>
-    
-    </span>
-  </p>
-
-
-
-
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/categories/#method" class="page__taxonomy-item p-category" rel="tag">Method</a>
-    
-    </span>
-  </p>
-
-
-        
-
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-08-30">August 30, 2021</time></p>
-
-      </footer>
-
-      <section class="page__share">
-  
-    <h4 class="page__share-title">공유하기</h4>
-  
-
-  <a href="https://twitter.com/intent/tweet?text=instanceof%20http%3A%2F%2Flocalhost%3A4502%2Fmethod%2Finstanceof%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
-
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fmethod%2Finstanceof%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
-
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fmethod%2Finstanceof%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
-</section>
-
-
-      
-  <nav class="pagination">
-    
-      <a href="/deepdive/deepDive12-2/" class="pagination--pager" title="[Deep Dive] 12장 함수(2)
-">이전</a>
-    
-    
-      <a href="/deepdive/deepDive13/" class="pagination--pager" title="[Deep Dive] 13장 스코프
-">다음</a>
-    
-  </nav>
-
-    </div>
-
-    
-  </article>
-
-  
-  
-    <div class="page__related">
-      <h2 class="page__related-title">참고</h2>
-      <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/other/property_attribute/" rel="permalink">자바스크립트 객체의 변경방지 - 불변성
-</a>
-      
-    </h2>
-    
 
   <p class="page__meta">
     
@@ -811,11 +616,337 @@ update를 진행하려면 mongose를 이용해 id값을 입력하고 update하�
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Object.preventExtensions(), Object.seal(), Object.freeze()
-</p>
-  </article>
-</div>
+        </header>
+      
 
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#프로퍼티-어트리뷰트">프로퍼티 어트리뷰트</a><ul><li><a href="#내부-슬롯과-내부-메서드">내부 슬롯과 내부 메서드</a></li><li><a href="#데이터-프로퍼티와-접근자-프로퍼티">데이터 프로퍼티와 접근자 프로퍼티</a><ul><li><a href="#데이터-프로퍼티의-어트리뷰트">데이터 프로퍼티의 어트리뷰트</a></li><li><a href="#접근자-프로퍼티의-어트리뷰트">접근자 프로퍼티의 어트리뷰트</a></li></ul></li><li><a href="#객체-확장-금지">객체 확장 금지</a></li><li><a href="#객체-밀봉">객체 밀봉</a></li><li><a href="#객체-동결">객체 동결</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>만약 변하지 않아야 하는 값들이 의도처럼 수정되지 않아야 하지만 수정된다면 의도와 다른 결과가 출력되거나 에러를 일으킬 가능성이 크다.</p>
+
+<p>이때 값들이 변하지 않는 것을 불변하다고 한다 즉 변하지 않는 특성을 불변성이라고 한다.</p>
+
+<p>객체를 다루는데에도 외부의 객체를 수정하지 않도록 하거나, 변하지 않도록 하기 위해서 의도적으로 객체의 프로퍼티가 변경되지 않도록 불변성을 줄 수 있다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 객체 변경 방지</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">preventExtensions</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+
+<span class="c1">// 객체 밀봉</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">seal</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+
+<span class="c1">// 객체 동결</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">freeze</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>위 Object 함수의 정적메서드들이 대표적인 것들이다.</p>
+
+<p>해당 메서드들에 대해서 공부하다가 의문점을 가지고 질문을 드려본적이 있는데 이런 부분들에 대해서 이야기 하기전에 <strong>프로퍼티 어트리뷰트</strong>를 알아야 한다</p>
+
+<h1 id="프로퍼티-어트리뷰트">프로퍼티 어트리뷰트</h1>
+
+<p>자바스크립트 엔진은 우리가 프로퍼티를 만들때, 프로퍼티의 상태를 나타내는 프로퍼티 어트리뷰트를 기본값으로 자동 정의한다</p>
+
+<h2 id="내부-슬롯과-내부-메서드">내부 슬롯과 내부 메서드</h2>
+
+<p>내부 슬롯과 내부 메서드는 자바스크립트 엔징의 구현 알고히즘을 설명하기 위햐 ECMAScript 사양에서 사용하는 의사 프로퍼티 및 의사 메서드이다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">[[ ]]</code> 이중 대괄호를 사용해서 나타낸다.</li>
+</ul>
+
+<p>다음은 ECMAScript를 참고한 데이터 프로퍼티의 내부 슬롯이다.</p>
+
+<p><img src="../../imgs/dataProperty.png" alt="data property attribute" />
+<a href="https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-property-attributes"> 출처 - tc39</a></p>
+
+<h2 id="데이터-프로퍼티와-접근자-프로퍼티">데이터 프로퍼티와 접근자 프로퍼티</h2>
+
+<p>프로퍼티는 데이터 프로퍼티와 접근자 프로퍼티로 구분될 수 있다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>데이터 프로퍼티</strong></td>
+      <td>키와 값으로 구성된 일반적인 프로퍼티</td>
+    </tr>
+    <tr>
+      <td><strong>접근자 프로퍼티</strong></td>
+      <td>자체적으로는 값을 갖지 않고 다른 데이터 프로퍼티의 값을 읽거나 저장할때 호풀되는 접근자 함수로 구성된 프로퍼티</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="데이터-프로퍼티의-어트리뷰트">데이터 프로퍼티의 어트리뷰트</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">프로퍼티 어트리뷰트</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[[Value]]</code></td>
+      <td style="text-align: left">프로퍼티 키를 통해 프로퍼티 값에 접근하면 반환되는 값.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[[Writable]]</code></td>
+      <td style="text-align: left">프로퍼티 값의 변경 가능 여부를 나타내며 불리언 값을 가진다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[[Enumerable]]</code></td>
+      <td style="text-align: left">프로퍼티의 열거 가능 여부를 나타내며 불리언 값을 가진다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[[Configurable]]</code></td>
+      <td style="text-align: left">프로퍼티의 재정의 가능 여부를 나타내며 불리언 값을 가진다. (삭제와 프로퍼티 재정의)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="접근자-프로퍼티의-어트리뷰트">접근자 프로퍼티의 어트리뷰트</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">프로퍼티 어트리뷰트</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[[Get]]</code></td>
+      <td style="text-align: left">데이터 프로퍼티의 값을 읽을 때 호출되는 접근자 함수(getter 함수를 호출)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[[Set]]</code></td>
+      <td style="text-align: left">데이터 프로퍼티의 값을 저장할 때 호출되는 접근자 함수(setter 함수를 호출)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[[Enumerable]]</code></td>
+      <td style="text-align: left">프로퍼티의 열거 가능 여부를 나타내며 불리언 값을 가진다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[[Configurable]]</code></td>
+      <td style="text-align: left">프로퍼티의 재정의 가능 여부를 나타내며 불리언 값을 가진다. (삭제와 프로퍼티 재정의)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이런 프로퍼티 어트리뷰트를 확인하려면 <code class="language-plaintext highlighter-rouge">Object.getOwnPropertyDescriptors(obj)</code>를 이용해 각 프로퍼티의 어트리뷰트를 확인할 수 있다.</p>
+
+<p>위의 프로퍼티 어트리뷰트를 수정해서 객체를 불변하게 만들 수 있다.</p>
+
+<h2 id="객체-확장-금지">객체 확장 금지</h2>
+
+<p>객체에 새로운 프로퍼티가 추가되는 것을 방지한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 객체 확장 금지</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">preventExtensions</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>프로퍼티의 추가는</p>
+
+<ol>
+  <li>동적추가</li>
+  <li><code class="language-plaintext highlighter-rouge">Object.defineProperty</code> 메서드</li>
+</ol>
+
+<p>를 통해서 할 수 있는데 이때 이러한 동작을 불가능하게 한다.</p>
+
+<p>확장이 가능한 객체인지 확인할때는 다음과 같은 메서드를 사용한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Object</span><span class="p">.</span><span class="nx">isExtensible</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="객체-밀봉">객체 밀봉</h2>
+
+<p>프로퍼티 추가, 삭제, 재정의를 금지한다 → 읽기와 쓰기만 가능</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 객체 밀봉</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">seal</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>이때 밀봉된 객체의 프로퍼티 어트리뷰트 <strong>[[Configurable]]</strong>은 <strong>false</strong>이다.</p>
+
+<p>따라서 프로퍼티의 삭제가 불가능하고 프로퍼티 어트리뷰트를 재정의 할 수 없다.</p>
+
+<p>밀봉된 객체인지 확인할때는 다음과 같은 메서드를 사용한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Object</span><span class="p">.</span><span class="nx">isSealed</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="객체-동결">객체 동결</h2>
+
+<p>프로퍼티 추가, 삭제, 재정의, 갱신을 금지한다 → 읽기와 가능</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 객체 밀봉</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">freeze</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>이때 동결된 객체의 프로퍼티 어트리뷰트 <strong>[[writeable]]</strong>과 <strong>[[Configurable]]</strong>은 <strong>false</strong>이다. 따라서 <code class="language-plaintext highlighter-rouge">[[Value]]</code>의 값을 변경할 수 없고 프로퍼티 삭제, 프로퍼티 어트리뷰트의 재정의가 불가능하다.</p>
+
+<p>동결된 객체인지 확인할때는 다음과 같은 메서드를 사용한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Object</span><span class="p">.</span><span class="nx">isfrozen</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p><u>이때 내가 떠오른 의문점은 바로 다음과 같았다.</u></p>
+
+<p class="notice">아니?! 왜 <code class="language-plaintext highlighter-rouge">Object.seal()</code>, <code class="language-plaintext highlighter-rouge">Object.freeze()</code>들은 프로퍼티 어트리뷰트의 값을 변경해서 명시적으로 각 기능들이 동작하지 않고록 금지시키는 것은 알겠는데 <code class="language-plaintext highlighter-rouge">Object.preventExtensions()</code>는 바꿔주는게 없는건가? 그렇다면 자바스크립트 엔진이 프로퍼티를 추가할 수 있는지 없는지 어떻게 알지?</p>
+
+<p>결론부터 이야기하자면 애초에 말이 안되는 의문이었다. <u>프로퍼티 어트리뷰트는 각 프로퍼티에 존재하는 값들인데 객체에 프로퍼티를 추가할 경우 프로퍼티의 내부슬롯을 확인하는 것이 아니라 다른 부분(객체의 측면)에서 자바스크립트 엔진이 내부적으로 확인한다는 것이 스스로의 결론이었다.</u></p>
+
+<p>기나긴 시간 동안의 구글링후에 tc39에서 해당 내용을 찾을 수 있었다.</p>
+
+<p><img src="../../imgs/isExtensible.png" alt="isExtensible" />
+<img src="../../imgs/isExtensible2.png" alt="isExtensible" /></p>
+
+<p>내부적으로 해당 함수가 arguments와 함께 호출되었을때, 타입이 Object가 아니면 false를 반환하고 Object일때 추상연산을 수행하는데 <code class="language-plaintext highlighter-rouge">[[isExtensible]]</code>를 호출한다</p>
+
+<p class="notice">[[IsExtensible]] : Boolean을 return한다. 해당 객체에 추가적으로 속성을 추가할 수 있는지 확인하는 메소드</p>
+
+<p><br /></p>
+
+<p>위의 메서드들을 사용하는 것은 객체가 의도치않게 변경되는 것을 방지할 수 있으며, 객체에 불변성을 줌으로서 안전하도록 만든다. 하지만 이런 메소드들에도 한계가 존재하는데 얕은 복사처럼 한단계에만 적용이 된다는 것이다. 따라서 중첩 객체의 경우 재귀적으로 내부의 중첩객체들에 적용을 해주어야 한다.</p>
+
+<p><br /></p>
+
+<p>마지막으로 객체의 변경을 방지하는 메서드들이 어떤 상태로 변경되는지 표로 정리하자면 다음과 같다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">구분</th>
+      <th style="text-align: left">메서드</th>
+      <th style="text-align: center">프로퍼티 추가</th>
+      <th style="text-align: center">프로퍼티 삭제</th>
+      <th style="text-align: center">프로퍼티 값 읽기</th>
+      <th style="text-align: center">프로퍼티 값 쓰기</th>
+      <th style="text-align: center">프로퍼티 어트리뷰트 재정의</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">객체 확장 금지</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Object.preventExtensions</code></td>
+      <td style="text-align: center">x</td>
+      <td style="text-align: center">o</td>
+      <td style="text-align: center">o</td>
+      <td style="text-align: center">o</td>
+      <td style="text-align: center">o</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">객체 밀봉</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Object.seal</code></td>
+      <td style="text-align: center">x</td>
+      <td style="text-align: center">x</td>
+      <td style="text-align: center">o</td>
+      <td style="text-align: center">o</td>
+      <td style="text-align: center">x</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">객체 동결</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Object.freeze</code></td>
+      <td style="text-align: center">x</td>
+      <td style="text-align: center">x</td>
+      <td style="text-align: center">o</td>
+      <td style="text-align: center">x</td>
+      <td style="text-align: center">x</td>
+    </tr>
+  </tbody>
+</table>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a><span class="sep">, </span>
+    
+      <a href="/tags/#other" class="page__taxonomy-item p-category" rel="tag">Other</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#other" class="page__taxonomy-item p-category" rel="tag">Other</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-12-07">December 7, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8+%EA%B0%9D%EC%B2%B4%EC%9D%98+%EB%B3%80%EA%B2%BD%EB%B0%A9%EC%A7%80+-+%EB%B6%88%EB%B3%80%EC%84%B1%20http%3A%2F%2Flocalhost%3A4502%2Fother%2Fproperty_attribute%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fother%2Fproperty_attribute%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fother%2Fproperty_attribute%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/" class="pagination--pager" title="유사배열객체
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
         
           
 
@@ -932,6 +1063,46 @@ update를 진행하려면 mongose를 이용해 id값을 입력하고 update하�
 
 
     <p class="archive__item-excerpt" itemprop="description">아스키코드와 유니코드
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/" rel="permalink">웹 접근성
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">WCAG 웹 접근성 지침 요약
 </p>
   </article>
 </div>
