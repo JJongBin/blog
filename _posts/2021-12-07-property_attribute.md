@@ -152,7 +152,7 @@ Object.isfrozen(obj);
 ![isExtensible](../../imgs/isExtensible.png)
 ![isExtensible](../../imgs/isExtensible2.png)
 
-내부적으로 해당 함수가 arguments와 함께 호출되었을때, 타입이 Object가 아니면 false를 반환하고 Object일때 추상연산을 수행하는데 `[[isExtensible]]`를 호출한다
+내부적으로 `Object.isExtensible(obj)` 함수가 매개변수와 함께 호출되었을때, 타입이 Object가 아니면 false를 반환하고 Object일때 추상연산을 수행하는데 **해당 객체의 내부 메서드 `[[isExtensible]]`를 호출**한다
 
 [[IsExtensible]] : Boolean을 return한다. 해당 객체에 추가적으로 속성을 추가할 수 있는지 확인하는 메소드
 {: .notice}
