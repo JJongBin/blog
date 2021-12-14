@@ -1,0 +1,1105 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>실행컨텍스트 | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="피보나치 수열 구현의 실행 컨텍스트!">
+
+
+  <meta name="author" content="원종빈">
+  
+  <meta property="article:author" content="원종빈">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
+<meta property="og:title" content="실행컨텍스트">
+<meta property="og:url" content="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/">
+
+
+  <meta property="og:description" content="피보나치 수열 구현의 실행 컨텍스트!">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-12-14T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2021-12-14T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "원종빈",
+      "url": "http://localhost:4502/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="공부하는 종빈🧑🏻‍💻 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="icon" href="/assets/images/study.ico" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          공부하는 종빈🧑🏻‍💻
+          <span class="site-subtitle">오늘도 공부하자!</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4502/">
+        <img src="/assets/images/jb_logo4.png" alt="원종빈" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4502/" itemprop="url">원종빈</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준히 공부하는 사람이 되겠습니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://jjongbin.github.io/JB_Space2/" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/JJongBin" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:gghkdu2@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="gghkdu2@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">이메일</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+
+  
+  <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+<br>
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li class="nav__all-posts">
+            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">59</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+
+      <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">javascript</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/DeepDive" class="">DeepDive (16)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Method" class="">Method (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Other" class="">Other (4)</a></li>
+                    
+                
+            </ul>
+     
+        <span class="nav__sub-title">html</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/HTML" class="">HTML (7)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">css</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/CSS" class="">CSS (12)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">algorithm</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Algorithm" class="">Algorithm (13)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        <span class="nav__sub-title">git</span>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Git" class="">Git (2)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+
+        <span class="nav__sub-title">etc</span>
+            <ul>
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/Blog" class="">Blog (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/vim" class="">vim (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        <li class="nav__items-one"><a href="/blog/categories/CS" class="">CS (1)</a></li>
+                    
+                
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="실행컨텍스트">
+    <meta itemprop="description" content="피보나치 수열 구현의 실행 컨텍스트!">
+    <meta itemprop="datePublished" content="2021-12-14T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2021-12-14T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" class="u-url" itemprop="url">실행컨텍스트
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#실행-컨텍스트">실행 컨텍스트</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><del>실행컨텍스트를 공부하면서 실행컨텍스트, 환경레코드, 렉시컬환경 등의 관계가 굉장히 복잡하게 얽혀있음을 알게 되었다. 그러다 문득 피보나치 수열의 경우에 실행컨텍스트는 어떤식으로 동작하는지가 궁금해졌다. 우선 실행컨텍스트를 공부하면서 알게 된 내용들을 정리해 보려고 한다.</del></p>
+
+<h1 id="실행-컨텍스트">실행 컨텍스트</h1>
+
+<p>자바스크립트의 동작원리를 담는 핵심 개념으로 간단히 말해서 코드의실행환경이라고 볼 수 있다.</p>
+
+<p>실행컨텍스트를 생성하는 코드에는 네가지가 존재한다.</p>
+
+<ol>
+  <li>전역 코드: 전역에 존재하는 코드</li>
+  <li>함수 코드: 함수 내부에 존재하는 코드</li>
+  <li>eval 코드: eval 함수의 인수로 전달되어 실행되는 코드</li>
+  <li>모듈 코드: 모듈 내부에 존재하는 코드</li>
+</ol>
+
+<p>간단한 코드를 기준으로 그림을 그리면서 설명을 추가하려고 한다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">x2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">x3</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x3</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">foo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>먼저 코드가 실행이 되면 전역코드를 <strong>평가</strong>하는 과정을 거친다.</p>
+
+<p>처음으로 <strong>실행 컨텍스트 스텍</strong>에 <strong>전역 실행 컨텍스트</strong> 생성되고, <strong>전역 렉시컬환경</strong> 생성, <strong>전역 환경 레코드</strong> 생성, <strong>객체 환경 레코드</strong>, <strong>선언적 환경 레코드</strong>가 생성된다.</p>
+
+<p>객체 환경 레코드에는 <strong>BindingObject</strong>라는 객체와 연결되는데 이는 <strong>전역 객체</strong>이다.</p>
+
+<p>이때 평가과정에서는 선언문들만 먼저 실행이 되는데 해당 코드를 기준으로</p>
+
+<p><code class="language-plaintext highlighter-rouge">var</code> 키워드로 선언된 전역 변수와 foo 함수 선언문이 먼저 평가된다.</p>
+
+<p>선언된 변수 및 함수는 전역 객체의 프로퍼티와 메서드가 된다 -&gt; window 객체의 x, foo</p>
+
+<p><code class="language-plaintext highlighter-rouge">const</code>와 <code class="language-plaintext highlighter-rouge">let</code> 키워드로 선언된 변수는 선언적 환경 레코드에 등록된다 이때 아직 할당이 되지 않고, 호이스팅이 동작하지 않는 것처럼 동작하기 때문에 알 수 없는 값이 존재하게 된다.</p>
+
+<p><img src="../../imgs/실행컨텍스트1.jpeg" alt="실행컨텍스트1" /></p>
+
+<p>그리고 <strong>this가 바인딩</strong>되는데 전역 렉시컬 환경의 [[GlobalThisValue]] 내부슬롯에 this가 바인딩된다.</p>
+
+<p>전역 코드에서의 this는 전역 객체를 가르키기 때문에 전역객체 window가 바인딩 된다.</p>
+
+<p>외부 렉시컬 환경 참조는 현재 평가중인 소스 코드를 포함하는 외부 소스 코드의 렉시컬 환경인 상위 스코프를 가르키는데 전역의 경우 <code class="language-plaintext highlighter-rouge">null</code>이 할당된다.</p>
+
+<p><u>전역 코드 평가 이후 전역 코드가 실행이 되게 되는데 이때 선언만 되었던 변수 값들에 값이 할당이 되게 된다!</u></p>
+
+<p><img src="../../imgs/실행컨텍스트2.jpeg" alt="실행컨텍스트2" /></p>
+
+<p><strong>함수코드의 경우 함수가 호출될때 함수 실행 컨텍스트가 생성이 된다.</strong></p>
+
+<p>코드의 마지막 부분에 foo함수를 호출하는데 이때 전역 코드의 실행을 일시 중단하고 foo함수로 제어권이 이동한다.</p>
+
+<p><u>이때 함수 내부 코드가 평가된다.</u></p>
+
+<p><strong>함수 실행 컨텍스트</strong>가 생성이 되고, <strong>함수 렉시컬 환경</strong> 생성, <strong>함수 환경 레코드</strong>가 생성된다</p>
+
+<p>함수도 마찬가지고 평가될때 선언문들이 먼저 등록이 된다.</p>
+
+<p>따라서 <code class="language-plaintext highlighter-rouge">const x3 = 3;</code>의 <code class="language-plaintext highlighter-rouge">const</code> 키워드로 선언된 x3(<code class="language-plaintext highlighter-rouge">const x3</code>)가 함수 환경 레코드에 등록이 된다.</p>
+
+<p class="notice">함수의 매개변수, argument 객체, 함수 몸체 내부에서 선언된 식별자들이 함수 환경 레코드에 등록이 된다.</p>
+
+<p><img src="../../imgs/실행컨텍스트3.jpeg" alt="실행컨텍스트3" /></p>
+
+<p>이후 this가 바인딩 되는데 이때 foo 함수는 일반함수로서 호출되었기 때문에 this는 전역 객체가 된다.</p>
+
+<p>함수의 외부 렉시컬 환경에 대한 참조는 자바스크립트 엔진이 함수 정의를 평가하고 함수 객체를 생성할때 <strong>실행중인 컨텍스트의 렉시컬 환경</strong>을 <strong>함수 객체의 내부슬롯 [[Environment]]에 저장</strong>한다.</p>
+
+<p>이후 함수 렉시컬 환경에 있는 외부 렉시컬환경에 대한 참조는 이 함수의 <strong>내부슬롯 [[Environment]]를 참조</strong>한다. 따라서 위 코드를 기준으로 foo 함수의 외부 렉시컬 환경에 대한 참조는 전역 렉시컬 환경을 가르킨다.</p>
+
+<p><img src="../../imgs/실행컨텍스트4.jpeg" alt="실행컨텍스트4" /></p>
+
+<p>함수 내부 평가 이후 함수 코드를 실행하면서 함수 환경 레코드에 존재하는 변수 <code class="language-plaintext highlighter-rouge">x3</code>에는 3이 할당되고 <code class="language-plaintext highlighter-rouge">console.log(x3)</code>가 실행되는데 이때 <code class="language-plaintext highlighter-rouge">console</code>의 <code class="language-plaintext highlighter-rouge">log</code> 메서드를 호출 즉, 함수 호출이기 때문에 또 다시 실행 컨텍스트가 만들어진다.</p>
+
+<p><u>이때 `console` 객체는 window 객체가 만들어질때 내부에 존재하기 때문에 전역 객체(window)에서 `console`을 찾아 `log` 함수를 평가하는 과정을 거친다.</u></p>
+
+<p>내부적으로 인수를 받기 때문에 해당 인수가 log 함수 환경 레코드에 등록되기 전에 log 함수 실행 컨텍스트가 생성되고, 함수 렉스컬 환경, 함수 환경 레코드들이 생성이 되고 선언문들이 함수 환경 레코드에 등록이 된다.</p>
+
+<p>(내부적으로 console.log로 찍을 변수를 xxx라는 변수라고 가정함 - argument를 이용해서 출력할지도 모르겠다는 생각을 한다!)</p>
+
+<p><img src="../../imgs/실행컨텍스트5.jpeg" alt="실행컨텍스트5" /></p>
+
+<p>log 함수 렉시컬 환경의 [[ThisValue]]에는 전역객체 window의 console 객체가 바인딩 된다.</p>
+
+<p>외부 렉시컬 환경에 대한 참조에는 현재 실행중인 실행 컨텍스트가 foo 함수의 실행 컨텍스트 이므로 foo함수의 렉시컬 환경을 가르키게 된다.</p>
+
+<p><img src="../../imgs/실행컨텍스트6.jpeg" alt="실행컨텍스트6" /></p>
+
+<p>log 함수의 평가가 종료되고 실행되면서 xxx에는 인수로 넣어준 3이 할당이 되고 내부 동작으로 인해 console에 3이라고 찍히게 된다.</p>
+
+<p>log함수가 종료가 되면 log 함수의 실행 컨텍스트가 실행 컨텍스트 스텍에서 제거된다. 이때 렉시컬 환경이 바로 사라지지는 않는데 이는 클로저와 연관된다.</p>
+
+<p>log 함수의 실행 컨텍스트가 제거되고, foo 함수도 종료되므로 실행 컨텍스트 스텍에서 제거, 전역 실행 컨텍스트도 마찬가지로 제거되므로 실행 컨텍스트 스텍에는 아무것도 남지 않게 되고 이는 코드의 종료를 말한다.</p>
+
+<p>결국 실행 컨텍스트 스텍에서 가장 상단에 존재하는 실행 컨텍스트가 현제 실행중인 실행 컨텍스트이고, 실행 컨텍스트가 존재할때 코드가 실행됨을 알 수 있다.</p>
+
+<p><br /></p>
+
+<p>이런 과정들을 거치면서 자바스크립트 코드가 실행이 되는데 그렇다면 피보나치 수열의 경우 반복해서 재귀함수를 호출하는데 이때는 어떻게 되는지 찾아봤다.</p>
+
+<p>피보나치 수열은 0과 1로 시작해서 다음 피보나치 수열의 수는 앞의 두 수를 더한 값이 된다.</p>
+
+<p>간단하게 F로 나타내서 4단계의 피보나치 수열로 그림을 그려보면 다음과 같다.</p>
+
+<p><img src="../../imgs/fibonacci.jpeg" alt="fibonacci" /></p>
+
+<p>자바스크립트를 이용해서 피보나치를 간단하게 구현했을때는 다음과 같다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nx">n</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fibonacci</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span> <span class="c1">// 3</span>
+</code></pre></div></div>
+
+<p>위 코드에 <code class="language-plaintext highlighter-rouge">if</code>문과 <code class="language-plaintext highlighter-rouge">debugger</code>를 이용해서 피보나치 함수가 크롬 브라우저에서 실행될때 실행 컨텍스트(call stack)가 얼마나 쌓이는지 확인해보았다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nx">n</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">===</span> <span class="mi">2</span><span class="p">)</span> <span class="k">debugger</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fibonacci</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>4번째 수를 찾을때 n이 2일때를 확인해보면</p>
+
+<p><img src="../../imgs/fibonacci_callstack1.png" alt="fibonacci_callstack1" /></p>
+
+<p>이어서 10번째 수를 찾을때 n이 2일때를 확인해보면</p>
+
+<p><img src="../../imgs/fibonacci_callstack2.png" alt="fibonacci_callstack2" /></p>
+
+<p><del>콜스텍이 게속 만들어 진 것을 알 수 있었는데 그렇다면 왜 그런걸까를 생각해보았다.</del></p>
+
+<p>피보나치 수열 코드에서 먼저 전역 코드가 평가가 되면서 실행 컨텍스트 스텍에 전역 실행 컨텍스트, 전역 렉시컬환경, 전역 환경 레코드, 객체 환경 레코드, 선언적 환경 레코드가 생성되고, <strong>전역 객체(window)의 메서드로 fibonacci 함수가 등록</strong>된다. 또한 this 바인딩은 전역객체가, 외부 렉시컬 환경에 대한 참조에는 null이 할당될 것이다.</p>
+
+<p>이후 피보나치 함수가 호출이 되면서 피보나치 함수 실행 컨텍스트가 만들어지고 내부적으로 함수를 호출하면서 반환한다</p>
+
+<p>n이 2인 경우에 <code class="language-plaintext highlighter-rouge">debugger</code>을 하므로 다음 그림과 같이 호출된다.</p>
+
+<p><img src="../../imgs/fibonacci_debugger.jpeg" alt="fibonacci_debugger" /></p>
+
+<p>F(4), F(3), F(2) 순서로 호출이 된다. 따라서 결국 실행컨텍스트는 다음과 같이 구성된다.(F(4), F(3), F(2) 순서로 실행 컨텍스트 스텍에 각각의 실행 컨텍스트가 생성된다.)</p>
+
+<p><img src="../../imgs/실행컨텍스트_fibonacci.jpeg" alt="실행컨텍스트_fibonacci" /></p>
+
+<p>실행 컨텍스트를 그림으로 그리면서 공부를 하니 보다 쉽게 접근할 수 있었다고 생각한다. 아직도 굉장히 어려운 개념이지만 스코프, 클로저 등 많은 개념들이 연관되어 있기 때문에 이상함을 느낄때 그림을 그려보면서 잘못된 부분을 찾아가는 것도 좋은 방법이라는 생각이 들었다!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#javascript" class="page__taxonomy-item p-category" rel="tag">JavaScript</a><span class="sep">, </span>
+    
+      <a href="/tags/#other" class="page__taxonomy-item p-category" rel="tag">Other</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#other" class="page__taxonomy-item p-category" rel="tag">Other</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-12-14">December 14, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%20http%3A%2F%2Flocalhost%3A4502%2Fother%2F%25EC%258B%25A4%25ED%2596%2589%25EC%25BB%25A8%25ED%2585%258D%25EC%258A%25A4%25ED%258A%25B8%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fother%2F%25EC%258B%25A4%25ED%2596%2589%25EC%25BB%25A8%25ED%2585%258D%25EC%258A%25A4%25ED%258A%25B8%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fother%2F%25EC%258B%25A4%25ED%2596%2589%25EC%25BB%25A8%25ED%2585%258D%25EC%258A%25A4%25ED%258A%25B8%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/other/property_attribute/" class="pagination--pager" title="자바스크립트 객체의 변경방지 - 불변성
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/other/property_attribute/" rel="permalink">자바스크립트 객체의 변경방지 - 불변성
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Object.preventExtensions(), Object.seal(), Object.freeze()
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/" rel="permalink">유사배열객체
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">배열과 유사배열객체, 유사배열, 유사객체
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/other/bigint/" rel="permalink">BigInt
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트의 BigInt
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/cs/ascii_unicode/" rel="permalink">ASCII, 유니코드
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">아스키코드와 유니코드
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 원종빈. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

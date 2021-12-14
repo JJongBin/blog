@@ -1,4 +1,159 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-12-07T21:41:17+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">자바스크립트 객체의 변경방지 - 불변성</title><link href="http://localhost:4502/other/property_attribute/" rel="alternate" type="text/html" title="자바스크립트 객체의 변경방지 - 불변성" /><published>2021-12-07T00:00:00+09:00</published><updated>2021-12-07T00:00:00+09:00</updated><id>http://localhost:4502/other/property_attribute</id><content type="html" xml:base="http://localhost:4502/other/property_attribute/">&lt;p&gt;만약 변하지 않아야 하는 값들이 의도처럼 수정되지 않아야 하지만 수정된다면 의도와 다른 결과가 출력되거나 에러를 일으킬 가능성이 크다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-12-14T21:31:37+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">실행컨텍스트</title><link href="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" rel="alternate" type="text/html" title="실행컨텍스트" /><published>2021-12-14T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8</id><content type="html" xml:base="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/">&lt;p&gt;&lt;del&gt;실행컨텍스트를 공부하면서 실행컨텍스트, 환경레코드, 렉시컬환경 등의 관계가 굉장히 복잡하게 얽혀있음을 알게 되었다. 그러다 문득 피보나치 수열의 경우에 실행컨텍스트는 어떤식으로 동작하는지가 궁금해졌다. 우선 실행컨텍스트를 공부하면서 알게 된 내용들을 정리해 보려고 한다.&lt;/del&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;실행-컨텍스트&quot;&gt;실행 컨텍스트&lt;/h1&gt;
+
+&lt;p&gt;자바스크립트의 동작원리를 담는 핵심 개념으로 간단히 말해서 코드의실행환경이라고 볼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;실행컨텍스트를 생성하는 코드에는 네가지가 존재한다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;전역 코드: 전역에 존재하는 코드&lt;/li&gt;
+  &lt;li&gt;함수 코드: 함수 내부에 존재하는 코드&lt;/li&gt;
+  &lt;li&gt;eval 코드: eval 함수의 인수로 전달되어 실행되는 코드&lt;/li&gt;
+  &lt;li&gt;모듈 코드: 모듈 내부에 존재하는 코드&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;간단한 코드를 기준으로 그림을 그리면서 설명을 추가하려고 한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;먼저 코드가 실행이 되면 전역코드를 &lt;strong&gt;평가&lt;/strong&gt;하는 과정을 거친다.&lt;/p&gt;
+
+&lt;p&gt;처음으로 &lt;strong&gt;실행 컨텍스트 스텍&lt;/strong&gt;에 &lt;strong&gt;전역 실행 컨텍스트&lt;/strong&gt; 생성되고, &lt;strong&gt;전역 렉시컬환경&lt;/strong&gt; 생성, &lt;strong&gt;전역 환경 레코드&lt;/strong&gt; 생성, &lt;strong&gt;객체 환경 레코드&lt;/strong&gt;, &lt;strong&gt;선언적 환경 레코드&lt;/strong&gt;가 생성된다.&lt;/p&gt;
+
+&lt;p&gt;객체 환경 레코드에는 &lt;strong&gt;BindingObject&lt;/strong&gt;라는 객체와 연결되는데 이는 &lt;strong&gt;전역 객체&lt;/strong&gt;이다.&lt;/p&gt;
+
+&lt;p&gt;이때 평가과정에서는 선언문들만 먼저 실행이 되는데 해당 코드를 기준으로&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var&lt;/code&gt; 키워드로 선언된 전역 변수와 foo 함수 선언문이 먼저 평가된다.&lt;/p&gt;
+
+&lt;p&gt;선언된 변수 및 함수는 전역 객체의 프로퍼티와 메서드가 된다 -&amp;gt; window 객체의 x, foo&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;const&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;let&lt;/code&gt; 키워드로 선언된 변수는 선언적 환경 레코드에 등록된다 이때 아직 할당이 되지 않고, 호이스팅이 동작하지 않는 것처럼 동작하기 때문에 알 수 없는 값이 존재하게 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/실행컨텍스트1.jpeg&quot; alt=&quot;실행컨텍스트1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그리고 &lt;strong&gt;this가 바인딩&lt;/strong&gt;되는데 전역 렉시컬 환경의 [[GlobalThisValue]] 내부슬롯에 this가 바인딩된다.&lt;/p&gt;
+
+&lt;p&gt;전역 코드에서의 this는 전역 객체를 가르키기 때문에 전역객체 window가 바인딩 된다.&lt;/p&gt;
+
+&lt;p&gt;외부 렉시컬 환경 참조는 현재 평가중인 소스 코드를 포함하는 외부 소스 코드의 렉시컬 환경인 상위 스코프를 가르키는데 전역의 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;null&lt;/code&gt;이 할당된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;전역 코드 평가 이후 전역 코드가 실행이 되게 되는데 이때 선언만 되었던 변수 값들에 값이 할당이 되게 된다!&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/실행컨텍스트2.jpeg&quot; alt=&quot;실행컨텍스트2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;함수코드의 경우 함수가 호출될때 함수 실행 컨텍스트가 생성이 된다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;코드의 마지막 부분에 foo함수를 호출하는데 이때 전역 코드의 실행을 일시 중단하고 foo함수로 제어권이 이동한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;이때 함수 내부 코드가 평가된다.&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;함수 실행 컨텍스트&lt;/strong&gt;가 생성이 되고, &lt;strong&gt;함수 렉시컬 환경&lt;/strong&gt; 생성, &lt;strong&gt;함수 환경 레코드&lt;/strong&gt;가 생성된다&lt;/p&gt;
+
+&lt;p&gt;함수도 마찬가지고 평가될때 선언문들이 먼저 등록이 된다.&lt;/p&gt;
+
+&lt;p&gt;따라서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;const x3 = 3;&lt;/code&gt;의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;const&lt;/code&gt; 키워드로 선언된 x3(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;const x3&lt;/code&gt;)가 함수 환경 레코드에 등록이 된다.&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;함수의 매개변수, argument 객체, 함수 몸체 내부에서 선언된 식별자들이 함수 환경 레코드에 등록이 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/실행컨텍스트3.jpeg&quot; alt=&quot;실행컨텍스트3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이후 this가 바인딩 되는데 이때 foo 함수는 일반함수로서 호출되었기 때문에 this는 전역 객체가 된다.&lt;/p&gt;
+
+&lt;p&gt;함수의 외부 렉시컬 환경에 대한 참조는 자바스크립트 엔진이 함수 정의를 평가하고 함수 객체를 생성할때 &lt;strong&gt;실행중인 컨텍스트의 렉시컬 환경&lt;/strong&gt;을 &lt;strong&gt;함수 객체의 내부슬롯 [[Environment]]에 저장&lt;/strong&gt;한다.&lt;/p&gt;
+
+&lt;p&gt;이후 함수 렉시컬 환경에 있는 외부 렉시컬환경에 대한 참조는 이 함수의 &lt;strong&gt;내부슬롯 [[Environment]]를 참조&lt;/strong&gt;한다. 따라서 위 코드를 기준으로 foo 함수의 외부 렉시컬 환경에 대한 참조는 전역 렉시컬 환경을 가르킨다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/실행컨텍스트4.jpeg&quot; alt=&quot;실행컨텍스트4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;함수 내부 평가 이후 함수 코드를 실행하면서 함수 환경 레코드에 존재하는 변수 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x3&lt;/code&gt;에는 3이 할당되고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console.log(x3)&lt;/code&gt;가 실행되는데 이때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console&lt;/code&gt;의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;log&lt;/code&gt; 메서드를 호출 즉, 함수 호출이기 때문에 또 다시 실행 컨텍스트가 만들어진다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;이때 `console` 객체는 window 객체가 만들어질때 내부에 존재하기 때문에 전역 객체(window)에서 `console`을 찾아 `log` 함수를 평가하는 과정을 거친다.&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;내부적으로 인수를 받기 때문에 해당 인수가 log 함수 환경 레코드에 등록되기 전에 log 함수 실행 컨텍스트가 생성되고, 함수 렉스컬 환경, 함수 환경 레코드들이 생성이 되고 선언문들이 함수 환경 레코드에 등록이 된다.&lt;/p&gt;
+
+&lt;p&gt;(내부적으로 console.log로 찍을 변수를 xxx라는 변수라고 가정함 - argument를 이용해서 출력할지도 모르겠다는 생각을 한다!)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/실행컨텍스트5.jpeg&quot; alt=&quot;실행컨텍스트5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;log 함수 렉시컬 환경의 [[ThisValue]]에는 전역객체 window의 console 객체가 바인딩 된다.&lt;/p&gt;
+
+&lt;p&gt;외부 렉시컬 환경에 대한 참조에는 현재 실행중인 실행 컨텍스트가 foo 함수의 실행 컨텍스트 이므로 foo함수의 렉시컬 환경을 가르키게 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/실행컨텍스트6.jpeg&quot; alt=&quot;실행컨텍스트6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;log 함수의 평가가 종료되고 실행되면서 xxx에는 인수로 넣어준 3이 할당이 되고 내부 동작으로 인해 console에 3이라고 찍히게 된다.&lt;/p&gt;
+
+&lt;p&gt;log함수가 종료가 되면 log 함수의 실행 컨텍스트가 실행 컨텍스트 스텍에서 제거된다. 이때 렉시컬 환경이 바로 사라지지는 않는데 이는 클로저와 연관된다.&lt;/p&gt;
+
+&lt;p&gt;log 함수의 실행 컨텍스트가 제거되고, foo 함수도 종료되므로 실행 컨텍스트 스텍에서 제거, 전역 실행 컨텍스트도 마찬가지로 제거되므로 실행 컨텍스트 스텍에는 아무것도 남지 않게 되고 이는 코드의 종료를 말한다.&lt;/p&gt;
+
+&lt;p&gt;결국 실행 컨텍스트 스텍에서 가장 상단에 존재하는 실행 컨텍스트가 현제 실행중인 실행 컨텍스트이고, 실행 컨텍스트가 존재할때 코드가 실행됨을 알 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이런 과정들을 거치면서 자바스크립트 코드가 실행이 되는데 그렇다면 피보나치 수열의 경우 반복해서 재귀함수를 호출하는데 이때는 어떻게 되는지 찾아봤다.&lt;/p&gt;
+
+&lt;p&gt;피보나치 수열은 0과 1로 시작해서 다음 피보나치 수열의 수는 앞의 두 수를 더한 값이 된다.&lt;/p&gt;
+
+&lt;p&gt;간단하게 F로 나타내서 4단계의 피보나치 수열로 그림을 그려보면 다음과 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/fibonacci.jpeg&quot; alt=&quot;fibonacci&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;자바스크립트를 이용해서 피보나치를 간단하게 구현했을때는 다음과 같다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fibonacci&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fibonacci&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fibonacci&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fibonacci&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 코드에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt;문과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;debugger&lt;/code&gt;를 이용해서 피보나치 함수가 크롬 브라우저에서 실행될때 실행 컨텍스트(call stack)가 얼마나 쌓이는지 확인해보았다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fibonacci&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;debugger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fibonacci&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fibonacci&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fibonacci&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;4번째 수를 찾을때 n이 2일때를 확인해보면&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/fibonacci_callstack1.png&quot; alt=&quot;fibonacci_callstack1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이어서 10번째 수를 찾을때 n이 2일때를 확인해보면&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/fibonacci_callstack2.png&quot; alt=&quot;fibonacci_callstack2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;콜스텍이 게속 만들어 진 것을 알 수 있었는데 그렇다면 왜 그런걸까를 생각해보았다.&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;피보나치 수열 코드에서 먼저 전역 코드가 평가가 되면서 실행 컨텍스트 스텍에 전역 실행 컨텍스트, 전역 렉시컬환경, 전역 환경 레코드, 객체 환경 레코드, 선언적 환경 레코드가 생성되고, &lt;strong&gt;전역 객체(window)의 메서드로 fibonacci 함수가 등록&lt;/strong&gt;된다. 또한 this 바인딩은 전역객체가, 외부 렉시컬 환경에 대한 참조에는 null이 할당될 것이다.&lt;/p&gt;
+
+&lt;p&gt;이후 피보나치 함수가 호출이 되면서 피보나치 함수 실행 컨텍스트가 만들어지고 내부적으로 함수를 호출하면서 반환한다&lt;/p&gt;
+
+&lt;p&gt;n이 2인 경우에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;debugger&lt;/code&gt;을 하므로 다음 그림과 같이 호출된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/fibonacci_debugger.jpeg&quot; alt=&quot;fibonacci_debugger&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;F(4), F(3), F(2) 순서로 호출이 된다. 따라서 결국 실행컨텍스트는 다음과 같이 구성된다.(F(4), F(3), F(2) 순서로 실행 컨텍스트 스텍에 각각의 실행 컨텍스트가 생성된다.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/실행컨텍스트_fibonacci.jpeg&quot; alt=&quot;실행컨텍스트_fibonacci&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;실행 컨텍스트를 그림으로 그리면서 공부를 하니 보다 쉽게 접근할 수 있었다고 생각한다. 아직도 굉장히 어려운 개념이지만 스코프, 클로저 등 많은 개념들이 연관되어 있기 때문에 이상함을 느낄때 그림을 그려보면서 잘못된 부분을 찾아가는 것도 좋은 방법이라는 생각이 들었다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">피보나치 수열 구현의 실행 컨텍스트!</summary></entry><entry><title type="html">자바스크립트 객체의 변경방지 - 불변성</title><link href="http://localhost:4502/other/property_attribute/" rel="alternate" type="text/html" title="자바스크립트 객체의 변경방지 - 불변성" /><published>2021-12-07T00:00:00+09:00</published><updated>2021-12-07T00:00:00+09:00</updated><id>http://localhost:4502/other/property_attribute</id><content type="html" xml:base="http://localhost:4502/other/property_attribute/">&lt;p&gt;만약 변하지 않아야 하는 값들이 의도처럼 수정되지 않아야 하지만 수정된다면 의도와 다른 결과가 출력되거나 에러를 일으킬 가능성이 크다.&lt;/p&gt;
 
 &lt;p&gt;이때 값들이 변하지 않는 것을 불변하다고 한다 즉 변하지 않는 특성을 불변성이라고 한다.&lt;/p&gt;
 
@@ -181,7 +336,7 @@
 &lt;p&gt;&lt;img src=&quot;../../imgs/isExtensible.png&quot; alt=&quot;isExtensible&quot; /&gt;
 &lt;img src=&quot;../../imgs/isExtensible2.png&quot; alt=&quot;isExtensible&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;내부적으로 해당 함수가 arguments와 함께 호출되었을때, 타입이 Object가 아니면 false를 반환하고 Object일때 추상연산을 수행하는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[isExtensible]]&lt;/code&gt;를 호출한다&lt;/p&gt;
+&lt;p&gt;내부적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.isExtensible(obj)&lt;/code&gt; 함수가 매개변수와 함께 호출되었을때, 타입이 Object가 아니면 false를 반환하고 Object일때 추상연산을 수행하는데 &lt;strong&gt;해당 객체의 내부 메서드 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[isExtensible]]&lt;/code&gt;를 호출&lt;/strong&gt;한다&lt;/p&gt;
 
 &lt;p class=&quot;notice&quot;&gt;[[IsExtensible]] : Boolean을 return한다. 해당 객체에 추가적으로 속성을 추가할 수 있는지 확인하는 메소드&lt;/p&gt;
 
@@ -1224,57 +1379,4 @@ A, B 모두 귀가 완료까지 예상되는 최저 택시요금은 34 + 2 + 46 
   &lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy[j]&lt;/code&gt;는 현재의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy[j]&lt;/code&gt;와 &lt;u&gt;현재 무게에서 외부의 for문에서 선택된 물건의 무게를 빼준 항목에 현재 선택된 물건의 가치를 더해준 것&lt;/u&gt;과 비교해서 더 가치가 큰 값을 선택한다&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문이 정상적으로 완료되면 계산할 수 있는 dy들이 모두 채워지고, 이때 가장 큰 값이 가방에 담을 수 있는 가장 큰 가치가 된다!&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">냅색 알고리즘</summary></entry><entry><title type="html">[Algorithm] Dynamic Programming</title><link href="http://localhost:4502/algorithm/DP/" rel="alternate" type="text/html" title="[Algorithm] Dynamic Programming" /><published>2021-10-19T00:00:00+09:00</published><updated>2021-10-19T00:00:00+09:00</updated><id>http://localhost:4502/algorithm/DP</id><content type="html" xml:base="http://localhost:4502/algorithm/DP/">&lt;h1 id=&quot;️-동적프로그래밍-dynamic-programming&quot;&gt;▶️ 동적프로그래밍 (Dynamic Programming)&lt;/h1&gt;
-
-&lt;p&gt;동적 프로그래밍이란, 하나의 문제를 잘게 쪼개며 푸는 방식이다&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;직관적으로 알 수 있을민큼 작게!!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;점화식의 측면에서 생각하면 된다 예를 들어 피보나치 수열을 예시로 fibo(0), fibo(1)이 될때까지 잘게 쪼갠다&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../imgs/dp.png&quot; alt=&quot;DP&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;fibo(1), fibo(0)는 직관적으로 계산이 가능하기 때문에 이 값을 기준으로 Bottom-Up 방식으로 계산한다&lt;/p&gt;
-
-&lt;p&gt;같은 fibo들은 계산 값이 같기 때문에 계산을 반복할 필요가 없다&lt;/p&gt;
-
-&lt;h2 id=&quot;-동적-프로그래밍-문제&quot;&gt;▷ 동적 프로그래밍 문제&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2579&quot;&gt;백준 2579 - 계단 오르기&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../imgs/beakjoon2579_1.png&quot; alt=&quot;백준 2579&quot; /&gt;
-&lt;img src=&quot;../../imgs/beakjoon2579_2.png&quot; alt=&quot;백준 2579&quot; /&gt;&lt;/p&gt;
-
-&lt;h3&gt;- 풀이&lt;/h3&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filePath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;platform&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;linux&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/dev/stdin&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./7_2579.txt&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readFileSync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 3개의 계단의 값을 계산에 이용하기 때문에 세개 계단의 값을 미리 구한다&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;   
-&lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;way1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// 3개 블록(3개전의 블록합 + 전블록 + 현재블록)&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;way2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// 2개 블록 (2개전의 블록합 + 현재블록)&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;way1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;way2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;값을 저장할 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy&lt;/code&gt;라는 배열을 하나 생성한다&lt;/li&gt;
-  &lt;li&gt;초기 계산에 이용할 (0, 1, 2)의 값(idex기준)을 계산해서 넣어준다&lt;/li&gt;
-  &lt;li&gt;계단을 오르는 규칙으로 &lt;strong&gt;3개전의 블록합, 전블록, 현재블록의 점수&lt;/strong&gt; / &lt;strong&gt;2개전의 블록합, 현재블록의 점수&lt;/strong&gt; 중 큰 값을 구해야 하기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Math.max&lt;/code&gt;를 사용한다&lt;/li&gt;
-  &lt;li&gt;마지막 계단의 점수를 출력해주면 된다(dy의 마지막 요소)&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">동적 프로그래밍</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">냅색 알고리즘</summary></entry></feed>
