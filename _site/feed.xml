@@ -1,4 +1,213 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-12-14T21:31:37+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">실행컨텍스트</title><link href="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" rel="alternate" type="text/html" title="실행컨텍스트" /><published>2021-12-14T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8</id><content type="html" xml:base="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/">&lt;p&gt;&lt;del&gt;실행컨텍스트를 공부하면서 실행컨텍스트, 환경레코드, 렉시컬환경 등의 관계가 굉장히 복잡하게 얽혀있음을 알게 되었다. 그러다 문득 피보나치 수열의 경우에 실행컨텍스트는 어떤식으로 동작하는지가 궁금해졌다. 우선 실행컨텍스트를 공부하면서 알게 된 내용들을 정리해 보려고 한다.&lt;/del&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2021-12-19T23:40:55+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">클래스</title><link href="http://localhost:4502/other/class/" rel="alternate" type="text/html" title="클래스" /><published>2021-12-19T00:00:00+09:00</published><updated>2021-12-19T00:00:00+09:00</updated><id>http://localhost:4502/other/class</id><content type="html" xml:base="http://localhost:4502/other/class/">&lt;p&gt;&lt;del&gt;프로토타입에 대해서 알게된 후 개인적인 생각으로 클래스가 굳이 필요할까라는 생각을 했었는데 클래스를 사용하면 좀더 직관적이고, 명료하다는 느낌을 받게 되었다. 하지만 클래스를 사용하는 것과 생성자 함수를 이용한 프로토타입과의 동작부분의 차이가 없다는 생각이 들어 클래스와 프로토타입과의 차이에 대해 좀더 공부해보게 되었다&lt;/del&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;클래스&quot;&gt;클래스&lt;/h1&gt;
+
+&lt;p&gt;자바스크립트는 프로토타입 기반의 객체 지향 언어이지만 ES6에 클래스(Class)를 도입했다. 생성자 함수를 이용해 프로토타입을 사용하는 것과 클래스를 사용했을때와 비교했을때 몇가지 차이 점이 존재한다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;클래스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt;연산자 없이 호출하면 에러가 발생한다. (생성자 함수를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt;연산자 없이 호출하면 일반함수로서 동작한다.)&lt;/li&gt;
+  &lt;li&gt;클래스는 상속과 관련된 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extends&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;super&lt;/code&gt; 키워드를 지원한다.&lt;/li&gt;
+  &lt;li&gt;클래스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;let&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;const&lt;/code&gt; 키워드처럼 &lt;u&gt;호이스팅이 발생하지 않는것처럼&lt;/u&gt; 동작한다.&lt;/li&gt;
+  &lt;li&gt;클래스 내부에서는 암묵적으로 strict mode가 적용된다.&lt;/li&gt;
+  &lt;li&gt;클래스의 constructor, 프로토타입 메서드, 정적메서드는 모드 프로퍼티 어트리뷰트 [[Enumerable]]의 값이 false이다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;1-클래스-정의&quot;&gt;1. 클래스 정의&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;class&lt;/code&gt; 키워드를 사용하여 정의한다. 이때 클래스 이름은 파스칼 케이스를 사용하는 것이 일반적이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;클래스는 일급객체로 값처럼 사용될 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;클래스의 몸체에는 &lt;strong&gt;constructor&lt;/strong&gt; &lt;strong&gt;프로토타입 메서드&lt;/strong&gt;, &lt;strong&gt;정적메서드&lt;/strong&gt; 세가지가 존재할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-constructor&quot;&gt;2. constructor&lt;/h2&gt;
+
+&lt;p&gt;constructor는 인스턴스를 생성하고 초기화하기 위한 생성자함수와 같은 역할을 한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;클래스가 동작할때 constructor는 메서드처럼 동작하지 않고, 클래스가 평가되어 생성한 함수 객체의 일부가 되는데 이는 생성자 함수와 유사하다.&lt;/li&gt;
+  &lt;li&gt;constructor는 클래스 내부 하나만 존재할 수 있다.&lt;/li&gt;
+  &lt;li&gt;constructor는 생략하면 암묵적으로 빈 constructor가 생성되는데 이때 상속받은 클래스와 상속받지 않은 클래스가 다르게 동작한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// constructor에 매개변수 입력가능&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 전달된 인수로 초기화할 수 있다.&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;constructor에 매개변수를 지정해 클래스를 이용해 인스턴스를 생성할때 인수를 전달받을 수 있다. 이때 인수로 전달되는 매개변수의 값을 받을 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-프로토타입-메서드&quot;&gt;3. 프로토타입 메서드&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;클래스 몸체 내부에서 정의한 메서드는 기본적으로 프로토타입 메서드가 된다&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;sayHi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`Hi I&apos;m &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;4-정적메서드&quot;&gt;4. 정적메서드&lt;/h2&gt;
+
+&lt;p&gt;생성자함수에서 정의한 메서드는 기본적으로 생성자함수를 이용해 호출할 수 이쓴ㄴ 정적메서드가 되는데 class에서는 class 몸체 내부에서 정의한 메서드는 기본적으로 프로토타입 메서드가 된다. 따라서 class에서 정적메서드를 정의하기 위해서는 특별한 방법이 필요한데 바로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;static&lt;/code&gt;키워드를 사용하는 것이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;sayHi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`Hi I&apos;m &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;!`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sayAge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`I&apos;m &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; years old!`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sayAge&lt;/code&gt; 함수는 프로토타입 메서드가 아니기 때문에 클래스를 사용해서 생성한 인스턴스로 호출하면 에러가 나온다. 따라서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Person.sayAge()&lt;/code&gt;로 호출해야 한다.&lt;/p&gt;
+
+&lt;p&gt;또한 위 코드에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sayAge&lt;/code&gt;함수(Person의 정적메서드)부분의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;this.age&lt;/code&gt;는 의도한대로 동작할 수 없다(Person class에 age라는 식별자 존재하지 않음)&lt;/p&gt;
+
+&lt;p&gt;따라서 다음과 같이 사용하는 것이 맞다는 생각이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sayAge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`I&apos;m &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; years old!`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 매개변수를 정의하고, 인수로 명확한 값을 전달&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sayAge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sayAge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`I&apos;m &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; years old!`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 매개변수를 정의하고, 인수로 인스턴스를 전달 -&amp;gt; 인스턴스의 age 프로퍼티를 참조&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sayAge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;하지만 위 코드를 정적메서드를 사용할때 인수로 무엇을 넣어줘야할지 명확하게 알 수 없다는 단점을 가진다.&lt;/p&gt;
+
+&lt;h2 id=&quot;5-인스턴스-생성&quot;&gt;5. 인스턴스 생성&lt;/h2&gt;
+
+&lt;p&gt;class를 이용해서 인스턴스를 생성하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt; 연산자를 사용한다.&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt;연산자는 생성자함수의 내부 메서드 [[Construct]]를 호출하게 되는데 따라서 class에도 [[Construct]] 내부메서드가 존재함을 알 수 있다. 또한 일반 함수처럼 동작하지 못하는것을 보아 내부 메서드 [[Call]]은 존재하지 않다는 것을 알 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위에서 정의한 프로토타입 메서드, 정적메서드는 다음과 같이 사용할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 프로토타입 메서드&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sayHi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Hi jongbin!&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 정적메서드&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sayAge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jongbin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// I&apos;m 26 years old!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;6-클래스-상속&quot;&gt;6. 클래스 상속&lt;/h2&gt;
+
+&lt;p&gt;클래스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extends&lt;/code&gt; 키워드를 사용해서 기존의 클래스를 상속받아 새로운 클래스를 확장해서 정의할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Jongbin&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;상속하는&lt;/strong&gt; 클래스를 슈퍼클래스, 베이스클래스, 부모클래스라고 한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;상속받는&lt;/strong&gt; 클래스를 서브클래스, 파생클래스, 자식클래스라고 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;클래스도 프로토타입을 가지게 되는데 상속받은 클래스를 그림으로 그려보면 다음과 같다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/class상속.jpeg&quot; alt=&quot;class 상속&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;7-super-키워드&quot;&gt;7. super 키워드&lt;/h2&gt;
+
+&lt;p&gt;super 키워드는 함수처럼 호출할 수도 있고, 식별자처럼 참조할 수 있는 특수한 키워드이다.&lt;/p&gt;
+
+&lt;p&gt;다음과 같이 두가지 방식으로 동작한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-super를-호출하면-슈퍼클래스의-constructor를-호출new-한-객체가-this가-된다&quot;&gt;1. super를 호출하면 슈퍼클래스의 constructor를 호출(new 한 객체가 this가 된다.)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;서브클래스에서 constructor를 생략하지 않으면 서브클래스의 constructor에서는 무조건 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;super()&lt;/code&gt;를 호출해야 한다.&lt;/li&gt;
+  &lt;li&gt;서브클래스의 constructor레서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;super()&lt;/code&gt;를 호출하기 이전에는 this를 참조할 수 없다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;super()&lt;/code&gt;는 반드시 서브클래스의 constructor에서 호출해야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-super를-참조하면-슈퍼클래스의-메서드를-호출-가능&quot;&gt;2. super를 참조하면 슈퍼클래스의 메서드를 호출 가능&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;서브클래스의 프로토타입 메서드내에서의 super 메서드는 슈퍼클래스의 프로토타입 메서드를 가르킨다.&lt;/li&gt;
+  &lt;li&gt;super 참조를 통해 슈퍼클래스의 메서드를 참조하려면 super가 슈퍼클래스의 메서드가 바인딩된 객체(슈퍼클래스의 prototype 프로퍼티에 바인딩된 프로토타입)을 참조할 수 있어야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;인스턴스의-생성&quot;&gt;인스턴스의 생성&lt;/h2&gt;
+
+&lt;p&gt;상속을 받지 않은 클래스와 상속을 받은 클래스는 인스턴스를 생성할때 차이점이 존재한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;상속을-받지-않은-클래스의-인스턴스-생성&quot;&gt;상속을 받지 않은 클래스의 인스턴스 생성&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;constructor는 빈객체 즉 인스턴스를 생성한다.&lt;/li&gt;
+  &lt;li&gt;this를 바인딩하고 프로토타입 프로퍼티를 생성한다.&lt;/li&gt;
+  &lt;li&gt;constructor 내부에 정의된대로 this에 바인딩된 인스턴스를 초기화한다.&lt;/li&gt;
+  &lt;li&gt;암묵적으로 this에 바인딩된 인스턴스를 반환한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;상속을-받은-클래스의-인스턴스-생성&quot;&gt;상속을 받은 클래스의 인스턴스 생성&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;서브클래스의 constructor에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;super()&lt;/code&gt;를 호출한다.(이전에 this를 호출하고 없으면 에러)&lt;/li&gt;
+  &lt;li&gt;super로 호출된 슈퍼클래스의 constructor에서 인스턴스를 생성하고 this를 바인딩한다.(서브클래스가 생성한것으로 처리한다(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new.target&lt;/code&gt;) - this)&lt;/li&gt;
+  &lt;li&gt;슈퍼클래스의 constructor 내부에 정의된대로 인스턴스를 초기화하고 인스턴스를 반환한다.&lt;/li&gt;
+  &lt;li&gt;서브클래스의 constructor에서 super가 반환한 인스턴스를 this에 바인딩한다.(새로운 빈객체 생성x)&lt;/li&gt;
+  &lt;li&gt;서브클래스 constructor 내부에 정의된대로 인스턴스를 초기화한다.&lt;/li&gt;
+  &lt;li&gt;암묵적으로 this에 바인딩된 인스턴스를 반환한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p class=&quot;notice&quot;&gt;서브클래스에서 인스턴스를 생성하지 않고 슈퍼클래스가 인스턴스를 생성하는것을 서브클래스가 슈퍼클래스에 인스턴스(빈객체) 생성을 위임한다고 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;서브클래스에서 super()를 호출하지 않았을때 인스턴스를 초기화하는 문을 작성할 수 없었는데 여기에 이유가 있었다! 슈퍼클래스에 인스턴스 생성을 위임하기 때문에 초기화할 수 있는 인스턴스(빈객체)가 존재하기 않기 때문이다!&lt;/del&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;상속을 받은 클래스인지 상속을 받지않은 클래스인지 자바스크립트가 어떻게 아는지 궁금했었는데 클래스에는 [[ConstructorKind]]라는 내부슬롯이 존재한다. 이때 슈퍼클래스는 &lt;strong&gt;base&lt;/strong&gt;, 서브클래스는 &lt;strong&gt;derived&lt;/strong&gt;로 구분한다.(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt;연산자와 함께 호출되었을때 구분된다.)&lt;/p&gt;
+
+&lt;p&gt;클래스에서 constructor를 정의하지 않았을때 다음과 같은 constructor가 암묵적으로 생성된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;만약 서브클래스에서 constructor를 정의하지 않았을때 super를 꼭 호출해야하므로 다음과 같은 constructor가 생성된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;클래스는 생성자 함수를 이용한 프로토타입과 다른 방식이지만 거의 동일하게 동작한다. 하지만 개발자가 직관적으로, 명시적으로 코드를 작성해 상속을 구현하는 면에서 확실해보인다. 결국 개인적으로 프로토타입은 사용하기 어렵다고 느껴질 수 있지만 클래스는 프로토타입을 보다 쉽게 다룰 수 있는 방법으로 생각한다.&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">자바스크립트의 클래스(Class)</summary></entry><entry><title type="html">실행컨텍스트</title><link href="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" rel="alternate" type="text/html" title="실행컨텍스트" /><published>2021-12-14T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8</id><content type="html" xml:base="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/">&lt;p&gt;&lt;del&gt;실행컨텍스트를 공부하면서 실행컨텍스트, 환경레코드, 렉시컬환경 등의 관계가 굉장히 복잡하게 얽혀있음을 알게 되었다. 그러다 문득 피보나치 수열의 경우에 실행컨텍스트는 어떤식으로 동작하는지가 궁금해졌다. 우선 실행컨텍스트를 공부하면서 알게 된 내용들을 정리해 보려고 한다.&lt;/del&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;실행-컨텍스트&quot;&gt;실행 컨텍스트&lt;/h1&gt;
 
@@ -1327,56 +1536,4 @@ A, B 모두 귀가 완료까지 예상되는 최저 택시요금은 34 + 2 + 46 
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;삼중 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문과 이차원 배열(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy[i][j]&lt;/code&gt; = i에서 j로 가는 최단거리)을 이용해서 최단거리를 구해준다&lt;/strong&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">다익스트라 알고리즘</summary></entry><entry><title type="html">[Algorithm] Knapsack</title><link href="http://localhost:4502/algorithm/Knapsack/" rel="alternate" type="text/html" title="[Algorithm] Knapsack" /><published>2021-10-20T00:00:00+09:00</published><updated>2021-10-20T00:00:00+09:00</updated><id>http://localhost:4502/algorithm/Knapsack</id><content type="html" xml:base="http://localhost:4502/algorithm/Knapsack/">&lt;h1 id=&quot;️-냅색-알고리즘-knapsack&quot;&gt;▶️ 냅색 알고리즘 (Knapsack)&lt;/h1&gt;
-
-&lt;p&gt;냅색 알고리즘은 동적 프로그래밍(Dynamic Programming)의 일종으로 여러개의 항목이 있을때 조건에 맞는 조합을 구하는 문제이다&lt;/p&gt;
-
-&lt;p&gt;대표적으로 &lt;u&gt;배낭문제&lt;/u&gt;가 있다&lt;/p&gt;
-
-&lt;h2 id=&quot;-냅색-알고리즘-문제&quot;&gt;▷ 냅색 알고리즘 문제&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/12865&quot;&gt;백준 12865 - 평범한 배낭&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../imgs/knapsack.png&quot; alt=&quot;평범한 배낭&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filePath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;platform&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;linux&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/dev/stdin&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./15_12865.txt&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readFileSync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;item2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 누적 가치를 저장할 배열 dy&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 물건들의 개수만큼 &lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 중복이 되면 안되기 때문에 뒤에서부터 탐색&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// dy(누적 가치)중 가장 큰값을 출력&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;먼저 동적프로그래밍 문제이므로 누적 가치를 저장해서 다음 계산에 이용할 배열 &lt;strong&gt;dy&lt;/strong&gt;를 선언한다&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;dy[i]&lt;/strong&gt;: i 무게까지 물건을 담았을때 최대가 되는 가치&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy&lt;/code&gt;를 채우기 위해서 이중 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문을 사용한다&lt;/li&gt;
-  &lt;li&gt;바깥의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문은 물건의 개수만큼 반복한다(물건의 무게마다 값을 계산하기 때문에)&lt;/li&gt;
-  &lt;li&gt;내부 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문은 현재 i 인덱스(물건의 무게)를 이용해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy&lt;/code&gt;를 계산하게 되는데 이때 거꾸로 계산하게 된다
-    &lt;ul&gt;
-      &lt;li&gt;동적 프로그래밍 문제이므로 앞의 게산값을 이용하게 되는데 만약 앞에서부터 순차적으로 계산을 해주게 되면 중복이 허용된다(물건은 하나씩이므로 두개가 될 수 없음!)&lt;/li&gt;
-      &lt;li&gt;가장 뒤에서 부터 해당 무게(i)까지 계산해준다&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy[j]&lt;/code&gt;는 현재의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy[j]&lt;/code&gt;와 &lt;u&gt;현재 무게에서 외부의 for문에서 선택된 물건의 무게를 빼준 항목에 현재 선택된 물건의 가치를 더해준 것&lt;/u&gt;과 비교해서 더 가치가 큰 값을 선택한다&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문이 정상적으로 완료되면 계산할 수 있는 dy들이 모두 채워지고, 이때 가장 큰 값이 가방에 담을 수 있는 가장 큰 가치가 된다!&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">냅색 알고리즘</summary></entry></feed>
+&lt;p&gt;&lt;strong&gt;삼중 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;문과 이차원 배열(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dy[i][j]&lt;/code&gt; = i에서 j로 가는 최단거리)을 이용해서 최단거리를 구해준다&lt;/strong&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Algorithm" /><category term="Algorithm" /><summary type="html">다익스트라 알고리즘</summary></entry></feed>
