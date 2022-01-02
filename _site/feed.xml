@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2022-01-02T23:18:52+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">CORS</title><link href="http://localhost:4502/other/CORS/" rel="alternate" type="text/html" title="CORS" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-01-02T00:00:00+09:00</updated><id>http://localhost:4502/other/CORS</id><content type="html" xml:base="http://localhost:4502/other/CORS/">&lt;p&gt;&lt;del&gt;아직 나는 CORS에 의한 문제를 겪어 본적이 없다… 하지만 많은 초보개발자들이 이 CORS 때문에 머리를 쥐어뜯고느느 한다고 들었다 이런점에서 내가 아직 열심히 하지 않아서 이런 문제를 겪어보지 못한 것이 아닐까? 라는 생각을 하면서 조금은 반성하게 되었다.&lt;/del&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2022-01-02T23:38:25+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">CORS</title><link href="http://localhost:4502/other/CORS/" rel="alternate" type="text/html" title="CORS" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-01-02T00:00:00+09:00</updated><id>http://localhost:4502/other/CORS</id><content type="html" xml:base="http://localhost:4502/other/CORS/">&lt;p&gt;&lt;del&gt;아직 나는 CORS에 의한 문제를 겪어 본적이 없다… 하지만 많은 초보개발자들이 이 CORS 때문에 머리를 쥐어뜯고느느 한다고 들었다 이런점에서 내가 아직 열심히 하지 않아서 이런 문제를 겪어보지 못한 것이 아닐까? 라는 생각을 하면서 조금은 반성하게 되었다.&lt;/del&gt;&lt;/p&gt;
 
 &lt;p&gt;한 사이트에서 주소가 다른 서버로 요청을 보낼때 이 CORS에 의한 에러가 발생하게 된다. 하지만 신기하게도 같은 요청이더라도 어떤 부분에서는 되고 또 다른 부분에서는 안되는 경우가 있는데 이때 CORS로 요청을 막는 것은 &lt;strong&gt;브라우저&lt;/strong&gt;의 영역이다.&lt;/p&gt;
 
@@ -26,7 +26,7 @@
 
 &lt;h2 id=&quot;sop-same-origin-policy&quot;&gt;SOP (Same Origin Policy)&lt;/h2&gt;
 
-&lt;p&gt;CORS는 어떤 사이트에서 다른 사이트로 요청을 보내는 것을 허용하는 것이다. 반면 SOP은 동일 출처 정책으로서 같은 URL끼리만 API등의 데이터 접근이 가능하도록 하는 정책이다.&lt;/p&gt;
+&lt;p&gt;CORS는 어떤 사이트에서 다른 사이트로 요청을 보내는 것을 허용하는 것이다. 반면 &lt;strong&gt;SOP은 동일 출처 정책으로서 같은 URL끼리만 API등의 데이터 접근이 가능하도록 하는 정책&lt;/strong&gt;이다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;../../imgs/Access-Control-Allow-Origin.png&quot; alt=&quot;Access-Control-Allow-Origin&quot; /&gt;&lt;/p&gt;
 
@@ -43,7 +43,29 @@ Origin: https://www.jongbin.com
 Access-Control-Allow-Origin: *
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;이후 브라우저는 이 둘을 비교한다. origin에서 보낸 출처값이 서버의 답장 헤더에 있는 Access-Control-Allow-Origin에 존재한다면 안전한 요청이라고 판단하고 데이터를 건네주게 된다.&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">CORS란 뭘까?</summary></entry><entry><title type="html">DOM</title><link href="http://localhost:4502/other/DOM/" rel="alternate" type="text/html" title="DOM" /><published>2021-12-28T00:00:00+09:00</published><updated>2021-12-28T00:00:00+09:00</updated><id>http://localhost:4502/other/DOM</id><content type="html" xml:base="http://localhost:4502/other/DOM/">&lt;p&gt;&lt;img src=&quot;../../imgs/childNodes.png&quot; alt=&quot;childNodes&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;이후 브라우저는 이 둘을 비교한다. origin에서 보낸 출처값이 서버의 답장 헤더에 있는 Access-Control-Allow-Origin에 존재한다면 안전한 요청이라고 판단하고 데이터를 건네주게 된다.&lt;/p&gt;
+
+&lt;p&gt;사용자 식별 정보가 담긴 요청을 하는 경우에는 더 엄격하게 이루어지는데 그 방식에는 두가지가 존재한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-simple-request&quot;&gt;1. Simple request&lt;/h2&gt;
+
+&lt;p&gt;보내는 측은 요청의 옵션으로 credentals 항목을 true로 해준다.&lt;/p&gt;
+
+&lt;p&gt;받는 측에서는 모든 사이트를 허용하는 와일드카드(*)의 사용을 자제하고 보내0는 측의 출처를 정확하게 명시해야 한다.&lt;/p&gt;
+
+&lt;p&gt;Simple request는 &lt;u&gt;Http 메서드가 GET, POST, HEAD인 일정 조건에서 가능한 방식&lt;/u&gt;이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-preflight&quot;&gt;2. Preflight&lt;/h2&gt;
+
+&lt;p&gt;PUT, DELETE 등 데이터를 조작하는 다른 요청들은 요청전에 &lt;u&gt;Preflight 요청을 선행&lt;/u&gt;하는데 이는 해당 요청이 안전한지 확인하는 요청이다. Preflight 요청의 응답으로 허락이 떨어지면 그때서야 본 요청이 전송이 된다.&lt;/p&gt;
+
+&lt;p&gt;Simple request와 가장 큰 차이점은 Preflight은 요청을 하는데도 허락을 받아야 요청을 할 수 있다는 점이 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;결국 &lt;strong&gt;CORS&lt;/strong&gt;는 다른 출처(웹사이트)간의 리소스(데이터) 공유가 가능하도록 한다. 요청을 받는 &lt;strong&gt;백엔드&lt;/strong&gt;에서 허락할 다른 출처들을 명시(Access-Control-Allow-Origin)해두면 시소스 공유가 가능하도록 만들어진 메커니즘이다.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">CORS란 뭘까?</summary></entry><entry><title type="html">DOM</title><link href="http://localhost:4502/other/DOM/" rel="alternate" type="text/html" title="DOM" /><published>2021-12-28T00:00:00+09:00</published><updated>2021-12-28T00:00:00+09:00</updated><id>http://localhost:4502/other/DOM</id><content type="html" xml:base="http://localhost:4502/other/DOM/">&lt;p&gt;&lt;img src=&quot;../../imgs/childNodes.png&quot; alt=&quot;childNodes&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;del&gt;위 사진처럼 이전에 자바스크립트 코드를 작성하면서 DOM 노드를 탐색하는 경우가 있었는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;childNodes&lt;/code&gt;와 인덱스를 이용해서 접근하려고 했을 때 이상한 값이 출력되는 것을 목격한 적이 있다(분명 ul요소 아래에 li요소는 세개인데…?). 그래서 다른 방법으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;children&lt;/code&gt; 메서드를 사용했었는데 현재 자바스크립트를 공부하면서 이유를 알게 되었다. 그래서 DOM과 노드를 탐색하는 메서드들에 대해서 정리하려고 한다.&lt;/del&gt;&lt;/p&gt;
 
