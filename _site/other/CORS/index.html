@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[Algorithm] Knapsack | 공부하는 종빈🧑🏻‍💻</title>
-<meta name="description" content="냅색 알고리즘">
+<!-- begin _includes/seo.html --><title>CORS | 공부하는 종빈🧑🏻‍💻</title>
+<meta name="description" content="CORS란 뭘까?">
 
 
   <meta name="author" content="원종빈">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="공부하는 종빈🧑🏻‍💻">
-<meta property="og:title" content="[Algorithm] Knapsack">
-<meta property="og:url" content="http://localhost:4502/algorithm/Knapsack/">
+<meta property="og:title" content="CORS">
+<meta property="og:url" content="http://localhost:4502/other/CORS/">
 
 
-  <meta property="og:description" content="냅색 알고리즘">
-
-
-
+  <meta property="og:description" content="CORS란 뭘까?">
 
 
 
 
-  <meta property="article:published_time" content="2021-10-20T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-10-20T00:00:00+09:00">
+  <meta property="article:published_time" content="2022-01-02T00:00:00+09:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2022-01-02T00:00:00+09:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4502/algorithm/Knapsack/">
+
+<link rel="canonical" href="http://localhost:4502/other/CORS/">
 
 
 
@@ -583,16 +583,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[Algorithm] Knapsack">
-    <meta itemprop="description" content="냅색 알고리즘">
-    <meta itemprop="datePublished" content="2021-10-20T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-10-20T00:00:00+09:00">
+    <meta itemprop="headline" content="CORS">
+    <meta itemprop="description" content="CORS란 뭘까?">
+    <meta itemprop="datePublished" content="2022-01-02T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2022-01-02T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4502/algorithm/Knapsack/" class="u-url" itemprop="url">[Algorithm] Knapsack
+            <a href="http://localhost:4502/other/CORS/" class="u-url" itemprop="url">CORS
 </a>
           </h1>
           
@@ -624,65 +624,57 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
-              <ul class="toc__menu"><li><a href="#️-냅색-알고리즘-knapsack">▶️ 냅색 알고리즘 (Knapsack)</a><ul><li><a href="#-냅색-알고리즘-문제">▷ 냅색 알고리즘 문제</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#corscross-origin-resource-sharing">CORS(Cross-Origin Resource Sharing)</a><ul><li><a href="#cors의-등장">CORS의 등장</a></li><li><a href="#sop-same-origin-policy">SOP (Same Origin Policy)</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <h1 id="️-냅색-알고리즘-knapsack">▶️ 냅색 알고리즘 (Knapsack)</h1>
+        <p><del>아직 나는 CORS에 의한 문제를 겪어 본적이 없다… 하지만 많은 초보개발자들이 이 CORS 때문에 머리를 쥐어뜯고느느 한다고 들었다 이런점에서 내가 아직 열심히 하지 않아서 이런 문제를 겪어보지 못한 것이 아닐까? 라는 생각을 하면서 조금은 반성하게 되었다.</del></p>
 
-<p>냅색 알고리즘은 동적 프로그래밍(Dynamic Programming)의 일종으로 여러개의 항목이 있을때 조건에 맞는 조합을 구하는 문제이다</p>
+<p>한 사이트에서 주소가 다른 서버로 요청을 보낼때 이 CORS에 의한 에러가 발생하게 된다. 하지만 신기하게도 같은 요청이더라도 어떤 부분에서는 되고 또 다른 부분에서는 안되는 경우가 있는데 이때 CORS로 요청을 막는 것은 <strong>브라우저</strong>의 영역이다.</p>
 
-<p>대표적으로 <u>배낭문제</u>가 있다</p>
+<p>왜냐면 <u>우리의 브라우저는 우리들이 방문하는 사이트를 믿지 못하기 때문이다.</u></p>
 
-<h2 id="-냅색-알고리즘-문제">▷ 냅색 알고리즘 문제</h2>
+<h1 id="corscross-origin-resource-sharing">CORS(Cross-Origin Resource Sharing)</h1>
 
-<p><a href="https://www.acmicpc.net/problem/12865">백준 12865 - 평범한 배낭</a></p>
-
-<p><img src="../../imgs/knapsack.png" alt="평범한 배낭" /></p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">filePath</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">platform</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">linux</span><span class="dl">"</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">/dev/stdin</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">./15_12865.txt</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">).</span><span class="nx">toString</span><span class="p">().</span><span class="nx">trim</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">n</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
-<span class="kd">const</span> <span class="nx">k</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">shift</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]);</span>
-<span class="nx">input</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">item2</span> <span class="o">=&gt;</span> <span class="o">+</span><span class="nx">item2</span><span class="p">));</span>
-
-<span class="c1">// 누적 가치를 저장할 배열 dy</span>
-<span class="kd">const</span> <span class="nx">dy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">k</span><span class="o">+</span><span class="mi">1</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-
-<span class="c1">// 물건들의 개수만큼 </span>
-<span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
-  <span class="c1">// 중복이 되면 안되기 때문에 뒤에서부터 탐색</span>
-  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="nx">k</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&gt;=</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span> <span class="nx">j</span><span class="o">--</span><span class="p">){</span>
-    <span class="nx">dy</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">dy</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">dy</span><span class="p">[</span><span class="nx">j</span> <span class="o">-</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// dy(누적 가치)중 가장 큰값을 출력</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">dy</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>먼저 동적프로그래밍 문제이므로 누적 가치를 저장해서 다음 계산에 이용할 배열 <strong>dy</strong>를 선언한다</p>
+<p><a href="https://developer.mozilla.org/ko/docs/Web/HTTP/CORS">MDN - CORS</a></p>
 
 <blockquote>
-  <p><strong>dy[i]</strong>: i 무게까지 물건을 담았을때 최대가 되는 가치</p>
+  <p>교차 출처 리소스 공유(Cross-Origin Resource Sharing, CORS)는 서버가 브라우저가 리소스 로드를 허용해야 하는 자체가 아닌 다른 출처 (도메인, 체계 또는 포트) 를 나타낼 수 있도록 하는 HTTP 헤더 기반 메커니즘입니다 . CORS는 또한 서버가 실제 요청을 허용하는지 확인하기 위해 브라우저가 교차 출처 리소스를 호스팅하는 서버에 “프리플라이트” 요청을 하는 메커니즘에 의존합니다. 해당 프리플라이트에서 브라우저는 HTTP 메서드를 나타내는 헤더와 실제 요청에 사용될 헤더를 보냅니다.</p>
 </blockquote>
 
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">dy</code>를 채우기 위해서 이중 <code class="language-plaintext highlighter-rouge">for</code>문을 사용한다</li>
-  <li>바깥의 <code class="language-plaintext highlighter-rouge">for</code>문은 물건의 개수만큼 반복한다(물건의 무게마다 값을 계산하기 때문에)</li>
-  <li>내부 <code class="language-plaintext highlighter-rouge">for</code>문은 현재 i 인덱스(물건의 무게)를 이용해서 <code class="language-plaintext highlighter-rouge">dy</code>를 계산하게 되는데 이때 거꾸로 계산하게 된다
-    <ul>
-      <li>동적 프로그래밍 문제이므로 앞의 게산값을 이용하게 되는데 만약 앞에서부터 순차적으로 계산을 해주게 되면 중복이 허용된다(물건은 하나씩이므로 두개가 될 수 없음!)</li>
-      <li>가장 뒤에서 부터 해당 무게(i)까지 계산해준다</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">dy[j]</code>는 현재의 <code class="language-plaintext highlighter-rouge">dy[j]</code>와 <u>현재 무게에서 외부의 for문에서 선택된 물건의 무게를 빼준 항목에 현재 선택된 물건의 가치를 더해준 것</u>과 비교해서 더 가치가 큰 값을 선택한다</li>
-  <li><code class="language-plaintext highlighter-rouge">for</code>문이 정상적으로 완료되면 계산할 수 있는 dy들이 모두 채워지고, 이때 가장 큰 값이 가방에 담을 수 있는 가장 큰 가치가 된다!</li>
-</ol>
+<p>MDN에서는 위와 같이 CORS를 설명한다. 사실 이렇게 들어서는 아직 크게 무슨말인지 와닿지 않았다. 그래서 먼저 CORS가 왜 등장했는지부터 찾아보았다.</p>
 
+<h2 id="cors의-등장">CORS의 등장</h2>
+
+<p><img src="../../imgs/xss.png" alt="xss" /></p>
+
+<p>나의 브라우저에는 토큰등의 정보들이 쿠키의 형태로 저장이 되어있다. 만약 내가 악의적인 사이트에 접속했을때 악의적인 사이트에서는 나를 위해서 악의적인 사이트의 html, css, js 파일 등을 보내주고 내 브라우저는 나에게 보여주기 위해서 코드들을 파싱하고 토큰화하는 등 받은 코드들이 동작되도록 할텐데 이때 만약 자바스크립트로 브라우저에 저장된 내 정보를 빼내서 해당 사이트들로 접근해서 내 개인정보를 빼았을 수 있지 않을까?</p>
+
+<p>하지만 다행히도 우리의 브라우저는 어떤 사이트에서 다른 사이트로 요청을 보내는 것을 기본적으로 막아준다.</p>
+
+<p>하지만 웹 생태계가 점점 더 다양해지면서 여러 서비스들간에 보다 자유롭게 데이터를 주고 받을 필요가 생기게 되었는데 다른 사이트로 요청을 보내야 하기 때문에 이를 <strong>허용</strong>하도록 할 수 있는 <strong>CORS</strong>가 필요해지게 되었다.</p>
+
+<h2 id="sop-same-origin-policy">SOP (Same Origin Policy)</h2>
+
+<p>CORS는 어떤 사이트에서 다른 사이트로 요청을 보내는 것을 허용하는 것이다. 반면 SOP은 동일 출처 정책으로서 같은 URL끼리만 API등의 데이터 접근이 가능하도록 하는 정책이다.</p>
+
+<p><img src="../../imgs/Access-Control-Allow-Origin.png" alt="Access-Control-Allow-Origin" /></p>
+
+<p>내가 다른 출처로 요청(Cross-Origin 요청)을 하게 되는 경우 브라우저에서는 요청에 origin이라고 Header에 추가해서 요청을 한다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /HTTP/1.1
+Host: www.jongbin.com
+Origin: https://www.jongbin.com
+</code></pre></div></div>
+
+<p>이러한 요청을 받은 서버는 답장 헤더에 지정되어 있는 Access-Control-Allow-Origin 정보를 보낸다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Access-Control-Allow-Origin: www.jongbin.com
+Access-Control-Allow-Origin: *
+</code></pre></div></div>
+
+<p>이후 브라우저는 이 둘을 비교한다. origin에서 보낸 출처값이 서버의 답장 헤더에 있는 Access-Control-Allow-Origin에 존재한다면 안전한 요청이라고 판단하고 데이터를 건네주게 된다.</p>
 
         
       </section>
@@ -699,7 +691,7 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a>
+      <a href="/tags/#other" class="page__taxonomy-item p-category" rel="tag">Other</a>
     
     </span>
   </p>
@@ -716,7 +708,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#algorithm" class="page__taxonomy-item p-category" rel="tag">Algorithm</a>
+      <a href="/categories/#other" class="page__taxonomy-item p-category" rel="tag">Other</a>
     
     </span>
   </p>
@@ -724,7 +716,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2021-10-20">October 20, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-02">January 2, 2022</time></p>
 
       </footer>
 
@@ -733,23 +725,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BAlgorithm%5D+Knapsack%20http%3A%2F%2Flocalhost%3A4502%2Falgorithm%2FKnapsack%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=CORS%20http%3A%2F%2Flocalhost%3A4502%2Fother%2FCORS%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Falgorithm%2FKnapsack%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4502%2Fother%2FCORS%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Falgorithm%2FKnapsack%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4502%2Fother%2FCORS%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/algorithm/DP/" class="pagination--pager" title="[Algorithm] Dynamic Programming
+      <a href="/other/DOM/" class="pagination--pager" title="DOM
 ">이전</a>
     
     
-      <a href="/algorithm/Dijkstra/" class="pagination--pager" title="[Algorithm] Dijkstra
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -763,46 +754,6 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/other/CORS/" rel="permalink">CORS
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">CORS란 뭘까?
-</p>
-  </article>
-</div>
-
         
           
 
@@ -919,6 +870,46 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">피보나치 수열 구현의 실행 컨텍스트!
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/other/property_attribute/" rel="permalink">자바스크립트 객체의 변경방지 - 불변성
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Object.preventExtensions(), Object.seal(), Object.freeze()
 </p>
   </article>
 </div>

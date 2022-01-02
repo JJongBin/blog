@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://jjongbin.github.io/blog//feed.xml" rel="self" type="application/atom+xml" /><link href="https://jjongbin.github.io/blog//" rel="alternate" type="text/html" /><updated>2021-12-28T16:50:47+09:00</updated><id>https://jjongbin.github.io/blog//feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">DOM</title><link href="https://jjongbin.github.io/blog//other/DOM/" rel="alternate" type="text/html" title="DOM" /><published>2021-12-28T00:00:00+09:00</published><updated>2021-12-28T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/DOM</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/DOM/">&lt;p&gt;&lt;img src=&quot;../../imgs/childNodes.png&quot; alt=&quot;childNodes&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2022-01-02T23:18:52+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">CORS</title><link href="http://localhost:4502/other/CORS/" rel="alternate" type="text/html" title="CORS" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-01-02T00:00:00+09:00</updated><id>http://localhost:4502/other/CORS</id><content type="html" xml:base="http://localhost:4502/other/CORS/">&lt;p&gt;&lt;del&gt;아직 나는 CORS에 의한 문제를 겪어 본적이 없다… 하지만 많은 초보개발자들이 이 CORS 때문에 머리를 쥐어뜯고느느 한다고 들었다 이런점에서 내가 아직 열심히 하지 않아서 이런 문제를 겪어보지 못한 것이 아닐까? 라는 생각을 하면서 조금은 반성하게 되었다.&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;한 사이트에서 주소가 다른 서버로 요청을 보낼때 이 CORS에 의한 에러가 발생하게 된다. 하지만 신기하게도 같은 요청이더라도 어떤 부분에서는 되고 또 다른 부분에서는 안되는 경우가 있는데 이때 CORS로 요청을 막는 것은 &lt;strong&gt;브라우저&lt;/strong&gt;의 영역이다.&lt;/p&gt;
+
+&lt;p&gt;왜냐면 &lt;u&gt;우리의 브라우저는 우리들이 방문하는 사이트를 믿지 못하기 때문이다.&lt;/u&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;corscross-origin-resource-sharing&quot;&gt;CORS(Cross-Origin Resource Sharing)&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/HTTP/CORS&quot;&gt;MDN - CORS&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;교차 출처 리소스 공유(Cross-Origin Resource Sharing, CORS)는 서버가 브라우저가 리소스 로드를 허용해야 하는 자체가 아닌 다른 출처 (도메인, 체계 또는 포트) 를 나타낼 수 있도록 하는 HTTP 헤더 기반 메커니즘입니다 . CORS는 또한 서버가 실제 요청을 허용하는지 확인하기 위해 브라우저가 교차 출처 리소스를 호스팅하는 서버에 “프리플라이트” 요청을 하는 메커니즘에 의존합니다. 해당 프리플라이트에서 브라우저는 HTTP 메서드를 나타내는 헤더와 실제 요청에 사용될 헤더를 보냅니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;MDN에서는 위와 같이 CORS를 설명한다. 사실 이렇게 들어서는 아직 크게 무슨말인지 와닿지 않았다. 그래서 먼저 CORS가 왜 등장했는지부터 찾아보았다.&lt;/p&gt;
+
+&lt;h2 id=&quot;cors의-등장&quot;&gt;CORS의 등장&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/xss.png&quot; alt=&quot;xss&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;나의 브라우저에는 토큰등의 정보들이 쿠키의 형태로 저장이 되어있다. 만약 내가 악의적인 사이트에 접속했을때 악의적인 사이트에서는 나를 위해서 악의적인 사이트의 html, css, js 파일 등을 보내주고 내 브라우저는 나에게 보여주기 위해서 코드들을 파싱하고 토큰화하는 등 받은 코드들이 동작되도록 할텐데 이때 만약 자바스크립트로 브라우저에 저장된 내 정보를 빼내서 해당 사이트들로 접근해서 내 개인정보를 빼았을 수 있지 않을까?&lt;/p&gt;
+
+&lt;p&gt;하지만 다행히도 우리의 브라우저는 어떤 사이트에서 다른 사이트로 요청을 보내는 것을 기본적으로 막아준다.&lt;/p&gt;
+
+&lt;p&gt;하지만 웹 생태계가 점점 더 다양해지면서 여러 서비스들간에 보다 자유롭게 데이터를 주고 받을 필요가 생기게 되었는데 다른 사이트로 요청을 보내야 하기 때문에 이를 &lt;strong&gt;허용&lt;/strong&gt;하도록 할 수 있는 &lt;strong&gt;CORS&lt;/strong&gt;가 필요해지게 되었다.&lt;/p&gt;
+
+&lt;h2 id=&quot;sop-same-origin-policy&quot;&gt;SOP (Same Origin Policy)&lt;/h2&gt;
+
+&lt;p&gt;CORS는 어떤 사이트에서 다른 사이트로 요청을 보내는 것을 허용하는 것이다. 반면 SOP은 동일 출처 정책으로서 같은 URL끼리만 API등의 데이터 접근이 가능하도록 하는 정책이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/Access-Control-Allow-Origin.png&quot; alt=&quot;Access-Control-Allow-Origin&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;내가 다른 출처로 요청(Cross-Origin 요청)을 하게 되는 경우 브라우저에서는 요청에 origin이라고 Header에 추가해서 요청을 한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /HTTP/1.1
+Host: www.jongbin.com
+Origin: https://www.jongbin.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이러한 요청을 받은 서버는 답장 헤더에 지정되어 있는 Access-Control-Allow-Origin 정보를 보낸다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Access-Control-Allow-Origin: www.jongbin.com
+Access-Control-Allow-Origin: *
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이후 브라우저는 이 둘을 비교한다. origin에서 보낸 출처값이 서버의 답장 헤더에 있는 Access-Control-Allow-Origin에 존재한다면 안전한 요청이라고 판단하고 데이터를 건네주게 된다.&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">CORS란 뭘까?</summary></entry><entry><title type="html">DOM</title><link href="http://localhost:4502/other/DOM/" rel="alternate" type="text/html" title="DOM" /><published>2021-12-28T00:00:00+09:00</published><updated>2021-12-28T00:00:00+09:00</updated><id>http://localhost:4502/other/DOM</id><content type="html" xml:base="http://localhost:4502/other/DOM/">&lt;p&gt;&lt;img src=&quot;../../imgs/childNodes.png&quot; alt=&quot;childNodes&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;del&gt;위 사진처럼 이전에 자바스크립트 코드를 작성하면서 DOM 노드를 탐색하는 경우가 있었는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;childNodes&lt;/code&gt;와 인덱스를 이용해서 접근하려고 했을 때 이상한 값이 출력되는 것을 목격한 적이 있다(분명 ul요소 아래에 li요소는 세개인데…?). 그래서 다른 방법으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;children&lt;/code&gt; 메서드를 사용했었는데 현재 자바스크립트를 공부하면서 이유를 알게 되었다. 그래서 DOM과 노드를 탐색하는 메서드들에 대해서 정리하려고 한다.&lt;/del&gt;&lt;/p&gt;
 
@@ -235,7 +280,7 @@
   &lt;li&gt;자신의 다음 형제 요소 노드를 반환&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;del&gt;처음에 언급했던 childNodes를 사용해서 특정 요소에 접근할때 이상한 값이 나오는 이유를 알게 되었다. childNodes는 NodeList 객체에 요소들을 담아서 반환하는데 이때 반환된 NodeList에는 요소 노드만 존재하는 것이 아니고 텍스트 노드도 존재하기 때문에 내가 의도한대로 출력이 되지 않았었다. children 메서드를 사용했을때 정상적으로 동작한 이유는 children 프로퍼티로 접근했을 경우에는 HTMLCollection에 요소 노드만 담아 반환해주기 때문에 인덱스로 접근했을때 원하는 결과를 도출할 수 있었다. 모르고 사용했을때와 알고 사용했을때의 차이는 크다고 생각한다. 왜 그렇게 동작하는지 명확하게 알고 이해하는 것이 중요함을 다시 한번 느낄 수 있었다.&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">DOM과 DOM 탐색</summary></entry><entry><title type="html">클래스</title><link href="https://jjongbin.github.io/blog//other/class/" rel="alternate" type="text/html" title="클래스" /><published>2021-12-19T00:00:00+09:00</published><updated>2021-12-19T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/class</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/class/">&lt;p&gt;&lt;del&gt;프로토타입에 대해서 알게된 후 개인적인 생각으로 클래스가 굳이 필요할까라는 생각을 했었는데 클래스를 사용하면 좀더 직관적이고, 명료하다는 느낌을 받게 되었다. 하지만 클래스를 사용하는 것과 생성자 함수를 이용한 프로토타입과의 동작부분의 차이가 없다는 생각이 들어 클래스와 프로토타입과의 차이에 대해 좀더 공부해보게 되었다&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;처음에 언급했던 childNodes를 사용해서 특정 요소에 접근할때 이상한 값이 나오는 이유를 알게 되었다. childNodes는 NodeList 객체에 요소들을 담아서 반환하는데 이때 반환된 NodeList에는 요소 노드만 존재하는 것이 아니고 텍스트 노드도 존재하기 때문에 내가 의도한대로 출력이 되지 않았었다. children 메서드를 사용했을때 정상적으로 동작한 이유는 children 프로퍼티로 접근했을 경우에는 HTMLCollection에 요소 노드만 담아 반환해주기 때문에 인덱스로 접근했을때 원하는 결과를 도출할 수 있었다. 모르고 사용했을때와 알고 사용했을때의 차이는 크다고 생각한다. 왜 그렇게 동작하는지 명확하게 알고 이해하는 것이 중요함을 다시 한번 느낄 수 있었다.&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">DOM과 DOM 탐색</summary></entry><entry><title type="html">클래스</title><link href="http://localhost:4502/other/class/" rel="alternate" type="text/html" title="클래스" /><published>2021-12-19T00:00:00+09:00</published><updated>2021-12-19T00:00:00+09:00</updated><id>http://localhost:4502/other/class</id><content type="html" xml:base="http://localhost:4502/other/class/">&lt;p&gt;&lt;del&gt;프로토타입에 대해서 알게된 후 개인적인 생각으로 클래스가 굳이 필요할까라는 생각을 했었는데 클래스를 사용하면 좀더 직관적이고, 명료하다는 느낌을 받게 되었다. 하지만 클래스를 사용하는 것과 생성자 함수를 이용한 프로토타입과의 동작부분의 차이가 없다는 생각이 들어 클래스와 프로토타입과의 차이에 대해 좀더 공부해보게 되었다&lt;/del&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;클래스&quot;&gt;클래스&lt;/h1&gt;
 
@@ -444,7 +489,7 @@
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;del&gt;클래스는 생성자 함수를 이용한 프로토타입과 다른 방식이지만 거의 동일하게 동작한다. 하지만 개발자가 직관적으로, 명시적으로 코드를 작성해 상속을 구현하는 면에서 확실해보인다. 결국 개인적으로 프로토타입은 사용하기 어렵다고 느껴질 수 있지만 클래스는 프로토타입을 보다 쉽게 다룰 수 있는 방법으로 생각한다.&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">자바스크립트의 클래스(Class)</summary></entry><entry><title type="html">실행컨텍스트</title><link href="https://jjongbin.github.io/blog//other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" rel="alternate" type="text/html" title="실행컨텍스트" /><published>2021-12-14T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/">&lt;p&gt;&lt;del&gt;실행컨텍스트를 공부하면서 실행컨텍스트, 환경레코드, 렉시컬환경 등의 관계가 굉장히 복잡하게 얽혀있음을 알게 되었다. 그러다 문득 피보나치 수열의 경우에 실행컨텍스트는 어떤식으로 동작하는지가 궁금해졌다. 우선 실행컨텍스트를 공부하면서 알게 된 내용들을 정리해 보려고 한다.&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;클래스는 생성자 함수를 이용한 프로토타입과 다른 방식이지만 거의 동일하게 동작한다. 하지만 개발자가 직관적으로, 명시적으로 코드를 작성해 상속을 구현하는 면에서 확실해보인다. 결국 개인적으로 프로토타입은 사용하기 어렵다고 느껴질 수 있지만 클래스는 프로토타입을 보다 쉽게 다룰 수 있는 방법으로 생각한다.&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">자바스크립트의 클래스(Class)</summary></entry><entry><title type="html">실행컨텍스트</title><link href="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" rel="alternate" type="text/html" title="실행컨텍스트" /><published>2021-12-14T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8</id><content type="html" xml:base="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/">&lt;p&gt;&lt;del&gt;실행컨텍스트를 공부하면서 실행컨텍스트, 환경레코드, 렉시컬환경 등의 관계가 굉장히 복잡하게 얽혀있음을 알게 되었다. 그러다 문득 피보나치 수열의 경우에 실행컨텍스트는 어떤식으로 동작하는지가 궁금해졌다. 우선 실행컨텍스트를 공부하면서 알게 된 내용들을 정리해 보려고 한다.&lt;/del&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;실행-컨텍스트&quot;&gt;실행 컨텍스트&lt;/h1&gt;
 
@@ -599,7 +644,7 @@
 
 &lt;p&gt;&lt;img src=&quot;../../imgs/실행컨텍스트_fibonacci.jpeg&quot; alt=&quot;실행컨텍스트_fibonacci&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;실행 컨텍스트를 그림으로 그리면서 공부를 하니 보다 쉽게 접근할 수 있었다고 생각한다. 아직도 굉장히 어려운 개념이지만 스코프, 클로저 등 많은 개념들이 연관되어 있기 때문에 이상함을 느낄때 그림을 그려보면서 잘못된 부분을 찾아가는 것도 좋은 방법이라는 생각이 들었다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">피보나치 수열 구현의 실행 컨텍스트!</summary></entry><entry><title type="html">자바스크립트 객체의 변경방지 - 불변성</title><link href="https://jjongbin.github.io/blog//other/property_attribute/" rel="alternate" type="text/html" title="자바스크립트 객체의 변경방지 - 불변성" /><published>2021-12-07T00:00:00+09:00</published><updated>2021-12-07T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/property_attribute</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/property_attribute/">&lt;p&gt;만약 변하지 않아야 하는 값들이 의도처럼 수정되지 않아야 하지만 수정된다면 의도와 다른 결과가 출력되거나 에러를 일으킬 가능성이 크다.&lt;/p&gt;
+&lt;p&gt;실행 컨텍스트를 그림으로 그리면서 공부를 하니 보다 쉽게 접근할 수 있었다고 생각한다. 아직도 굉장히 어려운 개념이지만 스코프, 클로저 등 많은 개념들이 연관되어 있기 때문에 이상함을 느낄때 그림을 그려보면서 잘못된 부분을 찾아가는 것도 좋은 방법이라는 생각이 들었다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">피보나치 수열 구현의 실행 컨텍스트!</summary></entry><entry><title type="html">자바스크립트 객체의 변경방지 - 불변성</title><link href="http://localhost:4502/other/property_attribute/" rel="alternate" type="text/html" title="자바스크립트 객체의 변경방지 - 불변성" /><published>2021-12-07T00:00:00+09:00</published><updated>2021-12-07T00:00:00+09:00</updated><id>http://localhost:4502/other/property_attribute</id><content type="html" xml:base="http://localhost:4502/other/property_attribute/">&lt;p&gt;만약 변하지 않아야 하는 값들이 의도처럼 수정되지 않아야 하지만 수정된다면 의도와 다른 결과가 출력되거나 에러를 일으킬 가능성이 크다.&lt;/p&gt;
 
 &lt;p&gt;이때 값들이 변하지 않는 것을 불변하다고 한다 즉 변하지 않는 특성을 불변성이라고 한다.&lt;/p&gt;
 
@@ -835,7 +880,7 @@
       &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">Object.preventExtensions(), Object.seal(), Object.freeze()</summary></entry><entry><title type="html">유사배열객체</title><link href="https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/" rel="alternate" type="text/html" title="유사배열객체" /><published>2021-11-28T00:00:00+09:00</published><updated>2021-11-28T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/">&lt;p&gt;&lt;del&gt;강사님의 수업을 듣다가 유사객체라는 말씀을 하셨는데 유사객체에는 무엇이 있고 어떻게 사용될 수 있는지 궁금해졌다. 오늘은 유사객체에 대해서 공부를 해보려고 한다.&lt;/del&gt;&lt;/p&gt;
+&lt;/table&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">Object.preventExtensions(), Object.seal(), Object.freeze()</summary></entry><entry><title type="html">유사배열객체</title><link href="http://localhost:4502/other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/" rel="alternate" type="text/html" title="유사배열객체" /><published>2021-11-28T00:00:00+09:00</published><updated>2021-11-28T00:00:00+09:00</updated><id>http://localhost:4502/other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4</id><content type="html" xml:base="http://localhost:4502/other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/">&lt;p&gt;&lt;del&gt;강사님의 수업을 듣다가 유사객체라는 말씀을 하셨는데 유사객체에는 무엇이 있고 어떻게 사용될 수 있는지 궁금해졌다. 오늘은 유사객체에 대해서 공부를 해보려고 한다.&lt;/del&gt;&lt;/p&gt;
 
 &lt;p&gt;유사객체는 유사배열, 유사객체, 유사배열객체 등 다양한 이름으로 불리워진다.(이하 내용에서는 유사배열객체라고 설명하려고 한다!)&lt;/p&gt;
 
@@ -1017,7 +1062,7 @@ E
 
 &lt;p&gt;이처럼 유사배열객체에 사용가능한 배열의 메서드들이 있지만 사용할 수 없는 메서드들도 존재하고 유사배열객체는 배열이 아니기 때문에 주의할 필요가 있다고 생각한다.&lt;/p&gt;
 
-&lt;p&gt;유사배열객체를 겪는 일이 생각보다 많을거라고 예상하는데 유사배열객체를 보고 배열인지 헷갈린다면 꼭 디버그해보고(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Array.isArray()&lt;/code&gt; 사용!) 확실하게 판단할 필요가 있어보인다.&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">배열과 유사배열객체, 유사배열, 유사객체</summary></entry><entry><title type="html">BigInt</title><link href="https://jjongbin.github.io/blog//other/bigint/" rel="alternate" type="text/html" title="BigInt" /><published>2021-11-24T00:00:00+09:00</published><updated>2021-11-24T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/bigint</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/bigint/">&lt;p&gt;풀었던 백준문제: &lt;a href=&quot;https://www.acmicpc.net/problem/13305&quot;&gt;백준 13305&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;유사배열객체를 겪는 일이 생각보다 많을거라고 예상하는데 유사배열객체를 보고 배열인지 헷갈린다면 꼭 디버그해보고(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Array.isArray()&lt;/code&gt; 사용!) 확실하게 판단할 필요가 있어보인다.&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">배열과 유사배열객체, 유사배열, 유사객체</summary></entry><entry><title type="html">BigInt</title><link href="http://localhost:4502/other/bigint/" rel="alternate" type="text/html" title="BigInt" /><published>2021-11-24T00:00:00+09:00</published><updated>2021-11-24T00:00:00+09:00</updated><id>http://localhost:4502/other/bigint</id><content type="html" xml:base="http://localhost:4502/other/bigint/">&lt;p&gt;풀었던 백준문제: &lt;a href=&quot;https://www.acmicpc.net/problem/13305&quot;&gt;백준 13305&lt;/a&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice&quot;&gt;&lt;del&gt;이전에 백준에서 문제를 풀면서 BigInt를 사용하게 된 경험이 있는데 최근 강의를 수강하면서 BigInt가 ECMA에 비교적 최근에 추가된 내용이기 때문에 궁금해서 조사를 해봤다.&lt;/del&gt;&lt;/p&gt;
 
@@ -1085,7 +1130,7 @@ E
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1n === 1&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1n == 1&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ture&lt;/code&gt; → 타입은 다르지만 같은 타입인 경우 같은 값!&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typeof 10n&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BigInt&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">자바스크립트의 BigInt</summary></entry><entry><title type="html">ASCII, 유니코드</title><link href="https://jjongbin.github.io/blog//cs/ascii_unicode/" rel="alternate" type="text/html" title="ASCII, 유니코드" /><published>2021-11-23T00:00:00+09:00</published><updated>2021-11-23T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//cs/ascii_unicode</id><content type="html" xml:base="https://jjongbin.github.io/blog//cs/ascii_unicode/">&lt;p&gt;컴퓨터는 사람들이 말하는 a, b, c같은 문자를 그대로 이해할 수 없다. 따라서 컴퓨터에게 ~는 a이다 라고 알려줘야 하는데 이때 컴퓨터마다 표현방법이 다르다면 혼란이 있을 수 있다. 따라서 이를 국제적으로 표준화했다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">자바스크립트의 BigInt</summary></entry><entry><title type="html">ASCII, 유니코드</title><link href="http://localhost:4502/cs/ascii_unicode/" rel="alternate" type="text/html" title="ASCII, 유니코드" /><published>2021-11-23T00:00:00+09:00</published><updated>2021-11-23T00:00:00+09:00</updated><id>http://localhost:4502/cs/ascii_unicode</id><content type="html" xml:base="http://localhost:4502/cs/ascii_unicode/">&lt;p&gt;컴퓨터는 사람들이 말하는 a, b, c같은 문자를 그대로 이해할 수 없다. 따라서 컴퓨터에게 ~는 a이다 라고 알려줘야 하는데 이때 컴퓨터마다 표현방법이 다르다면 혼란이 있을 수 있다. 따라서 이를 국제적으로 표준화했다.&lt;/p&gt;
 
 &lt;h1 id=&quot;아스키코드ascii&quot;&gt;아스키코드(ASCII)&lt;/h1&gt;
 
@@ -1116,7 +1161,7 @@ E
 
 &lt;p&gt;유니코드는 전 세계의 모든 문자를 컴퓨터에서 일관되게 표현하고 다룰 수 있도록 설계된 산업 표준이며, 유니코드 협회(Unicode Consortium)가 제정한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://unicode-table.com/kr/#basic-latin&quot;&gt;유니코드 백과사전&lt;/a&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CS" /><category term="CS" /><summary type="html">아스키코드와 유니코드</summary></entry><entry><title type="html">웹 접근성</title><link href="https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/" rel="alternate" type="text/html" title="웹 접근성" /><published>2021-10-31T00:00:00+09:00</published><updated>2021-10-31T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1</id><content type="html" xml:base="https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/">&lt;h1 id=&quot;wcag&quot;&gt;WCAG&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://unicode-table.com/kr/#basic-latin&quot;&gt;유니코드 백과사전&lt;/a&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CS" /><category term="CS" /><summary type="html">아스키코드와 유니코드</summary></entry><entry><title type="html">웹 접근성</title><link href="http://localhost:4502/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/" rel="alternate" type="text/html" title="웹 접근성" /><published>2021-10-31T00:00:00+09:00</published><updated>2021-10-31T00:00:00+09:00</updated><id>http://localhost:4502/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1</id><content type="html" xml:base="http://localhost:4502/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/">&lt;h1 id=&quot;wcag&quot;&gt;WCAG&lt;/h1&gt;
 
 &lt;p&gt;WCAG는 Web Content Accessibility Guideline의 약자로 웹사이트 또는 애플리케이션에서 충족해야 하는 기준을 정의해 장애, 비장애의 사용자가 보다 쉽게 이용할 수 있도록 준수해야 하는 지침이다&lt;/p&gt;
 
@@ -1166,7 +1211,7 @@ E
       &lt;li&gt;속성이 중복되거나, id가 중복되지 않도록 한다&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="ETC" /><category term="ETC" /><summary type="html">WCAG 웹 접근성 지침 요약</summary></entry><entry><title type="html">float</title><link href="https://jjongbin.github.io/blog//css/float/" rel="alternate" type="text/html" title="float" /><published>2021-10-26T00:00:00+09:00</published><updated>2021-10-26T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//css/float</id><content type="html" xml:base="https://jjongbin.github.io/blog//css/float/">&lt;h1 id=&quot;float&quot;&gt;float&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="ETC" /><category term="ETC" /><summary type="html">WCAG 웹 접근성 지침 요약</summary></entry><entry><title type="html">float</title><link href="http://localhost:4502/css/float/" rel="alternate" type="text/html" title="float" /><published>2021-10-26T00:00:00+09:00</published><updated>2021-10-26T00:00:00+09:00</updated><id>http://localhost:4502/css/float</id><content type="html" xml:base="http://localhost:4502/css/float/">&lt;h1 id=&quot;float&quot;&gt;float&lt;/h1&gt;
 &lt;p&gt;float는 일반적은 요소들의 흐름에서 벗어나 “둥” 떠있는 것처럼 동작을 한다&lt;/p&gt;
 
 &lt;p&gt;MDN의 float에 대한 설명을 참조하자면 다음과 같다&lt;/p&gt;
@@ -1276,117 +1321,4 @@ CSS 속성(property) float은 한 요소(element)가 보통 흐름(normal flow)�
 &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CSS" /><category term="CSS" /><summary type="html">자식요소의 float를 해제하기</summary></entry><entry><title type="html">Main Menu</title><link href="https://jjongbin.github.io/blog//html/main_menu/" rel="alternate" type="text/html" title="Main Menu" /><published>2021-10-25T00:00:00+09:00</published><updated>2021-10-25T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//html/main_menu</id><content type="html" xml:base="https://jjongbin.github.io/blog//html/main_menu/">&lt;blockquote&gt;
-  &lt;p&gt;웹 접근성 측면에서의 메뉴!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;️-메인메뉴-main-menu&quot;&gt;▶️ 메인메뉴 (Main Menu)&lt;/h1&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;웹에서 메인메뉴는 사이트의 어느 한 부분으로 이동할 수 있도록 하며, 사이트의 전반적인 내용을 파악할 수 있다. 혹은 사이트내에서 내가 어느 위치에 있는지를 알 수 있다 따라서 웹을 이용하는 사람들이 모두 잘 이용할 수 있도록 &lt;strong&gt;웹접근성&lt;/strong&gt;이 좋아야 한다&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;-웹-접근성이란&quot;&gt;▷ 웹 접근성이란?&lt;/h2&gt;
-&lt;p&gt;고령자, 장애인, 비장애인에 상관없이 모든 사람이 동등하게 접근 가능하도록 하는 것을 말한다&lt;/p&gt;
-
-&lt;p&gt;만약 시각이 불편한 사람이 웹을 이용하는 경우 스크린리더에 의지해 원하는 동작을 수행하게 될 것이다. 이때 시각이 불편한 사람도 웹애서 원하는 동작을 수행하는데 어려움이 없도록 스크린리더가 보다 정확하고 명확하게 정보를 전달하는 등의 기능을 하도록 해야 한다&lt;/p&gt;
-
-&lt;p&gt;어느 포털사이트의 검색창이다 시각이 불편한 사람이라면 이 요소가 검색하는 부분인지를 전혀 알 수 없다 하지만 이 포털사이트에서 검색창을 구성한 코드를 살펴보게 되면 사용자에게는 보여지지 않지만 &lt;strong&gt;검색&lt;/strong&gt;이라고 표기를 해두고 스크린리더가 인식할 수 있게끔 작성해두었다&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../imgs/search-bar.png&quot; alt=&quot;search&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 화면에는 보이지 않는 태그 --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;blind&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;검색&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 검색 돋보기 아이콘 --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ico_search_submit&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;-wai-aria&quot;&gt;▷ WAI-ARIA&lt;/h2&gt;
-&lt;p&gt;(Web Accessibility Initiative - Accessible Rich Internet Application)&lt;/p&gt;
-
-&lt;p&gt;웹을 이용하는 사람들이 증가함에 따라 여러 사람들이 웹을 이용하게 되었고 몸이 불편한 더 많은 사람들이 웹을 이용할 수 있도록 동적 웹 애플리케이션의 접근성을 보장해줄 수 있다 해당 요소의 역할, 동작 등을 명시해줌으로써 보다 명시적으로 웹을 이용할 수 있도록 한다 (html만으로는 부족한 웹 접근성을 보완, W3C에서 만듬)&lt;/p&gt;
-
-&lt;p&gt;최근에 과제를 진행하면서 체크박스의 css를 변경해야할 일이 있었다.&lt;/p&gt;
-
-&lt;p&gt;당시에는 웹 접근성에 대한 지식이 거의 없다시피했기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;label&lt;/code&gt;을 사용해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;checkbox&lt;/code&gt;를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;display: none&lt;/code&gt;으로 두어 보이지 않도록 하고, 내가 원하는 모양대로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lable&lt;/code&gt;의 css를 변경한 적이 있다.&lt;/p&gt;
-
-&lt;p&gt;하지만 지금 생각해보면 웹 접근성을 위한 배려가 전혀 되있지 않은 코드를 작성했다고 생각한다 스크린리더를 이용하는 사람이 해당 부분을 접하게 되었다면 이건 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lable&lt;/code&gt;이라는 요소일뿐 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;checkbox&lt;/code&gt;인지 어떤 역할을 하는지 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lable&lt;/code&gt;이라면 무엇을 가르키는지에 대한 명시가 전혀 존재하지 않았다&lt;/p&gt;
-
-&lt;p&gt;이럴때 ARIA를 이용할 수 있다 ARIA를 이용하면 해당 요소가 어떻게 작동되는지를 명시해줄 수 있다 예를 들어 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;role=&quot;checkbox&quot;&lt;/code&gt;라고 속성으로 추가해주게 되면 이 속성이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;checkbox&lt;/code&gt;처럼 동작함을 브라우저에게 알려줄 수 있다 이외에도 대표적으로 다음과 같은 역할을 수행한다&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Role&lt;/td&gt;
-      &lt;td&gt;UI에 포함된 특정 element의 기능을 정의&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Property&lt;/td&gt;
-      &lt;td&gt;해당 컴포넌트의 특징이나 상황을 정의하며 속성명으로 ‘aria-*‘라는 접두사를 사용&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;State&lt;/td&gt;
-      &lt;td&gt;해당 컴퓨넌트의 상태 정보를 정의&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;WAI-ARIA&lt;/strong&gt;를 이용해서 해당 요소의 동작을 정의하거나, 상황 밑 상태가 어떤지를 명시적으로 알려준다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;이와 같은 방법들 또는 다른 방법들을 활용해서 웹 접근성을 높인 메인 메뉴를 작성하는 것이 좋다는 생각을 한다&lt;/p&gt;
-
-&lt;p&gt;먼저 보통의 메뉴를 보게 되면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;li&amp;gt;&lt;/code&gt;를 이용해서 메뉴를 작성하게 된다 이때 시멘틱적으로 메뉴를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;nav&amp;gt;&lt;/code&gt; 태그로 감싸는데 이는 검색엔진 최적화에도 도움이 된다 브라우저들이 데이터를 수집할 때 해당 부분이 navigator 역할을 한다는 것을 알려주게 되면 검색엔진이 데이터를 수집할 때 효율적으로 할 수 있고, 스크린리더를 이용하는 사용자들도 해당 요소가 어느역할을 할지 간략하게 알 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;nav&amp;gt;&lt;/code&gt; 태그로 메뉴부분을 감싸주고, 보이지 않는 (screen leader only)의 제목을 작성해주면 웹을 사용하기 어려운 사람들도 현재 부분이 “메뉴의 역할을 하는구나!” 라고 알 수 있을 것이다&lt;/p&gt;
-
-&lt;p&gt;시멘틱태그를 이용해서 해당 부분이 어떤 부분인지 큰 대목으로 알 수 있다면 이전에 말한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria-*&lt;/code&gt;를 이용해서 사용자가 원할하게 웹을 이용할 수 있도록 해줄 수 있다(시멘틱 요소와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;role&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria&lt;/code&gt;를 혼용해서 사용하는 것은 좋지 않다)&lt;/p&gt;
-
-&lt;p&gt;메가 메뉴(메뉴가 굉장히 많은 드롭다운식의 메뉴)를 이용할 때 해달 요소에 마우스를 hover하거나, click해야 주메뉴 아래의 서브메뉴들을 확인할 수 있다 이때 서브메뉴를 열 수 있도록 하는 요소에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria-label=&quot;submenu-open&quot;&lt;/code&gt;와 같이 해당 요소가 어떤 역할을 하는지 알려주는 것이 좋다&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;header&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Test Page&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;screen-leader-only&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;menu(nav)&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-label=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submenu-open&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;주 메뉴 1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-label=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submenu&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&amp;gt;&lt;/span&gt;서브메뉴 1-1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-label=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submenu&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&amp;gt;&lt;/span&gt;서브메뉴 1-2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-label=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submenu&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&amp;gt;&lt;/span&gt;서브메뉴 1-3&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-label=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submenu-open&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;주 메뉴 2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-label=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submenu&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&amp;gt;&lt;/span&gt;서브메뉴 2-1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-label=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submenu&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&amp;gt;&lt;/span&gt;서브메뉴 2-2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-label=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submenu&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&amp;gt;&lt;/span&gt;서브메뉴 2-3&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;main&amp;gt;&lt;/span&gt; content &lt;span class=&quot;nt&quot;&gt;&amp;lt;/main&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;footer&amp;gt;&lt;/span&gt; footer&lt;span class=&quot;nt&quot;&gt;&amp;lt;/footer&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../imgs/web-structure.png&quot; alt=&quot;web-structure&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 코드를 보면 시멘틱 요소(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;header&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;nav&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;main&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;footer&amp;gt;&lt;/code&gt;)를 이용해서 각 요소를 명시적으로 표현하고 주메뉴 하나 하나를 구성하는 요소(자바스크립트로 드롭다운 구현)를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;button&lt;/code&gt; 태그로 작성했다 이때 이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;button&lt;/code&gt;이 무슨 역할을 하는지 알 수 없는 상황이 있다. 이때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria-label&lt;/code&gt;을 이용해서 브라우저가 이 태그가 무엇을 하는지 사용자에게 알려줄 수 있다&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria-label&lt;/code&gt;: 레이블로 사용할 문자열을 지정할 수 있다 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria-label&lt;/code&gt;이 해당 요소의 텍스트보다 우선시됨)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria-labelledby&lt;/code&gt;: 자신을 참조하는 요소를 가르킨다&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aria-describedby&lt;/code&gt;: 기능을 설명하는 요소를 가르킨다(자신을 설명하는 lable을 가르킨다)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="HTML" /><category term="HTML" /><summary type="html">메인메뉴의 구성과 웹 접근성</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CSS" /><category term="CSS" /><summary type="html">자식요소의 float를 해제하기</summary></entry></feed>
