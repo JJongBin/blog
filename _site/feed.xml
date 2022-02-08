@@ -1,4 +1,166 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://localhost:4502/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4502/" rel="alternate" type="text/html" /><updated>2022-01-02T23:38:25+09:00</updated><id>http://localhost:4502/feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">CORS</title><link href="http://localhost:4502/other/CORS/" rel="alternate" type="text/html" title="CORS" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-01-02T00:00:00+09:00</updated><id>http://localhost:4502/other/CORS</id><content type="html" xml:base="http://localhost:4502/other/CORS/">&lt;p&gt;&lt;del&gt;아직 나는 CORS에 의한 문제를 겪어 본적이 없다… 하지만 많은 초보개발자들이 이 CORS 때문에 머리를 쥐어뜯고느느 한다고 들었다 이런점에서 내가 아직 열심히 하지 않아서 이런 문제를 겪어보지 못한 것이 아닐까? 라는 생각을 하면서 조금은 반성하게 되었다.&lt;/del&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://jjongbin.github.io/blog//feed.xml" rel="self" type="application/atom+xml" /><link href="https://jjongbin.github.io/blog//" rel="alternate" type="text/html" /><updated>2022-02-09T01:48:30+09:00</updated><id>https://jjongbin.github.io/blog//feed.xml</id><title type="html">공부하는 종빈🧑🏻‍💻</title><subtitle>공부한 내용을 기록하는 블로그</subtitle><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><entry><title type="html">Webpack</title><link href="https://jjongbin.github.io/blog//webpack/webpack/" rel="alternate" type="text/html" title="Webpack" /><published>2022-02-08T00:00:00+09:00</published><updated>2022-02-08T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//webpack/webpack</id><content type="html" xml:base="https://jjongbin.github.io/blog//webpack/webpack/">&lt;p&gt;&lt;img src=&quot;../../imgs/webpack.png&quot; style=&quot;width: 100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;프로젝트를 몇 가지 경험하면서 webpack을 다룰 일이 있었는데 정확히 모르던 상황에서 설정을 하려다 보니 중복되는 부분이 있거나 내가 작성한 웹팩 설정을 해석할 수 없는 상황들이 생겼었다 그래서 이번 기회에 webpack에 대해 간단히 다뤄보려고 한다!&lt;/del&gt;~&lt;/p&gt;
+
+&lt;h1 id=&quot;-webpack은-뭘까&quot;&gt;📘 webpack은 뭘까?&lt;/h1&gt;
+
+&lt;p&gt;webpack 공식 문서를 확인해보면 다음과 같이 나와있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;At its core, webpack is a static module bundler for modern JavaScript applications. When webpack processes your application, it internally builds a dependency graph from one or more entry points and then combines every module your project needs into one or more bundles, which are static assets to serve your content from.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;한국어로 번역한다면 다음과 같다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;webpack은 모던 JavaScript 애플리케이션을 위한 정적 모듈 번들러 입니다. webpack이 애플리케이션을 처리할 때, 내부적으로는 프로젝트에 필요한 모든 모듈을 매핑하고 하나 이상의 번들을 생성하는 디펜던시 그래프를 만듭니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;결국 &lt;strong&gt;&lt;u&gt;모듈 번들러&lt;/u&gt;&lt;/strong&gt;라는 것인데 모듈 번들러는 웹 애플리케이션을 구성하는 자원들 HTML, CSS, Javscript, 이미지 등을 조합해서 병합된 하나의 결과물을 만드는 도구를 의미한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;-webpack을-왜-쓸까&quot;&gt;📘 Webpack을 왜 쓸까?&lt;/h1&gt;
+
+&lt;h2 id=&quot;1-bundling&quot;&gt;1. bundling&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;뜻 그대로 작성한 코드들을 기능별로 묶어준다!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;만약 html에서 script태그를 이용해서 js파일을 적용시키거나 cdn을 통해 라이브러리들을 불러오는 경우 그 수가 적을 때는 육안으로도 관리가 가능하지만 수가 많아질수록 의존성 관리가 어려울 수 있다. webpack을 이용하면 의존성 문제를 해결하면서 여러개의 js파일을 묶어줄 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-code-spliting&quot;&gt;2. code spliting&lt;/h2&gt;
+
+&lt;p&gt;여러개의 파일들을 번들링 했을때 코드가 너무 길어질 수 있다. 이 때 파일 하나가 너무 무거워지기 때문에 웹 성능에 영향을 끼칠 수 있다. 따라서 &lt;strong&gt;코드를 나눠주는 것&lt;/strong&gt;이 필요하다.&lt;/p&gt;
+
+&lt;p&gt;나아가 리액트의 경우 SPA 방식인데 초기에 리소스를 모두 로드하기 때문에 파일들이 너무 무겁다면 초기 로드 속도가 느려지게 된다. 따라서 코드 스플리팅을 함으로써 초기 로딩 속도를 개선할 수 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;chunk&lt;br /&gt;
+번들되는 파일을 여러개의 chunk라는 단위로 나눌 수 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;3-tree-shaking&quot;&gt;3. tree shaking&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;tree shaking은 불필요한 코드를 제거해 준다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sayHello&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;hello JongBin!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;sayHello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위와 같은 코드를 웹팩을 이용해 번들링하는 경우 다음과 같이 코드가 변경이 된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;hello JongBin!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;첫 번째 코드는 함수로 감싸서 호출했을때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console.log()&lt;/code&gt; 메서드가 호출이 되는데 단 한번만 호출이 되기 때문에 굳이 함수로 만들어줄 필요가 없다. 웹팩은 이를 인식하고 함수를 제외하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console.log()&lt;/code&gt; 메서드 만 호출되도록 tree shaking 해준다.&lt;/p&gt;
+
+&lt;p&gt;(만약 첫번째 코드에서 sayHello 함수가 여러번 호출되었다면 함수가 제거되지 않는다.)&lt;/p&gt;
+
+&lt;h2 id=&quot;4-source-map&quot;&gt;4. source map&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;배포용으로 빌드한 파일과 원본 파일을 서로 연결시켜 준다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;production 모드로 동작하여 배포용으로 빌드된 파일에서 잘못된 부분이 있었을때 이 빌드된 파일은 번들되고, 압축되었기 때문에 에러난 부분을 찾는 것은 매우 어려울 수 있다. 따라서 잘못된 부분을 수정하기 위해서는 원본 파일과 비교해서 해당 부분이 어느 부분인지 알아야 하는데 이것을 가능하게 하는 것이 source map이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;devtool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;cheap-eval-source-map&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 코드를 export하는 부분에 추가해서 사용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;-webpack의-핵심-개념&quot;&gt;📘 webpack의 핵심 개념&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://webpack.kr/concepts/&quot;&gt;webpack의 공식 문서&lt;/a&gt;를 살펴보면 핵심 개념만 이해하면 webpack을 사용하는 것이 어렵지 않다고 한다. 정리해 보자면 다음과 같다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-entry엔트리&quot;&gt;1. Entry(엔트리)&lt;/h2&gt;
+
+&lt;p&gt;webpack의 설명을 공식문서에서 살펴보면 webpack은 디펜던시 그래프를 만든다고 한다.&lt;/p&gt;
+
+&lt;p&gt;만약 login.js, header.js, footer.js 등의 파일을 하나의 파일(index.js)로 번들을 하는 경우 다음과 같은 그림이 나오게 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../imgs/bundle.png&quot; alt=&quot;bundle&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이때 index.js가 &lt;strong&gt;진입점(entry point)&lt;/strong&gt;이고 세 파일(login.js, header.js, footer.js)에 &lt;strong&gt;의존하고 있는 관계&lt;/strong&gt;를 형성하게 된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-output출력&quot;&gt;2. Output(출력)&lt;/h2&gt;
+
+&lt;p&gt;output 속성은 생성된 번들을 내보낼 위치와 이 파일의 이름을 지정하는 방법을 webpack에 알려주는 역할을 한다. 기본 출력 파일의 경우에는 ./dist/main.js로 , 생성된 기타 파일의 경우에는 ./dist 폴더로 설정된다.&lt;/p&gt;
+
+&lt;p&gt;보통 path와 filename을 명시해 준다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ROOT_DIR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;development&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;js/[name].js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;path는 core에 속하며, core는 공통적인 것을 모아놓아 이후 node에서 webpack을 사용할 경우 함께 install한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-loaders로더&quot;&gt;3. Loaders(로더)&lt;/h2&gt;
+
+&lt;p&gt;공식문서에 따르면 webpack은 JavaScript와 JSON 파일만 이해한다. 따라서 다른 유형의 파일, 만약 babel을 사용한다면 babel-loader를 이용해서 다른 유형의 파일을 처리하거나, 유효한 모듈로 변환해 사용하거나 디펜던시 그래프에 추가할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;4-plugins플러그인&quot;&gt;4. Plugins(플러그인)&lt;/h2&gt;
+
+&lt;p&gt;webpack을 이용해서 코드들을 번들하게 되면 js파일들만 배포용으로 생성이 되는데 이때 필요한 것이 플러그인이다. 결과물을 처리해주는 역할을 한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HtmlWebpackPlugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./src/index.html&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})],&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;plugin 속성에 배열에 여러개의 플러그인을 사용할 수 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;html-webpack-plugin
+html 파일을 생성해준다. 위 코드는 ./src/index.html인 파일을 번들해 생성한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;5-mode모드&quot;&gt;5. Mode(모드)&lt;/h2&gt;
+
+&lt;p&gt;웹팩을 구동하는데 모드를 설정할 수 있는데 3가지 모드가 존재한다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;development(개발 모드)&lt;/li&gt;
+  &lt;li&gt;production(배포 모드): 기본값으로 번들링 과정에서 자체적으로코드를 최적화해 용량을 줄여준다.&lt;/li&gt;
+  &lt;li&gt;none(모드를 설정하지 않음)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;development 모드와 production 모드는 DefinePlugin의 process.env.NODE_ENV를 각각 development, production로 설정한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;6-browser-compatibility브라우저-호환성&quot;&gt;6. Browser Compatibility(브라우저 호환성)&lt;/h2&gt;
+
+&lt;p&gt;공식문서에 따르면 웹팩은 IE8 이하를 제외하고, ES5가 호환되는 모든 브라우저를 지원한다. 만약 구형 브라우저를 지원하기 위해서는 폴리필을 로드해야 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;-추가적으로&quot;&gt;📄 추가적으로&lt;/h1&gt;
+
+&lt;h2 id=&quot;1-cache&quot;&gt;1. cache&lt;/h2&gt;
+
+&lt;p&gt;만약 같은 코드를 계속 번들링하게 되면 비효율적이기 때문에 cache를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ture&lt;/code&gt;로 설정해서 반복되는 번들링을 방지할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-module&quot;&gt;2. module&lt;/h2&gt;
+
+&lt;p&gt;다양한 유형의 모듈을 처리하는 방법을 정의한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;rules
+rule의 배열로서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test&lt;/code&gt;로 정규식을 사용해서 적용할 파일을 선택할 수 있고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;use&lt;/code&gt; 속성에 어떤 로더를 적용시킬지 명시할 수 있다. 또한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exclude&lt;/code&gt; 속성에는 적용하지 않을 파일들을 명시할 수 있다. (이 외에도 &lt;a href=&quot;https://webpack.kr/configuration/module/&quot;&gt;다양한 옵션&lt;/a&gt;이 존재한다.)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;3-resolve&quot;&gt;3. resolve&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;alias: 별칭을 사용할 수 있고, 절대경로를 설정해준다.&lt;/li&gt;
+  &lt;li&gt;extensions: 확장자 명칭을 생략 가능한 것들을 설정해준다.&lt;/li&gt;
+  &lt;li&gt;modules: resolve할 어디서 파일을 찾아야 하는지 명시하는 속성.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;잘못된 부분이나, 추가할 사항이 있으면 추가하겠습니다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="webpack" /><category term="webpack" /><summary type="html">복잡한 웹팩을 공부해보자!</summary></entry><entry><title type="html">CORS</title><link href="https://jjongbin.github.io/blog//other/CORS/" rel="alternate" type="text/html" title="CORS" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-01-02T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/CORS</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/CORS/">&lt;p&gt;&lt;del&gt;아직 나는 CORS에 의한 문제를 겪어 본적이 없다… 하지만 많은 초보개발자들이 이 CORS 때문에 머리를 쥐어뜯고는 한다고 들었다 이런점에서 내가 아직 열심히 하지 않아서 이런 문제를 겪어보지 못한 것이 아닐까? 라는 생각을 하면서 조금은 반성하게 되었다.&lt;/del&gt;&lt;/p&gt;
 
 &lt;p&gt;한 사이트에서 주소가 다른 서버로 요청을 보낼때 이 CORS에 의한 에러가 발생하게 된다. 하지만 신기하게도 같은 요청이더라도 어떤 부분에서는 되고 또 다른 부분에서는 안되는 경우가 있는데 이때 CORS로 요청을 막는 것은 &lt;strong&gt;브라우저&lt;/strong&gt;의 영역이다.&lt;/p&gt;
 
@@ -64,8 +226,8 @@ Access-Control-Allow-Origin: *
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;결국 &lt;strong&gt;CORS&lt;/strong&gt;는 다른 출처(웹사이트)간의 리소스(데이터) 공유가 가능하도록 한다. 요청을 받는 &lt;strong&gt;백엔드&lt;/strong&gt;에서 허락할 다른 출처들을 명시(Access-Control-Allow-Origin)해두면 시소스 공유가 가능하도록 만들어진 메커니즘이다.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">CORS란 뭘까?</summary></entry><entry><title type="html">DOM</title><link href="http://localhost:4502/other/DOM/" rel="alternate" type="text/html" title="DOM" /><published>2021-12-28T00:00:00+09:00</published><updated>2021-12-28T00:00:00+09:00</updated><id>http://localhost:4502/other/DOM</id><content type="html" xml:base="http://localhost:4502/other/DOM/">&lt;p&gt;&lt;img src=&quot;../../imgs/childNodes.png&quot; alt=&quot;childNodes&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;결국 &lt;strong&gt;CORS&lt;/strong&gt;는 다른 출처(웹사이트)간의 리소스(데이터) 공유가 가능하도록 한다. 요청을 받는 &lt;strong&gt;백엔드&lt;/strong&gt;에서 허락할 다른 출처들을 명시(Access-Control-Allow-Origin)해두면 리소스 공유가 가능하도록 만들어진 메커니즘이다.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">CORS란 뭘까?</summary></entry><entry><title type="html">DOM</title><link href="https://jjongbin.github.io/blog//other/DOM/" rel="alternate" type="text/html" title="DOM" /><published>2021-12-28T00:00:00+09:00</published><updated>2021-12-28T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/DOM</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/DOM/">&lt;p&gt;&lt;img src=&quot;../../imgs/childNodes.png&quot; alt=&quot;childNodes&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;del&gt;위 사진처럼 이전에 자바스크립트 코드를 작성하면서 DOM 노드를 탐색하는 경우가 있었는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;childNodes&lt;/code&gt;와 인덱스를 이용해서 접근하려고 했을 때 이상한 값이 출력되는 것을 목격한 적이 있다(분명 ul요소 아래에 li요소는 세개인데…?). 그래서 다른 방법으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;children&lt;/code&gt; 메서드를 사용했었는데 현재 자바스크립트를 공부하면서 이유를 알게 되었다. 그래서 DOM과 노드를 탐색하는 메서드들에 대해서 정리하려고 한다.&lt;/del&gt;&lt;/p&gt;
 
@@ -302,7 +464,7 @@ Access-Control-Allow-Origin: *
   &lt;li&gt;자신의 다음 형제 요소 노드를 반환&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;del&gt;처음에 언급했던 childNodes를 사용해서 특정 요소에 접근할때 이상한 값이 나오는 이유를 알게 되었다. childNodes는 NodeList 객체에 요소들을 담아서 반환하는데 이때 반환된 NodeList에는 요소 노드만 존재하는 것이 아니고 텍스트 노드도 존재하기 때문에 내가 의도한대로 출력이 되지 않았었다. children 메서드를 사용했을때 정상적으로 동작한 이유는 children 프로퍼티로 접근했을 경우에는 HTMLCollection에 요소 노드만 담아 반환해주기 때문에 인덱스로 접근했을때 원하는 결과를 도출할 수 있었다. 모르고 사용했을때와 알고 사용했을때의 차이는 크다고 생각한다. 왜 그렇게 동작하는지 명확하게 알고 이해하는 것이 중요함을 다시 한번 느낄 수 있었다.&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">DOM과 DOM 탐색</summary></entry><entry><title type="html">클래스</title><link href="http://localhost:4502/other/class/" rel="alternate" type="text/html" title="클래스" /><published>2021-12-19T00:00:00+09:00</published><updated>2021-12-19T00:00:00+09:00</updated><id>http://localhost:4502/other/class</id><content type="html" xml:base="http://localhost:4502/other/class/">&lt;p&gt;&lt;del&gt;프로토타입에 대해서 알게된 후 개인적인 생각으로 클래스가 굳이 필요할까라는 생각을 했었는데 클래스를 사용하면 좀더 직관적이고, 명료하다는 느낌을 받게 되었다. 하지만 클래스를 사용하는 것과 생성자 함수를 이용한 프로토타입과의 동작부분의 차이가 없다는 생각이 들어 클래스와 프로토타입과의 차이에 대해 좀더 공부해보게 되었다&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;처음에 언급했던 childNodes를 사용해서 특정 요소에 접근할때 이상한 값이 나오는 이유를 알게 되었다. childNodes는 NodeList 객체에 요소들을 담아서 반환하는데 이때 반환된 NodeList에는 요소 노드만 존재하는 것이 아니고 텍스트 노드도 존재하기 때문에 내가 의도한대로 출력이 되지 않았었다. children 메서드를 사용했을때 정상적으로 동작한 이유는 children 프로퍼티로 접근했을 경우에는 HTMLCollection에 요소 노드만 담아 반환해주기 때문에 인덱스로 접근했을때 원하는 결과를 도출할 수 있었다. 모르고 사용했을때와 알고 사용했을때의 차이는 크다고 생각한다. 왜 그렇게 동작하는지 명확하게 알고 이해하는 것이 중요함을 다시 한번 느낄 수 있었다.&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">DOM과 DOM 탐색</summary></entry><entry><title type="html">클래스</title><link href="https://jjongbin.github.io/blog//other/class/" rel="alternate" type="text/html" title="클래스" /><published>2021-12-19T00:00:00+09:00</published><updated>2021-12-19T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/class</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/class/">&lt;p&gt;&lt;del&gt;프로토타입에 대해서 알게된 후 개인적인 생각으로 클래스가 굳이 필요할까라는 생각을 했었는데 클래스를 사용하면 좀더 직관적이고, 명료하다는 느낌을 받게 되었다. 하지만 클래스를 사용하는 것과 생성자 함수를 이용한 프로토타입과의 동작부분의 차이가 없다는 생각이 들어 클래스와 프로토타입과의 차이에 대해 좀더 공부해보게 되었다&lt;/del&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;클래스&quot;&gt;클래스&lt;/h1&gt;
 
@@ -511,7 +673,7 @@ Access-Control-Allow-Origin: *
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;del&gt;클래스는 생성자 함수를 이용한 프로토타입과 다른 방식이지만 거의 동일하게 동작한다. 하지만 개발자가 직관적으로, 명시적으로 코드를 작성해 상속을 구현하는 면에서 확실해보인다. 결국 개인적으로 프로토타입은 사용하기 어렵다고 느껴질 수 있지만 클래스는 프로토타입을 보다 쉽게 다룰 수 있는 방법으로 생각한다.&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">자바스크립트의 클래스(Class)</summary></entry><entry><title type="html">실행컨텍스트</title><link href="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" rel="alternate" type="text/html" title="실행컨텍스트" /><published>2021-12-14T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8</id><content type="html" xml:base="http://localhost:4502/other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/">&lt;p&gt;&lt;del&gt;실행컨텍스트를 공부하면서 실행컨텍스트, 환경레코드, 렉시컬환경 등의 관계가 굉장히 복잡하게 얽혀있음을 알게 되었다. 그러다 문득 피보나치 수열의 경우에 실행컨텍스트는 어떤식으로 동작하는지가 궁금해졌다. 우선 실행컨텍스트를 공부하면서 알게 된 내용들을 정리해 보려고 한다.&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;클래스는 생성자 함수를 이용한 프로토타입과 다른 방식이지만 거의 동일하게 동작한다. 하지만 개발자가 직관적으로, 명시적으로 코드를 작성해 상속을 구현하는 면에서 확실해보인다. 결국 개인적으로 프로토타입은 사용하기 어렵다고 느껴질 수 있지만 클래스는 프로토타입을 보다 쉽게 다룰 수 있는 방법으로 생각한다.&lt;/del&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">자바스크립트의 클래스(Class)</summary></entry><entry><title type="html">실행컨텍스트</title><link href="https://jjongbin.github.io/blog//other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/" rel="alternate" type="text/html" title="실행컨텍스트" /><published>2021-12-14T00:00:00+09:00</published><updated>2021-12-14T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/%EC%8B%A4%ED%96%89%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/">&lt;p&gt;&lt;del&gt;실행컨텍스트를 공부하면서 실행컨텍스트, 환경레코드, 렉시컬환경 등의 관계가 굉장히 복잡하게 얽혀있음을 알게 되었다. 그러다 문득 피보나치 수열의 경우에 실행컨텍스트는 어떤식으로 동작하는지가 궁금해졌다. 우선 실행컨텍스트를 공부하면서 알게 된 내용들을 정리해 보려고 한다.&lt;/del&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;실행-컨텍스트&quot;&gt;실행 컨텍스트&lt;/h1&gt;
 
@@ -666,7 +828,7 @@ Access-Control-Allow-Origin: *
 
 &lt;p&gt;&lt;img src=&quot;../../imgs/실행컨텍스트_fibonacci.jpeg&quot; alt=&quot;실행컨텍스트_fibonacci&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;실행 컨텍스트를 그림으로 그리면서 공부를 하니 보다 쉽게 접근할 수 있었다고 생각한다. 아직도 굉장히 어려운 개념이지만 스코프, 클로저 등 많은 개념들이 연관되어 있기 때문에 이상함을 느낄때 그림을 그려보면서 잘못된 부분을 찾아가는 것도 좋은 방법이라는 생각이 들었다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">피보나치 수열 구현의 실행 컨텍스트!</summary></entry><entry><title type="html">자바스크립트 객체의 변경방지 - 불변성</title><link href="http://localhost:4502/other/property_attribute/" rel="alternate" type="text/html" title="자바스크립트 객체의 변경방지 - 불변성" /><published>2021-12-07T00:00:00+09:00</published><updated>2021-12-07T00:00:00+09:00</updated><id>http://localhost:4502/other/property_attribute</id><content type="html" xml:base="http://localhost:4502/other/property_attribute/">&lt;p&gt;만약 변하지 않아야 하는 값들이 의도처럼 수정되지 않아야 하지만 수정된다면 의도와 다른 결과가 출력되거나 에러를 일으킬 가능성이 크다.&lt;/p&gt;
+&lt;p&gt;실행 컨텍스트를 그림으로 그리면서 공부를 하니 보다 쉽게 접근할 수 있었다고 생각한다. 아직도 굉장히 어려운 개념이지만 스코프, 클로저 등 많은 개념들이 연관되어 있기 때문에 이상함을 느낄때 그림을 그려보면서 잘못된 부분을 찾아가는 것도 좋은 방법이라는 생각이 들었다!&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">피보나치 수열 구현의 실행 컨텍스트!</summary></entry><entry><title type="html">자바스크립트 객체의 변경방지 - 불변성</title><link href="https://jjongbin.github.io/blog//other/property_attribute/" rel="alternate" type="text/html" title="자바스크립트 객체의 변경방지 - 불변성" /><published>2021-12-07T00:00:00+09:00</published><updated>2021-12-07T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/property_attribute</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/property_attribute/">&lt;p&gt;만약 변하지 않아야 하는 값들이 의도처럼 수정되지 않아야 하지만 수정된다면 의도와 다른 결과가 출력되거나 에러를 일으킬 가능성이 크다.&lt;/p&gt;
 
 &lt;p&gt;이때 값들이 변하지 않는 것을 불변하다고 한다 즉 변하지 않는 특성을 불변성이라고 한다.&lt;/p&gt;
 
@@ -902,7 +1064,7 @@ Access-Control-Allow-Origin: *
       &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">Object.preventExtensions(), Object.seal(), Object.freeze()</summary></entry><entry><title type="html">유사배열객체</title><link href="http://localhost:4502/other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/" rel="alternate" type="text/html" title="유사배열객체" /><published>2021-11-28T00:00:00+09:00</published><updated>2021-11-28T00:00:00+09:00</updated><id>http://localhost:4502/other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4</id><content type="html" xml:base="http://localhost:4502/other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/">&lt;p&gt;&lt;del&gt;강사님의 수업을 듣다가 유사객체라는 말씀을 하셨는데 유사객체에는 무엇이 있고 어떻게 사용될 수 있는지 궁금해졌다. 오늘은 유사객체에 대해서 공부를 해보려고 한다.&lt;/del&gt;&lt;/p&gt;
+&lt;/table&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="JavaScript" /><category term="Other" /><summary type="html">Object.preventExtensions(), Object.seal(), Object.freeze()</summary></entry><entry><title type="html">유사배열객체</title><link href="https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/" rel="alternate" type="text/html" title="유사배열객체" /><published>2021-11-28T00:00:00+09:00</published><updated>2021-11-28T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/%EC%9C%A0%EC%82%AC%EB%B0%B0%EC%97%B4%EA%B0%9D%EC%B2%B4/">&lt;p&gt;&lt;del&gt;강사님의 수업을 듣다가 유사객체라는 말씀을 하셨는데 유사객체에는 무엇이 있고 어떻게 사용될 수 있는지 궁금해졌다. 오늘은 유사객체에 대해서 공부를 해보려고 한다.&lt;/del&gt;&lt;/p&gt;
 
 &lt;p&gt;유사객체는 유사배열, 유사객체, 유사배열객체 등 다양한 이름으로 불리워진다.(이하 내용에서는 유사배열객체라고 설명하려고 한다!)&lt;/p&gt;
 
@@ -1084,7 +1246,7 @@ E
 
 &lt;p&gt;이처럼 유사배열객체에 사용가능한 배열의 메서드들이 있지만 사용할 수 없는 메서드들도 존재하고 유사배열객체는 배열이 아니기 때문에 주의할 필요가 있다고 생각한다.&lt;/p&gt;
 
-&lt;p&gt;유사배열객체를 겪는 일이 생각보다 많을거라고 예상하는데 유사배열객체를 보고 배열인지 헷갈린다면 꼭 디버그해보고(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Array.isArray()&lt;/code&gt; 사용!) 확실하게 판단할 필요가 있어보인다.&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">배열과 유사배열객체, 유사배열, 유사객체</summary></entry><entry><title type="html">BigInt</title><link href="http://localhost:4502/other/bigint/" rel="alternate" type="text/html" title="BigInt" /><published>2021-11-24T00:00:00+09:00</published><updated>2021-11-24T00:00:00+09:00</updated><id>http://localhost:4502/other/bigint</id><content type="html" xml:base="http://localhost:4502/other/bigint/">&lt;p&gt;풀었던 백준문제: &lt;a href=&quot;https://www.acmicpc.net/problem/13305&quot;&gt;백준 13305&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;유사배열객체를 겪는 일이 생각보다 많을거라고 예상하는데 유사배열객체를 보고 배열인지 헷갈린다면 꼭 디버그해보고(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Array.isArray()&lt;/code&gt; 사용!) 확실하게 판단할 필요가 있어보인다.&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">배열과 유사배열객체, 유사배열, 유사객체</summary></entry><entry><title type="html">BigInt</title><link href="https://jjongbin.github.io/blog//other/bigint/" rel="alternate" type="text/html" title="BigInt" /><published>2021-11-24T00:00:00+09:00</published><updated>2021-11-24T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//other/bigint</id><content type="html" xml:base="https://jjongbin.github.io/blog//other/bigint/">&lt;p&gt;풀었던 백준문제: &lt;a href=&quot;https://www.acmicpc.net/problem/13305&quot;&gt;백준 13305&lt;/a&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice&quot;&gt;&lt;del&gt;이전에 백준에서 문제를 풀면서 BigInt를 사용하게 된 경험이 있는데 최근 강의를 수강하면서 BigInt가 ECMA에 비교적 최근에 추가된 내용이기 때문에 궁금해서 조사를 해봤다.&lt;/del&gt;&lt;/p&gt;
 
@@ -1152,7 +1314,7 @@ E
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1n === 1&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1n == 1&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ture&lt;/code&gt; → 타입은 다르지만 같은 타입인 경우 같은 값!&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typeof 10n&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BigInt&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">자바스크립트의 BigInt</summary></entry><entry><title type="html">ASCII, 유니코드</title><link href="http://localhost:4502/cs/ascii_unicode/" rel="alternate" type="text/html" title="ASCII, 유니코드" /><published>2021-11-23T00:00:00+09:00</published><updated>2021-11-23T00:00:00+09:00</updated><id>http://localhost:4502/cs/ascii_unicode</id><content type="html" xml:base="http://localhost:4502/cs/ascii_unicode/">&lt;p&gt;컴퓨터는 사람들이 말하는 a, b, c같은 문자를 그대로 이해할 수 없다. 따라서 컴퓨터에게 ~는 a이다 라고 알려줘야 하는데 이때 컴퓨터마다 표현방법이 다르다면 혼란이 있을 수 있다. 따라서 이를 국제적으로 표준화했다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="Other" /><category term="Other" /><summary type="html">자바스크립트의 BigInt</summary></entry><entry><title type="html">ASCII, 유니코드</title><link href="https://jjongbin.github.io/blog//cs/ascii_unicode/" rel="alternate" type="text/html" title="ASCII, 유니코드" /><published>2021-11-23T00:00:00+09:00</published><updated>2021-11-23T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//cs/ascii_unicode</id><content type="html" xml:base="https://jjongbin.github.io/blog//cs/ascii_unicode/">&lt;p&gt;컴퓨터는 사람들이 말하는 a, b, c같은 문자를 그대로 이해할 수 없다. 따라서 컴퓨터에게 ~는 a이다 라고 알려줘야 하는데 이때 컴퓨터마다 표현방법이 다르다면 혼란이 있을 수 있다. 따라서 이를 국제적으로 표준화했다.&lt;/p&gt;
 
 &lt;h1 id=&quot;아스키코드ascii&quot;&gt;아스키코드(ASCII)&lt;/h1&gt;
 
@@ -1183,7 +1345,7 @@ E
 
 &lt;p&gt;유니코드는 전 세계의 모든 문자를 컴퓨터에서 일관되게 표현하고 다룰 수 있도록 설계된 산업 표준이며, 유니코드 협회(Unicode Consortium)가 제정한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://unicode-table.com/kr/#basic-latin&quot;&gt;유니코드 백과사전&lt;/a&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CS" /><category term="CS" /><summary type="html">아스키코드와 유니코드</summary></entry><entry><title type="html">웹 접근성</title><link href="http://localhost:4502/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/" rel="alternate" type="text/html" title="웹 접근성" /><published>2021-10-31T00:00:00+09:00</published><updated>2021-10-31T00:00:00+09:00</updated><id>http://localhost:4502/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1</id><content type="html" xml:base="http://localhost:4502/etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/">&lt;h1 id=&quot;wcag&quot;&gt;WCAG&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://unicode-table.com/kr/#basic-latin&quot;&gt;유니코드 백과사전&lt;/a&gt;&lt;/p&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CS" /><category term="CS" /><summary type="html">아스키코드와 유니코드</summary></entry><entry><title type="html">웹 접근성</title><link href="https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/" rel="alternate" type="text/html" title="웹 접근성" /><published>2021-10-31T00:00:00+09:00</published><updated>2021-10-31T00:00:00+09:00</updated><id>https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1</id><content type="html" xml:base="https://jjongbin.github.io/blog//etc/%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1/">&lt;h1 id=&quot;wcag&quot;&gt;WCAG&lt;/h1&gt;
 
 &lt;p&gt;WCAG는 Web Content Accessibility Guideline의 약자로 웹사이트 또는 애플리케이션에서 충족해야 하는 기준을 정의해 장애, 비장애의 사용자가 보다 쉽게 이용할 수 있도록 준수해야 하는 지침이다&lt;/p&gt;
 
@@ -1233,114 +1395,4 @@ E
       &lt;li&gt;속성이 중복되거나, id가 중복되지 않도록 한다&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="ETC" /><category term="ETC" /><summary type="html">WCAG 웹 접근성 지침 요약</summary></entry><entry><title type="html">float</title><link href="http://localhost:4502/css/float/" rel="alternate" type="text/html" title="float" /><published>2021-10-26T00:00:00+09:00</published><updated>2021-10-26T00:00:00+09:00</updated><id>http://localhost:4502/css/float</id><content type="html" xml:base="http://localhost:4502/css/float/">&lt;h1 id=&quot;float&quot;&gt;float&lt;/h1&gt;
-&lt;p&gt;float는 일반적은 요소들의 흐름에서 벗어나 “둥” 떠있는 것처럼 동작을 한다&lt;/p&gt;
-
-&lt;p&gt;MDN의 float에 대한 설명을 참조하자면 다음과 같다&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/CSS/float&quot;&gt;MDN - float&lt;/a&gt;&lt;br /&gt;
-CSS 속성(property) float은 한 요소(element)가 보통 흐름(normal flow)으로부터 빠져 텍스트 및 인라인(inline) 요소가 그 주위를 감싸는 자기 컨테이너의 좌우측을 따라 배치되어야 함을 지정합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;보통 흐름으로부터 빠져 자신의 부모를 기준으로 좌우측으로 정렬이 되는데 이때 어떤 부모요소의 자식요소들이 모두 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;float&lt;/code&gt;로 지정이 되었다면 그 부모요소는 자신의 높이를 잃어버리게 된다(부모의 높이가 지정되어 있지 않고 내부 요소들의 내용에 따라 높이가 정해지는 경우)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../imgs/float.png&quot; alt=&quot;float&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;왼쪽의 레이아웃에서 main 영역에 3개의 요소를 그림과 같이 배치하려고 할때 float를 이용한다면 파란색의 main 영역이 사라지는 것을 볼 수 있다&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../imgs/clear.png&quot; alt=&quot;clear&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;왼쪽의 레이아웃은 main 내부의 요소들을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;float&lt;/code&gt;로 변경했을때의 현상이다 footer의 레이아웃까지 무너지는 것을 볼 수 있다(float가 가리는 텍스트는 옆으로 빠져나옴 “footer”라는 텍스트는 가려지지 않고 옆으로 빠짐) 이때 footer에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clear: both;&lt;/code&gt;를 사용하게 되면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;float&lt;/code&gt;가 footer에 영향을 미치는 것을 막을 수 있다&lt;/p&gt;
-
-&lt;p&gt;하지만 문제는 여전히 &lt;strong&gt;main의 영역이 사라졌다는&lt;/strong&gt; 것이다 자식요소의 영역만큼 영역을 차지하는 부모요소는 자식요소가 모두 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;float&lt;/code&gt;로 지정이 되면 높이를 잃어버린 것처럼 동작한다&lt;/p&gt;
-
-&lt;p&gt;이러한 문제를 해결하기 위한 방법으로 5가지정도가 존재한다&lt;/p&gt;
-
-&lt;h2 id=&quot;-1-clearfix&quot;&gt;▷ 1. clearfix&lt;/h2&gt;
-&lt;p&gt;main의 내용과 관련없는 clearfix라는 클래스의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;div&lt;/code&gt;요소를 임의로 생성한다&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;main&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group group1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group group2&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group group3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;3&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clearfix&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/main&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.clearfix&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;하지만 의미없는 태그로 코드상으로 보여지기도 하므로 좋은 방법이 아니다&lt;/p&gt;
-
-&lt;h2 id=&quot;-2-가상-요소-선택자&quot;&gt;▷ 2. 가상 요소 선택자&lt;/h2&gt;
-&lt;p&gt;위에서 clearfix의 방법을 가상 요소 선택자 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;::after&lt;/code&gt;를 이용해서 작성하는 방법이다&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;가상 요소 선택자로 작성된 content는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;display&lt;/code&gt;가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inline&lt;/code&gt;이다 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clear: both&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;block&lt;/code&gt;요소에만 적용되기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;display: block&lt;/code&gt;을 해준다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;main&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group group1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group group2&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group group3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;3&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/main&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;::after&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;-3-overflow-hidden&quot;&gt;▷ 3. overflow: hidden;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;부모요소&lt;/strong&gt;에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;overflow: hidden&lt;/code&gt;를 이용해서 작성하는 방법&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;원래 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;overflow: hidden&lt;/code&gt;은 넘치는 요소를 숨김처리하는 역할을 하기 때문에 만약 자식요소가 부모요소의 크기를 넘어서게 되면 보이지 않게 되는 큰 단점이 존재한다&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/Guide/CSS/Block_formatting_context&quot;&gt;BFC(Block Format Context)&lt;/a&gt;를 생성하게 된다 → 자신만의 독립된 영역을 가지게 된다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;BFC가 생성되는 조건&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;루트(root) 요소일 때&lt;/li&gt;
-    &lt;li&gt;html는 웹 문서의 시작을 알리는 최상위 요소이다. 따라서 기본적으로 하위 요소들은 독립적인 레이아웃을 가질 수 있도록 되어 있다.
-플로팅(Floating) 되었을 때&lt;/li&gt;
-    &lt;li&gt;하위 요소가 선택적으로 float 속성 값을 none이 아닌 값을 가지게 되면 독립적인 레이아웃 환경을 갖는다.&lt;/li&gt;
-    &lt;li&gt;position 속성이 absolute 또는 fixed로 적용되어 있을 때&lt;/li&gt;
-    &lt;li&gt;하위 요소가 선택적으로 position 속성 값을 absolute 또는 fixed 값을 가지게 되면 독립적인 레이아웃 환경을 갖는다.&lt;/li&gt;
-    &lt;li&gt;display 속성이 inline-block으로 적용되어 있을 때&lt;/li&gt;
-    &lt;li&gt;하위 요소가 inline-block을 갖게되면 주변 inline 요소와 관계가 무너지면서 독립적인 공간을 형성하게 되므로 역시 독립적인 레이아웃 환경을 갖는다.&lt;/li&gt;
-    &lt;li&gt;overflow 속성의 값이 visible 이외의 값으로 적용되어 있을 때&lt;/li&gt;
-    &lt;li&gt;overflow 속성 값이 visible 이외의 값을 갖는 다는 것은 공간에 대한 크기 정의를 했다고 볼 수 있다. 그렇게 때문에 독립적인 공간을 형성한 것으로 볼 수 있으며 따라서 BFC를 요건을 가지고 있다.&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;overflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hidden&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;-4-flow-root&quot;&gt;▷ 4. flow-root&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;display: flow-root&lt;/code&gt;를 사용해서 작성하는 방법&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;비교적 최근에 나온 속성이기 때문에 오래된 브라우저, IE에서는 &lt;strong&gt;작동이 되지 않는다&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;부모요소에 적용한다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flow-root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;-5-부모요소의-float&quot;&gt;▷ 5. 부모요소의 float&lt;/h2&gt;
-&lt;p&gt;자식요소가 모두 float로 지정되었을 때 부모요소까지도 float로 지정해주는 방법&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;부모의 float를 해제해 주어야 하므로 좋은 방법은 아니라는것이 개인적인 생각이다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="CSS" /><category term="CSS" /><summary type="html">자식요소의 float를 해제하기</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>원종빈</name><email>gghkdu2@gmail.com</email></author><category term="ETC" /><category term="ETC" /><summary type="html">WCAG 웹 접근성 지침 요약</summary></entry></feed>

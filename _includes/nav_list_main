@@ -95,6 +95,13 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "webpack" %}
+                        <li class="nav__items-one"><a href="/blog/categories/wabpack" class="">wabpack ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
       </li>
   </ul>
 </nav>

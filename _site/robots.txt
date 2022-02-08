@@ -1,1 +1,1 @@
-Sitemap: http://localhost:4502/sitemap.xml
+Sitemap: https://jjongbin.github.io/blog//sitemap.xml
